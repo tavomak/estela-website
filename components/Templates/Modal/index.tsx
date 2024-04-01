@@ -1,6 +1,5 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -48,20 +47,5 @@ const Modal = ({
     </div>
   </CSSTransition>
 );
-
-Modal.defaultProps = {
-  children: null,
-  size: '',
-  onClick: undefined,
-  bgColor: '',
-};
-
-Modal.propTypes = {
-  children: PropTypes.node,
-  onClick: PropTypes.func,
-  showModal: PropTypes.bool.isRequired,
-  size: PropTypes.string,
-  bgColor: PropTypes.string,
-};
 
 export default Modal;

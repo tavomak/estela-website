@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { primaryLinks, socialMediaInfo, siteName } from 'utils';
+import { primaryLinks, socialMediaInfo, siteName } from '@utils/index';
 import {
   FaSpotify,
   FaYoutube,
@@ -56,10 +56,15 @@ const Navbar = () => {
               height={scrollTop > 150 ? 60 : 120}
             />
           </Link>
-          <button className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`} type="button" onClick={() => setMenuOpen(!menuOpen)}>
+          <button
+            className={`d-lg-none hamburger hamburger--emphatic ${menuOpen ? 'is-active' : ''}`}
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <span className="hamburger-box">
               <span className="hamburger-inner" />
             </span>
+            <span className="display-none">menu</span>
           </button>
           <div className={`collapse navbar-collapse text-center ${menuOpen ? 'show' : ''}`} id="navbarTogglerDemo02">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
