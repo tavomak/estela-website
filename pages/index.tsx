@@ -43,7 +43,7 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="mb-4">
-                  <a href="mailto:contacto@estelaestudio.com" className="btn btn-secondary">
+                  <a href="/credenciales_2024.pdf" className="btn btn-secondary" target="_blank" rel="noreferrer">
                     <FaDownload className="me-2" />
                     Descargar credenciales
                   </a>
