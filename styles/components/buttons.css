@@ -1,0 +1,58 @@
+article.main a {
+  @apply font-semibold;
+  transition-duration: var(--default-timing-duration);
+  transition-timing-function: var(--default-timing-function);
+  transition-property: all;
+}
+
+.btn {
+  @apply inline-flex items-center px-4 py-1 font-semibold;
+  transition-duration: var(--default-timing-duration);
+  transition-timing-function: var(--default-timing-function);
+  transition-property: background-color, color, transform, box-shadow;
+  background: var(--btn-background-color);
+  border-color: var(--btn-border-color);
+  color: var(--btn-color);
+}
+
+.btn:hover {
+  transform: var(--btn-hover-transform);
+  box-shadow: var(--default-box-shadow);
+}
+
+.btn-primary {
+  @apply bg-ea-amarillo text-ea-verde-oscuro hover:bg-ea-verde hover:text-white;
+  --btn-color: var(--white);
+  --btn-background-color: var(--medium-blue);
+  --btn-border-color: none;
+}
+.btn-primary:hover,
+.btn-primary.active {
+  --btn-color: var(--dark-blue);
+  --btn-background-color: var(--light-purple);
+  --btn-border-color: none;
+}
+
+.btn-secondary {
+  @apply border;
+  --btn-color: var(--white);
+  --btn-background-color: transparent;
+  --btn-border-color: var(--ea-verde);
+}
+.btn-secondary:hover,
+.btn-secondary.active {
+  --btn-color: var(--ea-verde);
+  --btn-background-color: var(--white);
+  --btn-border-color: var(--ea-verde);
+}
+
+.btn-outline {
+  --btn-border-color: var(--white);
+}
+.btn-outline:hover,
+.btn-outline.active {
+  transform: var(--btn-hover-transform);
+  background-color: var(--white);
+  border-color: var(--white);
+  color: var(--dark-blue);
+}

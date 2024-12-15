@@ -1,65 +1,54 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "jest": true
+    "es2021": true
   },
-  "extends": [
-    "airbnb",
-    "plugin:react/recommended",
-    "next/core-web-vitals"
-  ],
-  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb", "airbnb/hooks", "next/core-web-vitals", "prettier"],
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint"
-  ],
-  // "react/jsx-indent": ["error", 4],
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": ["error"],
+    "camelcase": "off",
+    "arrow-body-style": ["error", "as-needed"],
     "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-props-no-spreading": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx"] }],
-    "no-console": "off",
-    "no-underscore-dangle": "off",
-    "no-use-before-define": "off",
-    "react/prop-types": "off",
-    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", "tsx"] }
+    ],
     "react/function-component-definition": [
       2,
       {
-        "namedComponents": ["function-declaration", "function-expression", "arrow-function"]
+        "namedComponents": [
+          "function-declaration",
+          "function-expression",
+          "arrow-function"
+        ]
       }
     ],
+    "no-restricted-exports": [
+      "error",
+      { "restrictDefaultExports": { "defaultFrom": false } }
+    ],
+    "react/require-default-props": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
       {
-        "js": "never",
-        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }
-   ]
+    ]
   },
   "settings": {
     "import/resolver": {
       "alias": {
-        "map": [
-          ["@context", "./context"],
-          ["@components", "./components"],
-          ["@data", "./data"],
-          ["@hooks", "./hooks"],
-          ["@styles", "./styles"],
-          ["@lib", "./lib"],
-          ["@utils", "./utils"]
-        ]
+        "map": [["@", "./"]]
       }
     }
   }

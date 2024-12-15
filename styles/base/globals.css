@@ -1,0 +1,7 @@
+body {
+  font-family: var(--primary-font);
+}
+
+.display-font {
+  font-family: var(--display-font);
+}

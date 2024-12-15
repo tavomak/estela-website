@@ -1,0 +1,29 @@
+:root {
+  --white: #ffffff;
+
+  --primary-font: var(--font-roboto), sans-serif;
+  --display-font: var(--font-bricolage), sans-serif;
+
+  --btn-color: '';
+  --btn-background-color: '';
+  --btn-border-color: '';
+  --btn-hover-transform: translateY(-2px);
+
+  --spinner-color: var(--white);
+  --spinner-width: 100%;
+  --spinner-height: 100%;
+  --spinner-stroke: 3px;
+
+  --default-box-shadow: 0 0.5rem 1.5rem rgb(98 52 130 / 20%);
+
+  --default-timing-duration: 0.4s;
+  --default-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} 
+*/

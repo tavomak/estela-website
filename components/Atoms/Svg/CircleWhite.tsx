@@ -1,10 +1,7 @@
-import styles from './style.module.scss';
+import styles from './style.module.css';
 
 const CircleWhite = () => (
-  <svg
-    viewBox="0 0 753 777"
-    fill="#ffffff"
-  >
+  <svg viewBox="0 0 753 777" fill="#ffffff">
     <g className={styles.obj3}>
       <path
         d="M673.1,570.5c1.7,1.9,3.3,3.8,4.9,5.7c0.4-0.7,0.9-1.3,1.3-2c3.9-6,7.7-12.1,11.2-18.3
@@ -43,7 +40,10 @@ const CircleWhite = () => (
       />
     </g>
     <g className={styles.obj3}>
-      <path className="st26 obj2" d="M303.5,363.1c-21.9-16.7-44.5-33.5-67.6-50.4" />
+      <path
+        className="st26 obj2"
+        d="M303.5,363.1c-21.9-16.7-44.5-33.5-67.6-50.4"
+      />
       <path
         className="st26"
         d="M179.9,672c7.1,4.9,14.3,9.5,21.8,13.9c117.3-14.4,214.1-14.1,293,0.6c16.8,3.1,32.2,6.8,46.5,10.9
