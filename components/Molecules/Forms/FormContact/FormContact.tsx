@@ -1,9 +1,10 @@
 import { useState, useRef, FC } from 'react';
-import { FieldError, useForm } from 'react-hook-form';
+import { FieldError, useForm, Controller } from 'react-hook-form';
 import { environments } from '@/utils/constants';
+import useTranslation from 'next-translate/useTranslation';
 import ReCAPTCHA from 'react-google-recaptcha';
-import TagManager from 'react-gtm-module';
 import useNotify from '@/hooks/useNotify';
+import TagManager from 'react-gtm-module';
 import Button from '@/components/Atoms/Button';
 import Input from '@/components/Atoms/Input';
 import { FormContactProps, FormElements } from './types';
@@ -23,10 +24,12 @@ const FormContact: FC<FormContactProps> = ({
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const form = useRef<FormElements | null>(null);
+  const { t } = useTranslation('common');
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
     reset,
   } = useForm();
 
@@ -70,31 +73,21 @@ const FormContact: FC<FormContactProps> = ({
 
         if (data.error) {
           setLoading(false);
-          notification(
-            'error',
-            '¡Mensaje no enviado, por favor inténtalo de nuevo!'
-          );
+          notification('error', t('contact_error_message'));
         }
 
         setLoading(false);
-        notification(
-          'success',
-          'Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.'
-        );
+        notification('success', t('contact_success_message'));
         reset();
         if (process.env.NODE_ENV === environments.production) {
           TagManager.dataLayer(tagManagerArgs);
         }
-      } else {
-        const error = await response.json();
-        throw new Error(error.message);
       }
+      const error = await response.json();
+      throw new Error(error.message);
     } catch (error) {
       console.warn('error', error);
-      notification(
-        'error',
-        '¡Mensaje no enviado, por favor inténtalo de nuevo!'
-      );
+      notification('error', t('contact_error_message'));
     } finally {
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
@@ -120,9 +113,9 @@ const FormContact: FC<FormContactProps> = ({
         <Input
           type="text"
           name="clientName"
-          placeholder="Introduce un nombre"
+          placeholder={t('contact_form_client_name')}
           rules={{
-            required: 'Nombre requerido',
+            required: t('contact_form_client_name_required'),
           }}
           errors={errors.clientName as FieldError}
           register={register}
@@ -132,9 +125,9 @@ const FormContact: FC<FormContactProps> = ({
         <Input
           type="text"
           name="clientLastName"
-          placeholder="Introduce un Apellido"
+          placeholder={t('contact_form_client_last_name')}
           rules={{
-            required: 'Apellido requerido',
+            required: t('contact_form_client_last_name_required'),
           }}
           errors={errors.clientLastName as FieldError}
           register={register}
@@ -144,33 +137,32 @@ const FormContact: FC<FormContactProps> = ({
         <Input
           type="email"
           name="clientEmail"
-          placeholder="Introduce tu email"
+          placeholder={t('contact_form_client_email')}
           rules={{
-            required: 'Email Requerido',
+            required: t('contact_form_client_email_required'),
           }}
           errors={errors.clientEmail as FieldError}
           register={register}
         />
       </div>
       <div className="form-group">
-        <Input
-          phone
-          type="text"
+        <Controller
+          control={control}
           name="clientPhone"
-          placeholder="Introduce tu teléfono"
           rules={{
-            required: 'Teléfono Requerido',
-            maxLength: {
-              value: 9,
-              message: 'Debe tener 9 digitos',
-            },
-            minLength: {
-              value: 9,
-              message: 'Debe tener 9 digitos',
-            },
+            required: t('contact_form_client_phone_required'),
           }}
-          errors={errors.clientPhone as FieldError}
-          register={register}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              phone
+              type="text"
+              name="clientPhone"
+              placeholder={t('contact_form_client_phone')}
+              onChange={onChange}
+              value={value}
+              errors={errors.clientPhone as FieldError}
+            />
+          )}
         />
       </div>
       <div className="form-group">

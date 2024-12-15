@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import TagManager from 'react-gtm-module';
 import { bricolage, roboto } from '@/utils/fonts';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-phone-input-2/lib/style.css';
 import '@/styles/main.css';
 
 const tagManagerArgs = {
