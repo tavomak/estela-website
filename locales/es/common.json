@@ -3,5 +3,19 @@
   "nav_about_title": "Nosotros",
   "nav_contact_title": "Contacto",
   "download_credentials": "Descargar credenciales",
-  "contact_title": "Escríbenos"
+  "contact_title": "Escríbenos",
+  "contact_success_message": "Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.",
+  "contact_error_message": "¡Mensaje no enviado, por favor inténtalo de nuevo!",
+  "contact_form_client_name": "Introduce un nombre",
+  "contact_form_client_last_name": "Introduce un apellido",
+  "contact_form_client_email": "Introduce un email",
+  "contact_form_client_phone": "Introduce un teléfono",
+  "contact_form_client_message": "Introduce un mensaje",
+  "contact_form_client_name_required": "Nombre requerido",
+  "contact_form_client_last_name_required": "Apellido requerido",
+  "contact_form_client_email_required": "Email requerido",
+  "contact_form_client_phone_required": "Teléfono requerido",
+  "contact_form_client_message_required": "Mensaje requerido",
+  "contact_form_client_phone_max_length": "Debe tener 9 dígitos",
+  "contact_form_client_phone_min_length": "Debe tener 9 dígitos"
 }
