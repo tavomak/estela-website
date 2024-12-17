@@ -3,6 +3,7 @@ import Script from 'next/script';
 import Head from 'next/head';
 
 import { ToastContainer } from 'react-toastify';
+import Footer from '@/components/Molecules/Footer';
 
 // import Navbar from 'components/Molecules/Navbar';
 // import Footer from 'components/Molecules/Footer';
@@ -114,7 +115,7 @@ const Layout: FC<Props> = ({
         {children}
       </main>
       <ToastContainer />
-      {/* <Footer /> */}
+      <Footer />
       {schema && (
         // eslint-disable-next-line
         <Script
