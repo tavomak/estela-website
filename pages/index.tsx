@@ -39,7 +39,7 @@ export const Home = ({
     <Layout
       description="Diseñamos y desarrollamos servicios que faciliten a personas mostrarse, comunicarse y crecer haciendo uso de la tecnología y los medios digitales especialmente web"
       title="Experiencias de usuario inteligentes"
-      className="items-center justify-center "
+      className="items-center justify-center"
     >
       {router.isFallback ? (
         <div className="flex min-h-[calc(100vh-217px)] text-dark-blue justify-center items-center w-full">

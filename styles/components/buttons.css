@@ -42,7 +42,7 @@ article.main a {
 .btn-secondary:hover,
 .btn-secondary.active {
   --btn-color: var(--ea-verde);
-  --btn-background-color: var(--white);
+  --btn-background-color: transparent;
   --btn-border-color: var(--ea-verde);
 }
 
