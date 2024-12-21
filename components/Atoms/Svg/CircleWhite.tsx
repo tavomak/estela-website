@@ -1,7 +1,7 @@
 import styles from './style.module.css';
 
 const CircleWhite = () => (
-  <svg viewBox="0 0 753 777" fill="#ffffff">
+  <svg viewBox="0 0 753 777" fill="currentColor">
     <g className={styles.obj3}>
       <path
         d="M673.1,570.5c1.7,1.9,3.3,3.8,4.9,5.7c0.4-0.7,0.9-1.3,1.3-2c3.9-6,7.7-12.1,11.2-18.3

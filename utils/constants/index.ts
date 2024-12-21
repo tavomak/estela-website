@@ -12,3 +12,22 @@ export const contactMasks = {
   us: '(...) ... ....',
   es: '(...) ... ...',
 };
+
+export const navItems = [
+  {
+    label: 'nav_about_title',
+    path: '/',
+  },
+  {
+    label: 'nav_services_title',
+    path: '/',
+  },
+  {
+    label: 'nav_cases_title',
+    path: '/',
+  },
+  {
+    label: 'nav_contact_title',
+    path: '/',
+  },
+];

@@ -4,7 +4,7 @@ export default function Document({ locale }: { locale: string }) {
   return (
     <Html lang={locale}>
       <Head />
-      <body className="bg-ea-verde-oscuro">
+      <body>
         <Main />
         <NextScript />
       </body>
