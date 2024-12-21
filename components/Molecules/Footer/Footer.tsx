@@ -1,34 +1,43 @@
-import EstelaLogo from '@/components/Atoms/Svg/EstelaIcon';
+import { MouseEvent, useState } from 'react';
+import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
+import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
-import Link from 'next/link';
-import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { siteName } from '@/utils';
+import FormContact from '../Forms/FormContact';
 
 const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setShowModal(!showModal);
+  };
   const { t } = useTranslation('common');
   return (
-    <footer className="bg-ea-verde-oscuro text-white">
+    <footer className="bg-ea-verde-oscuro">
       <div className="container mx-auto md:flex">
         <div className="p-12 w-full space-y-4 my-auto">
           <div className="text-ea-verde w-full max-w-64 mb-12">
-            <EstelaLogo />
+            <BrandLogoHorizontal />
           </div>
           <div>
-            <p className="text-sm lg:text-xl font-bold">
-              Creamos vinculos duraderos
+            <p className="text-sm lg:text-xl font-bold text-white">
+              {t('footer_lasting_bonds')}
             </p>
-            <h2 className="display-font text-4xl lg:text-5xl font-semibold">
-              ¡Conversemos!
+            <h2 className="display-font text-4xl lg:text-5xl font-semibold text-white">
+              {t('footer_lets_talk')}
             </h2>
           </div>
-          <Link
-            href="/"
+          <a
+            href="!#"
+            onClick={(e) => handleClick(e)}
             className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
             rel="noreferrer"
           >
             {t('contact_title')}
-          </Link>
-          <ul className="flex text-2xl space-x-6">
+          </a>
+          <ul className="flex text-2xl space-x-6 text-white">
             <li>
               <a
                 href="https://www.linkedin.com/company/estelaestudio/"
@@ -56,12 +65,12 @@ const Footer = () => {
           >
             {t('download_credentials')}
           </a>
-          <div className="text-xs lg:text-base pt-2 border-t lg:space-x-5 border-ea-verde">
-            <p className="inline mr-2 lg:mr-0">Privacidad</p>
-            <p className="inline">Términos y condiciones</p>
+          <div className="text-xs lg:text-base pt-2 border-t lg:space-x-3 border-ea-verde text-white">
+            <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
+            <p className="inline">{t('footer_terms_conditions')}</p>
             <p className="block lg:inline">
-              Todos los derechos reservados
-              <span className="text-ea-verde"> estela estudio digital</span>
+              {t('footer_all_rights_reserved')}
+              <span className="text-ea-verde"> {siteName}</span>
             </p>
           </div>
         </div>
@@ -82,6 +91,19 @@ const Footer = () => {
           />
         </div>
       </div>
+      <Modal
+        showModal={showModal}
+        size="md"
+        onClick={() => setShowModal(false)}
+        noPadding
+      >
+        <FormContact
+          service="Contacto"
+          title="Escríbenos"
+          image="/images/contact.png"
+          content="Nos pondremos en contacto contigo lo antes posible"
+        />
+      </Modal>
     </footer>
   );
 };

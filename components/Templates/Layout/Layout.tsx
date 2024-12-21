@@ -1,12 +1,9 @@
 import { FC, ReactNode } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
-
 import { ToastContainer } from 'react-toastify';
-import Footer from '@/components/Molecules/Footer';
-
-// import Navbar from 'components/Molecules/Navbar';
-// import Footer from 'components/Molecules/Footer';
+import Navbar from 'components/Molecules/Navbar';
+import Footer from 'components/Molecules/Footer';
 
 type Props = {
   children: ReactNode;
@@ -110,7 +107,7 @@ const Layout: FC<Props> = ({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      {/* <Navbar /> */}
+      <Navbar />
       <main className={`min-h-screen flex flex-col ${className || ''}`}>
         {children}
       </main>

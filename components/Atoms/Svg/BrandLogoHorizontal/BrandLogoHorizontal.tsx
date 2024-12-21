@@ -1,10 +1,10 @@
-const EstelaIcon = () => (
+const BrandLogoHorizontal = () => (
   <svg
     viewBox="0 0 155 26"
     fill="currentColor"
     style={{ width: '100%', height: '100%' }}
   >
-    <g clip-path="url(#clip0_1062_79)">
+    <g>
       <path
         d="M17.4695 11.2851V25.5088H30.3763V12.5005L30.3484 8.49688C29.6553 3.01604 25.5076 0.5 21.3465 0.5H19.2866V4.09308H21.3465C25.2854 4.09308 26.4433 6.85631 26.7773 8.68816V11.2851H17.4695ZM26.7729 22.4042H21.1523V14.6693H26.7729V22.4042Z"
         fill="currentColor"
@@ -75,7 +75,7 @@ const EstelaIcon = () => (
         <rect
           width="154.775"
           height="25"
-          fill="white"
+          fill="currentColor"
           transform="translate(0 0.5)"
         />
       </clipPath>
@@ -83,4 +83,4 @@ const EstelaIcon = () => (
   </svg>
 );
 
-export default EstelaIcon;
+export default BrandLogoHorizontal;

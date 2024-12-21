@@ -6,7 +6,7 @@ article.main a {
 }
 
 .btn {
-  @apply inline-flex items-center px-4 py-1 font-semibold;
+  @apply inline-flex items-center px-4 py-2 font-semibold;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: background-color, color, transform, box-shadow;
