@@ -40,6 +40,7 @@ const Navbar = () => {
           menuOpen={menuOpen}
           setMenuOpen={setMenuOpen}
           navItems={navItems}
+          itemActive={itemActive}
         />
       ) : (
         <DesktopNavigation navItems={navItems} itemActive={itemActive} />
