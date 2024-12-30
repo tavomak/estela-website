@@ -31,3 +31,30 @@ export const navItems = [
     path: '/',
   },
 ];
+
+export const ImagesLogos = [
+  {
+    path: '/logo-Amparo-Justicia.png',
+  },
+  {
+    path: '/logo-CFC.png',
+  },
+  {
+    path: '/logo-final-fury.png',
+  },
+  {
+    path: '/logo-brick-inmobiliaria.png',
+  },
+  {
+    path: '/logo-menos-pausa-life.png',
+  },
+  {
+    path: '/logo-transWarrants.png',
+  },
+  {
+    path: '/logo-panel-expertos.png',
+  },
+  {
+    path: '/logo-vista-volcanes.png',
+  },
+];
