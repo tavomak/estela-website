@@ -1,89 +1,30 @@
 import Image from 'next/image';
+import { FC } from 'react';
 import { Project } from './types';
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Primer Proyecto',
-    description:
-      'Descripción detallada del primer proyecto que muestra el contenido del trabajo realizado',
-    imageUrl: '/placeholder.svg?height=600&width=800',
-  },
-  {
-    id: 2,
-    title: 'Segundo Proyecto',
-    description:
-      'Descripción detallada del segundo proyecto que explica las características principales',
-    imageUrl: '/placeholder.svg?height=600&width=800',
-  },
-  {
-    id: 3,
-    title: 'Tercer Proyecto',
-    description:
-      'Descripción detallada del tercer proyecto con información relevante del desarrollo',
-    imageUrl: '/placeholder.svg?height=600&width=800',
-  },
-  {
-    id: 4,
-    title: 'Cuarto Proyecto',
-    description:
-      'Descripción detallada del cuarto proyecto mostrando los aspectos más importantes',
-    imageUrl: '/placeholder.svg?height=600&width=800',
-  },
-];
-
-const AlternatingGrid = () => (
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div className="flex flex-wrap -mx-4">
+const AlternatingGrid: FC<{ projects: Project[] }> = ({ projects }) => (
+  <div className="">
+    <div className="flex flex-wrap">
       {projects.map((project, index) => (
-        <div
-          key={project.id}
-          className="w-full px-4 mb-8 sm:w-1/2 transition-all duration-300 ease-in-out hover:translate-y-[-4px]"
-        >
+        <div key={project.title} className="w-full sm:w-1/2">
           <div
-            className={`h-full flex flex-col ${
-              index % 2 === 0 ? 'justify-between' : 'justify-between'
-            }`}
+            className={`flex flex-col p-4 m-4 bg-white rounded-lg ${index % 2 === 0 ? 'mb-4 sm:mb-0' : 'flex-col-reverse mt-4 sm:mt-0'}`}
           >
-            {index % 2 === 0 ? (
-              <>
-                <div className="space-y-4 p-4 bg-white rounded-lg">
-                  <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-                    {project.title}
-                  </h2>
-                  <p className="text-ea-verde-oscuro text-sm sm:text-base">
-                    {project.description}
-                  </p>
-                </div>
-                <div className="relative aspect-square mt-4 overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="relative aspect-square mb-4 overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="space-y-4 p-4 bg-white rounded-lg">
-                  <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-                    {project.title}
-                  </h2>
-                  <p className="text-ea-verde-oscuro text-sm sm:text-base">
-                    {project.description}
-                  </p>
-                </div>
-              </>
-            )}
+            <div className="rounded-lg text-ea-verde-oscuro space-y-2 my-4">
+              <h2 className="text-2xl sm:text-4xl">{project.title}</h2>
+              <p className="text-base lg:text-2xl w-5/6">
+                {project.description}
+              </p>
+            </div>
+            <div className="rounded-lg transition-all duration-300 hover:scale-95">
+              <Image
+                src={project.image.url}
+                alt={`imagen de ${project.title}`}
+                width={1200}
+                height={480}
+                className="aspect-square"
+              />
+            </div>
           </div>
         </div>
       ))}

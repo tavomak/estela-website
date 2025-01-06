@@ -5,6 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
+    domains: ['us-west-2.graphassets.com'],
     remotePatterns: [
       {
         protocol: 'https',

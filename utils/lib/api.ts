@@ -158,6 +158,48 @@ export const getPageBySlug = (slug: string, locales: any) =>
     },
   });
 
+export const getHomePageInfo = (slug: string, locales: any) =>
+  client.query({
+    query: gql`
+      query getHomePageInfo($slug: String!, $locales: [Locale!]!) {
+        homepage(where: { slug: $slug }, locales: $locales) {
+          id
+          slug
+          title
+          pageType
+
+          contentSection1 {
+            title
+            subtitle
+            description
+            id
+          }
+          testimonials {
+            testimonialText
+            highlightedQuote
+            autorName
+            autorRole
+            projectName
+            image(locales: es) {
+              url
+            }
+          }
+          projects {
+            title
+            description
+            image(locales: es) {
+              url
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      slug,
+      locales,
+    },
+  });
+
 export const getTeamMembers = () =>
   client.query({
     query: gql`

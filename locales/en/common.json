@@ -4,8 +4,44 @@
   "nav_contact_title": "Contact",
   "nav_services_title": "Services",
   "nav_cases_title": "Cases",
+
+  "hero_title": "We improve your digital communication processes",
+  "hero_parragraph": "Through the development of websites and applications, the consolidation of brand identity and the planning of digital campaigns",
+
+  "content_section_title-1": "Because we know you have something to say",
+  "content_section_subtitle-1": "We engage with your business vision, the meaning of your products and services and business opportunities",
+  "content_section_parragraph-1": "Take your vision to the next level",
+
+  "services_section_title": "Learn about our services",
+
+  "services_title_web": "Web development & design",
+  "services_parragraph_web": "We take your website to another level. We focus on user experience, a consistent design and the structuring of a clear, concise and attractive content.",
+
+  "services_title_marketing": "Digital Marketing",
+  "services_parragraph_marketing": "We plan, design, execute and analyze content marketing campaigns from a 360º perspective.",
+
+  "services_title_brand": "Brand identity",
+  "services_parragraph_brand": "We give a strategic sense to your company's branding. We create the image for your company or help you refresh it and give it a consistent use in your communication.",
+
+  "trust_section_title": "They have trusted in us",
+
+  "testimonials_section_title": "We create lasting bonds",
+
+  "content_section_title-2": "Is your communication stuck in a digital quagmire?",
+  "content_section_subtitle-2": "We have the experience in web management and development to help you",
+  "content_section_parragraph-2": "Digital presence requires a strategic perspective to grow",
+  "wanna_know_more": "I want to know more",
+
+  "projects_section_title": "The work that supports us",
+  "more_projects": "See more projects",
+
+  "content_section_title-3": "Maintenance plans",
+  "content_section_subtitle-3": "Keep your digital presence always active and optimized",
+  "content_section_parragraph-3": "We become your strategic allies: we evaluate, propose improvements and create visual and functional content to guarantee an effective and updated online presence",
+  "contact_us": "Contact us",
+
   "download_credentials": "Download credentials",
-  "footer_lets_talk": "Let's talk",
+  "lets_talk": "Let's talk",
   "footer_lasting_bonds": "We create lasting bonds",
   "footer_privacy": "Privacy Policy ",
   "footer_terms_conditions": "Terms and conditions of use",

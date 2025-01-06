@@ -26,7 +26,7 @@ const Footer = () => {
               {t('footer_lasting_bonds')}
             </p>
             <h2 className="display-font text-4xl lg:text-5xl font-semibold text-white">
-              {t('footer_lets_talk')}
+              {t('lets_talk')}
             </h2>
           </div>
           <a

@@ -1,12 +1,12 @@
 import { MouseEvent, useState } from 'react';
-import { FaEnvelope, FaDownload } from 'react-icons/fa';
+// import { FaEnvelope, FaDownload } from 'react-icons/fa';
 import { InferGetStaticPropsType } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import Layout from '@/components/Templates/Layout';
 import Modal from '@/components/Templates/Modal';
 import FormContact from '@/components/Molecules/Forms/FormContact';
-import { getPageBySlug } from '@/utils/lib/api';
+import { getHomePageInfo } from '@/utils/lib/api';
 import { useRouter } from 'next/router';
 import Spinner from '@/components/Atoms/Spinner';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
@@ -14,11 +14,12 @@ import { ImagesLogos } from '@/utils';
 import Image from 'next/image';
 import AlternatingGrid from '@/components/Molecules/AlternatingGrid';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
-import ArrowNext from '../components/Atoms/Svg/ArrowNext/ArrowNext';
+import Link from 'next/link';
+import Testimonials from '@/components/Molecules/Testimonial';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
-  const response = await getPageBySlug('home', [locale]);
+  const response = await getHomePageInfo('home', [locale]);
   const data = response?.data || [];
   return {
     props: {
@@ -28,6 +29,29 @@ export async function getStaticProps(context: any) {
   };
 }
 
+/* interface homeInterface {
+  id: string;
+  contentSection1: {
+    title: string;
+    subtitle: string;
+    description: string | null;
+    id: string;
+  };
+  testimonials: {
+    testimonialText: string;
+    highlightedQuote: string | null;
+    autorName: string;
+    autorRole: string;
+    projectName: string;
+    image: { url: string };
+  }[];
+  projects: {
+    title: string;
+    description: string;
+    image: { url: string };
+  }[];
+}
+ */
 export const Home = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -38,7 +62,8 @@ export const Home = ({
     e.preventDefault();
     setShowModal(true);
   };
-  const content = data?.page || [];
+
+  const content = data?.homepage || [];
   return (
     <Layout
       description="Diseñamos y desarrollamos servicios que faciliten a personas mostrarse, comunicarse y crecer haciendo uso de la tecnología y los medios digitales especialmente web"
@@ -51,13 +76,13 @@ export const Home = ({
         </div>
       ) : (
         <>
-          <section className="container px-4 mx-auto mb-12">
-            <article className="inline lg:flex">
+          <section className="w-full px-4 mb-12">
+            <article className="container py-12 mx-auto inline lg:flex">
               <div className="lg:w-1/2 relative mb-8 lg:mb-0">
                 <div className="absolute bg-ea-amarillo w-1/4 h-full" />
 
                 <h1 className="relative w-11/12 lg:w-3/4 mx-auto display-font text-5xl lg:text-6xl uppercase font-semibold text-ea-verde-oscuro py-12 lg:py-24 fadeInLeft">
-                  Mejoramos tus procesos de comunicación digital
+                  {t('hero_title')}
                 </h1>
               </div>
               <div className="lg:w-1/2">
@@ -71,9 +96,7 @@ export const Home = ({
                   Tu navegador no soporta el elemento de video.
                 </video>
                 <p className="font-medium text-2xl fadeIn">
-                  Mediante el desarrollo de sitios web y aplicaciones, la
-                  consolidación de la identidad de marca y la planificación de
-                  campañas digitales
+                  {t('hero_parragraph')}
                 </p>
               </div>
             </article>
@@ -89,14 +112,13 @@ export const Home = ({
                   <BrandLogoHorizontal />
                 </div>
                 <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold text-ea-amarillo">
-                  Porque sabemos que tienes algo que decir
+                  {t('content_section_title-1')}
                 </h1>
                 <h2 className="font-medium text-2xl text-white">
-                  Nos involucramos con la visión empresarial, el sentido de sus
-                  productos y servicios y las oportunidades de negocio.
+                  {t('content_section_subtitle-1')}
                 </h2>
                 <p className="text-white text-4xl font-semibold display-font">
-                  Lleva tu visión al siguiente nivel
+                  {t('content_section_parragraph-1')}
                 </p>
                 <aside className="pt-12 ">
                   <a
@@ -104,7 +126,7 @@ export const Home = ({
                     className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
                     onClick={(e) => handleClick(e)}
                   >
-                    Hablemos
+                    {t('lets_talk')}
                   </a>
                 </aside>
               </div>
@@ -114,22 +136,19 @@ export const Home = ({
           <section className="w-full px-4 bg-gray-200">
             <article className="container py-12 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                Conoce nuestros servicios
+                {t('services_section_title')}
               </h1>
               <div className="space-y-8 lg:space-y-0 lg:flex gap-8 justify-between">
                 <article className="w-11/12 lg:w-3/4 mx-auto">
                   <div className="border border-gray-200 bg-white group cursor-pointer">
                     <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
                       <h2 className="display-font text-3xl font-bold">
-                        Desarrollo & diseño web
+                        {t('services_title_web')}
                       </h2>
                     </div>
                     <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
                       <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        Llevamos tu sitio web a otro nivel. Nos enfocamos en la
-                        experiencia de usuario, un diseño consistente y la
-                        estructuración de un contenido claro, conciso y
-                        atractivo.
+                        {t('services_parragraph_web')}
                       </p>
                     </div>
                   </div>
@@ -138,14 +157,12 @@ export const Home = ({
                   <div className="border border-gray-200 bg-white group cursor-pointer">
                     <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
                       <h2 className="display-font text-3xl font-bold">
-                        Marketing digital
+                        {t('services_title_marketing')}
                       </h2>
                     </div>
                     <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
                       <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        Planificamos, diseñamos, ejecutamos y analizamos
-                        campañas de marketing de contenido desde una perspectiva
-                        360.
+                        {t('services_parragraph_marketing')}
                       </p>
                     </div>
                   </div>
@@ -154,15 +171,12 @@ export const Home = ({
                   <div className="border border-gray-200 bg-white group cursor-pointer">
                     <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
                       <h2 className="display-font text-3xl font-bold">
-                        Identida de marca
+                        {t('services_title_brand')}
                       </h2>
                     </div>
                     <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
                       <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        Le damos un sentido estratégico al branding de tu
-                        empresa. Creamos la imagen para tu empresa o te ayudamos
-                        a refrescarla y a darle un uso consistente en tu
-                        comunicación.
+                        {t('services_parragraph_brand')}
                       </p>
                     </div>
                   </div>
@@ -174,7 +188,7 @@ export const Home = ({
           <section className="w-full px-4 bg-gray-100 mb-12">
             <article className="container py-12 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                Han confiado en nosotros
+                {t('trust_section_title')}
               </h1>
               <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-8 py-12">
                 {ImagesLogos.map((item, index) => (
@@ -191,72 +205,39 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="container px-4 mx-auto mb-12">
-            <article className="inline lg:flex">
+          <section className="w-full px-4 mb-12">
+            <article className="container mx-auto py-12 inline lg:flex">
               <div className="lg:w-1/2 mb-8 lg:mb-0">
-                <h1 className="w-11/12 lg:w-3/4 mx-auto display-font text-5xl lg:text-6xl uppercase font-semibold text-ea-verde-oscuro py-12 lg:py-24">
-                  Creamos vínculos duraderos
+                <h1 className="w-11/12 lg:w-3/4 lg:mx-auto display-font text-5xl md:text-6xl uppercase font-semibold text-ea-verde-oscuro lg:py-24">
+                  {t('testimonials_section_title')}
                 </h1>
               </div>
-              <div className="lg:w-1/2 space-y-8">
-                <p className="font-medium text-2xl fadeIn">
-                  “Son profesionales que comprenden la importancia de que las
-                  páginas web sean dinámicas y estén constantemente actualizadas
-                  con nueva información.
-                </p>
-                <p className="font-semibold text-2xl">
-                  Del trabajo con Estela destaco la excelente comunicación.
-                  Están dispuestos a solucionar nuestras necesidades como
-                  clientes”.
-                </p>
-                <div className="flex gap-4">
-                  <div className=" rotate-180">
-                    <ArrowNext />
-                  </div>
-                  <ArrowNext />
-                </div>
-                <div className="flex gap-6">
-                  <Image
-                    src="/logo-Amparo-Justicia.png"
-                    width={60}
-                    height={60}
-                    alt="logo"
-                  />
-                  <span className="text-lg">
-                    Paola Carmona
-                    <p className="text-sm">
-                      Encargada digital Fundación Amparo y Justicia
-                    </p>
-                  </span>
-                </div>
-              </div>
+              <Testimonials testimonials={content.testimonials} />
             </article>
           </section>
 
-          <section className="relative overflow-hidden w-full px-4 py-20 bg-ea-verde-oscuro">
-            <article className="container mx-auto flex items-center justify-between">
+          <section className="w-full px-4 relative overflow-hidden bg-ea-verde-oscuro">
+            <article className="container py-12 mx-auto flex items-center justify-between">
               <div className="w-11/12 mx-auto lg:mx-0 lg:w-1/2 space-y-6">
                 <div className="text-ea-verde w-full max-w-56 mb-12">
                   <BrandLogoHorizontal />
                 </div>
                 <h1 className="display-font text-5xl lg:text-6xl font-semibold text-white">
-                  ¿Tu comunicación se encuentra estancada en un pantano digital?
+                  {t('content_section_title-2')}
                 </h1>
                 <h2 className="font-medium text-4xl text-ea-amarillo">
-                  Tenemos la experiencia, en la gestión y el desarrollo web para
-                  ayudarte.
+                  {t('content_section_subtitle-2')}
                 </h2>
                 <p className="text-white text-3xl">
-                  La presencia digital requiere de una perspectiva estratégica
-                  para crecer.
+                  {t('content_section_parragraph-2')}
                 </p>
-                <aside className="pt-12 ">
+                <aside className="pt-12">
                   <a
                     href="!#"
                     className="btn btn-secondary text-xs lg:text-base uppercase text-ea-amarillo border-ea-amarillo me-4"
                     onClick={(e) => handleClick(e)}
                   >
-                    Quiero saber más
+                    {t('wanna_know_more')}
                   </a>
                 </aside>
               </div>
@@ -271,32 +252,44 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full px-4">
+          <section className="w-full px-4 bg-gray-100">
             <article className="container py-12 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                El trabajo que nos respalda
+                {t('projects_section_title')}
               </h1>
-              <div className="max-w-2xl">
-                <h2 className="text-2xl font-bold mb-3">Amparo y Justicia</h2>
-                <p className="text-gray-600">
-                  Web de fundación. • Blog de noticias. • Minisitio Campaña No
-                  Me Pregunten Más. • Biblioteca de recursos online.
+              <div className="max-w-2xl mb-4 text-ea-verde-oscuro space-y-2">
+                <h2 className="text-2xl lg:text-4xl">
+                  {content.projects[0].title}
+                </h2>
+                <p className="text-gray-600 text-base lg:text-2xl">
+                  {content.projects[0].description}
                 </p>
               </div>
-              <div className="w-full rounded-lg">
+              <div className="my-8 rounded-lg transition-all duration-300 hover:scale-95">
                 <Image
-                  src="/amparo-justicia.png"
-                  alt="logo"
+                  src={content.projects[0].image.url}
+                  alt={`logo de ${content.projects[0].title}`}
                   width={1200}
                   height={600}
+                  className="w-full"
                 />
               </div>
-              <AlternatingGrid />
+              <AlternatingGrid projects={content.projects.slice(1, 5)} />
+              {content.projects.length > 6 && (
+                <div className="text-center mt-8">
+                  <Link
+                    className="btn btn-secondary text-xs lg:text-base text-ea-verde border-ea-verde me-4"
+                    href="/"
+                  >
+                    {t('more_projects')}
+                  </Link>
+                </div>
+              )}
             </article>
           </section>
 
-          <section className="w-full px-4 py-24 bg-ea-verde-900">
-            <article className="container mx-auto inline lg:flex items-center justify-between">
+          <section className="w-full px-4 bg-ea-verde-900">
+            <article className="container py-12 mx-auto lg:flex items-center justify-between">
               <div className="text-white mx-auto lg:mx-0 md:w-1/2 lg:w-4/12">
                 <GeometricShape />
               </div>
@@ -305,15 +298,13 @@ export const Home = ({
                   <BrandLogoHorizontal />
                 </div>
                 <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold text-white">
-                  Planes de mantención
+                  {t('content_section_title-3')}
                 </h1>
                 <h2 className="font-medium text-4xl text-ea-amarillo">
-                  Mantén tu presencia digital siempre activa y optimizada
+                  {t('content_section_subtitle-3')}
                 </h2>
                 <p className="text-white text-3xl font-medium">
-                  Nos convertimos en tus aliados estratégicos: evaluamos,
-                  proponemos mejoras y creamos contenido visual y funcional para
-                  garantizar una presencia online efectiva y actualizada.
+                  {t('content_section_parragraph-3')}
                 </p>
                 <aside className="pt-12 ">
                   <a
@@ -321,15 +312,15 @@ export const Home = ({
                     className="btn btn-secondary uppercase text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
                     onClick={(e) => handleClick(e)}
                   >
-                    Contáctanos
+                    {t('contact_us')}
                   </a>
                 </aside>
               </div>
             </article>
           </section>
-
-          <section className="container px-4 mx-auto">
-            <div className="flex items-center justify-between">
+          {/* 
+          <section className="w-full px-4">
+            <article className="container mx-auto py-12 last:flex items-center justify-between">
               <div className="md:w-1/2 lg:w-4/12 text-ea-verde">
                 <CircleWhite />
               </div>
@@ -339,10 +330,10 @@ export const Home = ({
                     <BrandLogoHorizontal />
                   </div>
                   <h1 className="max-w-sm text-4xl display-font text-ea-verde-oscuro">
-                    {content?.title}
+                    {content?.contentSection1?.title}
                   </h1>
                   <h2 className="text-6xl text-ea-verde display-font">
-                    {content?.subtitle}
+                    {content?.contentSection1?.subtitle}
                   </h2>
                   <aside className="pt-12 d-md-flex w-100 ">
                     <a
@@ -365,8 +356,8 @@ export const Home = ({
                   </aside>
                 </div>
               </div>
-            </div>
-          </section>
+            </article>
+          </section> */}
           <Modal
             showModal={showModal}
             size="md"

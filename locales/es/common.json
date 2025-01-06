@@ -4,8 +4,44 @@
   "nav_contact_title": "Contacto",
   "nav_services_title": "Servicios",
   "nav_cases_title": "Casos",
+
+  "hero_title": "Mejoramos tus procesos de comunicación digital",
+  "hero_parragraph": "Mediante el desarrollo de sitios web y aplicaciones, la consolidación de la identidad de marca y la planificación de campañas digitales",
+
+  "content_section_title-1": "Porque sabemos que tienes algo que decir",
+  "content_section_subtitle-1": "Nos involucramos con la visión empresarial, el sentido de sus productos y servicios y las oportunidades de negocio",
+  "content_section_parragraph-1": "Lleva tu visión al siguiente nivel",
+
+  "services_section_title": "Conoce nuestros servicios",
+
+  "services_title_web": "Desarrollo & diseño web",
+  "services_parragraph_web": "Llevamos tu sitio web a otro nivel. Nos enfocamos en la experiencia de usuario, un diseño consistente y la estructuración de un contenido claro, conciso y atractivo.",
+
+  "services_title_marketing": "Marketing digital",
+  "services_parragraph_marketing": "Planificamos, diseñamos, ejecutamos y analizamos campañas de marketing de contenido desde una perspectiva 360.",
+
+  "services_title_brand": "Identida de marca",
+  "services_parragraph_brand": "Le damos un sentido estratégico al branding de tu empresa. Creamos la imagen para tu empresa o te ayudamos a refrescarla y a darle un uso consistente en tu comunicación.",
+
+  "trust_section_title": "Han confiado en nosotros",
+
+  "testimonials_section_title": "Creamos vínculos duraderos",
+
+  "content_section_title-2": "Tu comunicación se encuentra estancada en un pantano digital?",
+  "content_section_subtitle-2": "Tenemos la experiencia, en la gestión y el desarrollo web para ayudarte",
+  "content_section_parragraph-2": "La presencia digital requiere de una perspectiva estratégica para crecer",
+  "wanna_know_more": "Quiero saber más",
+
+  "projects_section_title": "El trabajo que nos respalda",
+  "more_projects": "Ver más proyectos",
+
+  "content_section_title-3": "Planes de mantención",
+  "content_section_subtitle-3": "Mantén tu presencia digital siempre activa y optimizada",
+  "content_section_parragraph-3": "Nos convertimos en tus aliados estratégicos: evaluamos, proponemos mejoras y creamos contenido visual y funcional para garantizar una presencia online efectiva y actualizada",
+  "contact_us": "Contáctanos",
+
   "download_credentials": "Descargar credenciales",
-  "footer_lets_talk": "¡Conversemos!",
+  "lets_talk": "¡Conversemos!",
   "footer_lasting_bonds": "Creamos vinculos duraderos",
   "footer_privacy": "Privacidad",
   "footer_terms_conditions": "Términos y condiciones",
