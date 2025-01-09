@@ -32,7 +32,7 @@ export const navItems = [
   },
 ];
 
-export const ImagesLogos = [
+export const imagesLogos = [
   {
     path: '/logo-Amparo-Justicia.png',
   },
@@ -56,5 +56,20 @@ export const ImagesLogos = [
   },
   {
     path: '/logo-vista-volcanes.png',
+  },
+];
+
+export const services = [
+  {
+    title: 'services_title_web',
+    parragraph: 'services_parragraph_web',
+  },
+  {
+    title: 'services_title_marketing',
+    parragraph: 'services_parragraph_marketing',
+  },
+  {
+    title: 'services_title_brand',
+    parragraph: 'services_parragraph_brand',
   },
 ];

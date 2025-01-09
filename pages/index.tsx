@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { useState } from 'react';
 // import { FaEnvelope, FaDownload } from 'react-icons/fa';
 import { InferGetStaticPropsType } from 'next';
 import useTranslation from 'next-translate/useTranslation';
@@ -9,13 +9,15 @@ import FormContact from '@/components/Molecules/Forms/FormContact';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { useRouter } from 'next/router';
 import Spinner from '@/components/Atoms/Spinner';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import { ImagesLogos } from '@/utils';
+import { imagesLogos } from '@/utils';
 import Image from 'next/image';
 import AlternatingGrid from '@/components/Molecules/AlternatingGrid';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Link from 'next/link';
 import Testimonials from '@/components/Molecules/Testimonial';
+import HeroContentBlock from '@/components/Molecules/HeroContentBlock';
+import ServicesCard from '@/components/Molecules/ServicesCard';
+import { services } from '../utils/constants/index';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -58,10 +60,6 @@ export const Home = ({
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { t } = useTranslation('common');
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setShowModal(true);
-  };
 
   const content = data?.homepage || [];
   return (
@@ -77,7 +75,7 @@ export const Home = ({
       ) : (
         <>
           <section className="w-full px-4 mb-12">
-            <article className="container py-12 mx-auto inline lg:flex">
+            <article className="container py-12 mx-auto block lg:flex">
               <div className="lg:w-1/2 relative mb-8 lg:mb-0">
                 <div className="absolute bg-ea-amarillo w-1/4 h-full" />
 
@@ -103,34 +101,16 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 bg-ea-verde-oscuro">
-            <article className="container py-12 mx-auto flex items-center justify-between">
-              <div className="text-white md:w-1/2 lg:w-4/12">
-                <CircleWhite />
-              </div>
-              <div className="md:w-1/2 space-y-6">
-                <div className="text-ea-verde w-full max-w-56 mb-12">
-                  <BrandLogoHorizontal />
-                </div>
-                <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold text-ea-amarillo">
-                  {t('content_section_title-1')}
-                </h1>
-                <h2 className="font-medium text-2xl text-white">
-                  {t('content_section_subtitle-1')}
-                </h2>
-                <p className="text-white text-4xl font-semibold display-font">
-                  {t('content_section_parragraph-1')}
-                </p>
-                <aside className="pt-12 ">
-                  <a
-                    href="!#"
-                    className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
-                    onClick={(e) => handleClick(e)}
-                  >
-                    {t('lets_talk')}
-                  </a>
-                </aside>
-              </div>
-            </article>
+            <HeroContentBlock
+              title={t('content_section_title-1')}
+              subtitle={t('content_section_subtitle-1')}
+              content={t('content_section_parragraph-1')}
+              btnLabel={t('lets_talk')}
+              rtl={false}
+              onClick={() => setShowModal(true)}
+            >
+              <CircleWhite />
+            </HeroContentBlock>
           </section>
 
           <section className="w-full px-4 bg-gray-200">
@@ -139,48 +119,9 @@ export const Home = ({
                 {t('services_section_title')}
               </h1>
               <div className="space-y-8 lg:space-y-0 lg:flex gap-8 justify-between">
-                <article className="w-11/12 lg:w-3/4 mx-auto">
-                  <div className="border border-gray-200 bg-white group cursor-pointer">
-                    <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
-                      <h2 className="display-font text-3xl font-bold">
-                        {t('services_title_web')}
-                      </h2>
-                    </div>
-                    <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
-                      <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        {t('services_parragraph_web')}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-                <article className="w-11/12 lg:w-3/4 mx-auto">
-                  <div className="border border-gray-200 bg-white group cursor-pointer">
-                    <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
-                      <h2 className="display-font text-3xl font-bold">
-                        {t('services_title_marketing')}
-                      </h2>
-                    </div>
-                    <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
-                      <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        {t('services_parragraph_marketing')}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-                <article className="w-11/12 lg:w-3/4 mx-auto">
-                  <div className="border border-gray-200 bg-white group cursor-pointer">
-                    <div className="bg-ea-amarillo p-6 transform transition-all duration-300 ease-in-out group-hover:-translate-x-4 group-hover:-translate-y-2">
-                      <h2 className="display-font text-3xl font-bold">
-                        {t('services_title_brand')}
-                      </h2>
-                    </div>
-                    <div className="p-6 border-t border-gray-200 min-h-40 lg:min-h-80 py-12">
-                      <p className="text-xl text-ea-verde-oscuro leading-relaxed">
-                        {t('services_parragraph_brand')}
-                      </p>
-                    </div>
-                  </div>
-                </article>
+                {services.map((service) => (
+                  <ServicesCard key={service.title} {...service} />
+                ))}
               </div>
             </article>
           </section>
@@ -191,7 +132,7 @@ export const Home = ({
                 {t('trust_section_title')}
               </h1>
               <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-8 py-12">
-                {ImagesLogos.map((item, index) => (
+                {imagesLogos.map((item, index) => (
                   <Image
                     key={item.path}
                     src={item.path}
@@ -206,9 +147,9 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 mb-12">
-            <article className="container mx-auto py-12 inline lg:flex">
+            <article className="container mx-auto py-12 lg:flex">
               <div className="lg:w-1/2 mb-8 lg:mb-0">
-                <h1 className="w-11/12 lg:w-3/4 lg:mx-auto display-font text-5xl md:text-6xl uppercase font-semibold text-ea-verde-oscuro lg:py-24">
+                <h1 className="w-11/12 lg:w-2/3 display-font text-5xl md:text-6xl uppercase font-semibold text-ea-verde-oscuro lg:py-24">
                   {t('testimonials_section_title')}
                 </h1>
               </div>
@@ -217,31 +158,15 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 relative overflow-hidden bg-ea-verde-oscuro">
-            <article className="container py-12 mx-auto flex items-center justify-between">
-              <div className="w-11/12 mx-auto lg:mx-0 lg:w-1/2 space-y-6">
-                <div className="text-ea-verde w-full max-w-56 mb-12">
-                  <BrandLogoHorizontal />
-                </div>
-                <h1 className="display-font text-5xl lg:text-6xl font-semibold text-white">
-                  {t('content_section_title-2')}
-                </h1>
-                <h2 className="font-medium text-4xl text-ea-amarillo">
-                  {t('content_section_subtitle-2')}
-                </h2>
-                <p className="text-white text-3xl">
-                  {t('content_section_parragraph-2')}
-                </p>
-                <aside className="pt-12">
-                  <a
-                    href="!#"
-                    className="btn btn-secondary text-xs lg:text-base uppercase text-ea-amarillo border-ea-amarillo me-4"
-                    onClick={(e) => handleClick(e)}
-                  >
-                    {t('wanna_know_more')}
-                  </a>
-                </aside>
-              </div>
-              <div className="absolute right-0 text-white hidden lg:block">
+            <HeroContentBlock
+              title={t('content_section_title-2')}
+              subtitle={t('content_section_subtitle-2')}
+              content={t('content_section_parragraph-2')}
+              btnLabel={t('wanna_know_more')}
+              onClick={() => setShowModal(true)}
+              rtl
+            >
+              <div className="absolute top-0 right-0 text-white hidden lg:block">
                 <Image
                   src="/green_curves.png"
                   alt="curvas verdes"
@@ -249,7 +174,7 @@ export const Home = ({
                   height={1000}
                 />
               </div>
-            </article>
+            </HeroContentBlock>
           </section>
 
           <section className="w-full px-4 bg-gray-100">
@@ -289,34 +214,16 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 bg-ea-verde-900">
-            <article className="container py-12 mx-auto lg:flex items-center justify-between">
-              <div className="text-white mx-auto lg:mx-0 md:w-1/2 lg:w-4/12">
-                <GeometricShape />
-              </div>
-              <div className="w-full lg:w-1/2 space-y-6">
-                <div className="text-ea-verde w-full max-w-56 mb-12">
-                  <BrandLogoHorizontal />
-                </div>
-                <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold text-white">
-                  {t('content_section_title-3')}
-                </h1>
-                <h2 className="font-medium text-4xl text-ea-amarillo">
-                  {t('content_section_subtitle-3')}
-                </h2>
-                <p className="text-white text-3xl font-medium">
-                  {t('content_section_parragraph-3')}
-                </p>
-                <aside className="pt-12 ">
-                  <a
-                    href="!#"
-                    className="btn btn-secondary uppercase text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
-                    onClick={(e) => handleClick(e)}
-                  >
-                    {t('contact_us')}
-                  </a>
-                </aside>
-              </div>
-            </article>
+            <HeroContentBlock
+              title={t('content_section_title-3')}
+              subtitle={t('content_section_subtitle-3')}
+              content={t('content_section_parragraph-3')}
+              btnLabel={t('contact_us')}
+              onClick={() => setShowModal(true)}
+              rtl={false}
+            >
+              <GeometricShape />
+            </HeroContentBlock>
           </section>
           {/* 
           <section className="w-full px-4">
