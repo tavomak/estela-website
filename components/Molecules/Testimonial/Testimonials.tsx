@@ -41,7 +41,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
       <div className="flex gap-4">
         <button
           type="button"
-          className="rotate-180 duration-200 opacity-40 hover:opacity-100"
+          className="text-ea-gris rotate-180 duration-200 opacity-40 hover:opacity-80 hover:text-ea-verde-500"
           onClick={handlePrev}
           aria-label="Previous testimonial"
         >
@@ -51,7 +51,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           type="button"
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="duration-200 opacity-40 hover:opacity-100"
+          className="text-ea-verde-500 duration-200 hover:opacity-40"
         >
           <ArrowNext />
         </button>

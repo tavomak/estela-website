@@ -16,19 +16,19 @@ export const contactMasks = {
 export const navItems = [
   {
     label: 'nav_about_title',
-    path: '/',
+    path: '/about',
   },
   {
     label: 'nav_services_title',
-    path: '/',
+    path: '/servicios',
   },
   {
     label: 'nav_cases_title',
-    path: '/',
+    path: '/casos',
   },
   {
     label: 'nav_contact_title',
-    path: '/',
+    path: '/contacto',
   },
 ];
 

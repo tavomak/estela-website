@@ -15,8 +15,10 @@ import AlternatingGrid from '@/components/Molecules/AlternatingGrid';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Link from 'next/link';
 import Testimonials from '@/components/Molecules/Testimonial';
-import HeroContentBlock from '@/components/Molecules/HeroContentBlock';
+import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import ServicesCard from '@/components/Molecules/ServicesCard';
+import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
+import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import { services } from '../utils/constants/index';
 
 export async function getStaticProps(context: any) {
@@ -75,11 +77,11 @@ export const Home = ({
       ) : (
         <>
           <section className="w-full px-4 mb-12">
-            <article className="container py-12 mx-auto block lg:flex">
+            <article className="container py-24 mx-auto block lg:flex">
               <div className="lg:w-1/2 relative mb-8 lg:mb-0">
                 <div className="absolute bg-ea-amarillo w-1/4 h-full" />
 
-                <h1 className="relative w-11/12 lg:w-3/4 mx-auto display-font text-5xl lg:text-6xl uppercase font-semibold text-ea-verde-oscuro py-12 lg:py-24 fadeInLeft">
+                <h1 className="relative w-11/12 lg:w-3/4 mx-auto display-font text-5xl lg:text-6xl uppercase font-semibold text-ea-verde-oscuro py-24 lg:py-24 fadeInLeft">
                   {t('hero_title')}
                 </h1>
               </div>
@@ -100,21 +102,22 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full px-4 bg-ea-verde-oscuro">
-            <HeroContentBlock
+          <section className="w-full px-4 bg-ea-verde-oscuro ">
+            <ContentBlockImage
+              brandLogoColor="text-ea-verde"
               title={t('content_section_title-1')}
               subtitle={t('content_section_subtitle-1')}
-              content={t('content_section_parragraph-1')}
               btnLabel={t('lets_talk')}
               rtl={false}
               onClick={() => setShowModal(true)}
+              content={t('content_section_parragraph-1')}
             >
               <CircleWhite />
-            </HeroContentBlock>
+            </ContentBlockImage>
           </section>
 
           <section className="w-full px-4 bg-gray-200">
-            <article className="container py-12 mx-auto">
+            <article className="container py-24 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
                 {t('services_section_title')}
               </h1>
@@ -123,11 +126,17 @@ export const Home = ({
                   <ServicesCard key={service.title} {...service} />
                 ))}
               </div>
+              <Link
+                href="/servicios"
+                className="btn btn-secondary mt-12 text-xs lg:text-base text-ea-verde border-ea-verde me-4"
+              >
+                {t('more_services')}
+              </Link>
             </article>
           </section>
 
           <section className="w-full px-4 bg-gray-100 mb-12">
-            <article className="container py-12 mx-auto">
+            <article className="container py-24 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
                 {t('trust_section_title')}
               </h1>
@@ -147,9 +156,9 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 mb-12">
-            <article className="container mx-auto py-12 lg:flex">
+            <article className="container mx-auto py-24 lg:flex">
               <div className="lg:w-1/2 mb-8 lg:mb-0">
-                <h1 className="w-11/12 lg:w-2/3 display-font text-5xl md:text-6xl uppercase font-semibold text-ea-verde-oscuro lg:py-24">
+                <h1 className="text-right w-11/12 lg:w-2/3 display-font text-5xl md:text-6xl font-semibold text-ea-verde-oscuro lg:py-24">
                   {t('testimonials_section_title')}
                 </h1>
               </div>
@@ -158,9 +167,12 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 relative overflow-hidden bg-ea-verde-oscuro">
-            <HeroContentBlock
+            <ContentBlockImage
+              brandLogoColor="text-ea-verde"
               title={t('content_section_title-2')}
+              titleColor="text-white"
               subtitle={t('content_section_subtitle-2')}
+              subtitleColor="text-ea-amarillo"
               content={t('content_section_parragraph-2')}
               btnLabel={t('wanna_know_more')}
               onClick={() => setShowModal(true)}
@@ -174,7 +186,7 @@ export const Home = ({
                   height={1000}
                 />
               </div>
-            </HeroContentBlock>
+            </ContentBlockImage>
           </section>
 
           <section className="w-full px-4 bg-gray-100">
@@ -214,17 +226,43 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 bg-ea-verde-900">
-            <HeroContentBlock
+            <ContentBlockImage
               title={t('content_section_title-3')}
+              titleColor="text-white"
               subtitle={t('content_section_subtitle-3')}
+              subtitleColor="text-ea-amarillo"
               content={t('content_section_parragraph-3')}
               btnLabel={t('contact_us')}
               onClick={() => setShowModal(true)}
               rtl={false}
             >
               <GeometricShape />
-            </HeroContentBlock>
+            </ContentBlockImage>
           </section>
+
+          <section className="w-full px-4 relative overflow-hidden bg-ea-verde-400">
+            <ContentBlockImage
+              brandLogoColor="text-ea-amarillo"
+              title={t('talkUs_form_title')}
+              titleColor="text-ea-verde-300"
+              subtitle={t('talkUs_form_subtitle')}
+              onClick={() => setShowModal(true)}
+              rtl={false}
+              content={
+                <FormTalkUs
+                  service="Contactanos"
+                  title="Conversemos"
+                  image="/images/contact.png"
+                  content="Nos pondremos en contacto contigo lo antes posible"
+                />
+              }
+            >
+              <div className="absolute w-1/3 h-full top-0 left-0 bg-ea-verde-300 text-ea-verde-400 hidden lg:block">
+                <CircleCurves />
+              </div>
+            </ContentBlockImage>
+          </section>
+
           {/* 
           <section className="w-full px-4">
             <article className="container mx-auto py-12 last:flex items-center justify-between">

@@ -6,6 +6,8 @@ export interface InputProps {
   onChange?: () => void;
   name: string;
   placeholder: string;
+  labelColor?: string;
+  bgLabelColor?: string;
   errors?: FieldError;
   register?: UseFormRegister<any>;
   rules?: Record<string, any>;

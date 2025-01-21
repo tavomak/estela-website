@@ -23,7 +23,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
       </Link>
       <Hamburger open={menuOpen} setOpen={setMenuOpen} />
       <ul
-        className={`ps-16 flex flex-col gap-12 justify-center fixed w-screen h-screen left-0 top-0 transition-all bg-white bg-opacity-95 ${
+        className={`ps-16 flex flex-col gap-12 justify-center fixed w-screen h-screen left-0 top-0 backdrop-blur-md transition-all bg-white bg-opacity-75 ${
           menuOpen ? 'top-0' : 'top-[-120%]'
         }`}
       >

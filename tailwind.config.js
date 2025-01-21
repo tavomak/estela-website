@@ -13,6 +13,10 @@ module.exports = {
         'ea-verde-oscuro': '#123026',
         'ea-gris': '#727374',
         'ea-verde-900': '#005E49',
+        'ea-verde-500': '#00BC92',
+        'ea-verde-400': '#415951',
+        'ea-verde-300': '#66D7BE',
+        'ea-verde-200': '#99E4D3',
         // verde: {
         //   950: '#003029',
         //   900: '#005E49',
