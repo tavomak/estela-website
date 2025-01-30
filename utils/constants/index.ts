@@ -61,15 +61,15 @@ export const imagesLogos = [
 
 export const services = [
   {
-    title: 'services_title_web',
-    parragraph: 'services_parragraph_web',
+    title: 'homepage_services_title_web',
+    parragraph: 'homepage_services_parragraph_web',
   },
   {
-    title: 'services_title_marketing',
-    parragraph: 'services_parragraph_marketing',
+    title: 'homepage_services_title_marketing',
+    parragraph: 'homepage_services_parragraph_marketing',
   },
   {
-    title: 'services_title_brand',
-    parragraph: 'services_parragraph_brand',
+    title: 'homepage_services_title_brand',
+    parragraph: 'homepage_services_parragraph_brand',
   },
 ];

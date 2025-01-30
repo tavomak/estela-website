@@ -113,9 +113,9 @@ const FormTalkUs: FC<FormContactProps> = ({
           <Input
             type="text"
             name="clientName"
-            placeholder={t('talkUs_form_client_name')}
+            placeholder={t('homepage_talkUs_form_client_name')}
             rules={{
-              required: t('talkUs_form_client_name_required'),
+              required: t('homepage_talkUs_form_client_name_required'),
             }}
             errors={errors.clientName as FieldError}
             register={register}
@@ -127,9 +127,9 @@ const FormTalkUs: FC<FormContactProps> = ({
           <Input
             type="text"
             name="organization"
-            placeholder={t('talkUs_form_client_organization')}
+            placeholder={t('homepage_talkUs_form_client_organization')}
             rules={{
-              required: t('talkUs_form_client_organization_required'),
+              required: t('homepage_talkUs_form_client_organization_required'),
             }}
             errors={errors.organization as FieldError}
             register={register}
@@ -141,9 +141,9 @@ const FormTalkUs: FC<FormContactProps> = ({
           <Input
             type="email"
             name="email"
-            placeholder={t('talkUs_form_client_email')}
+            placeholder={t('homepage_talkUs_form_client_email')}
             rules={{
-              required: t('talkUs_form_client_email_required'),
+              required: t('homepage_talkUs_form_client_email_required'),
             }}
             errors={errors.email as FieldError}
             register={register}
@@ -155,9 +155,9 @@ const FormTalkUs: FC<FormContactProps> = ({
           <Input
             type="text"
             name="subject"
-            placeholder={t('talkUs_form_client_subject')}
+            placeholder={t('homepage_talkUs_form_client_subject')}
             rules={{
-              required: t('talkUs_form_client_subject_required'),
+              required: t('homepage_talkUs_form_client_subject_required'),
             }}
             errors={errors.subject as FieldError}
             register={register}
@@ -178,7 +178,7 @@ const FormTalkUs: FC<FormContactProps> = ({
             {...register('message')}
           />
           <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-ea-verde-400 p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-            {t('talkUs_form_client_message')}
+            {t('homepage_talkUs_form_client_message')}
           </span>
         </label>
       </div>
@@ -189,7 +189,7 @@ const FormTalkUs: FC<FormContactProps> = ({
           loadingType="dots"
           submit
         >
-          {t('talkUs_form_client_send')}
+          {t('homepage_talkUs_form_client_send')}
         </Button>
       </div>
     </form>

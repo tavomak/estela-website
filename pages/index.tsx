@@ -16,7 +16,7 @@ import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Link from 'next/link';
 import Testimonials from '@/components/Molecules/Testimonial';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
-import ServicesCard from '@/components/Molecules/ServicesCard';
+import ServicesCard from '@/components/Molecules/ServiceCard-v1';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import { services } from '../utils/constants/index';
@@ -105,12 +105,12 @@ export const Home = ({
           <section className="w-full px-4 bg-ea-verde-oscuro ">
             <ContentBlockImage
               brandLogoColor="text-ea-verde"
-              title={t('content_section_title-1')}
-              subtitle={t('content_section_subtitle-1')}
+              title={t('homepage_content_section_title-1')}
+              subtitle={t('homepage_content_section_subtitle-1')}
               btnLabel={t('lets_talk')}
               rtl={false}
               onClick={() => setShowModal(true)}
-              content={t('content_section_parragraph-1')}
+              content={t('homepage_content_section_parragraph-1')}
             >
               <CircleWhite />
             </ContentBlockImage>
@@ -119,16 +119,16 @@ export const Home = ({
           <section className="w-full px-4 bg-gray-200">
             <article className="container py-24 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                {t('services_section_title')}
+                {t('homepage_services_section_title')}
               </h1>
-              <div className="space-y-8 lg:space-y-0 lg:flex gap-8 justify-between">
+              <div className="lg:flex gap-8 justify-between">
                 {services.map((service) => (
                   <ServicesCard key={service.title} {...service} />
                 ))}
               </div>
               <Link
                 href="/servicios"
-                className="btn btn-secondary mt-12 text-xs lg:text-base text-ea-verde border-ea-verde me-4"
+                className="btn btn-secondary mt-6 text-xs lg:text-base text-ea-verde border-ea-verde me-4"
               >
                 {t('more_services')}
               </Link>
@@ -138,7 +138,7 @@ export const Home = ({
           <section className="w-full px-4 bg-gray-100 mb-12">
             <article className="container py-24 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                {t('trust_section_title')}
+                {t('homepage_trust_section_title')}
               </h1>
               <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-8 py-12">
                 {imagesLogos.map((item, index) => (
@@ -159,7 +159,7 @@ export const Home = ({
             <article className="container mx-auto py-24 lg:flex">
               <div className="lg:w-1/2 mb-8 lg:mb-0">
                 <h1 className="text-right w-11/12 lg:w-2/3 display-font text-5xl md:text-6xl font-semibold text-ea-verde-oscuro lg:py-24">
-                  {t('testimonials_section_title')}
+                  {t('homepage_testimonials_section_title')}
                 </h1>
               </div>
               <Testimonials testimonials={content.testimonials} />
@@ -169,11 +169,11 @@ export const Home = ({
           <section className="w-full px-4 relative overflow-hidden bg-ea-verde-oscuro">
             <ContentBlockImage
               brandLogoColor="text-ea-verde"
-              title={t('content_section_title-2')}
+              title={t('homepage_content_section_title-2')}
               titleColor="text-white"
-              subtitle={t('content_section_subtitle-2')}
+              subtitle={t('homepage_content_section_subtitle-2')}
               subtitleColor="text-ea-amarillo"
-              content={t('content_section_parragraph-2')}
+              content={t('homepage_content_section_parragraph-2')}
               btnLabel={t('wanna_know_more')}
               onClick={() => setShowModal(true)}
               rtl
@@ -192,7 +192,7 @@ export const Home = ({
           <section className="w-full px-4 bg-gray-100">
             <article className="container py-12 mx-auto">
               <h1 className="display-font mb-10 text-center text-5xl lg:text-6xl font-semibold text-ea-verde-oscuro">
-                {t('projects_section_title')}
+                {t('homepage_projects_section_title')}
               </h1>
               <div className="max-w-2xl mb-4 text-ea-verde-oscuro space-y-2">
                 <h2 className="text-2xl lg:text-4xl">
@@ -227,12 +227,12 @@ export const Home = ({
 
           <section className="w-full px-4 bg-ea-verde-900">
             <ContentBlockImage
-              title={t('content_section_title-3')}
+              title={t('homepage_content_section_title-3')}
               titleColor="text-white"
-              subtitle={t('content_section_subtitle-3')}
+              subtitle={t('homepage_content_section_subtitle-3')}
               subtitleColor="text-ea-amarillo"
-              content={t('content_section_parragraph-3')}
-              btnLabel={t('contact_us')}
+              content={t('homepage_content_section_parragraph-3')}
+              btnLabel={t('homepage_contact_us')}
               onClick={() => setShowModal(true)}
               rtl={false}
             >
@@ -243,9 +243,9 @@ export const Home = ({
           <section className="w-full px-4 relative overflow-hidden bg-ea-verde-400">
             <ContentBlockImage
               brandLogoColor="text-ea-amarillo"
-              title={t('talkUs_form_title')}
+              title={t('homepage_talkUs_form_title')}
               titleColor="text-ea-verde-300"
-              subtitle={t('talkUs_form_subtitle')}
+              subtitle={t('homepage_talkUs_form_subtitle')}
               onClick={() => setShowModal(true)}
               rtl={false}
               content={

@@ -77,14 +77,14 @@ const Footer = () => {
         <div>
           <Image
             src="/footer-item-mobile.png"
-            alt="Estela Logo"
+            alt="footer image"
             width={786}
             height={536}
             className="block md:hidden "
           />
           <Image
             src="/footer-item.png"
-            alt="Estela Logo"
+            alt="footer image"
             width={1088}
             height={1296}
             className="hidden md:block"

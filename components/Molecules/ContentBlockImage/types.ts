@@ -2,7 +2,7 @@ import React, { MouseEventHandler } from 'react';
 
 export interface HeroContentBlockProps {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   content?: React.ReactNode;
   btnLabel?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
