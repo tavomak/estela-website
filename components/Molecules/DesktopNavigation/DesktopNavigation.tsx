@@ -12,10 +12,10 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
 
   return (
     <nav
-      className="container mx-auto flex items-center justify-between md:px-4"
+      className="container flex items-center justify-between mx-auto md:px-4"
       aria-label="Global"
     >
-      <Link className="text-ea-verde-oscuro w-40" href="/">
+      <Link className="w-40 text-ea-verde-oscuro" href="/">
         <BrandLogoHorizontal />
       </Link>
       <ul className="flex gap-4 xl:gap-14">
@@ -36,7 +36,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
         <li>
           <a
             href="/credenciales_2024.pdf"
-            className="btn btn-secondary uppercase text-xs lg:text-base text-ea-verde border-ea-verde me-4"
+            className="text-xs uppercase btn btn-secondary lg:text-base text-ea-verde border-ea-verde me-4"
             target="_blank"
             rel="noreferrer"
           >

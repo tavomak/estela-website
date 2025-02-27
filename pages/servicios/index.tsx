@@ -54,9 +54,9 @@ export const Services = () => {
   return (
     <Layout
       title="Servicios"
-      description="Nos encargamos de cobrar las facturas pendientes a las empresas, para que solo te concentres en tu negocio."
+      description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
-      <section className="w-full px-4 relative overflow-hidden bg-ea-verde-400">
+      <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
         <ContentBlockImage
           title={t('service_content_section_title-1')}
           titleColor="text-ea-amarillo"
@@ -66,7 +66,7 @@ export const Services = () => {
           contentColor="text-ea-amarillo"
           rtl={false}
         >
-          <div className="absolute bottom-0 left-0 text-white hidden lg:block">
+          <div className="absolute bottom-0 left-0 hidden text-white lg:block">
             <GreenWaves />
           </div>
         </ContentBlockImage>
@@ -74,19 +74,19 @@ export const Services = () => {
 
       <div className="relative">
         <section className="w-full px-4 overflow-hidden bg-gray-100">
-          <article className="container pt-24 pb-36 mx-auto lg:flex items-center justify-between">
-            <div className="text-ea-verde-oscuro mx-auto lg:mx-0 w-full lg:w-4/12 space-y-3">
-              <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold">
+          <article className="container items-center justify-between pt-24 mx-auto pb-36 lg:flex">
+            <div className="w-full mx-auto space-y-3 text-ea-verde-oscuro lg:mx-0 lg:w-4/12">
+              <h1 className="text-5xl font-semibold display-font lg:text-6xl text-balance">
                 Desarrollo & Diseño web
               </h1>
 
-              <div className="font-medium text-2xl">
+              <div className="text-2xl font-medium">
                 Llevamos tu sitio web a otro nivel. Nos enfocamos en la
                 experiencia de usuario, un diseño consistente y un contenido
                 claro, conciso y atractivo.
               </div>
             </div>
-            <div className="w-full lg:w-1/2 md:flex gap-8 mt-10">
+            <div className="w-full gap-8 mt-10 lg:w-1/2 md:flex">
               <ServiceCardV2 title="Desarrollo web" services={DevServices} />
               <ServiceCardV2 title="Diseño web" services={services} />
             </div>
@@ -97,22 +97,22 @@ export const Services = () => {
           alt="Desarrollo web"
           width={1980}
           height={655}
-          className="absolute bottom-96 h-96 w-full z-10 hidden lg:block"
+          className="absolute z-10 hidden w-full bottom-96 h-96 lg:block"
         />
         <section className="w-full px-4 overflow-hidden bg-gray-200">
-          <article className="container pt-36 pb-24 mx-auto lg:flex items-center justify-between">
-            <div className="text-ea-verde-oscuro mx-auto lg:mx-0 w-full lg:w-4/12 space-y-3 order-1">
-              <h1 className="relative z-20 display-font text-5xl lg:text-6xl text-balance font-semibold">
+          <article className="container items-center justify-between pb-24 mx-auto pt-36 lg:flex">
+            <div className="order-1 w-full mx-auto space-y-3 text-ea-verde-oscuro lg:mx-0 lg:w-4/12">
+              <h1 className="relative z-20 text-5xl font-semibold display-font lg:text-6xl text-balance">
                 Estructuramos y planificamos estrategias
               </h1>
 
-              <div className="font-medium text-2xl">
+              <div className="text-2xl font-medium">
                 Desarrollamos una estrategia comunicacional consistente con un
                 plan de contenidos y una guía de diseño integradas para toda la
                 comunicación digital.
               </div>
             </div>
-            <div className="w-full lg:w-1/2 md:flex gap-8 mt-10">
+            <div className="w-full gap-8 mt-10 lg:w-1/2 md:flex">
               <ServiceCardV2
                 title="Implementamos desarrollos digitales"
                 services={DevServices}
@@ -125,23 +125,23 @@ export const Services = () => {
           alt="Barra verde"
           width={829}
           height={67}
-          className="absolute -bottom-5 left-0 w-full lg:w-1/3 z-10"
+          className="absolute left-0 z-10 w-full -bottom-5 lg:w-1/3"
         />
       </div>
 
       <section className="w-full px-4 overflow-hidden bg-white">
-        <article className="container py-24 mx-auto lg:flex items-center justify-between">
-          <div className="text-ea-verde-oscuro mx-auto lg:mx-0 w-full lg:w-4/12 space-y-3">
-            <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold">
+        <article className="container items-center justify-between py-24 mx-auto lg:flex">
+          <div className="w-full mx-auto space-y-3 text-ea-verde-oscuro lg:mx-0 lg:w-4/12">
+            <h1 className="text-5xl font-semibold display-font lg:text-6xl text-balance">
               Marketing digital
             </h1>
 
-            <div className="font-medium text-2xl">
+            <div className="text-2xl font-medium">
               Planificamos, diseñamos, ejecutamos y analizamos campañas de
               marketing desde una perspectiva 360.
             </div>
           </div>
-          <div className="w-full lg:w-1/2 sm:flex gap-12 mt-10">
+          <div className="w-full gap-12 mt-10 lg:w-1/2 sm:flex">
             <ServiceCardV3
               title="Content marketing"
               services={ContentMarketing}
@@ -152,32 +152,32 @@ export const Services = () => {
       </section>
 
       <section className="relative w-full px-4 overflow-hidden bg-gray-100">
-        <article className="container py-32 mx-auto lg:flex items-center justify-between">
-          <div className="text-ea-verde-oscuro mx-auto lg:mx-0 w-full lg:w-4/12 space-y-3">
-            <h1 className="display-font text-5xl lg:text-6xl text-balance font-semibold">
+        <article className="container items-center justify-between py-32 mx-auto lg:flex">
+          <div className="w-full mx-auto space-y-3 text-ea-verde-oscuro lg:mx-0 lg:w-4/12">
+            <h1 className="text-5xl font-semibold display-font lg:text-6xl text-balance">
               Identidad de marca
             </h1>
 
-            <div className="font-medium text-2xl">
+            <div className="text-2xl font-medium">
               Le damos un sentido estratégico al branding de tu empresa.
               <br />
               Creamos la imagen para tu empresa o te ayudamos a refrescarla y a
               darle un uso consistente en tu comunicación.
             </div>
           </div>
-          <div className="z-20 mx-auto w-11/12 lg:w-1/2 md:flex gap-8 mt-10">
+          <div className="z-20 w-11/12 gap-8 mx-auto mt-10 lg:w-1/2 md:flex">
             <ServiceCardV2
               title="Desarrollo de imagen"
               services={DesarrolloImagen}
             />
           </div>
-          <div className="z-10 absolute -right-64 -rotate-180 w-1/2  text-gray-300">
+          <div className="absolute z-10 w-1/2 text-gray-300 -rotate-180 -right-64">
             <CircleWhite />
           </div>
         </article>
       </section>
 
-      <section className="w-full px-4 relative overflow-hidden bg-ea-verde-400">
+      <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
         <ContentBlockImage
           title="Planes de mantención"
           titleColor="text-ea-verde-500"
@@ -187,7 +187,7 @@ export const Services = () => {
           onClick={() => setShowModal(true)}
           rtl={false}
         >
-          <div className="absolute top-0 left-0 text-ea-verde-500 hidden lg:block">
+          <div className="absolute top-0 left-0 hidden text-ea-verde-500 lg:block">
             <CircleGreen />
           </div>
         </ContentBlockImage>

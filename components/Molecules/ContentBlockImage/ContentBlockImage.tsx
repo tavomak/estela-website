@@ -17,7 +17,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
   contentColor = 'text-white',
   brandLogoColor,
 }) => (
-  <article className="container py-24 mx-auto lg:flex items-center justify-between">
+  <article className="container items-center justify-between py-24 mx-auto lg:flex">
     <div
       className={`text-white mx-auto lg:mx-0 md:w-1/2 lg:w-4/12 ${rtl ? 'order-2' : 'order-1'}`}
     >
@@ -45,20 +45,16 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
         </div>
       )}
       <h1
-        className={`display-font text-5xl lg:text-6xl text-balance font-semibold ${titleColor}`}
+        className={`display-font text-5xl lg:text-6xl text-balance font-normal ${titleColor}`}
       >
         {title}
       </h1>
-      {subtitle && (
-        <h2 className={`font-semibold text-4xl ${subtitleColor}`}>
-          {subtitle}
-        </h2>
-      )}
-      <div className={`font-medium text-2xl ${contentColor}`}>{content}</div>
+      {subtitle && <h2 className={`text-2xl ${subtitleColor}`}>{subtitle}</h2>}
+      <div className={`text-2xl ${contentColor}`}>{content}</div>
       {btnLabel && (
         <aside className="pt-6">
           <button
-            className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+            className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
             onClick={onClick}
             type="button"
           >

@@ -17,27 +17,27 @@ const Footer = () => {
   return (
     <footer className="bg-ea-verde-oscuro">
       <div className="container mx-auto md:flex">
-        <div className="p-12 w-full space-y-4 my-auto">
-          <div className="text-ea-verde w-full max-w-64 mb-12">
+        <div className="w-full p-12 my-auto space-y-4">
+          <div className="w-full mb-12 text-ea-verde max-w-64">
             <BrandLogoHorizontal />
           </div>
           <div>
-            <p className="text-sm lg:text-xl font-bold text-white">
+            <p className="text-sm font-bold text-white lg:text-xl">
               {t('footer_lasting_bonds')}
             </p>
-            <h2 className="display-font text-4xl lg:text-5xl font-semibold text-white">
+            <h2 className="text-4xl font-semibold text-white display-font lg:text-5xl">
               {t('lets_talk')}
             </h2>
           </div>
           <a
             href="!#"
             onClick={(e) => handleClick(e)}
-            className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+            className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
             rel="noreferrer"
           >
             {t('contact_title')}
           </a>
-          <ul className="flex text-2xl space-x-6 text-white">
+          <ul className="flex space-x-6 text-2xl text-white">
             <li>
               <a
                 href="https://www.linkedin.com/company/estelaestudio/"
@@ -59,13 +59,13 @@ const Footer = () => {
           </ul>
           <a
             href="/credenciales_2024.pdf"
-            className="btn btn-secondary text-xs lg:text-base text-ea-verde border-ea-verde me-4"
+            className="text-xs btn btn-secondary lg:text-base text-ea-verde border-ea-verde me-4"
             target="_blank"
             rel="noreferrer"
           >
             {t('download_credentials')}
           </a>
-          <div className="text-xs lg:text-base pt-2 border-t lg:space-x-3 border-ea-verde text-white">
+          <div className="pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
             <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
             <p className="inline">{t('footer_terms_conditions')}</p>
             <p className="block lg:inline">

@@ -28,7 +28,7 @@ const Modal: FC<Props> = ({
         }}
         exit={{ opacity: 0, transform: 'scale(1.1)' }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="fixed top-0 left-0 z-30 w-screen h-full pt-24 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50"
+        className="fixed top-0 left-0 z-40 w-screen h-full pt-24 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50"
       >
         <div
           className={`shadow m-auto border-0 position-relative overflow-auto py-3 px-6 ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : ''}`}

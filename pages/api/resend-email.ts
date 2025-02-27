@@ -12,7 +12,7 @@ export const resendEmail = async (
 
   const emailData = JSON.parse(body);
   const {
-    contact: { firstName, lastName, email, phone, message, tag },
+    contact: { ...templateData },
   } = emailData;
   try {
     const { data, error } = await resend.emails.send({
@@ -20,12 +20,7 @@ export const resendEmail = async (
       to: ['accounts@estelaestudio.com'],
       subject: 'Nuevo mensaje de contacto',
       react: Email({
-        firstName,
-        lastName,
-        email,
-        phone,
-        message,
-        tag,
+        ...templateData,
       }),
     });
 

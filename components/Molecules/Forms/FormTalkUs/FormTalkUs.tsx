@@ -58,7 +58,8 @@ const FormTalkUs: FC<FormContactProps> = ({
           method: 'POST',
           body: JSON.stringify({
             contact: {
-              name: form.current?.clientName?.value,
+              templateType: 'talkUs',
+              clientName: form.current?.clientName?.value,
               organization: form.current?.organization?.value,
               email: form.current?.email?.value,
               subject: form.current?.subject?.value,
@@ -108,7 +109,7 @@ const FormTalkUs: FC<FormContactProps> = ({
         <input type="hidden" name="image" value={image} />
         <input type="hidden" name="content" value={content} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 text-ea-verde-200 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-ea-verde-200">
         <div className="form-group">
           <Input
             type="text"
@@ -169,10 +170,10 @@ const FormTalkUs: FC<FormContactProps> = ({
       <div className="form-group">
         <label
           htmlFor="message"
-          className="relative block px-4 pt-4 my-4 border border-ea-verde-200 rounded shadow-sm"
+          className="relative block px-4 pt-4 my-4 border rounded shadow-sm border-ea-verde-200"
         >
           <textarea
-            className="w-full bg-ea-verde-400 text-sm focus:outline-none focus-visible:outline-none"
+            className="w-full text-sm bg-ea-verde-400 focus:outline-none focus-visible:outline-none"
             rows={8}
             id="message"
             {...register('message')}
@@ -184,7 +185,7 @@ const FormTalkUs: FC<FormContactProps> = ({
       </div>
       <div className="text-center form-group">
         <Button
-          className="btn btn-secondary text-xs lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+          className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
           loading={loading}
           loadingType="dots"
           submit

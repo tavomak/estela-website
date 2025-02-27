@@ -59,6 +59,7 @@ const FormContact: FC<FormContactProps> = ({
           method: 'POST',
           body: JSON.stringify({
             contact: {
+              templateType: 'contact',
               email: form.current?.clientEmail?.value,
               firstName: form.current?.clientName?.value,
               lastName: form.current?.clientLastName?.value,

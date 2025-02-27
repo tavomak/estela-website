@@ -5,10 +5,10 @@ import { ServiceCardProps } from './types';
 const ServiceCardV2: React.FC<ServiceCardProps> = ({ title, services }) => (
   // const { t } = useTranslation('common');
 
-  <div className="w-full mx-auto group my-12 md:my-0">
-    <div className="h-full relative border border-ea-verde-oscuro bg-gray-100 p-6">
+  <div className="w-full mx-auto my-12 group md:my-0">
+    <div className="relative h-full p-6 bg-gray-100 border border-ea-verde-oscuro">
       <div className="absolute -left-3 -top-3 w-[calc(100%+12px)] bg-ea-amarillo transition-all duration-300 group-hover:left-0 group-hover:top-0 group-hover:w-full">
-        <h3 className="text-ea-verde-oscuro display-font text-3xl font-semibold py-4 px-6 relative z-10">
+        <h3 className="relative z-10 px-6 py-4 text-3xl font-semibold text-ea-verde-oscuro display-font">
           {title}
         </h3>
       </div>
@@ -16,7 +16,7 @@ const ServiceCardV2: React.FC<ServiceCardProps> = ({ title, services }) => (
       <div className="mt-24 sm:mt-16">
         <ul className="space-y-2">
           {services.map((service) => (
-            <li key={service} className="text-ea-verde-oscuro text-sm">
+            <li key={service} className="text-sm text-ea-verde-oscuro">
               • {service}
             </li>
           ))}

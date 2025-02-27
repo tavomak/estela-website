@@ -18,7 +18,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
       className="container relative flex items-center justify-between mx-auto md:px-4"
       aria-label="Global"
     >
-      <Link className="text-ea-verde-oscuro w-40 z-20" href="/">
+      <Link className="z-20 w-40 text-ea-verde-oscuro" href="/">
         <EstelaIcon />
       </Link>
       <Hamburger open={menuOpen} setOpen={setMenuOpen} />
@@ -41,7 +41,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
         <li>
           <a
             href="/credenciales_2024.pdf"
-            className="btn btn-secondary uppercase text-sm text-ea-verde"
+            className="text-sm uppercase btn btn-secondary text-ea-verde"
             target="_blank"
             rel="noreferrer"
           >

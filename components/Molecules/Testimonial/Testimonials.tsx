@@ -32,16 +32,16 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
     <div
       className={`lg:w-1/2 space-y-8 transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}
     >
-      <p className="font-medium text-2xl min-h-24">
+      <p className="text-2xl font-medium min-h-24">
         {currentTestimonial.testimonialText}
       </p>
-      <p className="font-semibold text-2xl min-h-24">
+      <p className="text-2xl font-semibold min-h-24">
         {currentTestimonial?.highlightedQuote}
       </p>
       <div className="flex gap-4">
         <button
           type="button"
-          className="text-ea-gris rotate-180 duration-200 opacity-40 hover:opacity-80 hover:text-ea-verde-500"
+          className="duration-200 rotate-180 text-ea-gris opacity-40 hover:opacity-80 hover:text-ea-verde-500"
           onClick={handlePrev}
           aria-label="Previous testimonial"
         >
@@ -51,7 +51,7 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           type="button"
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="text-ea-verde-500 duration-200 hover:opacity-40"
+          className="duration-200 text-ea-verde-500 hover:opacity-40"
         >
           <ArrowNext />
         </button>
