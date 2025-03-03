@@ -16,7 +16,7 @@ import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Link from 'next/link';
 import Testimonials from '@/components/Molecules/Testimonial';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
-import ServicesCard from '@/components/Molecules/ServiceCard-v1';
+import ServicesCard from '@/components/Molecules/ServiceCard';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import { services } from '../utils/constants/index';
@@ -121,9 +121,14 @@ export const Home = ({
               <h1 className="mb-10 text-5xl font-semibold text-center display-font lg:text-6xl text-ea-verde-oscuro">
                 {t('homepage_services_section_title')}
               </h1>
-              <div className="justify-between gap-8 lg:flex">
+              <div className="justify-between mt-12 space-x-0 space-y-12 lg:space-y-0 lg:space-x-12 lg:flex">
                 {services.map((service) => (
-                  <ServicesCard key={service.title} {...service} />
+                  <ServicesCard
+                    bgWhite
+                    title={service.title}
+                    services={service.parragraph}
+                    key={service.title}
+                  />
                 ))}
               </div>
               <Link

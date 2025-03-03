@@ -8,8 +8,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useState } from 'react';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
-import ServiceCardV3 from '@/components/Molecules/ServiceCard-v3';
-import ServiceCardV2 from '@/components/Molecules/ServiceCard-v2';
+import ServiceCard from '@/components/Molecules/ServiceCard';
 import CircleGreen from '../../components/Atoms/Svg/CircleGreen/CircleGreen';
 
 export const Services = () => {
@@ -74,8 +73,8 @@ export const Services = () => {
 
       <div className="relative">
         <section className="w-full px-4 overflow-hidden bg-gray-100">
-          <article className="container items-center justify-between pt-24 mx-auto pb-36 lg:flex">
-            <div className="w-full mx-auto space-y-3 text-ea-verde-oscuro lg:mx-0 lg:w-4/12">
+          <article className="container items-center justify-between mx-auto py-28 lg:flex">
+            <div className="w-full text-ea-verde-oscuro lg:mx-0 lg:w-3/5">
               <h1 className="text-5xl font-semibold display-font lg:text-6xl text-balance">
                 Desarrollo & Diseño web
               </h1>
@@ -86,9 +85,9 @@ export const Services = () => {
                 claro, conciso y atractivo.
               </div>
             </div>
-            <div className="w-full gap-8 mt-10 lg:w-1/2 md:flex">
-              <ServiceCardV2 title="Desarrollo web" services={DevServices} />
-              <ServiceCardV2 title="Diseño web" services={services} />
+            <div className="w-full mt-12 space-x-0 space-y-12 md:space-y-0 md:space-x-12 lg:w-3/5 md:flex">
+              <ServiceCard title="Desarrollo web" services={DevServices} />
+              <ServiceCard title="Diseño web" services={services} />
             </div>
           </article>
         </section>
@@ -113,7 +112,8 @@ export const Services = () => {
               </div>
             </div>
             <div className="w-full gap-8 mt-10 lg:w-1/2 md:flex">
-              <ServiceCardV2
+              <ServiceCard
+                bgWhite
                 title="Implementamos desarrollos digitales"
                 services={DevServices}
               />
@@ -141,12 +141,12 @@ export const Services = () => {
               marketing desde una perspectiva 360.
             </div>
           </div>
-          <div className="w-full gap-12 mt-10 lg:w-1/2 sm:flex">
-            <ServiceCardV3
+          <div className="w-full mt-12 space-x-0 space-y-12 md:space-y-0 md:space-x-12 lg:w-1/2 sm:flex">
+            <ServiceCard
               title="Content marketing"
               services={ContentMarketing}
             />
-            <ServiceCardV3 title="Paid media" services={PaidMedia} />
+            <ServiceCard title="Paid media" services={PaidMedia} />
           </div>
         </article>
       </section>
@@ -166,7 +166,8 @@ export const Services = () => {
             </div>
           </div>
           <div className="z-20 w-11/12 gap-8 mx-auto mt-10 lg:w-1/2 md:flex">
-            <ServiceCardV2
+            <ServiceCard
+              bgWhite
               title="Desarrollo de imagen"
               services={DesarrolloImagen}
             />

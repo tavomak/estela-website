@@ -6,13 +6,13 @@ import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 const FourOhFour = () => (
   <Layout title="Contenido no encontrado" description="Página no encontrada">
     <section className="w-full px-4 bg-gray-100">
-      <article className="container mx-auto py-12 last:flex items-center justify-between">
+      <article className="container items-center justify-between py-12 mx-auto last:flex">
         <div className="md:w-1/2 lg:w-4/12 text-ea-verde">
           <CircleWhite />
         </div>
         <div className="md:w-1/2">
           <div className="">
-            <div className="text-ea-verde w-full max-w-56 mb-12">
+            <div className="w-full mb-12 text-ea-verde max-w-56">
               <BrandLogoHorizontal />
             </div>
             <h1 className="max-w-sm text-4xl display-font text-ea-verde-oscuro">
