@@ -33,7 +33,7 @@ const Navbar = () => {
   }, [viewportWidth]);
   return (
     <header
-      className={`transition relative z-40 p-8 ${scrollTop > 150 ? 'bg-white sticky top-0 shadow-xl' : ''}`}
+      className={`transition relative z-40 p-4 ${scrollTop > 150 ? 'bg-white sticky top-0 shadow-xl' : ''}`}
     >
       {viewportWidth < 972 ? (
         <MobileNavigation

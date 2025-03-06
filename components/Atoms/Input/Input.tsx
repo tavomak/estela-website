@@ -51,7 +51,7 @@ const Input: FC<InputProps> = ({
     <div className={phone ? 'flex items-center justify-stretch' : ''}>
       <label
         htmlFor={name}
-        className={`${phone ? 'w-full rounded-r-md' : 'rounded-md'} ${errors ? 'border-red-500' : ''} relative my-4 block border ${labelColor || 'border-gray-200'} shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
+        className={`w-full  ${errors ? 'border-red-500' : ''} relative my-4 block border ${labelColor || 'border-gray-200'} shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
       >
         {phone ? (
           <PhoneInput

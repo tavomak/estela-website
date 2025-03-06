@@ -14,10 +14,10 @@ export const contactMasks = {
 };
 
 export const navItems = [
-  {
-    label: 'nav_about_title',
-    path: '/about',
-  },
+  // {
+  //   label: 'nav_about_title',
+  //   path: '/about',
+  // },
   {
     label: 'nav_services_title',
     path: '/servicios',

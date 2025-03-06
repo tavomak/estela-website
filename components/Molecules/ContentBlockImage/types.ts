@@ -2,16 +2,17 @@ import React, { MouseEventHandler } from 'react';
 
 export interface HeroContentBlockProps {
   title: string;
-  subtitle?: string;
-  content?: React.ReactNode;
+  titleClass: string;
+  subtitle: string;
+  subtitleClass: string;
+  content: React.ReactNode;
+  contentClass?: string;
   btnLabel?: string;
+  btnClass?: string;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
   imageUrl?: string;
   rtl?: boolean;
-  titleColor?: string;
-  subtitleColor?: string;
-  contentColor?: string;
   brandLogoColor?: string;
   leftBgColor?: string;
 }

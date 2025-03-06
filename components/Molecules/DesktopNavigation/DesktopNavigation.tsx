@@ -25,7 +25,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
             <li key={item.label}>
               <Link
                 href={item.path}
-                className={`block text-sm font-semibold text-neutral-600 ${itemActive(item.path) ? 'border-b-2 border-ea-verde' : ''}`}
+                className={`block tracking-widest text-xs font-semibold text-neutral-600 uppercase ${itemActive(item.path) ? 'border-b-2 border-ea-verde' : ''}`}
               >
                 {t(item.label)}
               </Link>
@@ -36,7 +36,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
         <li>
           <a
             href="/credenciales_2024.pdf"
-            className="text-xs uppercase btn btn-secondary lg:text-base text-ea-verde border-ea-verde me-4"
+            className="text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
             target="_blank"
             rel="noreferrer"
           >

@@ -16,23 +16,21 @@ const Footer = () => {
   const { t } = useTranslation('common');
   return (
     <footer className="bg-ea-verde-oscuro">
-      <div className="container mx-auto md:flex">
-        <div className="w-full p-12 my-auto space-y-4">
+      <div className="container items-end mx-auto md:flex">
+        <div className="w-full my-16 space-y-10">
           <div className="w-full mb-12 text-ea-verde max-w-64">
             <BrandLogoHorizontal />
           </div>
           <div>
-            <p className="text-sm font-bold text-white lg:text-xl">
+            <p className="text-sm text-white lg:text-lg">
               {t('footer_lasting_bonds')}
             </p>
-            <h2 className="text-4xl font-semibold text-white display-font lg:text-5xl">
-              {t('lets_talk')}
-            </h2>
+            <h2 className="text-4xl text-white">{t('lets_talk')}</h2>
           </div>
           <a
             href="!#"
             onClick={(e) => handleClick(e)}
-            className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+            className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
             rel="noreferrer"
           >
             {t('contact_title')}
@@ -59,13 +57,13 @@ const Footer = () => {
           </ul>
           <a
             href="/credenciales_2024.pdf"
-            className="text-xs btn btn-secondary lg:text-base text-ea-verde border-ea-verde me-4"
+            className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
             target="_blank"
             rel="noreferrer"
           >
             {t('download_credentials')}
           </a>
-          <div className="pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
+          <div className="block pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
             <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
             <p className="inline">{t('footer_terms_conditions')}</p>
             <p className="block lg:inline">

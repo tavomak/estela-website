@@ -5,16 +5,17 @@ import { HeroContentBlockProps } from './types';
 
 const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
   title,
+  titleClass,
   subtitle,
+  subtitleClass,
   content,
+  contentClass,
   children,
   imageUrl,
   btnLabel,
+  btnClass,
   onClick,
   rtl = true,
-  titleColor = 'text-ea-amarillo',
-  subtitleColor = 'text-white',
-  contentColor = 'text-white',
   brandLogoColor,
 }) => (
   <article className="container items-center justify-between py-24 mx-auto lg:flex">
@@ -44,17 +45,19 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
           <BrandLogoHorizontal />
         </div>
       )}
-      <h1
-        className={`display-font text-5xl lg:text-6xl text-balance font-normal ${titleColor}`}
-      >
-        {title}
-      </h1>
-      {subtitle && <h2 className={`text-2xl ${subtitleColor}`}>{subtitle}</h2>}
-      <div className={`text-2xl ${contentColor}`}>{content}</div>
+      <div className="w-3/4">
+        <h1
+          className={`display-font text-5xl lg:text-6xl text-balance font-normal ${titleClass}`}
+        >
+          {title}
+        </h1>
+        {subtitle && <h2 className={`mt-6 ${subtitleClass}`}>{subtitle}</h2>}
+        <div className={`mt-6 ${contentClass}`}>{content}</div>
+      </div>
       {btnLabel && (
         <aside className="pt-6">
           <button
-            className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+            className={`text-xs font-normal tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
             onClick={onClick}
             type="button"
           >

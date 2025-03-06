@@ -170,7 +170,7 @@ const FormTalkUs: FC<FormContactProps> = ({
       <div className="form-group">
         <label
           htmlFor="message"
-          className="relative block px-4 pt-4 my-4 border rounded shadow-sm border-ea-verde-200"
+          className="relative block px-4 pt-4 my-4 border shadow-sm border-ea-verde-200"
         >
           <textarea
             className="w-full text-sm bg-ea-verde-400 focus:outline-none focus-visible:outline-none"
@@ -178,14 +178,14 @@ const FormTalkUs: FC<FormContactProps> = ({
             id="message"
             {...register('message')}
           />
-          <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-ea-verde-400 p-0.5 text-xs text-white transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+          <span className="text-ea-verde-200 pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-ea-verde-400 p-0.5 text-xs transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
             {t('homepage_talkUs_form_client_message')}
           </span>
         </label>
       </div>
       <div className="text-center form-group">
         <Button
-          className="text-xs btn btn-secondary lg:text-base text-ea-amarillo border-ea-amarillo me-4"
+          className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
           loading={loading}
           loadingType="dots"
           submit

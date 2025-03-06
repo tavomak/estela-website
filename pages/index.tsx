@@ -77,17 +77,17 @@ export const Home = ({
       ) : (
         <>
           <section className="w-full px-4 mb-12">
-            <article className="container block py-24 mx-auto lg:flex">
-              <div className="relative mb-8 lg:w-1/2 lg:mb-0">
+            <article className="container items-center block py-12 mx-auto lg:flex">
+              <div className="relative mb-8 lg:w-3/4 lg:mb-0">
                 <div className="absolute w-1/4 h-full bg-ea-amarillo" />
 
-                <h1 className="relative w-11/12 py-24 mx-auto text-5xl font-semibold uppercase lg:w-3/4 display-font lg:text-6xl text-ea-verde-oscuro fadeInLeft">
+                <h1 className="relative w-11/12 py-24 mx-auto text-5xl uppercase lg:w-3/4 display-font lg:text-8xl text-ea-verde-oscuro fadeInLeft">
                   {t('hero_title')}
                 </h1>
               </div>
               <div className="lg:w-1/2">
                 <video
-                  className="w-full mb-8 bg-gray-200 border-2 border-ea-verde-oscuro aspect-video"
+                  className="w-full mb-8 bg-white border-2 border-white aspect-video"
                   src=""
                   autoPlay
                   loop
@@ -95,7 +95,7 @@ export const Home = ({
                 >
                   Tu navegador no soporta el elemento de video.
                 </video>
-                <p className="text-2xl font-medium fadeIn">
+                <p className="w-3/4 text-lg font-medium fadeIn">
                   {t('hero_parragraph')}
                 </p>
               </div>
@@ -106,11 +106,15 @@ export const Home = ({
             <ContentBlockImage
               brandLogoColor="text-ea-verde"
               title={t('homepage_content_section_title-1')}
+              titleClass="text-ea-amarillo display-font"
               subtitle={t('homepage_content_section_subtitle-1')}
+              subtitleClass="display-font text-white text-3xl"
               btnLabel={t('lets_talk')}
+              btnClass="text-ea-amarillo border-ea-amarillo"
               rtl={false}
               onClick={() => setShowModal(true)}
               content={t('homepage_content_section_parragraph-1')}
+              contentClass="text-white"
             >
               <CircleWhite />
             </ContentBlockImage>
@@ -118,13 +122,12 @@ export const Home = ({
 
           <section className="w-full px-4 bg-gray-200">
             <article className="container py-24 mx-auto">
-              <h1 className="mb-10 text-5xl font-semibold text-center display-font lg:text-6xl text-ea-verde-oscuro">
+              <h1 className="mb-10 text-5xl display-font lg:text-4xl text-ea-verde-oscuro">
                 {t('homepage_services_section_title')}
               </h1>
-              <div className="justify-between mt-12 space-x-0 space-y-12 lg:space-y-0 lg:space-x-12 lg:flex">
+              <div className="justify-between mt-12 lg:flex">
                 {services.map((service) => (
                   <ServicesCard
-                    bgWhite
                     title={service.title}
                     services={service.parragraph}
                     key={service.title}
@@ -140,9 +143,9 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full px-4 mb-12 bg-gray-100">
+          <section className="w-full px-4 ">
             <article className="container py-24 mx-auto">
-              <h1 className="mb-10 text-5xl font-semibold text-center display-font lg:text-6xl text-ea-verde-oscuro">
+              <h1 className="mb-10 text-5xl display-font lg:text-4xl text-ea-verde-oscuro">
                 {t('homepage_trust_section_title')}
               </h1>
               <div className="grid items-center grid-cols-2 gap-8 py-12 lg:grid-cols-4">
@@ -151,9 +154,9 @@ export const Home = ({
                     key={item.path}
                     src={item.path}
                     alt={`Logo ${index}`}
-                    className="mx-auto mb-4"
-                    width={200}
-                    height={200}
+                    className="object-contain h-16 mx-auto mb-4 max-w-40"
+                    width={150}
+                    height={64}
                   />
                 ))}
               </div>
@@ -161,7 +164,7 @@ export const Home = ({
           </section>
 
           <section className="w-full px-4 mb-12">
-            <article className="container py-24 mx-auto lg:flex">
+            <article className="container py-12 mx-auto lg:flex">
               <div className="mb-8 lg:w-1/2 lg:mb-0">
                 <h1 className="w-11/12 text-5xl font-semibold text-right lg:w-2/3 display-font md:text-6xl text-ea-verde-oscuro lg:py-24">
                   {t('homepage_testimonials_section_title')}
@@ -175,11 +178,13 @@ export const Home = ({
             <ContentBlockImage
               brandLogoColor="text-ea-verde"
               title={t('homepage_content_section_title-2')}
-              titleColor="text-white"
+              titleClass="text-white"
               subtitle={t('homepage_content_section_subtitle-2')}
-              subtitleColor="text-ea-amarillo"
+              subtitleClass="text-ea-amarillo text-3xl"
               content={t('homepage_content_section_parragraph-2')}
+              contentClass="text-white"
               btnLabel={t('wanna_know_more')}
+              btnClass="text-ea-amarillo border-ea-amarillo"
               onClick={() => setShowModal(true)}
               rtl
             >
@@ -196,18 +201,18 @@ export const Home = ({
 
           <section className="w-full px-4 bg-gray-100">
             <article className="container py-12 mx-auto">
-              <h1 className="mb-10 text-5xl font-semibold text-center display-font lg:text-6xl text-ea-verde-oscuro">
+              <h1 className="mb-10 text-5xl display-font lg:text-4xl text-ea-verde-oscuro">
                 {t('homepage_projects_section_title')}
               </h1>
               <div className="max-w-2xl mb-4 space-y-2 text-ea-verde-oscuro">
-                <h2 className="text-2xl lg:text-4xl">
+                <h2 className="text-2xl lg:text-2xl">
                   {content.projects[0].title}
                 </h2>
-                <p className="text-base text-gray-600 lg:text-2xl">
+                <p className="w-3/4 text-sm text-gray-600">
                   {content.projects[0].description}
                 </p>
               </div>
-              <div className="my-8 transition-all duration-300 rounded-lg hover:scale-95">
+              <div className="my-8 transition-all duration-300 rounded-lg">
                 <Image
                   src={content.projects[0].image.url}
                   alt={`logo de ${content.projects[0].title}`}
@@ -233,11 +238,13 @@ export const Home = ({
           <section className="w-full px-4 bg-ea-verde-900">
             <ContentBlockImage
               title={t('homepage_content_section_title-3')}
-              titleColor="text-white"
+              titleClass="text-white"
               subtitle={t('homepage_content_section_subtitle-3')}
-              subtitleColor="text-ea-amarillo"
+              subtitleClass="text-ea-amarillo text-3xl"
               content={t('homepage_content_section_parragraph-3')}
+              contentClass="text-white"
               btnLabel={t('homepage_contact_us')}
+              btnClass="text-ea-amarillo border-ea-amarillo"
               onClick={() => setShowModal(true)}
               rtl={false}
             >
@@ -249,8 +256,9 @@ export const Home = ({
             <ContentBlockImage
               brandLogoColor="text-ea-amarillo"
               title={t('homepage_talkUs_form_title')}
-              titleColor="text-ea-verde-300"
+              titleClass="text-ea-verde-300"
               subtitle={t('homepage_talkUs_form_subtitle')}
+              subtitleClass="text-white text-3xl"
               onClick={() => setShowModal(true)}
               rtl={false}
               content={
@@ -262,7 +270,7 @@ export const Home = ({
                 />
               }
             >
-              <div className="absolute top-0 left-0 hidden w-1/3 h-full bg-ea-verde-300 text-ea-verde-400 lg:block">
+              <div className="absolute top-0 left-0 hidden w-2/5 h-full bg-ea-verde-300 text-ea-verde-400 lg:block">
                 <CircleCurves />
               </div>
             </ContentBlockImage>
