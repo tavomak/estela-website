@@ -1,6 +1,5 @@
 import { MouseEvent, useState } from 'react';
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
@@ -17,10 +16,7 @@ const Footer = () => {
   return (
     <footer className="bg-ea-verde-oscuro">
       <div className="container items-end mx-auto md:flex">
-        <div className="w-full my-16 space-y-10">
-          <div className="w-full mb-12 text-ea-verde max-w-64">
-            <BrandLogoHorizontal />
-          </div>
+        <div className="w-full p-12 space-y-10">
           <div>
             <p className="text-sm text-white lg:text-lg">
               {t('footer_lasting_bonds')}

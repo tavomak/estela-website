@@ -95,7 +95,7 @@ export const Home = ({
                 >
                   Tu navegador no soporta el elemento de video.
                 </video>
-                <p className="w-3/4 text-lg font-medium fadeIn">
+                <p className="w-3/5 text-lg font-medium fadeIn">
                   {t('hero_parragraph')}
                 </p>
               </div>
@@ -125,7 +125,7 @@ export const Home = ({
               <h1 className="mb-10 text-5xl display-font lg:text-4xl text-ea-verde-oscuro">
                 {t('homepage_services_section_title')}
               </h1>
-              <div className="justify-between mt-12 lg:flex">
+              <div className="justify-between my-12 lg:flex">
                 {services.map((service) => (
                   <ServicesCard
                     title={service.title}
@@ -136,7 +136,7 @@ export const Home = ({
               </div>
               <Link
                 href="/servicios"
-                className="mt-6 text-xs btn btn-secondary lg:text-base text-ea-verde border-ea-verde me-4"
+                className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
               >
                 {t('more_services')}
               </Link>
@@ -176,7 +176,6 @@ export const Home = ({
 
           <section className="relative w-full px-4 overflow-hidden bg-ea-verde-oscuro">
             <ContentBlockImage
-              brandLogoColor="text-ea-verde"
               title={t('homepage_content_section_title-2')}
               titleClass="text-white"
               subtitle={t('homepage_content_section_subtitle-2')}
@@ -254,11 +253,8 @@ export const Home = ({
 
           <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
             <ContentBlockImage
-              brandLogoColor="text-ea-amarillo"
               title={t('homepage_talkUs_form_title')}
               titleClass="text-ea-verde-300"
-              subtitle={t('homepage_talkUs_form_subtitle')}
-              subtitleClass="text-white text-3xl"
               onClick={() => setShowModal(true)}
               rtl={false}
               content={

@@ -7,7 +7,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, services }) => {
   const isArray = Array.isArray(services);
 
   return (
-    <div className="relative mx-auto w-80 group">
+    <div className="relative w-80 group">
       <div className="absolute w-11/12 transition-all -top-2 -left-2 h-28 duration-400">
         <h2 className="w-full px-4 pt-4 text-5xl leading-10 display-font">
           {t(title)}
