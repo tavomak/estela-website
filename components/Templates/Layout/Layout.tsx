@@ -24,14 +24,17 @@ const Layout: FC<Props> = ({
   return (
     <>
       <Head>
-        <title>{`${title} | CFC Capital`}</title>
+        <title>{`${title} | Estela Estudio Digital`}</title>
         <meta charSet="UTF-8" />
-        <meta name="description" content={`${description || ' CFC Capital'}`} />
+        <meta
+          name="description"
+          content={`${description || ' Estela Estudio Digital'}`}
+        />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="hostname" />
-        <meta property="og:site_name" content="CFC Capital" />
+        <meta property="og:site_name" content="Estela Estudio Digital" />
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="apple-touch-icon"
