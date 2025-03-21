@@ -1,6 +1,5 @@
-import React from 'react';
-
 export interface HamburgerProps {
   open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  // eslint-disable-next-line no-unused-vars
+  setOpen: (open: boolean) => void;
 }

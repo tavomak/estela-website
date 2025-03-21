@@ -111,7 +111,9 @@ const Layout: FC<Props> = ({
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <Navbar />
-      <main className={`min-h-screen flex flex-col ${className || ''}`}>
+      <main
+        className={`flex flex-col min-h-[calc(100vh-217px)] ${className || ''}`}
+      >
         {children}
       </main>
       <ToastContainer />

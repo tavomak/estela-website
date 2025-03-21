@@ -15,7 +15,7 @@ const FourOhFour = () => (
             <div className="w-full mb-12 text-ea-verde max-w-56">
               <BrandLogoHorizontal />
             </div>
-            <h1 className="max-w-sm text-4xl display-font text-ea-verde-oscuro">
+            <h1 className="max-w-sm text-4xl display-font text-verde-oscuro-500">
               Opps... Página no encontrada
             </h1>
             <aside className="pt-12 d-md-flex w-100 ">

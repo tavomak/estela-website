@@ -2,9 +2,10 @@ import { MouseEvent, useState } from 'react';
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/image';
 import { siteName } from '@/utils';
-import FormContact from '../Forms/FormContact';
+import Image from 'next/image';
+import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
+import FormTalkUs from '../Forms/FormTalkUs';
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
@@ -14,8 +15,8 @@ const Footer = () => {
   };
   const { t } = useTranslation('common');
   return (
-    <footer className="bg-ea-verde-oscuro">
-      <div className="container items-end mx-auto md:flex">
+    <footer className="bg-verde-oscuro-500">
+      <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
         <div className="w-full p-12 space-y-10">
           <div>
             <p className="text-sm text-white lg:text-lg">
@@ -59,7 +60,7 @@ const Footer = () => {
           >
             {t('download_credentials')}
           </a>
-          <div className="block pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
+          <div className="block w-5/12 pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
             <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
             <p className="inline">{t('footer_terms_conditions')}</p>
             <p className="block lg:inline">
@@ -74,29 +75,30 @@ const Footer = () => {
             alt="footer image"
             width={786}
             height={536}
-            className="block md:hidden "
-          />
-          <Image
-            src="/footer-item.png"
-            alt="footer image"
-            width={1088}
-            height={1296}
-            className="hidden md:block"
+            className="block sm:hidden "
           />
         </div>
       </div>
       <Modal
         showModal={showModal}
-        size="md"
+        size="lg"
         onClick={() => setShowModal(false)}
+        bgColor="bg-ea-verde-400"
         noPadding
       >
-        <FormContact
-          service="Contacto"
-          title="Escríbenos"
-          image="/images/contact.png"
-          content="Nos pondremos en contacto contigo lo antes posible"
-        />
+        <div className="w-3/4 mx-auto md:w-full md:flex">
+          <div className="hidden bg-ea-verde-300 text-ea-verde-400 lg:block">
+            <CircleCurves />
+          </div>
+          <div className="p-4 pt-12">
+            <FormTalkUs
+              service="Contacto"
+              title="Escríbenos"
+              image="/images/contact.png"
+              content="Nos pondremos en contacto contigo lo antes posible"
+            />
+          </div>
+        </div>
       </Modal>
     </footer>
   );

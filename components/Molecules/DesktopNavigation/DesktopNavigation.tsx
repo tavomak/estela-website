@@ -15,7 +15,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
       className="container flex items-center justify-between mx-auto md:px-4"
       aria-label="Global"
     >
-      <Link className="w-40 text-ea-verde-oscuro" href="/">
+      <Link className="w-40 text-verde-oscuro-500" href="/">
         <BrandLogoHorizontal />
       </Link>
       <ul className="flex gap-4 xl:gap-14">
@@ -36,7 +36,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
         <li>
           <a
             href="/credenciales_2024.pdf"
-            className="text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
+            className="mb-0 text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde"
             target="_blank"
             rel="noreferrer"
           >

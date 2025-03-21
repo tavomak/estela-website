@@ -6,7 +6,7 @@ article.main a {
 }
 
 .btn {
-  @apply inline-flex items-center px-4 py-2 font-semibold;
+  @apply inline-flex items-center px-4 py-2 mb-4 font-semibold;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: background-color, color, transform, box-shadow;
@@ -21,7 +21,7 @@ article.main a {
 }
 
 .btn-primary {
-  @apply bg-ea-amarillo text-ea-verde-oscuro hover:bg-ea-verde hover:text-white;
+  @apply bg-ea-amarillo text-verde-oscuro-500 hover:bg-ea-verde hover:text-white;
   --btn-color: var(--white);
   --btn-background-color: var(--medium-blue);
   --btn-border-color: none;

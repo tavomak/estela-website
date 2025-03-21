@@ -18,7 +18,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
   rtl = true,
   brandLogoColor,
 }) => (
-  <article className="container items-center justify-between py-24 mx-auto lg:flex">
+  <>
     <div
       className={`text-white mx-auto lg:mx-0 md:w-1/2 lg:w-4/12 ${rtl ? 'order-2' : 'order-1'}`}
     >
@@ -45,7 +45,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
           <BrandLogoHorizontal />
         </div>
       )}
-      <div className="w-3/4">
+      <div className="w-11/12 md:w-3/4">
         <h1
           className={`display-font text-5xl lg:text-6xl text-balance font-normal ${titleClass}`}
         >
@@ -66,7 +66,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
         </aside>
       )}
     </div>
-  </article>
+  </>
 );
 
 export default ContentBlockImage;

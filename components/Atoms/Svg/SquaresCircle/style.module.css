@@ -1,0 +1,138 @@
+.st0 {
+  fill: #f4ffa9;
+}
+
+.st1 {
+  stroke-width: 4px;
+}
+
+.st1,
+.st2,
+.st3 {
+  fill: none;
+  stroke: #00ba90;
+  stroke-miterlimit: 10;
+}
+
+.st2 {
+  stroke-width: 3px;
+}
+
+.st3 {
+  stroke-width: 2px;
+}
+@keyframes circlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes circleRotate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes circleDance {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+/* Animaciones para el polígono 1 */
+@keyframes spin1Pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes spin1Rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin1Dance {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+}
+
+/* Animaciones para el polígono 2 */
+@keyframes spin2Pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes spin2Rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes spin3Rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle {
+  animation: var(--bounce) 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.spin {
+  animation: var(--spin) 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.spin2 {
+  animation: var(--spinreverse) 6s ease-in-out infinite;
+  transform-origin: center;
+}
+.spin3 {
+  animation: var(--spin) 6s ease-in-out infinite;
+  transform-origin: center;
+}

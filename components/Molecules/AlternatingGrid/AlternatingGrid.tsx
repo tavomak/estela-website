@@ -10,9 +10,9 @@ const AlternatingGrid: FC<{ projects: Project[] }> = ({ projects }) => (
           <div
             className={`flex flex-col p-4 m-4 bg-white rounded-lg ${index % 2 === 0 ? 'mb-4 sm:mb-0' : 'flex-col-reverse mt-4 sm:mt-0'}`}
           >
-            <div className="my-4 space-y-2 rounded-lg text-ea-verde-oscuro">
-              <h2 className="text-2xl sm:text-4xl">{project.title}</h2>
-              <p className="w-5/6 text-base lg:text-2xl">
+            <div className="my-4 space-y-2 rounded-lg text-verde-oscuro-500">
+              <h2 className="text-2xl">{project.title}</h2>
+              <p className="w-3/4 text-sm text-ea-gris">
                 {project.description}
               </p>
             </div>

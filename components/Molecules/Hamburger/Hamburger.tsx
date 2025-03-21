@@ -4,7 +4,7 @@ import { HamburgerProps } from './types';
 const Hamburger: FC<HamburgerProps> = ({ open = false, setOpen }) => (
   <button
     type="button"
-    className={`${open ? 'fixed right-10 top-8' : ''} h-14 w-14 z-20`}
+    className={`${open ? 'right-2 sm:right-6 top-2' : ''} h-14 w-14 z-20`}
     aria-label="Menu"
     onClick={() => setOpen(!open)}
   >

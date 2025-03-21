@@ -7,24 +7,25 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, services }) => {
   const isArray = Array.isArray(services);
 
   return (
-    <div className="relative w-80 group">
-      <div className="absolute w-11/12 transition-all -top-2 -left-2 h-28 duration-400">
-        <h2 className="w-full px-4 pt-4 text-5xl leading-10 display-font">
+    <div className="relative w-full h-full p-6 mx-auto mt-4 border-2 group border-verde-oscuro-500">
+      <div className="absolute w-full transition-all -top-2 -left-2 duration-400">
+        <h2 className="w-full p-4 text-5xl leading-10 display-font text-verde-oscuro-500">
           {t(title)}
         </h2>
       </div>
-
-      <div className="relative h-full p-6 border-2 pt-28 border-ea-verde-oscuro">
+      <div className="relative pt-20">
         {isArray ? (
-          <ul className="list-outside ">
+          <ul className="px-4">
             {(services as string[]).map((item) => (
-              <li key={item} className="py-1 text-base text-ea-verde-oscuro">
+              <li key={item} className="py-1 text-base text-verde-oscuro-500">
                 {item}
               </li>
             ))}
           </ul>
         ) : (
-          <p className="text-ea-verde-oscuro my-9">{t(services as string)}</p>
+          <p className="px-4 text-verde-oscuro-500 my-9">
+            {t(services as string)}
+          </p>
         )}
       </div>
     </div>

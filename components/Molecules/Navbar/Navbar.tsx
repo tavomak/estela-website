@@ -6,17 +6,38 @@ import DesktopNavigation from '../DesktopNavigation';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrollTop, setScrollTop] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(0);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
 
   const router = useRouter();
+
+  const handleMenuOpen = (open: boolean) => {
+    setMenuOpen(open);
+    if (open) {
+      document.body.classList.add('modal-active');
+    } else {
+      document.body.classList.remove('modal-active');
+    }
+  };
 
   const itemActive = (path: string) => router.asPath === path;
 
   useEffect(() => {
+    let lastScrollTop = 0;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+
     const handleScroll = () => {
-      setScrollTop(window.scrollY);
+      const currentScrollTop = window.scrollY;
+      setIsScrollingDown(currentScrollTop > lastScrollTop);
+      lastScrollTop = currentScrollTop;
+
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        setIsScrollingDown(false);
+      }, 500);
     };
+
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
@@ -31,14 +52,17 @@ const Navbar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, [viewportWidth]);
+
   return (
     <header
-      className={`transition relative z-40 p-4 ${scrollTop > 150 ? 'bg-white sticky top-0 shadow-xl' : ''}`}
+      className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 p-6 ${
+        isScrollingDown ? '-translate-y-full' : ''
+      }`}
     >
       {viewportWidth < 972 ? (
         <MobileNavigation
           menuOpen={menuOpen}
-          setMenuOpen={setMenuOpen}
+          setMenuOpen={handleMenuOpen}
           navItems={navItems}
           itemActive={itemActive}
         />
