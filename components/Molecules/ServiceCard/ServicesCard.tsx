@@ -1,32 +1,62 @@
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
 import { ServiceCardProps } from './types';
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, services }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  description,
+  bgColor,
+  accentColor,
+  textColor = '#005E49',
+  buttonText = 'saber más',
+}) => {
   const { t } = useTranslation('common');
-  const isArray = Array.isArray(services);
+  // const isArray = Array.isArray(description);
 
   return (
-    <div className="relative w-full h-full p-6 mx-auto mt-4 border-2 group border-verde-oscuro-500">
-      <div className="absolute w-full transition-all -top-2 -left-2 duration-400">
-        <h2 className="w-full p-4 text-5xl leading-10 display-font text-verde-oscuro-500">
+    <div className="relative w-full h-full lg:max-w-[340px]">
+      <div
+        className="absolute w-full h-full translate-x-3 translate-y-3"
+        style={{ backgroundColor: accentColor }}
+      />
+
+      <div
+        className="relative flex flex-col w-full h-full p-8 pb-16"
+        style={{ backgroundColor: bgColor }}
+      >
+        <h2
+          className="mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
+          style={{ color: textColor }}
+        >
           {t(title)}
         </h2>
-      </div>
-      <div className="relative pt-20">
-        {isArray ? (
-          <ul className="px-4">
-            {(services as string[]).map((item) => (
-              <li key={item} className="py-1 text-base text-verde-oscuro-500">
-                {item}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="px-4 text-verde-oscuro-500 my-9">
-            {t(services as string)}
-          </p>
-        )}
+        <div
+          className="w-1/2 h-px mb-6"
+          style={{ backgroundColor: textColor }}
+        />
+        <div
+          className="flex-grow mb-4 text-xs font-medium lg:mb-10 md:text-lg"
+          style={{ color: textColor }}
+        >
+          {t(description)}
+        </div>
+
+        <div className="absolute flex items-center gap-2 order bottom-8 right-8 lg:left-8">
+          <span
+            className="order-2 text-xs font-semibold lowercase lg:order-1 lg:uppercase lg:text-sm lg:font-medium"
+            style={{ color: textColor }}
+          >
+            {t(buttonText)}
+          </span>
+          <button
+            type="button"
+            className="flex items-center justify-center order-1 w-8 h-8 text-xs rounded-full md:text-sm lg:order-2 bg-ea-verde-900 text-ea-amarillo"
+            aria-label={t(buttonText)}
+          >
+            <DiagonalArrow />
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -9,8 +9,12 @@ module.exports = {
     extend: {
       colors: {
         'ea-amarillo': '#F1FF94',
+        'ea-amarillo-200': '#F7FFBF',
+        'ea-amarillo-900': '#B5BF6F',
         'ea-verde': '#00BC92',
         'ea-gris': '#727374',
+        'ea-gris-200': '#ECEDEE',
+        'ea-gris-400': '#AAACAE',
         'ea-verde-900': '#005E49',
         'ea-verde-500': '#00BC92',
         'ea-verde-400': '#415951',
@@ -42,6 +46,9 @@ module.exports = {
           //   100: '#cdfeea',
           //   50: '#eafff7',
         },
+      },
+      fontSize: {
+        xxs: '10px',
       },
     },
   },

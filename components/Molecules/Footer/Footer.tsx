@@ -17,7 +17,7 @@ const Footer = () => {
   return (
     <footer className="bg-verde-oscuro-500">
       <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
-        <div className="w-full p-12 space-y-10">
+        <div className="w-full p-6 space-y-10">
           <div>
             <p className="text-sm text-white lg:text-lg">
               {t('footer_lasting_bonds')}

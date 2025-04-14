@@ -1,5 +1,5 @@
 const DecorativeBar = () => (
-  <svg width="687" height="67" viewBox="0 0 687 67" fill="none">
+  <svg width="650" height="30" viewBox="0 0 687 67" fill="none">
     <g clip-path="url(#clip0_2805_779)">
       <path
         d="M1287.22 -0.117432H-0.52832V67.1371H1287.22V-0.117432Z"

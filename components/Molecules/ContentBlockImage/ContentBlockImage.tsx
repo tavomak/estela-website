@@ -19,43 +19,21 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
   brandLogoColor,
 }) => (
   <>
-    <div
-      className={`text-white mx-auto lg:mx-0 md:w-1/2 lg:w-4/12 ${rtl ? 'order-2' : 'order-1'}`}
-    >
-      {children || (
-        <Image
-          src={imageUrl || ''}
-          alt={title}
-          width={750}
-          height={580}
-          style={{
-            width: '100%',
-            height: 'auto',
-            objectFit: 'contain',
-            maxHeight: '400px',
-          }}
-          priority
-        />
-      )}
-    </div>
-
-    <div className={`lg:w-1/2 space-y-6 ${rtl ? 'order-1' : 'order-2'}`}>
+    <div className={`w-full space-y-4 ${rtl ? 'order-1' : 'order-2'}`}>
       {brandLogoColor && (
-        <div className={`w-full max-w-56 mb-12 ${brandLogoColor}`}>
+        <div className={`w-full max-w-56 ${brandLogoColor}`}>
           <BrandLogoHorizontal />
         </div>
       )}
-      <div className="w-11/12 md:w-3/4">
-        <h1
-          className={`display-font text-5xl lg:text-6xl text-balance font-normal ${titleClass}`}
-        >
+      <div className="w-full space-y-8">
+        <h1 className={`display-font text-4xl lg:text-6xl  ${titleClass}`}>
           {title}
         </h1>
-        {subtitle && <h2 className={`mt-6 ${subtitleClass}`}>{subtitle}</h2>}
-        <div className={`mt-6 ${contentClass}`}>{content}</div>
+        {subtitle && <h2 className={` ${subtitleClass}`}>{subtitle}</h2>}
+        <div className={` ${contentClass}`}>{content}</div>
       </div>
       {btnLabel && (
-        <aside className="pt-6">
+        <aside className="flex pt-6">
           <button
             className={`text-xs font-normal tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
             onClick={onClick}
@@ -65,6 +43,29 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
           </button>
         </aside>
       )}
+    </div>
+    <div
+      className={`relative text-white md:p-4 mx-auto w-full ${rtl ? 'order-2' : 'order-1'}`}
+    >
+      <div className="w-full">
+        {children ||
+          (imageUrl ? (
+            <Image
+              src={imageUrl}
+              alt={title}
+              width={750}
+              height={580}
+              style={{
+                width: '90%',
+                marginLeft: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+                maxHeight: '400px',
+              }}
+              priority
+            />
+          ) : null)}
+      </div>
     </div>
   </>
 );

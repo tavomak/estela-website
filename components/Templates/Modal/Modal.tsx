@@ -43,7 +43,6 @@ const Modal: FC<Props> = ({
         >
           <div
             className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
-            style={{ borderRadius: '16px' }}
           >
             <div className="absolute top-0 right-8 md:right-4">
               <button

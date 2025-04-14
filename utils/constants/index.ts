@@ -52,7 +52,7 @@ export const imagesLogos = [
     path: '/logo-transWarrants.png',
   },
   {
-    path: '/logo-panel-expertos.png',
+    path: '/logo-tusk.png',
   },
   {
     path: '/logo-vista-volcanes.png',
@@ -62,14 +62,26 @@ export const imagesLogos = [
 export const services = [
   {
     title: 'homepage_services_title_web',
-    parragraph: 'homepage_services_parragraph_web',
+    description: 'homepage_services_parragraph_web',
+    bgColor: '#99E4D3',
+    accentColor: '#00BC92',
+    buttonText: 'btn_learnMore',
+    textColor: '#005E49',
   },
   {
     title: 'homepage_services_title_marketing',
-    parragraph: 'homepage_services_parragraph_marketing',
+    description: 'homepage_services_parragraph_marketing',
+    bgColor: '#F7FFBF',
+    accentColor: '#B5BF6F',
+    buttonText: 'btn_learnMore',
+    textColor: '#005E49',
   },
   {
     title: 'homepage_services_title_brand',
-    parragraph: 'homepage_services_parragraph_brand',
+    description: 'homepage_services_parragraph_brand',
+    bgColor: '#ECEDEE',
+    accentColor: '#AAACAE',
+    buttonText: 'btn_learnMore',
+    textColor: '#005E49',
   },
 ];

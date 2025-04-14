@@ -18,6 +18,7 @@ import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import ServicesCard from '@/components/Molecules/ServiceCard';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
+import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import { services } from '../utils/constants/index';
 import DecorativeBar from '../components/Atoms/Svg/DecorativeBar/DecorativeBar';
 
@@ -77,141 +78,141 @@ export const Home = ({
       ) : (
         <>
           <section className="w-full">
-            <article className="relative py-12 2xl:container 2xl:mx-auto">
-              <div className="container items-center p-6 mx-auto lg:p-0 lg:flex">
-                <div className="relative lg:w-3/4">
-                  <div className="absolute w-1/4 h-full bg-ea-amarillo" />
-                  <h1 className="relative w-11/12 py-24 mx-auto text-5xl uppercase lg:w-3/4 display-font lg:text-8xl text-verde-oscuro-500 fadeInLeft">
+            <article className="relative pb-32">
+              <div className="relative z-30 items-center p-6 mx-auto 2xl:container 2xl:mx-auto lg:p-0 lg:flex">
+                <div className="relative 2xl:mx-auto lg:w-3/4">
+                  <div className="absolute w-1/3 h-full md:w-2/12 bg-ea-amarillo" />
+                  <h1 className="relative w-11/12 pt-20 pb-12 pl-12 text-5xl md:w-3/5 display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
                     {t('hero_title')}
                   </h1>
-                </div>
-                <div className="lg:w-1/2 mb-28">
-                  <video
-                    className="w-full mb-8 bg-white border-2 border-white aspect-video"
-                    src=""
-                    autoPlay
-                    loop
-                    muted
-                  >
-                    Tu navegador no soporta el elemento de video.
-                  </video>
-                  <p className="w-3/5 text-lg font-medium fadeIn">
+                  <p className="absolute right-0 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 -bottom-8 lg:text-lg fadeIn">
                     {t('hero_parragraph')}
                   </p>
                 </div>
               </div>
-              <div className="absolute bottom-0 right-0 hidden lg:block text-verde-oscuro-300">
+              <div className="absolute right-0 hidden -bottom-4 lg:block text-verde-oscuro-300">
                 <DecorativeBar />
+              </div>
+              <div className="absolute z-10 w-full mx-auto -bottom-28 md:-bottom-48 lg:hidden text-gray-50">
+                <CircleWhite />
               </div>
             </article>
           </section>
 
-          <section className="w-full px-4 bg-verde-oscuro-500">
-            <article className="container items-center justify-between py-32 mx-auto lg:flex">
+          <section className="w-full px-6 bg-verde-oscuro-500">
+            <article className="items-center gap-6 py-32 mx-auto 2xl:container lg:flex">
               <ContentBlockImage
                 brandLogoColor="text-ea-verde"
                 title={t('homepage_content_section_title-1')}
-                titleClass="text-ea-amarillo display-font"
+                titleClass="font-semibold text-ea-amarillo display-font w-11/12 text-balance md:text-pretty"
                 subtitle={t('homepage_content_section_subtitle-1')}
-                subtitleClass="display-font text-white text-3xl"
+                subtitleClass="display-font font-semibold text-white text-2xl md:text-3xl"
                 btnLabel={t('lets_talk')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
                 rtl={false}
                 onClick={() => setShowModal(true)}
                 content={t('homepage_content_section_parragraph-1')}
-                contentClass="text-white"
+                contentClass="text-white w-3/4"
               >
-                <CircleWhite />
+                <div className="hidden w-11/12 ml-auto lg:block">
+                  <CircleWhite />
+                </div>
               </ContentBlockImage>
             </article>
           </section>
 
-          <section className="w-full bg-gray-200 lg:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-left-top">
-            <article className="relative px-4 py-32 overflow-hidden 2xl:container 2xl:mx-auto">
-              <div className="container relative z-20 p-6 mx-auto lg:p-0">
-                <h1 className="ml-6 text-5xl display-font lg:text-4xl text-verde-oscuro-500">
-                  {t('homepage_services_section_title')}
-                </h1>
-                <div className="gap-12 my-10 lg:flex">
-                  {services.map((service) => (
-                    <div className="w-full p-6 lg:w-1/3" key={service.title}>
-                      <ServicesCard
-                        title={service.title}
-                        services={service.parragraph}
-                      />
-                    </div>
-                  ))}
+          <section className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-right-top md:bg-left-top">
+            <article className="relative py-16 overflow-hidden lg:py-32 2xl:container 2xl:mx-auto">
+              <div className="relative w-full mx-auto md:w-11/12 lg:p-0">
+                <div className="w-5/6 mr-auto lg:w-11/12 lg:mx-auto">
+                  <div>
+                    <h1 className="mb-2 text-5xl md:mb-6 lg:text-6xl display-font text-ea-verde-900">
+                      {t('homepage_services_section_title')}
+                    </h1>
+                    <Link
+                      href="/servicios"
+                      className="text-sm font-medium uppercase border-2 btn btn-secondary text-ea-verde-900 border-ea-verde-900"
+                    >
+                      {t('more_services')}
+                    </Link>
+                  </div>
+                  <div className="gap-12 my-10 lg:flex">
+                    {services.map((service) => (
+                      <div className="w-full mb-8 lg:mb-0" key={service.title}>
+                        <ServicesCard
+                          title={service.title}
+                          description={service.description}
+                          bgColor={service.bgColor}
+                          accentColor={service.accentColor}
+                          textColor={service.textColor}
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <Link
-                  href="/servicios"
-                  className="ml-6 text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
-                >
-                  {t('more_services')}
-                </Link>
               </div>
             </article>
           </section>
 
-          <section className="w-full px-4 ">
-            <article className="container py-24 mx-auto">
-              <h1 className="mb-10 text-5xl display-font lg:text-4xl text-verde-oscuro-500">
+          <section className="w-full py-20 bg-gray-50">
+            <article className="container max-w-screen-xl px-4 mx-auto my-10">
+              <h1 className="mb-10 text-5xl text-center display-font lg:text-4xl text-ea-verde-900">
                 {t('homepage_trust_section_title')}
               </h1>
-              <div className="grid items-center grid-cols-2 gap-8 py-12 lg:grid-cols-4">
-                {imagesLogos.map((item, index) => (
-                  <Image
-                    key={item.path}
-                    src={item.path}
-                    alt={`Logo ${index}`}
-                    className="object-contain h-16 mx-auto mb-4 max-w-40"
-                    width={150}
-                    height={64}
-                  />
+              <ul className="flex flex-col flex-wrap items-center justify-center w-full lg:flex-row">
+                {imagesLogos.map((item) => (
+                  <li className="w-1/2 p-12 lg:w-3/12" key={item.path}>
+                    <Image
+                      key={item.path}
+                      src={item.path}
+                      alt={`Logo ${item.path}`}
+                      width={300}
+                      height={120}
+                      priority
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        maxHeight: '120px',
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </article>
           </section>
 
-          <section className="w-full px-4 mb-12">
-            <article className="container py-12 mx-auto lg:flex">
-              <div className="mb-8 lg:w-1/2 lg:mb-0">
-                <h1 className="w-11/12 text-5xl font-semibold text-right lg:w-2/3 display-font md:text-6xl text-verde-oscuro-500 lg:py-24">
+          <section className="w-full px-6 mb-12">
+            <article className="items-center py-16 overflow-hidden lg:flex lg:py-32 lg:container lg:mx-auto">
+              <div className="mr-auto lg:w-1/3">
+                <h1 className="w-11/12 text-4xl font-semibold text-left md:text-right display-font md:text-6xl text-ea-verde-900 lg:py-24">
                   {t('homepage_testimonials_section_title')}
                 </h1>
               </div>
-              <Testimonials testimonials={content.testimonials} />
-            </article>
-          </section>
-
-          <section className="w-full pl-4 overflow-hidden bg-verde-oscuro-500">
-            <article className="relative py-32 2xl:container 2xl:mx-auto">
-              <div className="container items-center p-6 mx-auto lg:p-0 lg:flex">
-                <ContentBlockImage
-                  title={t('homepage_content_section_title-2')}
-                  titleClass="text-white"
-                  subtitle={t('homepage_content_section_subtitle-2')}
-                  subtitleClass="text-ea-amarillo text-3xl"
-                  content={t('homepage_content_section_parragraph-2')}
-                  contentClass="text-white"
-                  btnLabel={t('wanna_know_more')}
-                  btnClass="text-ea-amarillo border-ea-amarillo"
-                  onClick={() => setShowModal(true)}
-                  rtl
-                >
-                  <div className="absolute top-0 right-0 hidden text-white lg:block">
-                    <Image
-                      src="/green_curves.png"
-                      alt="curvas verdes"
-                      width={600}
-                      height={1000}
-                    />
-                  </div>
-                </ContentBlockImage>
+              <div>
+                <Testimonials testimonials={content.testimonials} />
               </div>
             </article>
           </section>
 
-          <section className="w-full px-4 bg-gray-100">
+          <section className="w-full px-6 overflow-hidden md:px-0 bg-verde-oscuro-500">
+            <article className="md:bg-[url('/tabletWave.png')] xl:bg-[url('/desktopWave.png')] bg-contain bg-no-repeat bg-bottom md:bg-right-top relative items-center py-32 mx-auto 2xl:container md:flex ">
+              <ContentBlockImage
+                title={t('homepage_content_section_title-2')}
+                titleClass="text-white text-right font-semibold"
+                subtitle={t('homepage_content_section_subtitle-2')}
+                subtitleClass="text-ea-amarillo font-bold text-2xl md:text-3xl text-right"
+                content={t('homepage_content_section_parragraph-2')}
+                contentClass="text-white text-right text-base font-medium"
+                btnLabel={t('wanna_know_more')}
+                btnClass="text-ea-amarillo border-ea-amarillo ml-auto mr-0"
+                onClick={() => setShowModal(true)}
+                rtl
+              />
+            </article>
+          </section>
+
+          <section className="w-full px-6 bg-gray-100">
             <article className="container py-12 mx-auto lg:w-3/5">
               <h1 className="mb-10 text-5xl display-font lg:text-4xl text-verde-oscuro-500">
                 {t('homepage_projects_section_title')}
@@ -245,27 +246,34 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full px-4 bg-ea-verde-900">
-            <article className="container items-center justify-between py-32 mx-auto lg:flex">
+          <section className="w-full px-6 bg-ea-verde-900">
+            <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
               <ContentBlockImage
                 title={t('homepage_content_section_title-3')}
-                titleClass="text-white"
+                titleClass="text-white font-semibold"
                 subtitle={t('homepage_content_section_subtitle-3')}
-                subtitleClass="text-ea-amarillo text-3xl"
+                subtitleClass="text-ea-amarillo text-2xl md:text-4xl font-bold md:font-medium"
                 content={t('homepage_content_section_parragraph-3')}
-                contentClass="text-white"
+                contentClass="text-white text-base md:text-3xl font-medium"
                 btnLabel={t('homepage_contact_us')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
                 onClick={() => setShowModal(true)}
                 rtl={false}
               >
-                <GeometricShape />
+                <div className="w-11/12 mx-auto mt-8 lg:mt-0 lg:ml-auto">
+                  <div className="hidden lg:block">
+                    <GeometricShape />
+                  </div>
+                  <div className="flex justify-center lg:hidden">
+                    <MobileGeometricShape />
+                  </div>
+                </div>
               </ContentBlockImage>
             </article>
           </section>
 
-          <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
-            <article className="container items-center justify-between py-32 mx-auto lg:flex">
+          {/*           <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
+            <article className="items-center py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
               <ContentBlockImage
                 title={t('homepage_talkUs_form_title')}
                 titleClass="text-ea-verde-300"
@@ -280,12 +288,12 @@ export const Home = ({
                   />
                 }
               >
-                <div className="absolute top-0 left-0 hidden w-2/5 h-full bg-ea-verde-300 text-ea-verde-400 lg:block">
+                <div className="absolute top-0 left-0 hidden bg-ea-verde-300 text-ea-verde-400 lg:block">
                   <CircleCurves />
                 </div>
               </ContentBlockImage>
             </article>
-          </section>
+          </section> */}
 
           {/* 
           <section className="w-full px-4">
@@ -329,7 +337,7 @@ export const Home = ({
           </section> */}
           <Modal
             showModal={showModal}
-            size="lg"
+            size="xl"
             onClick={() => setShowModal(false)}
             bgColor="bg-ea-verde-400"
             noPadding
