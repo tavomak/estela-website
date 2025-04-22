@@ -145,6 +145,7 @@ export const Home = ({
                           bgColor={service.bgColor}
                           accentColor={service.accentColor}
                           textColor={service.textColor}
+                          buttonText="saber más"
                         />
                       </div>
                     ))}

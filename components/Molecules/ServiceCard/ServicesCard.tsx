@@ -9,10 +9,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   bgColor,
   accentColor,
   textColor = '#005E49',
-  buttonText = 'saber más',
+  buttonText,
 }) => {
   const { t } = useTranslation('common');
-  // const isArray = Array.isArray(description);
+  const isArray = Array.isArray(description);
 
   return (
     <div className="relative w-full h-full lg:max-w-[340px]">
@@ -22,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       />
 
       <div
-        className="relative flex flex-col w-full h-full p-8 pb-16"
+        className="relative flex flex-col w-full h-full p-8 2xl:p-10 md:pb-16"
         style={{ backgroundColor: bgColor }}
       >
         <h2
@@ -32,31 +32,44 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           {t(title)}
         </h2>
         <div
-          className="w-1/2 h-px mb-6"
+          className={`${isArray ? 'w-full' : 'w-1/2'} h-px mb-6`}
           style={{ backgroundColor: textColor }}
         />
-        <div
-          className="flex-grow mb-4 text-xs font-medium lg:mb-10 md:text-lg"
-          style={{ color: textColor }}
-        >
-          {t(description)}
-        </div>
-
-        <div className="absolute flex items-center gap-2 order bottom-8 right-8 lg:left-8">
-          <span
-            className="order-2 text-xs font-semibold lowercase lg:order-1 lg:uppercase lg:text-sm lg:font-medium"
+        {isArray ? (
+          <ul
+            className="w-5/6 mx-auto text-xs list-disc md:text-lg"
             style={{ color: textColor }}
           >
-            {t(buttonText)}
-          </span>
-          <button
-            type="button"
-            className="flex items-center justify-center order-1 w-8 h-8 text-xs rounded-full md:text-sm lg:order-2 bg-ea-verde-900 text-ea-amarillo"
-            aria-label={t(buttonText)}
+            {description.map((content) => (
+              <li key={content}>{content}</li>
+            ))}
+          </ul>
+        ) : (
+          <div
+            className="flex-grow mb-4 text-xs font-medium lg:mb-10 md:text-lg"
+            style={{ color: textColor }}
           >
-            <DiagonalArrow />
-          </button>
-        </div>
+            {t(description)}
+          </div>
+        )}
+
+        {buttonText && (
+          <div className="absolute flex items-center gap-2 order bottom-8 right-8 lg:left-8">
+            <span
+              className="order-2 text-xs font-semibold lowercase lg:order-1 lg:uppercase lg:text-sm lg:font-medium"
+              style={{ color: textColor }}
+            >
+              {t(buttonText)}
+            </span>
+            <button
+              type="button"
+              className="flex items-center justify-center order-1 w-8 h-8 text-xs rounded-full md:text-sm lg:order-2 bg-ea-verde-900 text-ea-amarillo"
+              aria-label={t(buttonText)}
+            >
+              <DiagonalArrow />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

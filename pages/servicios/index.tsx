@@ -6,9 +6,9 @@ import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useState } from 'react';
-import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
+import Link from 'next/link';
 import CircleGreen from '../../components/Atoms/Svg/CircleGreen/CircleGreen';
 
 export const Services = () => {
@@ -55,49 +55,84 @@ export const Services = () => {
       title="Servicios"
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
-      <section className="w-full px-4 overflow-hidden bg-ea-verde-400">
-        <article className="container items-center justify-between py-32 mx-auto lg:flex">
+      <section className="w-full px-6 bg-ea-verde-400">
+        <article className="items-center gap-6 py-32 mx-auto text-6xl 2xl:container lg:flex">
           <ContentBlockImage
             title={t('service_content_section_title-1')}
-            titleClass="text-ea-amarillo"
+            titleClass="font-semibold text-ea-amarillo w-11/12 text-pretty"
             subtitle={t('service_content_section_subtitle-1')}
-            subtitleClass="text-white text-3xl"
+            subtitleClass="font-medium text-white text-base md:text-3xl w-11/12"
             content={t('service_content_section_parragraph-1')}
-            contentClass="text-ea-amarillo"
+            contentClass="text-ea-verde-300 font-normal text-xs md:text-lg w-11/12 text-pretty"
             rtl={false}
           >
-            <SquaresCircle />
+            <div className="hidden w-11/12 ml-auto lg:block">
+              <SquaresCircle />
+            </div>
           </ContentBlockImage>
         </article>
       </section>
 
       <section className="w-full bg-gray-100">
-        <article className="relative px-4 py-32 overflow-hidden 2xl:container 2xl:mx-auto">
-          <div className="container p-6 mx-auto lg:p-0">
-            <div className="gap-12 my-10 lg:flex">
-              <div className="w-full lg:w-2/5">
-                <h1 className="mb-6 text-5xl font-semibold text-balance display-font lg:text-6xl text-verde-oscuro-500">
-                  Desarrollo & Diseño web
-                </h1>
-                <p className="text-3xl text-verde-oscuro-500">
-                  Llevamos tu sitio web a otro nivel. Nos enfocamos en la
-                  experiencia de usuario, un diseño consistente y un contenido
-                  claro, conciso y atractivo.
-                </p>
+        <article className="relative px-6 lg:py-32 2xl:container 2xl:mx-auto">
+          <div className="w-11/12 mr-auto md:mx-auto">
+            <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
+              <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
+                <div className="w-full lg:w-3/4">
+                  <h1 className="text-4xl font-semibold text-balance display-font md:text-6xl text-ea-verde-900">
+                    Desarrollo & Diseño web
+                  </h1>
+                  <Link
+                    href="/servicios"
+                    className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
+                  >
+                    {t('more_services')}
+                  </Link>
+                </div>
+                <div>
+                  <p className="text-base font-medium 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+                    Llevamos tu sitio web a otro nivel. Nos enfocamos en la
+                    experiencia de usuario, un diseño consistente y un contenido
+                    claro, conciso y atractivo.
+                  </p>
+                </div>
+                <Link
+                  href="/servicios"
+                  className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
+                >
+                  {t('more_services')}
+                </Link>
               </div>
-              <div className="gap-12 my-10 lg:flex">
-                <ServiceCard title="Desarrollo web" services={DevServices} />
-                <ServiceCard title="Diseño web" services={services} />
+              <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
+                <ServiceCard
+                  title="Desarrollo web"
+                  description={DevServices}
+                  bgColor="#99E4D3"
+                  accentColor="#00BC92"
+                />
+                <ServiceCard
+                  title="Diseño web"
+                  description={services}
+                  bgColor="#F7FFBF"
+                  accentColor="#B5BF6F"
+                />
               </div>
             </div>
           </div>
         </article>
       </section>
 
-      <section className="w-full bg-gray-200">
+      <section className="w-full">
         <article className="container relative px-4 py-32 mx-auto">
           <div className="p-6 lg:p-0">
-            <div className="flex-row-reverse gap-12 my-10 lg:flex">
+            <div className="gap-12 my-10 lg:flex">
+              <Image
+                src="/Square4Col.png"
+                width={580}
+                height={520}
+                alt="Square4Col"
+                className="object-contain aspect-square"
+              />
               <div className="w-full lg:w-1/2">
                 <h1 className="mb-6 text-5xl font-semibold display-font lg:text-6xl text-verde-oscuro-500">
                   Estructuramos y planificamos estrategias
@@ -108,13 +143,13 @@ export const Services = () => {
                   la comunicación digital.
                 </p>
               </div>
-              <div className="mx-auto lg:w-1/4 md:flex">
-                <ServiceCard
-                  bgWhite
-                  title="Desarrollos digitales"
-                  services="El sitio web, actualizamos y estructuramos los diseños y contenidos, ejecutamos las campañas e integramos todos los procesos."
-                />
-              </div>
+              <div className="mx-auto lg:w-1/4 md:flex" />
+              <ServiceCard
+                title="Implementamos desarrollos digitales"
+                description="Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital."
+                bgColor="#ECEDEE"
+                accentColor="#AAACAE"
+              />
             </div>
           </div>
           <Image
@@ -127,7 +162,7 @@ export const Services = () => {
         </article>
       </section>
 
-      <section className="w-full bg-white">
+      <section className="w-full bg-gray-200">
         <article className="container relative px-4 py-32 mx-auto">
           <div className="p-6 lg:p-0">
             <div className="gap-12 my-10 lg:flex">
@@ -144,17 +179,24 @@ export const Services = () => {
               <div className="gap-12 my-10 lg:w-1/2 lg:flex">
                 <ServiceCard
                   title="Content marketing"
-                  services={ContentMarketing}
+                  description={ContentMarketing}
+                  bgColor="#99E4D3"
+                  accentColor="#00BC92"
                 />
-                <ServiceCard title="Paid media" services={PaidMedia} />
+                <ServiceCard
+                  title="Paid media"
+                  description={PaidMedia}
+                  bgColor="#F7FFBF"
+                  accentColor="#B5BF6F"
+                />
               </div>
             </div>
           </div>
         </article>
       </section>
 
-      <section className="w-full bg-gray-100">
-        <article className="container relative px-4 py-32 mx-auto">
+      <section className="relative w-full bg-gray-100">
+        <article className="container px-4 py-32 mx-auto">
           <div className="p-6 lg:p-0">
             <div className="items-start gap-12 my-10 mr-auto lg:w-2/3 lg:flex">
               <div className="w-full mr-auto lg:w-3/4">
@@ -172,15 +214,21 @@ export const Services = () => {
               </div>
               <div className="mx-auto lg:w-2/5 md:flex">
                 <ServiceCard
-                  bgWhite
                   title="Desarrollo de imagen"
-                  services={DesarrolloImagen}
+                  description={DesarrolloImagen}
+                  bgColor="#ECEDEE"
+                  accentColor="#AAACAE"
                 />
               </div>
             </div>
           </div>
-          <div className="absolute top-0 z-10 hidden w-1/2 -rotate-180 lg:block -right-80 text-verde-oscuro-200">
-            <CircleWhite />
+          <div className="absolute bottom-0 left-0 z-10 hidden md:block xl:hidden ">
+            <Image
+              src="/SunLines.png"
+              height={400}
+              width={660}
+              alt="Sun Lines"
+            />
           </div>
         </article>
       </section>
