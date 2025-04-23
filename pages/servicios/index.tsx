@@ -11,7 +11,6 @@ import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
 import Link from 'next/link';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
-import CircleGreen from '../../components/Atoms/Svg/CircleGreen/CircleGreen';
 
 export const Services = () => {
   const [showModal, setShowModal] = useState(false);
@@ -111,14 +110,14 @@ export const Services = () => {
                   description={DevServices}
                   bgColor="#99E4D3"
                   accentColor="#00BC92"
-                  containerClass="md:mb-10"
+                  containerClass="md:pb-10"
                 />
                 <ServiceCard
                   title="Diseño web"
                   description={services}
                   bgColor="#F7FFBF"
                   accentColor="#B5BF6F"
-                  containerClass="md:mb-10"
+                  containerClass="md:pb-20"
                 />
               </div>
             </div>
@@ -220,20 +219,20 @@ export const Services = () => {
                   {t('more_services')}
                 </Link>
               </div>
-              <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
+              <div className="gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
                 <ServiceCard
                   title="Content marketing"
                   description={ContentMarketing}
                   bgColor="#99E4D3"
                   accentColor="#00BC92"
-                  containerClass="md:mb-20"
+                  containerClass="md:pb-20"
                 />
                 <ServiceCard
                   title="Paid media"
                   description={PaidMedia}
                   bgColor="#F7FFBF"
                   accentColor="#B5BF6F"
-                  containerClass="md:mb-20"
+                  containerClass="md:pb-28"
                 />
               </div>
             </div>
@@ -278,7 +277,7 @@ export const Services = () => {
                   description={DesarrolloImagen}
                   bgColor="#ECEDEE"
                   accentColor="#AAACAE"
-                  containerClass="md:mb-20"
+                  containerClass="md:pb-20"
                 />
               </div>
             </div>
@@ -286,24 +285,39 @@ export const Services = () => {
         </article>
       </section>
 
-      <section className="w-full px-4 overflow-hidden bg-ea-verde-400">
-        <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
+      <section className="relative w-full overflow-hidden bg-ea-verde-400">
+        <div className="absolute hidden w-1/2 transform -translate-y-1/2 md:block -left-40 top-1/2">
+          <Image
+            src="/circleGreen.png"
+            width={1020}
+            height={1020}
+            alt="Circle Curves"
+            className=""
+          />
+        </div>
+
+        <div className="absolute bottom-0 transform translate-x-1/2 right-1/2 md:hidden">
+          <Image
+            src="/mobileCircleGreen.png"
+            width={600}
+            height={300}
+            alt="Circle Curves"
+            className="w-full mx-auto"
+          />
+        </div>
+        <article className="px-4 py-32 mx-auto 2xl:container md:flex">
           <ContentBlockImage
             title="Planes de mantención"
-            titleClass="text-ea-verde-500"
+            titleClass="text-ea-verde-500 font-semibold lg:!text-8xl"
             subtitle="Continuamos permanentemente evaluando y proponiendo mejoras en la presencia digital."
-            subtitleClass="text-white text-3xl"
+            subtitleClass="text-white font-medium text-base lg:text-3xl w-5/6 mr-auto text-balance"
             content="Por un fee mensual, nos convertimos en aliados comunicacionales de tu empresa. Participando proactivamente en los procesos de estructuración y planificación del contenido, análisis, rediseños y generación de elementos gráficos para mantener con vitalidad tu presencia digital."
-            contentClass="text-ea-verde-500"
+            contentClass="text-ea-verde-200 text-base font-medium lg:text-3xl w-5/6 mr-auto text-balance"
             btnLabel="Quiero saber más"
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={() => setShowModal(true)}
             rtl={false}
-          >
-            <div className="absolute top-0 hidden lg:block -left-80 2xl:-left-10 text-ea-verde-500">
-              <CircleGreen />
-            </div>
-          </ContentBlockImage>
+          />
         </article>
       </section>
 

@@ -19,7 +19,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
   brandLogoColor,
 }) => (
   <>
-    <div className={`w-full space-y-4 ${rtl ? 'order-1' : 'order-2'}`}>
+    <div className={`w-full  space-y-4 ${rtl ? 'order-1' : 'order-2'}`}>
       {brandLogoColor && (
         <div className={`w-full max-w-56 ${brandLogoColor}`}>
           <BrandLogoHorizontal />

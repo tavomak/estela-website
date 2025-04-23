@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const isArray = Array.isArray(description);
 
   return (
-    <div className="relative w-full lg:max-w-96">
+    <div className="relative w-full h-full lg:max-w-96">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3"
         style={{ backgroundColor: accentColor }}

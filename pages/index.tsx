@@ -145,6 +145,7 @@ export const Home = ({
                           bgColor={service.bgColor}
                           accentColor={service.accentColor}
                           textColor={service.textColor}
+                          containerClass="pb-16 lg:pb-8"
                           buttonText="saber más"
                         />
                       </div>
@@ -251,7 +252,7 @@ export const Home = ({
             <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
               <ContentBlockImage
                 title={t('homepage_content_section_title-3')}
-                titleClass="text-ea-verde-500 font-semibold 2xl:text-8xl"
+                titleClass="text-white font-semibold"
                 subtitle={t('homepage_content_section_subtitle-3')}
                 subtitleClass="text-ea-amarillo text-2xl md:text-4xl font-bold md:font-medium"
                 content={t('homepage_content_section_parragraph-3')}
