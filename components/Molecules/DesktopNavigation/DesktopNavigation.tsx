@@ -25,7 +25,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
             <li key={item.label}>
               <Link
                 href={item.path}
-                className={`block tracking-widest text-xs font-semibold text-neutral-600 uppercase ${itemActive(item.path) ? 'border-b-2 border-ea-verde' : ''}`}
+                className={`block tracking-widest text-xs font-semibold text-neutral-600 uppercase ${itemActive(item.path) ? 'border-b-2 border-ea-verde-500' : ''}`}
               >
                 {t(item.label)}
               </Link>

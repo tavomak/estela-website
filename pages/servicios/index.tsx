@@ -9,6 +9,8 @@ import { useState } from 'react';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
 import Link from 'next/link';
+import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
+import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import CircleGreen from '../../components/Atoms/Svg/CircleGreen/CircleGreen';
 
 export const Services = () => {
@@ -55,7 +57,7 @@ export const Services = () => {
       title="Servicios"
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
-      <section className="w-full px-6 bg-ea-verde-400">
+      <section className="w-full px-4 bg-ea-verde-400">
         <article className="items-center gap-6 py-32 mx-auto text-6xl 2xl:container lg:flex">
           <ContentBlockImage
             title={t('service_content_section_title-1')}
@@ -74,7 +76,7 @@ export const Services = () => {
       </section>
 
       <section className="w-full bg-gray-100">
-        <article className="relative px-6 lg:py-32 2xl:container 2xl:mx-auto">
+        <article className="relative px-4 lg:py-32 2xl:container 2xl:mx-auto">
           <div className="w-11/12 mr-auto md:mx-auto">
             <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
@@ -109,12 +111,14 @@ export const Services = () => {
                   description={DevServices}
                   bgColor="#99E4D3"
                   accentColor="#00BC92"
+                  containerClass="md:mb-10"
                 />
                 <ServiceCard
                   title="Diseño web"
                   description={services}
                   bgColor="#F7FFBF"
                   accentColor="#B5BF6F"
+                  containerClass="md:mb-10"
                 />
               </div>
             </div>
@@ -123,71 +127,63 @@ export const Services = () => {
       </section>
 
       <section className="w-full">
-        <article className="container relative px-4 py-32 mx-auto">
-          <div className="p-6 lg:p-0">
-            <div className="gap-12 my-10 lg:flex">
-              <Image
-                src="/Square4Col.png"
-                width={580}
-                height={520}
-                alt="Square4Col"
-                className="object-contain aspect-square"
-              />
-              <div className="w-full lg:w-1/2">
-                <h1 className="mb-6 text-5xl font-semibold display-font lg:text-6xl text-verde-oscuro-500">
+        <article className="relative px-4 mx-auto lg:py-32">
+          <div className="w-11/12 mr-auto md:mx-auto">
+            <div className="w-full gap-12 mx-auto my-10 2xl:items-center 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
+              <div className="2xl:w-1/4">
+                <Image
+                  src="/Square4Col.png"
+                  width={590}
+                  height={520}
+                  alt="Square4Col"
+                  className="hidden ml-auto mr-20 2xl:block"
+                />
+              </div>
+              <div className="w-full lg:w-1/2 2xl:w-1/4">
+                <h1 className="mb-2 text-4xl font-semibold lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Estructuramos y planificamos estrategias
                 </h1>
-                <p className="text-3xl text-verde-oscuro-500">
+                <p className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
                   Desarrollamos una estrategia comunicacional consistente con un
                   plan de contenidos y una guía de diseño integradas para toda
                   la comunicación digital.
                 </p>
+                <Link
+                  href="/servicios"
+                  className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
+                >
+                  {t('more_services')}
+                </Link>
               </div>
-              <div className="mx-auto lg:w-1/4 md:flex" />
-              <ServiceCard
-                title="Implementamos desarrollos digitales"
-                description="Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital."
-                bgColor="#ECEDEE"
-                accentColor="#AAACAE"
-              />
-            </div>
-          </div>
-          <Image
-            src="/green-bar.png"
-            alt="Barra verde"
-            width={829}
-            height={67}
-            className="absolute left-0 z-10 w-full -bottom-5 lg:w-96"
-          />
-        </article>
-      </section>
-
-      <section className="w-full bg-gray-200">
-        <article className="container relative px-4 py-32 mx-auto">
-          <div className="p-6 lg:p-0">
-            <div className="gap-12 my-10 lg:flex">
-              <div className="w-full lg:w-1/2">
-                <h1 className="mb-6 text-5xl font-semibold display-font lg:text-6xl">
-                  Marketing digital
-                </h1>
-
-                <p className="text-3xl text-verde-oscuro-500">
-                  Planificamos, diseñamos, ejecutamos y analizamos campañas de
-                  marketing desde una perspectiva 360.
-                </p>
-              </div>
-              <div className="gap-12 my-10 lg:w-1/2 lg:flex">
-                <ServiceCard
-                  title="Content marketing"
-                  description={ContentMarketing}
-                  bgColor="#99E4D3"
-                  accentColor="#00BC92"
+              <div className="lg:flex 2xl:w-1/4">
+                <div className="flex flex-col items-center">
+                  <ServiceCard
+                    title="Implementamos desarrollos digitales"
+                    description="Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital."
+                    bgColor="#ECEDEE"
+                    accentColor="#AAACAE"
+                  />
+                  <Image
+                    src="/Square2Col.png"
+                    width={463}
+                    height={116}
+                    alt="Square2Col"
+                    className="hidden mx-auto mt-8 lg:block 2xl:hidden"
+                  />
+                </div>
+                <Image
+                  src="/Square1Col.png"
+                  width={516}
+                  height={209}
+                  alt="Square1Col"
+                  className="mx-auto mt-8 sm:hidden"
                 />
-                <ServiceCard
-                  title="Paid media"
-                  description={PaidMedia}
-                  bgColor="#F7FFBF"
-                  accentColor="#B5BF6F"
+                <Image
+                  src="/Square2Col.png"
+                  width={463}
+                  height={116}
+                  alt="Square2Col"
+                  className="hidden mx-auto mt-8 sm:block lg:hidden"
                 />
               </div>
             </div>
@@ -196,45 +192,102 @@ export const Services = () => {
       </section>
 
       <section className="relative w-full bg-gray-100">
-        <article className="container px-4 py-32 mx-auto">
-          <div className="p-6 lg:p-0">
-            <div className="items-start gap-12 my-10 mr-auto lg:w-2/3 lg:flex">
-              <div className="w-full mr-auto lg:w-3/4">
-                <h1 className="mb-6 text-5xl font-semibold display-font lg:text-6xl">
+        <article className="relative px-4 lg:py-32 2xl:container 2xl:mx-auto">
+          <div className="w-11/12 mr-auto md:mx-auto">
+            <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
+              <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
+                <div className="w-full lg:w-3/4">
+                  <h1 className="text-4xl font-semibold text-balance display-font md:text-6xl text-ea-verde-900">
+                    Marketing digital
+                  </h1>
+                  <Link
+                    href="/servicios"
+                    className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
+                  >
+                    {t('more_services')}
+                  </Link>
+                </div>
+                <div>
+                  <p className="text-base font-medium 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+                    Planificamos, diseñamos, ejecutamos y analizamos campañas de
+                    marketing desde una perspectiva 360.
+                  </p>
+                </div>
+                <Link
+                  href="/servicios"
+                  className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
+                >
+                  {t('more_services')}
+                </Link>
+              </div>
+              <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
+                <ServiceCard
+                  title="Content marketing"
+                  description={ContentMarketing}
+                  bgColor="#99E4D3"
+                  accentColor="#00BC92"
+                  containerClass="md:mb-20"
+                />
+                <ServiceCard
+                  title="Paid media"
+                  description={PaidMedia}
+                  bgColor="#F7FFBF"
+                  accentColor="#B5BF6F"
+                  containerClass="md:mb-20"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-0 hidden -top-4 lg:block text-ea-verde-500">
+            <DecorativeBar />
+          </div>
+        </article>
+      </section>
+
+      <section className="relative w-full overflow-hidden">
+        <div className="absolute left-0 hidden -bottom-24 lg:block 2xl:hidden">
+          <Image src="/SunLines.png" width={660} height={400} alt="Sun Lines" />
+        </div>
+        <article className="relative px-4 mx-auto lg:py-32">
+          <div className="w-11/12 mr-auto md:mx-auto">
+            <div className="justify-center w-full gap-12 mx-auto my-10 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
+              <div className="hidden text-white 2xl:block 2xl:w-1/4">
+                <GeometricShape />
+              </div>
+              <div className="w-full lg:w-1/2 2xl:w-1/4">
+                <h1 className="mb-2 text-4xl font-semibold lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Identidad de marca
                 </h1>
-
-                <p className="text-3xl">
-                  Le damos un sentido estratégico al branding de tu empresa.
-                  <p className="mt-4">
-                    Creamos la imagen para tu empresa o te ayudamos a
-                    refrescarla y a darle un uso consistente en tu comunicación.
+                <p className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                  <p className="mb-4">
+                    Le damos un sentido estratégico al branding de tu empresa.
                   </p>
+                  Creamos la imagen para tu empresa o te ayudamos a refrescarla
+                  y a darle un uso consistente en tu comunicación.
                 </p>
+                <Link
+                  href="/servicios"
+                  className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
+                >
+                  {t('more_services')}
+                </Link>
               </div>
-              <div className="mx-auto lg:w-2/5 md:flex">
+              <div className="lg:flex 2xl:w-1/4">
                 <ServiceCard
                   title="Desarrollo de imagen"
                   description={DesarrolloImagen}
                   bgColor="#ECEDEE"
                   accentColor="#AAACAE"
+                  containerClass="md:mb-20"
                 />
               </div>
             </div>
-          </div>
-          <div className="absolute bottom-0 left-0 z-10 hidden md:block xl:hidden ">
-            <Image
-              src="/SunLines.png"
-              height={400}
-              width={660}
-              alt="Sun Lines"
-            />
           </div>
         </article>
       </section>
 
       <section className="w-full px-4 overflow-hidden bg-ea-verde-400">
-        <article className="container relative items-center justify-between py-32 mx-auto lg:flex">
+        <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
           <ContentBlockImage
             title="Planes de mantención"
             titleClass="text-ea-verde-500"

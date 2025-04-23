@@ -26,7 +26,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
         </div>
       )}
       <div className="w-full space-y-4 md:space-y-8">
-        <h1 className={`display-font text-4xl lg:text-6xl  ${titleClass}`}>
+        <h1 className={`display-font text-4xl lg:text-6xl ${titleClass}`}>
           {title}
         </h1>
         {subtitle && <h2 className={` ${subtitleClass}`}>{subtitle}</h2>}

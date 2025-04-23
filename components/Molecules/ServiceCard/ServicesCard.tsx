@@ -10,19 +10,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   accentColor,
   textColor = '#005E49',
   buttonText,
+  containerClass,
 }) => {
   const { t } = useTranslation('common');
   const isArray = Array.isArray(description);
 
   return (
-    <div className="relative w-full h-full lg:max-w-[340px]">
+    <div className="relative w-full lg:max-w-96">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3"
         style={{ backgroundColor: accentColor }}
       />
 
       <div
-        className="relative flex flex-col w-full h-full p-8 2xl:p-10 md:pb-16"
+        className={`relative flex flex-col w-full h-full p-8 ${containerClass}`}
         style={{ backgroundColor: bgColor }}
       >
         <h2
