@@ -257,13 +257,15 @@ export const Services = () => {
                 <h1 className="mb-2 text-4xl font-semibold lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Identidad de marca
                 </h1>
-                <p className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                <div className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
                   <p className="mb-4">
                     Le damos un sentido estratégico al branding de tu empresa.
                   </p>
-                  Creamos la imagen para tu empresa o te ayudamos a refrescarla
-                  y a darle un uso consistente en tu comunicación.
-                </p>
+                  <p>
+                    Creamos la imagen para tu empresa o te ayudamos a
+                    refrescarla y a darle un uso consistente en tu comunicación.
+                  </p>
+                </div>
                 <Link
                   href="/servicios"
                   className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
