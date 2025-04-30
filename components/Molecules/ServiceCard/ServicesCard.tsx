@@ -27,10 +27,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         style={{ backgroundColor: bgColor }}
       >
         <h2
-          className="mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
+          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
           style={{ color: textColor }}
         >
-          {t(title)}
+          {title}
         </h2>
         <div
           className={`${isArray ? 'w-full' : 'w-1/2'} h-px mb-6`}
@@ -47,7 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </ul>
         ) : (
           <div
-            className="flex-grow mb-4 text-xs font-medium lg:mb-10 md:text-lg"
+            className="flex-grow mb-4 text-xs font-normal lg:mb-10 md:text-lg"
             style={{ color: textColor }}
           >
             {t(description)}
@@ -55,7 +55,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
 
         {buttonText && (
-          <div className="absolute flex items-center gap-2 order bottom-8 right-8 lg:left-8">
+          <div className="flex items-center gap-2 mt-2 ml-auto lg:ml-0 md:mt-8">
             <span
               className="order-2 text-xs font-semibold lowercase lg:order-1 lg:uppercase lg:text-sm lg:font-medium"
               style={{ color: textColor }}

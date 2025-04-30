@@ -1,5 +1,7 @@
+import React from 'react';
+
 export interface ServiceCardProps {
-  title: string;
+  title: React.ReactNode;
   containerClass?: string;
   description: string | string[];
   bgColor: string;

@@ -35,7 +35,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
       {btnLabel && (
         <aside className="flex pt-6">
           <button
-            className={`text-xs font-normal tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
+            className={`text-sm font-medium tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
             onClick={onClick}
             type="button"
           >

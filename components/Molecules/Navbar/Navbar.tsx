@@ -7,7 +7,7 @@ import DesktopNavigation from '../DesktopNavigation';
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
-  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const router = useRouter();
 
@@ -24,18 +24,19 @@ const Navbar = () => {
 
   useEffect(() => {
     let lastScrollTop = 0;
-    let scrollTimeout: ReturnType<typeof setTimeout>;
 
     const handleScroll = () => {
       const currentScrollTop = window.scrollY;
-      setIsScrollingDown(currentScrollTop > lastScrollTop);
+
+      if (currentScrollTop === 0) {
+        setIsVisible(true);
+      } else if (currentScrollTop > lastScrollTop) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+
       lastScrollTop = currentScrollTop;
-
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        setIsScrollingDown(false);
-      }, 500);
     };
 
     const handleResize = () => {
@@ -56,7 +57,7 @@ const Navbar = () => {
   return (
     <header
       className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 p-6 ${
-        isScrollingDown ? '-translate-y-full' : ''
+        isVisible ? '' : '-translate-y-full'
       }`}
     >
       {viewportWidth < 972 ? (

@@ -44,9 +44,19 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
 
   return (
     <aside>
-      <article className="py-8 lg:py-12 lg:px-8">
+      <article className="items-center gap-12 py-8 lg:flex">
+        <button
+          type="button"
+          className="items-center justify-center hidden w-10 h-10 text-xs bg-gray-200 rounded-full lg:flex text-verde-oscuro-200"
+          onClick={handlePrev}
+          aria-label="Previous testimonial"
+        >
+          <span className="rotate-180">
+            <ArrowNext />
+          </span>
+        </button>
         <div
-          className={`w-full relative h-full transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}
+          className={`w-11/12 lg:w-2/3 relative h-full transition-opacity duration-300 ${fade ? 'opacity-0' : 'opacity-100'}`}
         >
           <div
             className="absolute w-full h-full translate-x-3 translate-y-3"
@@ -54,44 +64,32 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           />
 
           <div
-            className="relative z-10 p-8 md:p-12 "
+            className="relative z-10 p-8 md:p-20"
             style={{ backgroundColor: colors.bg }}
           >
-            <div className="relative z-20 max-w-2xl text-ea-verde-900">
-              <p className="mb-6 text-xs font-medium md:text-3xl">
+            <div className="relative z-20 max-w-3xl text-ea-verde-900">
+              <p className="mb-6 text-xs font-normal md:font-light md:text-3xl">
                 {currentTestimonial.testimonialText}
               </p>
 
-              <p className="text-xs font-semibold md:text-3xl">
+              <p className="text-xs font-normal md:font-medium md:text-3xl">
                 {currentTestimonial?.highlightedQuote}
               </p>
             </div>
           </div>
         </div>
+
+        <button
+          type="button"
+          className="items-center justify-center hidden w-10 h-10 text-xs rounded-full lg:flex bg-ea-verde-900 text-ea-amarillo"
+          onClick={handleNext}
+          aria-label="Next testimonial"
+        >
+          <ArrowNext />
+        </button>
       </article>
       <div className="items-center md:flex">
-        <div className="items-center hidden gap-2 p-4 md:flex md:gap-4">
-          <button
-            type="button"
-            className="flex items-center justify-center w-10 h-10 text-xs bg-gray-200 rounded-full text-verde-oscuro-200"
-            onClick={handlePrev}
-            aria-label="Previous testimonial"
-          >
-            <span className="rotate-180">
-              <ArrowNext />
-            </span>
-          </button>
-
-          <button
-            type="button"
-            className="flex items-center justify-center w-10 h-10 text-xs rounded-full bg-ea-verde-900 text-ea-amarillo"
-            onClick={handleNext}
-            aria-label="Next testimonial"
-          >
-            <ArrowNext />
-          </button>
-        </div>
-        <div className="flex items-center">
+        <div className="flex items-center lg:pl-20">
           <div className="w-20 h-20 overflow-hidden rounded-full">
             {currentTestimonial.image?.url && (
               <Image
@@ -105,16 +103,16 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
           </div>
 
           <div className="px-4 text-verde-oscuro-500">
-            <h3 className="text-base font-medium md:text-3xl">
+            <h3 className="text-base font-light md:text-3xl">
               {currentTestimonial.autorName}
             </h3>
-            <p className="font-semibold text-gray-700 text-xxs md:text-lg">
+            <p className="font-normal text-gray-700 text-xxs md:text-lg">
               {currentTestimonial.autorRole}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 md:hidden md:gap-4">
+        <div className="flex items-center justify-around gap-2 mt-6 md:mt-0 md:hidden md:gap-4">
           <button
             type="button"
             className="flex items-center justify-center w-10 h-10 text-xs bg-gray-200 rounded-full text-verde-oscuro-200"

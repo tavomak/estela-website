@@ -1,11 +1,5 @@
 const SquaresCircle = () => (
-  <svg
-    width="551"
-    height="647"
-    viewBox="0 0 551 647"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width="450" height="500" viewBox="0 0 551 647" fill="none">
     <path
       d="M210.788 120.882L477.29 88L514.788 363.118L248.286 396L210.788 120.882Z"
       stroke="#00BC92"

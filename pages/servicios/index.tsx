@@ -1,16 +1,14 @@
+import { useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import FormContact from '@/components/Molecules/Forms/FormContact';
-
 import Layout from '@/components/Templates/Layout';
 import Modal from '@/components/Templates/Modal';
-import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/image';
-import { useState } from 'react';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
-import Link from 'next/link';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 
 export const Services = () => {
   const [showModal, setShowModal] = useState(false);
@@ -57,17 +55,17 @@ export const Services = () => {
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
       <section className="w-full px-4 bg-ea-verde-400">
-        <article className="items-center gap-6 py-32 mx-auto text-6xl 2xl:container lg:flex">
+        <article className="items-center gap-6 pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
           <ContentBlockImage
             title={t('service_content_section_title-1')}
-            titleClass="font-semibold text-ea-amarillo w-11/12 text-pretty"
+            titleClass="font-normal text-ea-amarillo w-11/12 text-pretty"
             subtitle={t('service_content_section_subtitle-1')}
-            subtitleClass="font-medium text-white text-base md:text-3xl w-11/12"
+            subtitleClass="font-light text-white text-base md:text-3xl w-11/12"
             content={t('service_content_section_parragraph-1')}
             contentClass="text-ea-verde-300 font-normal text-xs md:text-lg w-11/12 text-pretty"
             rtl={false}
           >
-            <div className="hidden w-11/12 ml-auto lg:block">
+            <div className="hidden ml-auto mr-16 w-fit lg:block">
               <SquaresCircle />
             </div>
           </ContentBlockImage>
@@ -80,7 +78,7 @@ export const Services = () => {
             <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
-                  <h1 className="text-4xl font-semibold text-balance display-font md:text-6xl text-ea-verde-900">
+                  <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
                     Desarrollo & Diseño web
                   </h1>
                   <Link
@@ -91,7 +89,7 @@ export const Services = () => {
                   </Link>
                 </div>
                 <div>
-                  <p className="text-base font-medium 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+                  <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
                     Llevamos tu sitio web a otro nivel. Nos enfocamos en la
                     experiencia de usuario, un diseño consistente y un contenido
                     claro, conciso y atractivo.
@@ -106,18 +104,18 @@ export const Services = () => {
               </div>
               <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
                 <ServiceCard
-                  title="Desarrollo web"
+                  title={<p className="2xl:w-3/4">Desarrollo web</p>}
                   description={DevServices}
                   bgColor="#99E4D3"
                   accentColor="#00BC92"
                   containerClass="md:pb-10"
                 />
                 <ServiceCard
-                  title="Diseño web"
+                  title={<p className="2xl:w-3/4">Diseño web</p>}
                   description={services}
                   bgColor="#F7FFBF"
                   accentColor="#B5BF6F"
-                  containerClass="md:pb-20"
+                  containerClass="md:pb-16"
                 />
               </div>
             </div>
@@ -129,7 +127,7 @@ export const Services = () => {
         <article className="relative px-4 mx-auto lg:py-32">
           <div className="w-11/12 mr-auto md:mx-auto">
             <div className="w-full gap-12 mx-auto my-10 2xl:items-center 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
-              <div className="2xl:w-1/4">
+              <div className="">
                 <Image
                   src="/Square4Col.png"
                   width={590}
@@ -138,11 +136,11 @@ export const Services = () => {
                   className="hidden ml-auto mr-20 2xl:block"
                 />
               </div>
-              <div className="w-full lg:w-1/2 2xl:w-1/4">
-                <h1 className="mb-2 text-4xl font-semibold lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
+              <div className="w-full lg:w-1/2">
+                <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Estructuramos y planificamos estrategias
                 </h1>
-                <p className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                <p className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
                   Desarrollamos una estrategia comunicacional consistente con un
                   plan de contenidos y una guía de diseño integradas para toda
                   la comunicación digital.
@@ -155,7 +153,7 @@ export const Services = () => {
                 </Link>
               </div>
               <div className="lg:flex 2xl:w-1/4">
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-end">
                   <ServiceCard
                     title="Implementamos desarrollos digitales"
                     description="Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital."
@@ -164,8 +162,8 @@ export const Services = () => {
                   />
                   <Image
                     src="/Square2Col.png"
-                    width={463}
-                    height={116}
+                    width={600}
+                    height={210}
                     alt="Square2Col"
                     className="hidden mx-auto mt-8 lg:block 2xl:hidden"
                   />
@@ -196,7 +194,7 @@ export const Services = () => {
             <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
-                  <h1 className="text-4xl font-semibold text-balance display-font md:text-6xl text-ea-verde-900">
+                  <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
                     Marketing digital
                   </h1>
                   <Link
@@ -207,7 +205,7 @@ export const Services = () => {
                   </Link>
                 </div>
                 <div>
-                  <p className="text-base font-medium 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+                  <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
                     Planificamos, diseñamos, ejecutamos y analizamos campañas de
                     marketing desde una perspectiva 360.
                   </p>
@@ -221,14 +219,14 @@ export const Services = () => {
               </div>
               <div className="gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
                 <ServiceCard
-                  title="Content marketing"
+                  title={<p className="lg:w-1/2">Content marketing</p>}
                   description={ContentMarketing}
                   bgColor="#99E4D3"
                   accentColor="#00BC92"
                   containerClass="md:pb-20"
                 />
                 <ServiceCard
-                  title="Paid media"
+                  title={<p className="lg:w-1/2">Paid media</p>}
                   description={PaidMedia}
                   bgColor="#F7FFBF"
                   accentColor="#B5BF6F"
@@ -245,19 +243,24 @@ export const Services = () => {
 
       <section className="relative w-full overflow-hidden">
         <div className="absolute left-0 hidden -bottom-24 lg:block 2xl:hidden">
-          <Image src="/SunLines.png" width={660} height={400} alt="Sun Lines" />
+          <Image
+            src="/SunLinesMobile.png"
+            width={660}
+            height={400}
+            alt="Sun Lines Mobile"
+          />
+        </div>
+        <div className="absolute bottom-0 left-0 hidden 2xl:block">
+          <Image src="/SunLines.png" width={792} height={480} alt="Sun Lines" />
         </div>
         <article className="relative px-4 mx-auto lg:py-32">
           <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="justify-center w-full gap-12 mx-auto my-10 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
-              <div className="hidden text-white 2xl:block 2xl:w-1/4">
-                <GeometricShape />
-              </div>
+            <div className="justify-center w-full gap-12 mx-auto my-10 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="w-full lg:w-1/2 2xl:w-1/4">
-                <h1 className="mb-2 text-4xl font-semibold lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
+                <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Identidad de marca
                 </h1>
-                <div className="text-base font-medium 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                <div className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
                   <p className="mb-4">
                     Le damos un sentido estratégico al branding de tu empresa.
                   </p>
@@ -287,34 +290,24 @@ export const Services = () => {
         </article>
       </section>
 
-      <section className="relative w-full overflow-hidden bg-ea-verde-400">
-        <div className="absolute hidden w-1/2 transform -translate-y-1/2 md:block -left-40 top-1/2">
+      <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
+        <div className="absolute w-11/12 transform sm:w-1/2 -bottom-60 sm:bottom-auto sm:-translate-y-1/2 sm:-left-40 sm:top-1/2">
           <Image
             src="/circleGreen.png"
             width={1020}
             height={1020}
             alt="Circle Curves"
-            className=""
+            className="object-cover"
           />
         </div>
-
-        <div className="absolute bottom-0 transform translate-x-1/2 right-1/2 md:hidden">
-          <Image
-            src="/mobileCircleGreen.png"
-            width={600}
-            height={300}
-            alt="Circle Curves"
-            className="w-full mx-auto"
-          />
-        </div>
-        <article className="px-4 py-32 mx-auto 2xl:container md:flex">
+        <article className="pt-16 pb-44 sm:py-32 sm:flex">
           <ContentBlockImage
             title="Planes de mantención"
             titleClass="text-ea-verde-500 font-semibold lg:!text-8xl"
             subtitle="Continuamos permanentemente evaluando y proponiendo mejoras en la presencia digital."
-            subtitleClass="text-white font-medium text-base lg:text-3xl w-5/6 mr-auto text-balance"
+            subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
             content="Por un fee mensual, nos convertimos en aliados comunicacionales de tu empresa. Participando proactivamente en los procesos de estructuración y planificación del contenido, análisis, rediseños y generación de elementos gráficos para mantener con vitalidad tu presencia digital."
-            contentClass="text-ea-verde-200 text-base font-medium lg:text-3xl w-5/6 mr-auto text-balance"
+            contentClass="text-ea-verde-200 text-base font-light lg:text-3xl w-5/6 mr-auto text-balance"
             btnLabel="Quiero saber más"
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={() => setShowModal(true)}

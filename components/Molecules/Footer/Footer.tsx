@@ -17,21 +17,23 @@ const Footer = () => {
   return (
     <footer className="bg-verde-oscuro-500">
       <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
-        <div className="w-full p-6 space-y-10">
+        <div className="w-full p-6 pt-24 space-y-10 md:py-24">
           <div>
-            <p className="text-sm text-white lg:text-lg">
+            <p className="text-sm text-ea-verde-200 lg:text-lg">
               {t('footer_lasting_bonds')}
             </p>
-            <h2 className="text-4xl text-white">{t('lets_talk')}</h2>
+            <h2 className="text-2xl font-medium lg:text-4xl text-ea-verde-200">
+              {t('lets_talk')}
+            </h2>
+            <a
+              href="!#"
+              onClick={(e) => handleClick(e)}
+              className="mt-6 text-xs font-medium tracking-widest uppercase md:text-sm btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
+              rel="noreferrer"
+            >
+              {t('contact_title')}
+            </a>
           </div>
-          <a
-            href="!#"
-            onClick={(e) => handleClick(e)}
-            className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
-            rel="noreferrer"
-          >
-            {t('contact_title')}
-          </a>
           <ul className="flex space-x-6 text-2xl text-white">
             <li>
               <a
@@ -54,13 +56,13 @@ const Footer = () => {
           </ul>
           <a
             href="/credenciales_2024.pdf"
-            className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde me-4"
+            className="text-xs font-bold tracking-widest uppercase md:font-medium md:text-sm btn btn-secondary text-ea-verde border-ea-verde me-4"
             target="_blank"
             rel="noreferrer"
           >
             {t('download_credentials')}
           </a>
-          <div className="block w-5/12 pt-2 text-xs text-white border-t lg:text-base lg:space-x-3 border-ea-verde">
+          <div className="block w-full pt-8 text-xs text-white border-t md:pt-2 md:w-1/2 lg:text-sm lg:space-x-3 border-ea-verde">
             <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
             <p className="inline">{t('footer_terms_conditions')}</p>
             <p className="block lg:inline">
