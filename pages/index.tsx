@@ -18,6 +18,9 @@ import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
+import Slider from 'react-slick';
+import { Testimonial } from '@/components/Molecules/Testimonial/types';
+import ArrowNext from '@/components/Atoms/Svg/ArrowNext';
 import { services, projects } from '../utils/constants/index';
 // import { FaEnvelope, FaDownload } from 'react-icons/fa';
 
@@ -64,6 +67,57 @@ export const Home = ({
   const { t } = useTranslation('common');
 
   const content = data?.homepage || [];
+
+  const sliderSettings = {
+    infinite: true,
+    speed: 1500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+    autoplay: true,
+    arrows: true,
+    pauseOnHover: true,
+    prevArrow: (
+      <button type="button" aria-label="Previous">
+        <span className="rotate-180">
+          <ArrowNext />
+        </span>
+      </button>
+    ),
+    nextArrow: (
+      <button type="button" aria-label="Next">
+        <ArrowNext />
+      </button>
+    ),
+  };
+
+  const mobileButtons = (
+    <div className="flex justify-center gap-16 mt-4 lg:hidden">
+      <button
+        type="button"
+        className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:hidden text-verde-oscuro-200"
+        aria-label="Previous"
+        onClick={() =>
+          (document.querySelector('.slick-prev') as HTMLElement)?.click()
+        }
+      >
+        <span className="rotate-180">
+          <ArrowNext />
+        </span>
+      </button>
+      <button
+        type="button"
+        className="flex items-center justify-center w-10 h-10 rounded-full md:hidden bg-ea-verde-900 text-ea-amarillo"
+        aria-label="Next"
+        onClick={() =>
+          (document.querySelector('.slick-next') as HTMLElement)?.click()
+        }
+      >
+        <ArrowNext />
+      </button>
+    </div>
+  );
+
   return (
     <Layout
       description="Diseñamos y desarrollamos servicios que faciliten a personas mostrarse, comunicarse y crecer haciendo uso de la tecnología y los medios digitales especialmente web"
@@ -111,7 +165,7 @@ export const Home = ({
                 rtl={false}
                 onClick={() => setShowModal(true)}
                 content={t('homepage_content_section_parragraph-1')}
-                contentClass="text-white font-light w-3/4"
+                contentClass="text-white w-3/4 text-base font-light text-pretty"
               >
                 <div className="hidden w-11/12 ml-auto lg:block">
                   <CircleWhite />
@@ -184,12 +238,32 @@ export const Home = ({
           </section>
 
           <section className="relative w-full px-6 mb-12">
-            <article className="py-16 mx-auto lg:py-32 lg:container">
-              <h1 className="w-3/4 text-4xl font-medium lg:pl-20 lg:w-1/2 display-font md:text-6xl text-ea-verde-900 lg:py-12">
-                {t('homepage_testimonials_section_title')}
+            <article className="container py-16 mx-auto">
+              <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-12">
+                {(() => {
+                  const words = t('homepage_testimonials_section_title').split(
+                    ' '
+                  );
+                  return (
+                    <>
+                      {words.slice(0, 2).join(' ')} <br />{' '}
+                      {words.slice(2).join(' ')}
+                    </>
+                  );
+                })()}
               </h1>
-              <div className="w-11/12 mx-auto md:w-full">
-                <Testimonials testimonials={content.testimonials} />
+              <div className="mt-8 slider-container">
+                <Slider {...sliderSettings}>
+                  {content.testimonials.map((testimonial: Testimonial) => (
+                    <div
+                      key={testimonial.projectName}
+                      className="w-11/12 mx-auto 2xl:ml-12 md:w-full"
+                    >
+                      <Testimonials {...testimonial} />
+                    </div>
+                  ))}
+                </Slider>
+                {mobileButtons}
               </div>
               <div className="absolute right-0 hidden -top-4 lg:block text-ea-verde-500">
                 <DecorativeBar />

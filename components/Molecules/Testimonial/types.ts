@@ -1,12 +1,10 @@
-interface Testimonial {
+export interface Testimonial {
+  projectName: string;
   testimonialText: string;
   highlightedQuote?: string;
   image: { url: string };
-  projectName: string;
   autorName: string;
   autorRole: string;
-}
-
-export interface TestimonialsProps {
-  testimonials: Testimonial[];
+  bgColor: string;
+  accentColor: string;
 }

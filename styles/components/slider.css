@@ -1,0 +1,17 @@
+.slick-slider .slick-arrow.slick-next {
+  @apply !hidden md:!block items-center justify-center w-10 h-10 text-xs rounded-full bg-ea-verde-900 text-ea-amarillo-500;
+}
+
+.slick-slider .slick-arrow.slick-prev {
+  @apply !hidden md:!block z-30 items-center justify-center w-10 h-10 text-xs rotate-180 rounded-full bg-ea-verde-900 text-ea-amarillo-500;
+}
+
+.slick-slider .slick-arrow.slick-next svg,
+.slick-slider .slick-arrow.slick-prev svg {
+  @apply mx-auto;
+}
+
+button.slick-arrow.slick-next::before,
+button.slick-arrow.slick-prev::before {
+  display: none;
+}

@@ -46,12 +46,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             ))}
           </ul>
         ) : (
-          <div
+          <p
             className="flex-grow mb-4 text-xs font-normal lg:mb-10 md:text-lg"
             style={{ color: textColor }}
           >
             {t(description)}
-          </div>
+          </p>
         )}
 
         {buttonText && (

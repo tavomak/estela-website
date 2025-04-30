@@ -180,6 +180,8 @@ export const getHomePageInfo = (slug: string, locales: any) =>
             autorName
             autorRole
             projectName
+            bgColor
+            accentColor
             image(locales: es) {
               url
             }

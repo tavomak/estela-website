@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         'ea-amarillo': '#F1FF94',
         'ea-amarillo-200': '#F7FFBF',
+        'ea-amarillo-500': '#F1FF94',
         'ea-amarillo-900': '#B5BF6F',
         'ea-verde': '#00BC92',
         'ea-gris': '#727374',

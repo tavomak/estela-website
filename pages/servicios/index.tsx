@@ -126,7 +126,7 @@ export const Services = () => {
       <section className="w-full">
         <article className="relative px-4 mx-auto lg:py-32">
           <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="w-full gap-12 mx-auto my-10 2xl:items-center 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
+            <div className="w-full gap-12 mx-auto my-10 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="">
                 <Image
                   src="/Square4Col.png"
@@ -136,7 +136,7 @@ export const Services = () => {
                   className="hidden ml-auto mr-20 2xl:block"
                 />
               </div>
-              <div className="w-full lg:w-1/2">
+              <div className="w-full lg:mt-8 lg:w-3/4 2xl:w-1/2">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   Estructuramos y planificamos estrategias
                 </h1>
