@@ -96,7 +96,7 @@ const FormTalkUs: FC<FormContactProps> = ({
   };
 
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
         ref={recaptchaRef}
         size="invisible"
@@ -110,82 +110,90 @@ const FormTalkUs: FC<FormContactProps> = ({
         <input type="hidden" name="content" value={content} />
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-ea-verde-200">
-        <div className="form-group">
+        <div>
+          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+            {t('homepage_talkUs_form_client_name')}
+          </span>
           <Input
             type="text"
             name="clientName"
-            placeholder={t('homepage_talkUs_form_client_name')}
             rules={{
               required: t('homepage_talkUs_form_client_name_required'),
             }}
             errors={errors.clientName as FieldError}
             register={register}
-            labelColor="border-ea-verde-200"
-            bgLabelColor="bg-ea-verde-400"
+            labelColor="border-ea-verde-500"
+            bgLabelColor="bg-ea-verde-900"
           />
         </div>
-        <div className="form-group">
+        <div>
+          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+            {t('homepage_talkUs_form_client_organization')}
+          </span>
           <Input
             type="text"
             name="organization"
-            placeholder={t('homepage_talkUs_form_client_organization')}
             rules={{
               required: t('homepage_talkUs_form_client_organization_required'),
             }}
             errors={errors.organization as FieldError}
             register={register}
-            labelColor="border-ea-verde-200"
-            bgLabelColor="bg-ea-verde-400"
+            labelColor="border-ea-verde-500"
+            bgLabelColor="bg-ea-verde-900"
           />
         </div>
-        <div className="form-group">
+        <div>
+          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+            {t('homepage_talkUs_form_client_email')}
+          </span>
           <Input
             type="email"
             name="email"
-            placeholder={t('homepage_talkUs_form_client_email')}
             rules={{
               required: t('homepage_talkUs_form_client_email_required'),
             }}
             errors={errors.email as FieldError}
             register={register}
-            labelColor="border-ea-verde-200"
-            bgLabelColor="bg-ea-verde-400"
+            labelColor="border-ea-verde-500"
+            bgLabelColor="bg-ea-verde-900"
           />
         </div>
-        <div className="form-group">
+        <div>
+          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+            {t('homepage_talkUs_form_client_subject')}
+          </span>
           <Input
             type="text"
             name="subject"
-            placeholder={t('homepage_talkUs_form_client_subject')}
             rules={{
               required: t('homepage_talkUs_form_client_subject_required'),
             }}
             errors={errors.subject as FieldError}
             register={register}
-            labelColor="border-ea-verde-200"
-            bgLabelColor="bg-ea-verde-400"
+            labelColor="border-ea-verde-500"
+            bgLabelColor="bg-ea-verde-900"
           />
         </div>
       </div>
-      <div className="form-group">
+      <div>
+        <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+          {t('homepage_talkUs_form_client_message')}
+        </span>
         <label
           htmlFor="message"
-          className="relative block px-4 pt-4 my-4 border shadow-sm border-ea-verde-200"
+          className="relative block px-4 pt-4 my-4 border shadow-sm border-ea-verde-500"
         >
           <textarea
-            className="w-full text-sm bg-ea-verde-400 focus:outline-none focus-visible:outline-none"
+            className="w-full text-sm bg-ea-verde-200 focus:outline-none focus-visible:outline-none"
             rows={8}
             id="message"
             {...register('message')}
           />
-          <span className="text-ea-verde-200 pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-ea-verde-400 p-0.5 text-xs transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-            {t('homepage_talkUs_form_client_message')}
-          </span>
         </label>
       </div>
-      <div className="text-center form-group">
+      <div className="text-center">
         <Button
-          className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
+          className="text-sm font-medium tracking-widest uppercase btn btn-secondary text-ea-verde-900 border-ea-verde-900 me-4"
           loading={loading}
           loadingType="dots"
           submit

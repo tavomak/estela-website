@@ -21,6 +21,7 @@ import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import Slider from 'react-slick';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import ArrowNext from '@/components/Atoms/Svg/ArrowNext';
+import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import { services, projects } from '../utils/constants/index';
 // import { FaEnvelope, FaDownload } from 'react-icons/fa';
 
@@ -429,16 +430,28 @@ export const Home = ({
           </section> */}
           <Modal
             showModal={showModal}
-            size="xl"
+            size="xxl"
             onClick={() => setShowModal(false)}
-            bgColor="bg-ea-verde-400"
+            bgColor="bg-ea-verde-200"
             noPadding
           >
-            <div className="w-3/4 mx-auto md:w-full md:flex">
-              <div className="hidden bg-ea-verde-300 text-ea-verde-400 lg:block">
+            <div className="w-3/4 mx-auto lg:w-full md:flex">
+              <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
                 <CircleCurves />
               </div>
-              <div className="p-4 pt-12">
+              <div className="w-full p-4 space-y-4 md:pt-12 lg:w-3/5">
+                <div className="w-full space-y-8">
+                  <div className="w-full max-w-56 text-ea-verde-900">
+                    <BrandLogoHorizontal />
+                  </div>
+                  <h1 className="text-4xl font-semibold lg:text-6xl text-ea-verde-900">
+                    {t('homepage_talkUs_form_title')}
+                  </h1>
+                  <h2 className="text-lg font-light lg:text-3xl text-ea-verde-900">
+                    {t('homepage_content_section_subtitle-2')}
+                  </h2>
+                </div>
+
                 <FormTalkUs
                   service="Contacto"
                   title="Escríbenos"

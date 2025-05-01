@@ -27,7 +27,7 @@ const Input: FC<InputProps> = ({
           className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
           type={showPassword ? 'text' : type}
           id={name}
-          placeholder={placeholder}
+          placeholder={placeholder ? '' : placeholder}
           {...register(name, { ...rules })}
           disabled={disabled}
         />
@@ -51,7 +51,7 @@ const Input: FC<InputProps> = ({
     <div className={phone ? 'flex items-center justify-stretch' : ''}>
       <label
         htmlFor={name}
-        className={`w-full  ${errors ? 'border-red-500' : ''} relative my-4 block border ${labelColor || 'border-gray-200'} shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
+        className={`w-full  ${errors ? 'border-red-500' : ''} relative my-2 block border ${labelColor || 'border-gray-200'} shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
       >
         {phone ? (
           <PhoneInput

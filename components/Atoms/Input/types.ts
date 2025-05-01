@@ -5,7 +5,7 @@ export interface InputProps {
   value?: string;
   onChange?: () => void;
   name: string;
-  placeholder: string;
+  placeholder?: string;
   labelColor?: string;
   bgLabelColor?: string;
   errors?: FieldError;
