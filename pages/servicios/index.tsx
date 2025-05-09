@@ -3,12 +3,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
-import FormContact from '@/components/Molecules/Forms/FormContact';
 import Layout from '@/components/Templates/Layout';
 import Modal from '@/components/Templates/Modal';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
+import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
+import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
+import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 
 export const Services = () => {
   const [showModal, setShowModal] = useState(false);
@@ -303,7 +305,7 @@ export const Services = () => {
         <article className="pt-16 pb-44 sm:py-32 sm:flex">
           <ContentBlockImage
             title="Planes de mantención"
-            titleClass="text-ea-verde-500 font-semibold lg:!text-8xl"
+            titleClass="text-ea-verde-500 font-medium lg:!text-8xl"
             subtitle="Continuamos permanentemente evaluando y proponiendo mejoras en la presencia digital."
             subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
             content="Por un fee mensual, nos convertimos en aliados comunicacionales de tu empresa. Participando proactivamente en los procesos de estructuración y planificación del contenido, análisis, rediseños y generación de elementos gráficos para mantener con vitalidad tu presencia digital."
@@ -318,16 +320,36 @@ export const Services = () => {
 
       <Modal
         showModal={showModal}
-        size="md"
+        size="xxl"
         onClick={() => setShowModal(false)}
+        bgColor="bg-ea-verde-200"
         noPadding
       >
-        <FormContact
-          service="Contacto"
-          title="Escríbenos"
-          image="/images/contact.png"
-          content="Nos pondremos en contacto contigo lo antes posible"
-        />
+        <div className="w-3/4 mx-auto lg:w-full md:flex">
+          <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
+            <CircleCurves />
+          </div>
+          <div className="w-full p-4 space-y-4 md:pt-12 lg:w-3/5">
+            <div className="w-full space-y-8">
+              <div className="w-full max-w-56 text-ea-verde-900">
+                <BrandLogoHorizontal />
+              </div>
+              <h1 className="text-4xl font-semibold lg:text-6xl text-ea-verde-900">
+                {t('homepage_talkUs_form_title')}
+              </h1>
+              <h2 className="text-lg font-light lg:text-3xl text-ea-verde-900">
+                {t('homepage_content_section_subtitle-2')}
+              </h2>
+            </div>
+
+            <FormTalkUs
+              service="Contacto"
+              title="Escríbenos"
+              image="/images/contact.png"
+              content="Nos pondremos en contacto contigo lo antes posible"
+            />
+          </div>
+        </div>
       </Modal>
     </Layout>
   );

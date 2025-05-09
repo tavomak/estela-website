@@ -1,15 +1,18 @@
+import Slider from 'react-slick';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
+import { getHomePageInfo } from '@/utils/lib/api';
+import { imagesLogos } from '@/utils';
+import { services, projects } from '@/utils/constants/index';
+import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import Layout from '@/components/Templates/Layout';
 import Modal from '@/components/Templates/Modal';
-import { getHomePageInfo } from '@/utils/lib/api';
 import Spinner from '@/components/Atoms/Spinner';
-import { imagesLogos } from '@/utils';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Testimonials from '@/components/Molecules/Testimonial';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
@@ -18,11 +21,8 @@ import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import Slider from 'react-slick';
-import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import ArrowNext from '@/components/Atoms/Svg/ArrowNext';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import { services, projects } from '../utils/constants/index';
 // import { FaEnvelope, FaDownload } from 'react-icons/fa';
 
 export async function getStaticProps(context: any) {
@@ -70,14 +70,33 @@ export const Home = ({
   const content = data?.homepage || [];
 
   const sliderSettings = {
+    dots: false,
     infinite: true,
     speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    dots: false,
-    autoplay: true,
+    centerMode: false,
     arrows: true,
+    autoplay: true,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: false,
+        },
+      },
+    ],
     prevArrow: (
       <button type="button" aria-label="Previous">
         <span className="rotate-180">
@@ -136,7 +155,7 @@ export const Home = ({
               <div className="relative z-30 items-center p-6 mx-auto 2xl:container 2xl:mx-auto lg:p-0 lg:flex">
                 <div className="relative 2xl:mx-auto lg:w-3/4">
                   <div className="absolute w-1/3 h-full md:w-2/12 bg-ea-amarillo" />
-                  <h1 className="relative w-11/12 pt-20 pb-12 pl-12 text-5xl font-semibold md:w-3/5 display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
+                  <h1 className="relative w-11/12 pt-20 pb-12 pl-12 text-5xl font-medium md:w-3/5 display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
                     {t('hero_title')}
                   </h1>
                   <p className="absolute right-0 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 -bottom-8 lg:text-lg fadeIn">
@@ -238,7 +257,7 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="relative w-full px-6 mb-12">
+          <section className="relative w-full px-6 mb-12 overflow-hidden">
             <article className="container py-16 mx-auto">
               <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-12">
                 {(() => {
@@ -253,7 +272,7 @@ export const Home = ({
                   );
                 })()}
               </h1>
-              <div className="mt-8 slider-container">
+              <div className="mt-8 overflow-hidden md:overflow-visible slider-container">
                 <Slider {...sliderSettings}>
                   {content.testimonials.map((testimonial: Testimonial) => (
                     <div

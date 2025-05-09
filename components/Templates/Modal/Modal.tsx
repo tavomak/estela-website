@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './styles.module.css';
 
@@ -19,14 +19,20 @@ const Modal: FC<Props> = ({
   bgColor,
   noPadding,
 }) => {
+  if (showModal) {
+    document.body.classList.add('modal-active');
+  }
+
   const handleClose = () => {
     document.body.classList.remove('modal-active');
     onClick();
   };
 
-  if (showModal) {
-    document.body.classList.add('modal-active');
-  }
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -39,6 +45,7 @@ const Modal: FC<Props> = ({
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className="fixed top-0 left-0 z-40 w-screen h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:pt-12 lg:py-24"
+          onClick={handleBackdropClick}
         >
           <div
             className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${size === 'xxl' ? styles.xxl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
