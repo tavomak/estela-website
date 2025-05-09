@@ -72,12 +72,12 @@ export const Home = ({
   const sliderSettings = {
     dots: false,
     infinite: true,
-    speed: 1500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    centerMode: false,
     arrows: true,
     autoplay: true,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
       {
@@ -85,7 +85,6 @@ export const Home = ({
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: true,
         },
       },
       {

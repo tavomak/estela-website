@@ -11,7 +11,7 @@ const TestimonialCard: React.FC<Testimonial> = ({
   bgColor,
   accentColor,
 }) => (
-  <article className="items-center w-4/5 gap-12 mx-auto md:w-full">
+  <article className="items-center w-11/12 gap-12 mx-auto md:w-full">
     <div className="relative w-11/12 h-full transition-opacity duration-300 lg:w-fit">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3 lg:translate-x-1"
