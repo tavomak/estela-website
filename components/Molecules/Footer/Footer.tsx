@@ -84,24 +84,24 @@ const Footer = () => {
       </div>
       <Modal
         showModal={showModal}
-        size="xxl"
+        size="xl"
         onClick={() => setShowModal(false)}
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-3/4 mx-auto lg:w-full md:flex">
+        <div className="w-4/5 mx-auto lg:w-full md:flex">
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>
-          <div className="w-full p-4 space-y-4 md:pt-12 lg:w-3/5">
-            <div className="w-full space-y-8">
-              <div className="w-full max-w-56 text-ea-verde-900">
+          <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
+            <div className="w-full space-y-4">
+              <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
                 <BrandLogoHorizontal />
               </div>
-              <h1 className="text-4xl font-semibold lg:text-6xl text-ea-verde-900">
+              <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
                 {t('homepage_talkUs_form_title')}
               </h1>
-              <h2 className="text-lg font-light lg:text-3xl text-ea-verde-900">
+              <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
                 {t('homepage_content_section_subtitle-2')}
               </h2>
             </div>

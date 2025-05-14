@@ -305,7 +305,7 @@ export const Services = () => {
         <article className="pt-16 pb-44 sm:py-32 sm:flex">
           <ContentBlockImage
             title="Planes de mantención"
-            titleClass="text-ea-verde-500 font-medium lg:!text-8xl"
+            titleClass="text-ea-verde-500 md:w-1/2 2xl:w-full mr-auto font-medium"
             subtitle="Continuamos permanentemente evaluando y proponiendo mejoras en la presencia digital."
             subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
             content="Por un fee mensual, nos convertimos en aliados comunicacionales de tu empresa. Participando proactivamente en los procesos de estructuración y planificación del contenido, análisis, rediseños y generación de elementos gráficos para mantener con vitalidad tu presencia digital."
@@ -320,24 +320,24 @@ export const Services = () => {
 
       <Modal
         showModal={showModal}
-        size="xxl"
+        size="xl"
         onClick={() => setShowModal(false)}
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-3/4 mx-auto lg:w-full md:flex">
+        <div className="w-4/5 mx-auto lg:w-full md:flex">
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>
-          <div className="w-full p-4 space-y-4 md:pt-12 lg:w-3/5">
-            <div className="w-full space-y-8">
-              <div className="w-full max-w-56 text-ea-verde-900">
+          <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
+            <div className="w-full space-y-4">
+              <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
                 <BrandLogoHorizontal />
               </div>
-              <h1 className="text-4xl font-semibold lg:text-6xl text-ea-verde-900">
+              <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
                 {t('homepage_talkUs_form_title')}
               </h1>
-              <h2 className="text-lg font-light lg:text-3xl text-ea-verde-900">
+              <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
                 {t('homepage_content_section_subtitle-2')}
               </h2>
             </div>

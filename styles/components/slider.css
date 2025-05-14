@@ -1,9 +1,6 @@
-.slick-slider .slick-arrow.slick-next {
-  @apply !hidden md:!block items-center justify-center w-10 h-10 text-xs rounded-full bg-ea-verde-900 text-ea-amarillo-500;
-}
-
+.slick-slider .slick-arrow.slick-next,
 .slick-slider .slick-arrow.slick-prev {
-  @apply !hidden md:!block z-30 items-center justify-center w-10 h-10 text-xs rotate-180 rounded-full bg-ea-verde-900 text-ea-amarillo-500;
+  @apply !hidden;
 }
 
 .slick-slider .slick-arrow.slick-next svg,
@@ -17,38 +14,15 @@ button.slick-arrow.slick-prev::before {
 }
 
 .slick-slide {
-  padding: 20px 10px 20px 0;
   opacity: 0.5;
-  transition: opacity 0.3s ease transform 0.3s ease;
-  transform: scale(0.9);
+  transition: opacity 0.3s ease;
 }
 
 .slick-slide.slick-active {
   opacity: 1;
-  transform: scale(1);
-  transition: transform 0.3s ease;
-}
-
-.slick-prev,
-.slick-next {
-  z-index: 20;
+  transition: opacity 0.3s ease;
 }
 
 .slick-list {
   overflow: visible !important;
-  margin: 0;
-  padding-left: 0 !important;
-}
-
-.slick-track {
-  margin-left: 0 !important;
-}
-
-@media (max-width: 768px) {
-  .slick-prev {
-    left: 10px;
-  }
-  .slick-next {
-    right: 10px;
-  }
 }

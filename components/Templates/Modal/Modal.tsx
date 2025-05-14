@@ -6,7 +6,7 @@ type Props = {
   children: ReactNode;
   onClick: () => void;
   showModal: boolean;
-  size: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+  size: 'sm' | 'md' | 'lg' | 'xl';
   bgColor?: string;
   noPadding?: boolean;
 };
@@ -44,13 +44,13 @@ const Modal: FC<Props> = ({
           }}
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed top-0 left-0 z-40 w-screen h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 md:pt-12 lg:py-24"
+          className="fixed z-40 w-full h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 left-2 sm:w-screen top-4 md:pt-12 lg:py-24"
           onClick={handleBackdropClick}
         >
           <div
-            className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${size === 'xxl' ? styles.xxl : ''} ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
+            className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
           >
-            <div className="absolute top-0 right-8 md:right-4">
+            <div className="absolute top-4 right-8 md:right-4">
               <button
                 data-testid="printed-username"
                 className={`p-0 ${styles.close}`}

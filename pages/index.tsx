@@ -21,9 +21,8 @@ import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import ArrowNext from '@/components/Atoms/Svg/ArrowNext';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-// import { FaEnvelope, FaDownload } from 'react-icons/fa';
+import TestimonialButton from '@/components/Molecules/TestimonialBtn';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -76,9 +75,6 @@ export const Home = ({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
@@ -96,46 +92,7 @@ export const Home = ({
         },
       },
     ],
-    prevArrow: (
-      <button type="button" aria-label="Previous">
-        <span className="rotate-180">
-          <ArrowNext />
-        </span>
-      </button>
-    ),
-    nextArrow: (
-      <button type="button" aria-label="Next">
-        <ArrowNext />
-      </button>
-    ),
   };
-
-  const mobileButtons = (
-    <div className="flex justify-center gap-16 mt-4 lg:hidden">
-      <button
-        type="button"
-        className="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:hidden text-verde-oscuro-200"
-        aria-label="Previous"
-        onClick={() =>
-          (document.querySelector('.slick-prev') as HTMLElement)?.click()
-        }
-      >
-        <span className="rotate-180">
-          <ArrowNext />
-        </span>
-      </button>
-      <button
-        type="button"
-        className="flex items-center justify-center w-10 h-10 rounded-full md:hidden bg-ea-verde-900 text-ea-amarillo"
-        aria-label="Next"
-        onClick={() =>
-          (document.querySelector('.slick-next') as HTMLElement)?.click()
-        }
-      >
-        <ArrowNext />
-      </button>
-    </div>
-  );
 
   return (
     <Layout
@@ -258,7 +215,7 @@ export const Home = ({
 
           <section className="relative w-full px-6 mb-12 overflow-hidden">
             <article className="container py-16 mx-auto">
-              <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-12">
+              <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-4">
                 {(() => {
                   const words = t('homepage_testimonials_section_title').split(
                     ' '
@@ -271,6 +228,7 @@ export const Home = ({
                   );
                 })()}
               </h1>
+              <TestimonialButton />
               <div className="mt-8 overflow-hidden md:overflow-visible slider-container">
                 <Slider {...sliderSettings}>
                   {content.testimonials.map((testimonial: Testimonial) => (
@@ -282,7 +240,6 @@ export const Home = ({
                     </div>
                   ))}
                 </Slider>
-                {mobileButtons}
               </div>
               <div className="absolute right-0 hidden -top-4 lg:block text-ea-verde-500">
                 <DecorativeBar />
@@ -383,89 +340,26 @@ export const Home = ({
             </article>
           </section>
 
-          {/*           <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
-            <article className="items-center py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
-              <ContentBlockImage
-                title={t('homepage_talkUs_form_title')}
-                titleClass="text-ea-verde-300"
-                onClick={() => setShowModal(true)}
-                rtl={false}
-                content={
-                  <FormTalkUs
-                    service="Contactanos"
-                    title="Conversemos"
-                    image="/images/contact.png"
-                    content="Nos pondremos en contacto contigo lo antes posible"
-                  />
-                }
-              >
-                <div className="absolute top-0 left-0 hidden bg-ea-verde-300 text-ea-verde-400 lg:block">
-                  <CircleCurves />
-                </div>
-              </ContentBlockImage>
-            </article>
-          </section> */}
-
-          {/* 
-          <section className="w-full px-4">
-            <article className="container items-center justify-between py-12 mx-auto last:flex">
-              <div className="md:w-1/2 lg:w-4/12 text-ea-verde">
-                <CircleWhite />
-              </div>
-              <div className="md:w-1/2">
-                <div className="">
-                  <div className="w-full mb-12 text-ea-verde max-w-56">
-                    <BrandLogoHorizontal />
-                  </div>
-                  <h1 className="max-w-sm text-4xl display-font text-verde-oscuro-500">
-                    {content?.contentSection1?.title}
-                  </h1>
-                  <h2 className="text-6xl text-ea-verde display-font">
-                    {content?.contentSection1?.subtitle}
-                  </h2>
-                  <aside className="pt-12 d-md-flex w-100 ">
-                    <a
-                      href="!#"
-                      className="px-4 py-2 btn btn-primary me-4"
-                      onClick={(e) => handleClick(e)}
-                    >
-                      <FaEnvelope className="me-2" />
-                      {t('nav_contact_title')}
-                    </a>
-                    <a
-                      href="/credenciales_2024.pdf"
-                      className="px-4 py-2 text-verde-oscuro-500 btn btn-secondary"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <FaDownload className="me-2" />
-                      {t('download_credentials')}
-                    </a>
-                  </aside>
-                </div>
-              </div>
-            </article>
-          </section> */}
           <Modal
             showModal={showModal}
-            size="xxl"
+            size="xl"
             onClick={() => setShowModal(false)}
             bgColor="bg-ea-verde-200"
             noPadding
           >
-            <div className="w-3/4 mx-auto lg:w-full md:flex">
+            <div className="w-4/5 mx-auto lg:w-full md:flex">
               <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
                 <CircleCurves />
               </div>
-              <div className="w-full p-4 space-y-4 md:pt-12 lg:w-3/5">
-                <div className="w-full space-y-8">
-                  <div className="w-full max-w-56 text-ea-verde-900">
+              <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
+                <div className="w-full space-y-4">
+                  <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
                     <BrandLogoHorizontal />
                   </div>
-                  <h1 className="text-4xl font-semibold lg:text-6xl text-ea-verde-900">
+                  <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
                     {t('homepage_talkUs_form_title')}
                   </h1>
-                  <h2 className="text-lg font-light lg:text-3xl text-ea-verde-900">
+                  <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
                     {t('homepage_content_section_subtitle-2')}
                   </h2>
                 </div>

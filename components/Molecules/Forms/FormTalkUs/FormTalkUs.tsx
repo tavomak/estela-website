@@ -184,8 +184,7 @@ const FormTalkUs: FC<FormContactProps> = ({
           className="relative block px-4 pt-4 my-4 border shadow-sm border-ea-verde-500"
         >
           <textarea
-            className="w-full text-sm bg-ea-verde-200 focus:outline-none focus-visible:outline-none"
-            rows={8}
+            className="w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40"
             id="message"
             {...register('message')}
           />
