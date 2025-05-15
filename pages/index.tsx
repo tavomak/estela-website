@@ -44,7 +44,6 @@ export const Home = ({
   const { t } = useTranslation('common');
 
   const content = data?.homepage || [];
-  console.log('content', content.services[0].content[0]);
 
   const sliderSettings = {
     dots: false,

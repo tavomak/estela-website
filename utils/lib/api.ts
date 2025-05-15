@@ -5,6 +5,27 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+export const getAllPosts = () =>
+  client.query({
+    query: gql`
+      query getAllPosts {
+        posts(orderBy: createdAt_DESC) {
+          id
+          slug
+          title
+          coverImage {
+            url
+          }
+          categories {
+            id
+            name
+          }
+          createdAt
+        }
+      }
+    `,
+  });
+
 export const getHomePageInfo = (slug: string, locales: any) =>
   client.query({
     query: gql`
