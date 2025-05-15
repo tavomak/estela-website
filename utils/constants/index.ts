@@ -109,3 +109,13 @@ export const projects = [
       'Identidad de marca. • Merchandising. • Grilla de diseño para redes. • Diseño de sitio web.',
   },
 ];
+
+export const flagIconsMapping: { [key: string]: string } = {
+  en: 'us',
+  es: 'spa',
+};
+
+export const languages = {
+  en: 'en',
+  es: 'es',
+};

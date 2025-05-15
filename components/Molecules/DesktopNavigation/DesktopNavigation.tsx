@@ -2,6 +2,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import React, { FC } from 'react';
+import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import { DesktopNavigationProps } from './types';
 
 const DesktopNavigation: FC<DesktopNavigationProps> = ({
@@ -32,7 +33,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
             </li>
           ))}
       </ul>
-      <ul className="flex gap-2 xl:gap-4">
+      <ul className="flex items-center gap-2 xl:gap-4">
         <li>
           <a
             href="/credenciales_2024.pdf"
@@ -42,6 +43,9 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
           >
             {t('download_credentials')}
           </a>
+        </li>
+        <li>
+          <LanguageSwitcher />
         </li>
       </ul>
     </nav>

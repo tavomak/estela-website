@@ -22,7 +22,7 @@ import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import TestimonialButton from '@/components/Molecules/TestimonialBtn';
+import SliderArrow from '@/components/Atoms/SliderArrow';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -185,16 +185,42 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full py-20 bg-gray-50">
-            <article className="container max-w-screen-xl px-4 mx-auto my-10">
-              <h1 className="mb-10 text-5xl font-medium text-center display-font lg:text-4xl text-ea-verde-900">
+          <section className="w-full py-14 lg:py-20 bg-gray-50">
+            <article className="container max-w-screen-xl px-4 mx-auto">
+              <h1 className="text-2xl font-medium text-center lg:mb-10 display-font lg:text-4xl text-ea-verde-900">
                 {t('homepage_trust_section_title')}
               </h1>
-              <ul className="flex flex-col flex-wrap items-center justify-center w-full lg:flex-row">
+
+              <div id="slider1" className="block my-16 lg:hidden">
+                <Slider {...sliderSettings}>
+                  {imagesLogos.map((item) => (
+                    <div key={item.path}>
+                      <Image
+                        src={item.path}
+                        alt={`Logo ${item.path}`}
+                        width={260}
+                        height={120}
+                        priority
+                        style={{
+                          width: '30%',
+                          height: 'auto',
+                          maxHeight: '120px',
+                          objectFit: 'contain',
+                          margin: 'auto',
+                        }}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+              <div className="flex justify-center gap-4 mt-4 lg:hidden">
+                <SliderArrow sliderId="slider1" />
+              </div>
+
+              <ul className="flex-wrap items-center justify-center hidden w-full lg:flex">
                 {imagesLogos.map((item) => (
                   <li className="w-1/2 p-12 lg:w-3/12" key={item.path}>
                     <Image
-                      key={item.path}
                       src={item.path}
                       alt={`Logo ${item.path}`}
                       width={300}
@@ -228,8 +254,13 @@ export const Home = ({
                   );
                 })()}
               </h1>
-              <TestimonialButton />
-              <div className="mt-8 overflow-hidden md:overflow-visible slider-container">
+              <div className="flex gap-4 mt-4 mr-auto">
+                <SliderArrow sliderId="slider2" />
+              </div>
+              <div
+                id="slider2"
+                className="mt-8 overflow-hidden md:overflow-visible slider-container"
+              >
                 <Slider {...sliderSettings}>
                   {content.testimonials.map((testimonial: Testimonial) => (
                     <div
