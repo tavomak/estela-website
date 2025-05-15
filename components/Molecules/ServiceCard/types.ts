@@ -1,11 +1,13 @@
-import React from 'react';
-
-export interface ServiceCardProps {
-  title: React.ReactNode;
-  containerClass?: string;
-  description: string | string[];
+export interface services {
+  title: string;
+  content: string[];
   bgColor: string;
   accentColor: string;
-  textColor?: string;
+}
+
+export interface ServiceCardProps {
+  containerClass?: string;
   buttonText?: string;
+  textColor?: string;
+  service: services;
 }

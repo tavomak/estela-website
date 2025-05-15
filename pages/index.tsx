@@ -6,7 +6,7 @@ import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { imagesLogos } from '@/utils';
-import { services, projects } from '@/utils/constants/index';
+import { projects } from '@/utils/constants/index';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
@@ -36,29 +36,6 @@ export async function getStaticProps(context: any) {
   };
 }
 
-/* interface homeInterface {
-  id: string;
-  contentSection1: {
-    title: string;
-    subtitle: string;
-    description: string | null;
-    id: string;
-  };
-  testimonials: {
-    testimonialText: string;
-    highlightedQuote: string | null;
-    autorName: string;
-    autorRole: string;
-    projectName: string;
-    image: { url: string };
-  }[];
-  projects: {
-    title: string;
-    description: string;
-    image: { url: string };
-  }[];
-}
- */
 export const Home = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -67,6 +44,7 @@ export const Home = ({
   const { t } = useTranslation('common');
 
   const content = data?.homepage || [];
+  console.log('content', content.services[0].content[0]);
 
   const sliderSettings = {
     dots: false,
@@ -166,14 +144,11 @@ export const Home = ({
                     </Link>
                   </div>
                   <div className="gap-12 my-10 lg:flex">
-                    {services.map((service) => (
+                    {content.services.map((service: any) => (
                       <div className="w-full mb-8 lg:mb-0" key={service.title}>
                         <ServicesCard
-                          title={<p className="lg:w-4/5">{t(service.title)}</p>}
-                          description={service.description}
-                          bgColor={service.bgColor}
-                          accentColor={service.accentColor}
-                          textColor={service.textColor}
+                          service={service}
+                          textColor="#005E49"
                           containerClass="pb-16 lg:pb-8"
                           buttonText="learn_more"
                         />

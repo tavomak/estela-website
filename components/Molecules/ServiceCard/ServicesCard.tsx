@@ -4,16 +4,12 @@ import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
 import { ServiceCardProps } from './types';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
-  title,
-  description,
-  bgColor,
-  accentColor,
   textColor = '#005E49',
   buttonText,
   containerClass,
+  service: { title, content, bgColor, accentColor },
 }) => {
   const { t } = useTranslation('common');
-  const isArray = Array.isArray(description);
 
   return (
     <div className="relative w-full h-full lg:max-w-96">
@@ -27,22 +23,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         style={{ backgroundColor: bgColor }}
       >
         <h2
-          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
+          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font lg:w-3/4"
           style={{ color: textColor }}
         >
           {title}
         </h2>
         <div
-          className={`${isArray ? 'w-full' : 'w-1/2'} h-px mb-6`}
+          className={`${content.length > 1 ? 'w-full' : 'w-1/2'} h-px mb-6`}
           style={{ backgroundColor: textColor }}
         />
-        {isArray ? (
+        {content.length > 1 ? (
           <ul
             className="w-5/6 mx-auto text-xs list-disc md:text-lg"
             style={{ color: textColor }}
           >
-            {description.map((content) => (
-              <li key={content}>{content}</li>
+            {content.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         ) : (
@@ -50,7 +46,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             className="flex-grow mb-4 text-xs font-normal lg:mb-10 md:text-lg"
             style={{ color: textColor }}
           >
-            {t(description)}
+            {content}
           </p>
         )}
 

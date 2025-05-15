@@ -11,49 +11,33 @@ import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
+import { getServicePageInfo } from '@/utils/lib/api';
+import { InferGetStaticPropsType } from 'next';
 
-export const Services = () => {
+export async function getStaticProps(context: any) {
+  const { locale } = context;
+  const response = await getServicePageInfo('services', [locale]);
+  const data = response?.data || [];
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 100,
+  };
+}
+
+export const Services = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [showModal, setShowModal] = useState(false);
 
   const { t } = useTranslation('common');
-  const DevServices = [
-    'Sitio personalizado',
-    'WordPress CMS',
-    'E-Commerce',
-    'E-learning',
-    'Sitios inmobiliarios',
-    'Plantilla de email marketing',
-    'Soporte y mantenimiento de sitio',
-    'Desempeño y seguridad',
-  ];
-  const services = [
-    'Auditoria y estrategia web',
-    'Website copywriting',
-    'UX y content strategy',
-    'UI, wireframing y prototipos',
-    'Arquitectura de contenido web',
-    'Estructura de contenido blog',
-    'Mockups, guia de diseño y estilo',
-  ];
-  const ContentMarketing = [
-    'Estrategia de contenido RRSS',
-    'Landing Pages',
-    'Email Marketing',
-    'Estructura contenido blog',
-    'SEO',
-  ];
-  const PaidMedia = ['SEM', 'Google Ads', 'Anuncios en RRSS', 'Analytics'];
-
-  const DesarrolloImagen = [
-    'Estrategia de Marca y contenido',
-    'Manual de identidad',
-    'Material POP y regalos corporativos',
-    'Imagen de campañas',
-  ];
+  const content = data?.service || {};
 
   return (
     <Layout
-      title="Servicios"
+      title={t(content.title)}
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
       <section className="w-full px-4 bg-ea-verde-400">
@@ -92,9 +76,7 @@ export const Services = () => {
                 </div>
                 <div>
                   <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-                    Llevamos tu sitio web a otro nivel. Nos enfocamos en la
-                    experiencia de usuario, un diseño consistente y un contenido
-                    claro, conciso y atractivo.
+                    {t('homepage_services_parragraph_web')}
                   </p>
                 </div>
                 <Link
@@ -105,20 +87,13 @@ export const Services = () => {
                 </Link>
               </div>
               <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
-                <ServiceCard
-                  title={<p className="2xl:w-3/4">Desarrollo web</p>}
-                  description={DevServices}
-                  bgColor="#99E4D3"
-                  accentColor="#00BC92"
-                  containerClass="md:pb-10"
-                />
-                <ServiceCard
-                  title={<p className="2xl:w-3/4">Diseño web</p>}
-                  description={services}
-                  bgColor="#F7FFBF"
-                  accentColor="#B5BF6F"
-                  containerClass="md:pb-16"
-                />
+                {content.services1.map((service: any, index: number) => (
+                  <ServiceCard
+                    key={service.title}
+                    service={service}
+                    containerClass={index === 0 ? 'md:pb-10' : 'md:pb-16'}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -140,12 +115,10 @@ export const Services = () => {
               </div>
               <div className="w-full lg:mt-8 lg:w-3/4 2xl:w-1/2">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
-                  Estructuramos y planificamos estrategias
+                  {t('homepage_services_title_marketing')}
                 </h1>
                 <p className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
-                  Desarrollamos una estrategia comunicacional consistente con un
-                  plan de contenidos y una guía de diseño integradas para toda
-                  la comunicación digital.
+                  {t('homepage_services_parragraph_marketing')}
                 </p>
                 <Link
                   href="/servicios"
@@ -156,12 +129,7 @@ export const Services = () => {
               </div>
               <div className="lg:flex 2xl:w-1/4">
                 <div className="flex flex-col items-end">
-                  <ServiceCard
-                    title="Implementamos desarrollos digitales"
-                    description="Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital."
-                    bgColor="#ECEDEE"
-                    accentColor="#AAACAE"
-                  />
+                  <ServiceCard service={content.serviceCard2[0]} />
                   <Image
                     src="/Square2Col.png"
                     width={600}
@@ -197,7 +165,7 @@ export const Services = () => {
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    Marketing digital
+                    {t('homepage_services_title_brand')}
                   </h1>
                   <Link
                     href="/servicios"
@@ -208,8 +176,7 @@ export const Services = () => {
                 </div>
                 <div>
                   <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-                    Planificamos, diseñamos, ejecutamos y analizamos campañas de
-                    marketing desde una perspectiva 360.
+                    {t('homepage_services_parragraph_brand')}
                   </p>
                 </div>
                 <Link
@@ -220,20 +187,13 @@ export const Services = () => {
                 </Link>
               </div>
               <div className="gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
-                <ServiceCard
-                  title={<p className="lg:w-1/2">Content marketing</p>}
-                  description={ContentMarketing}
-                  bgColor="#99E4D3"
-                  accentColor="#00BC92"
-                  containerClass="md:pb-20"
-                />
-                <ServiceCard
-                  title={<p className="lg:w-1/2">Paid media</p>}
-                  description={PaidMedia}
-                  bgColor="#F7FFBF"
-                  accentColor="#B5BF6F"
-                  containerClass="md:pb-28"
-                />
+                {content.serviceCard3?.map((service: any, index: number) => (
+                  <ServiceCard
+                    key={service.title}
+                    service={service}
+                    containerClass={index === 0 ? 'md:pb-20' : 'md:pb-28'}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -280,10 +240,7 @@ export const Services = () => {
               </div>
               <div className="lg:flex 2xl:w-1/4">
                 <ServiceCard
-                  title="Desarrollo de imagen"
-                  description={DesarrolloImagen}
-                  bgColor="#ECEDEE"
-                  accentColor="#AAACAE"
+                  service={content.serviceCard4[0]}
                   containerClass="md:pb-20"
                 />
               </div>

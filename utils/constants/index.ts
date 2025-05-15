@@ -20,15 +20,15 @@ export const navItems = [
   // },
   {
     label: 'nav_services_title',
-    path: '/servicios',
+    path: '/services',
   },
   {
     label: 'nav_cases_title',
-    path: '/casos',
+    path: '/cases',
   },
   {
     label: 'nav_contact_title',
-    path: '/contacto',
+    path: '/contact',
   },
 ];
 
@@ -56,33 +56,6 @@ export const imagesLogos = [
   },
   {
     path: '/logo-vista-volcanes.png',
-  },
-];
-
-export const services = [
-  {
-    title: 'homepage_services_title_web',
-    description: 'homepage_services_parragraph_web',
-    bgColor: '#99E4D3',
-    accentColor: '#00BC92',
-    buttonText: 'btn_learnMore',
-    textColor: '#005E49',
-  },
-  {
-    title: 'homepage_services_title_marketing',
-    description: 'homepage_services_parragraph_marketing',
-    bgColor: '#F7FFBF',
-    accentColor: '#B5BF6F',
-    buttonText: 'btn_learnMore',
-    textColor: '#005E49',
-  },
-  {
-    title: 'homepage_services_title_brand',
-    description: 'homepage_services_parragraph_brand',
-    bgColor: '#ECEDEE',
-    accentColor: '#AAACAE',
-    buttonText: 'btn_learnMore',
-    textColor: '#005E49',
   },
 ];
 
