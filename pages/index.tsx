@@ -175,7 +175,7 @@ export const Home = ({
                           accentColor={service.accentColor}
                           textColor={service.textColor}
                           containerClass="pb-16 lg:pb-8"
-                          buttonText="saber más"
+                          buttonText="learn_more"
                         />
                       </div>
                     ))}

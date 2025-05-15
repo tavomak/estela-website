@@ -81,7 +81,7 @@ export const Services = () => {
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    Desarrollo & Diseño web
+                    {t('homepage_services_title_web')}
                   </h1>
                   <Link
                     href="/servicios"
@@ -304,13 +304,13 @@ export const Services = () => {
         </div>
         <article className="pt-16 pb-44 sm:py-32 sm:flex">
           <ContentBlockImage
-            title="Planes de mantención"
+            title={t('service_content_section_title-2')}
             titleClass="text-ea-verde-500 md:w-1/2 2xl:w-full mr-auto font-medium"
-            subtitle="Continuamos permanentemente evaluando y proponiendo mejoras en la presencia digital."
+            subtitle={t('service_content_section_subtitle-2')}
             subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
-            content="Por un fee mensual, nos convertimos en aliados comunicacionales de tu empresa. Participando proactivamente en los procesos de estructuración y planificación del contenido, análisis, rediseños y generación de elementos gráficos para mantener con vitalidad tu presencia digital."
+            content={t('service_content_section_parragraph-2')}
             contentClass="text-ea-verde-200 text-base font-light lg:text-3xl w-5/6 mr-auto text-balance"
-            btnLabel="Quiero saber más"
+            btnLabel={t('wanna_know_more')}
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={() => setShowModal(true)}
             rtl={false}
