@@ -1,6 +1,7 @@
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
+import splitTitleInTwoLines from '@/utils/helpers';
 import { ServiceCardProps } from './types';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -10,9 +11,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   service: { title, content, bgColor, accentColor },
 }) => {
   const { t } = useTranslation('common');
+  const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (
-    <div className="relative w-full h-full lg:max-w-96">
+    <div className="relative w-full h-full lg:min-w-80 lg:max-w-96">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3"
         style={{ backgroundColor: accentColor }}
@@ -23,15 +25,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         style={{ backgroundColor: bgColor }}
       >
         <h2
-          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font lg:w-3/4"
+          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
           style={{ color: textColor }}
         >
-          {title}
+          <div className="hidden lg:inline">
+            <span> {firstLine}</span>
+            <br />
+            <span>{secondLine}</span>
+          </div>
+          <span className="inline lg:hidden">{title}</span>
         </h2>
+
         <div
           className={`${content.length > 1 ? 'w-full' : 'w-1/2'} h-px mb-6`}
           style={{ backgroundColor: textColor }}
         />
+
         {content.length > 1 ? (
           <ul
             className="w-5/6 mx-auto text-xs list-disc md:text-lg"

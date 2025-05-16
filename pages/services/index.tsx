@@ -34,7 +34,7 @@ export const Services = ({
 
   const { t } = useTranslation('common');
   const content = data?.service || {};
-
+  console.log(content);
   return (
     <Layout
       title={t(content.title)}
@@ -43,11 +43,11 @@ export const Services = ({
       <section className="w-full px-4 bg-ea-verde-400">
         <article className="items-center gap-6 pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
           <ContentBlockImage
-            title={t('service_content_section_title-1')}
+            title={content.heroSection?.title}
             titleClass="font-normal text-ea-amarillo w-11/12 text-pretty"
-            subtitle={t('service_content_section_subtitle-1')}
+            subtitle={content.heroSection?.subtitle}
             subtitleClass="font-light text-white text-base md:text-3xl w-11/12"
-            content={t('service_content_section_parragraph-1')}
+            content={content.heroSection?.description}
             contentClass="text-ea-verde-300 font-normal text-xs md:text-lg w-11/12 text-pretty"
             rtl={false}
           >
@@ -65,10 +65,10 @@ export const Services = ({
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    {t('homepage_services_title_web')}
+                    {t('services_title_design-web')}
                   </h1>
                   <Link
-                    href="/servicios"
+                    href="/services"
                     className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                   >
                     {t('more_services')}
@@ -76,11 +76,11 @@ export const Services = ({
                 </div>
                 <div>
                   <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-                    {t('homepage_services_parragraph_web')}
+                    {t('services_parragraph_design-web')}
                   </p>
                 </div>
                 <Link
-                  href="/servicios"
+                  href="/services"
                   className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
                 >
                   {t('more_services')}
@@ -115,13 +115,13 @@ export const Services = ({
               </div>
               <div className="w-full lg:mt-8 lg:w-3/4 2xl:w-1/2">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
-                  {t('homepage_services_title_marketing')}
+                  {t('services_title_strategies')}
                 </h1>
                 <p className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
-                  {t('homepage_services_parragraph_marketing')}
+                  {t('services_parragraph_strategies')}
                 </p>
                 <Link
-                  href="/servicios"
+                  href="/services"
                   className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                 >
                   {t('more_services')}
@@ -165,22 +165,22 @@ export const Services = ({
               <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
                 <div className="w-full lg:w-3/4">
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    {t('homepage_services_title_brand')}
+                    {t('services_title_marketing')}
                   </h1>
                   <Link
-                    href="/servicios"
+                    href="/services"
                     className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                   >
                     {t('more_services')}
                   </Link>
                 </div>
                 <div>
-                  <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-                    {t('homepage_services_parragraph_brand')}
+                  <p className="text-base font-light 2xl:mt-4 text-balance md:text-3xl text-ea-verde-900">
+                    {t('services_parragraph_marketing')}
                   </p>
                 </div>
                 <Link
-                  href="/servicios"
+                  href="/services"
                   className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
                 >
                   {t('more_services')}
@@ -218,21 +218,18 @@ export const Services = ({
         <article className="relative px-4 mx-auto lg:py-32">
           <div className="w-11/12 mr-auto md:mx-auto">
             <div className="justify-center w-full gap-12 mx-auto my-10 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
-              <div className="w-full lg:w-1/2 2xl:w-1/4">
+              <div className="w-full lg:w-1/2 2xl:w-1/3">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
-                  Identidad de marca
+                  {t('services_title_brand')}
                 </h1>
-                <div className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
-                  <p className="mb-4">
-                    Le damos un sentido estratégico al branding de tu empresa.
+                <div className="text-base 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                  <p className="mb-4 font-normal">
+                    {t('services_subtitle_brand')}
                   </p>
-                  <p>
-                    Creamos la imagen para tu empresa o te ayudamos a
-                    refrescarla y a darle un uso consistente en tu comunicación.
-                  </p>
+                  <p className="font-light">{t('services_parragraph_brand')}</p>
                 </div>
                 <Link
-                  href="/servicios"
+                  href="/services"
                   className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                 >
                   {t('more_services')}
@@ -261,11 +258,11 @@ export const Services = ({
         </div>
         <article className="pt-16 pb-44 sm:py-32 sm:flex">
           <ContentBlockImage
-            title={t('service_content_section_title-2')}
+            title={content.section1?.title}
             titleClass="text-ea-verde-500 md:w-1/2 2xl:w-full mr-auto font-medium"
-            subtitle={t('service_content_section_subtitle-2')}
+            subtitle={content.section1?.subtitle}
             subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
-            content={t('service_content_section_parragraph-2')}
+            content={content.section1?.description}
             contentClass="text-ea-verde-200 text-base font-light lg:text-3xl w-5/6 mr-auto text-balance"
             btnLabel={t('wanna_know_more')}
             btnClass="text-ea-amarillo border-ea-amarillo"

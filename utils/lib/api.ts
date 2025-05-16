@@ -35,18 +35,31 @@ export const getHomePageInfo = (slug: string, locales: any) =>
           slug
           title
           pageType
-
           contentSection1 {
             title
             subtitle
             description
             id
           }
+          sectionHero {
+            title
+            subtitle
+            description
+          }
+          section1 {
+            title
+            subtitle
+            description
+          }
           services {
             title
             content
             bgColor
             accentColor
+          }
+          trustedClients(locales: es) {
+            id
+            url
           }
           testimonials {
             testimonialText
@@ -60,12 +73,22 @@ export const getHomePageInfo = (slug: string, locales: any) =>
               url
             }
           }
+          section2 {
+            title
+            subtitle
+            description
+          }
           projects {
             title
             description
             image(locales: es) {
               url
             }
+          }
+          section3 {
+            title
+            subtitle
+            description
           }
         }
       }
@@ -83,7 +106,11 @@ export const getServicePageInfo = (slug: string, locales: any) =>
           id
           slug
           title
-
+          heroSection {
+            title
+            subtitle
+            description
+          }
           services1 {
             title
             content
@@ -107,6 +134,11 @@ export const getServicePageInfo = (slug: string, locales: any) =>
             content
             bgColor
             accentColor
+          }
+          section1 {
+            title
+            subtitle
+            description
           }
         }
       }

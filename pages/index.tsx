@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getHomePageInfo } from '@/utils/lib/api';
-import { imagesLogos } from '@/utils';
 import { projects } from '@/utils/constants/index';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import useTranslation from 'next-translate/useTranslation';
@@ -89,10 +88,10 @@ export const Home = ({
                 <div className="relative 2xl:mx-auto lg:w-3/4">
                   <div className="absolute w-1/3 h-full md:w-2/12 bg-ea-amarillo" />
                   <h1 className="relative w-11/12 pt-20 pb-12 pl-12 text-5xl font-medium md:w-3/5 display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
-                    {t('hero_title')}
+                    {content.sectionHero?.title}
                   </h1>
                   <p className="absolute right-0 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 -bottom-8 lg:text-lg fadeIn">
-                    {t('hero_parragraph')}
+                    {content.sectionHero?.subtitle}
                   </p>
                 </div>
               </div>
@@ -109,15 +108,15 @@ export const Home = ({
             <article className="items-center gap-6 py-32 mx-auto 2xl:container lg:flex">
               <ContentBlockImage
                 brandLogoColor="text-ea-verde"
-                title={t('homepage_content_section_title-1')}
+                title={content.section1?.title}
                 titleClass="font-medium text-ea-amarillo display-font w-11/12 text-balance md:text-pretty"
-                subtitle={t('homepage_content_section_subtitle-1')}
+                subtitle={content.section1?.subtitle}
                 subtitleClass="display-font font-medium text-white text-2xl md:text-3xl"
                 btnLabel={t('lets_talk')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
                 rtl={false}
                 onClick={() => setShowModal(true)}
-                content={t('homepage_content_section_parragraph-1')}
+                content={content.section1?.description}
                 contentClass="text-white w-3/4 text-base font-light text-pretty"
               >
                 <div className="hidden w-11/12 ml-auto lg:block">
@@ -136,7 +135,7 @@ export const Home = ({
                       {t('homepage_services_section_title')}
                     </h1>
                     <Link
-                      href="/servicios"
+                      href="/services"
                       className="text-sm font-medium uppercase border-2 btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                     >
                       {t('more_services')}
@@ -159,7 +158,7 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full py-14 lg:py-20 bg-gray-50">
+          <section className="w-full overflow-hidden py-14 lg:py-20 bg-gray-50">
             <article className="container max-w-screen-xl px-4 mx-auto">
               <h1 className="text-2xl font-medium text-center lg:mb-10 display-font lg:text-4xl text-ea-verde-900">
                 {t('homepage_trust_section_title')}
@@ -167,16 +166,16 @@ export const Home = ({
 
               <div id="slider1" className="block my-16 lg:hidden">
                 <Slider {...sliderSettings}>
-                  {imagesLogos.map((item) => (
-                    <div key={item.path}>
+                  {content.trustedClients.map((item: any) => (
+                    <div key={item.id}>
                       <Image
-                        src={item.path}
-                        alt={`Logo ${item.path}`}
+                        src={item.url}
+                        alt="Logo client"
                         width={260}
                         height={120}
                         priority
                         style={{
-                          width: '30%',
+                          width: '60%',
                           height: 'auto',
                           maxHeight: '120px',
                           objectFit: 'contain',
@@ -192,11 +191,11 @@ export const Home = ({
               </div>
 
               <ul className="flex-wrap items-center justify-center hidden w-full lg:flex">
-                {imagesLogos.map((item) => (
-                  <li className="w-1/2 p-12 lg:w-3/12" key={item.path}>
+                {content.trustedClients.map((item: any) => (
+                  <li className="w-1/2 p-12 lg:w-3/12" key={item.id}>
                     <Image
-                      src={item.path}
-                      alt={`Logo ${item.path}`}
+                      src={item.url}
+                      alt="Logo client"
                       width={300}
                       height={120}
                       priority
@@ -255,11 +254,11 @@ export const Home = ({
           <section className="w-full px-6 overflow-hidden md:px-0 bg-verde-oscuro-500">
             <article className="md:bg-[url('/tabletWave.png')] 2xl:bg-[url('/desktopWave.png')] bg-contain bg-no-repeat bg-bottom md:bg-right-top relative items-center py-20 md:py-44 mx-auto 2xl:container md:flex md:pl-12">
               <ContentBlockImage
-                title={t('homepage_content_section_title-2')}
+                title={content.section2?.title}
                 titleClass="text-white font-medium"
-                subtitle={t('homepage_content_section_subtitle-2')}
+                subtitle={content.section2?.subtitle}
                 subtitleClass="text-ea-amarillo font-medium text-2xl md:text-4xl"
-                content={t('homepage_content_section_parragraph-2')}
+                content={content.section2?.description}
                 contentClass="text-white text-base lg:text-3xl font-light"
                 btnLabel={t('wanna_know_more')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
@@ -322,11 +321,11 @@ export const Home = ({
           <section className="w-full px-6 bg-ea-verde-900">
             <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
               <ContentBlockImage
-                title={t('homepage_content_section_title-3')}
-                titleClass="text-white font-medium"
-                subtitle={t('homepage_content_section_subtitle-3')}
+                title={content.section3?.title}
+                subtitle={content.section3?.subtitle}
                 subtitleClass="text-ea-amarillo-200 text-2xl md:text-4xl font-regular md:font-medium"
-                content={t('homepage_content_section_parragraph-3')}
+                content={content.section3?.description}
+                titleClass="text-white font-medium"
                 contentClass="text-white text-base md:text-3xl font-light"
                 btnLabel={t('homepage_contact_us')}
                 btnClass="text-ea-amarillo border-ea-amarillo"

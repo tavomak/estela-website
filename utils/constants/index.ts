@@ -32,33 +32,6 @@ export const navItems = [
   },
 ];
 
-export const imagesLogos = [
-  {
-    path: '/logo-Amparo-Justicia.png',
-  },
-  {
-    path: '/logo-CFC.png',
-  },
-  {
-    path: '/logo-final-fury.png',
-  },
-  {
-    path: '/logo-brick-inmobiliaria.png',
-  },
-  {
-    path: '/logo-menos-pausa-life.png',
-  },
-  {
-    path: '/logo-transWarrants.png',
-  },
-  {
-    path: '/logo-tusk.png',
-  },
-  {
-    path: '/logo-vista-volcanes.png',
-  },
-];
-
 export const projects = [
   {
     title: 'Fundación Amparo y Justicia',

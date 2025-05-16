@@ -3,6 +3,7 @@ import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import Hamburger from '@/components/Molecules/Hamburger';
 import EstelaIcon from '@/components/Atoms/Svg/BrandLogoHorizontal';
+import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import { MobileNavigationProps } from './types';
 
 const MobileNavigation: FC<MobileNavigationProps> = ({
@@ -23,7 +24,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
       className="container relative flex items-center justify-between mx-auto md:px-4"
       aria-label="Global"
     >
-      <Link className="z-20 w-40 text-verde-oscuro-500" href="/">
+      <Link className="z-20 w-36 text-verde-oscuro-500" href="/">
         <EstelaIcon />
       </Link>
       <Hamburger open={menuOpen} setOpen={setMenuOpen} />
@@ -36,6 +37,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
           <div className="h-48" />
           <div className="px-16 overflow-y-auto">
             <ul className="mb-8 space-y-6">
+              <LanguageSwitcher />
               {navItems.map((item) => (
                 <li
                   className={`w-fit text-base hover:border-b-2 border-ea-verde ${
