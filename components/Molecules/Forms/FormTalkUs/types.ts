@@ -7,8 +7,6 @@ export type FormContactProps = {
 
 export interface FormElements extends HTMLFormElement {
   clientName: HTMLInputElement;
-  organization: HTMLInputElement;
   email: HTMLInputElement;
-  subject: HTMLInputElement;
   message: HTMLTextAreaElement;
 }

@@ -14,7 +14,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (
-    <div className="relative w-full h-full lg:min-w-80 lg:max-w-96">
+    <div className="relative w-full h-full xl:min-w-80 xl:max-w-96">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3"
         style={{ backgroundColor: accentColor }}
@@ -60,16 +60,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
 
         {buttonText && (
-          <div className="flex items-center gap-2 mt-2 ml-auto lg:ml-0 md:mt-8">
+          <div className="flex items-center gap-2 mt-2 ml-auto md:mt-8">
             <span
-              className="order-2 text-xs font-semibold lowercase lg:order-1 lg:uppercase lg:text-sm lg:font-medium"
+              className="text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium"
               style={{ color: textColor }}
             >
               {t(buttonText)}
             </span>
             <button
               type="button"
-              className="flex items-center justify-center order-1 w-8 h-8 text-xs rounded-full md:text-sm lg:order-2 bg-ea-verde-900 text-ea-amarillo"
+              className="flex items-center justify-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo"
               aria-label={t(buttonText)}
             >
               <DiagonalArrow />

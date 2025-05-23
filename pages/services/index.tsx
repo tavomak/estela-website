@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import Layout from '@/components/Templates/Layout';
@@ -34,14 +33,21 @@ export const Services = ({
 
   const { t } = useTranslation('common');
   const content = data?.service || {};
-  console.log(content);
   return (
     <Layout
       title={t(content.title)}
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
-      <section className="w-full px-4 bg-ea-verde-400">
+      <section className="w-full px-4 bg-verde-oscuro-400">
         <article className="items-center gap-6 pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
+          <div className="block w-1/2 mb-6 mr-auto lg:hidden">
+            <Image
+              src="/halfCircle.png"
+              width={350}
+              height={300}
+              alt="Half Circle"
+            />
+          </div>
           <ContentBlockImage
             title={content.heroSection?.title}
             titleClass="font-normal text-ea-amarillo w-11/12 text-pretty"
@@ -67,24 +73,24 @@ export const Services = ({
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
                     {t('services_title_design-web')}
                   </h1>
-                  <Link
+                  {/* <Link
                     href="/services"
                     className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                   >
                     {t('more_services')}
-                  </Link>
+                  </Link> */}
                 </div>
                 <div>
                   <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
                     {t('services_parragraph_design-web')}
                   </p>
                 </div>
-                <Link
+                {/* <Link
                   href="/services"
                   className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
                 >
                   {t('more_services')}
-                </Link>
+                </Link> */}
               </div>
               <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
                 {content.services1.map((service: any, index: number) => (
@@ -113,19 +119,19 @@ export const Services = ({
                   className="hidden ml-auto mr-20 2xl:block"
                 />
               </div>
-              <div className="w-full lg:mt-8 lg:w-3/4 2xl:w-1/2">
+              <div className="w-full mb-8 lg:mt-8 lg:w-3/4 2xl:w-1/2">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   {t('services_title_strategies')}
                 </h1>
                 <p className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
                   {t('services_parragraph_strategies')}
                 </p>
-                <Link
+                {/* <Link
                   href="/services"
                   className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                 >
                   {t('more_services')}
-                </Link>
+                </Link> */}
               </div>
               <div className="lg:flex 2xl:w-1/4">
                 <div className="flex flex-col items-end">
@@ -167,24 +173,24 @@ export const Services = ({
                   <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
                     {t('services_title_marketing')}
                   </h1>
-                  <Link
+                  {/* <Link
                     href="/services"
                     className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                   >
                     {t('more_services')}
-                  </Link>
+                  </Link> */}
                 </div>
                 <div>
                   <p className="text-base font-light 2xl:mt-4 text-balance md:text-3xl text-ea-verde-900">
                     {t('services_parragraph_marketing')}
                   </p>
                 </div>
-                <Link
+                {/* <Link
                   href="/services"
                   className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
                 >
                   {t('more_services')}
-                </Link>
+                </Link> */}
               </div>
               <div className="gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
                 {content.serviceCard3?.map((service: any, index: number) => (
@@ -204,7 +210,7 @@ export const Services = ({
       </section>
 
       <section className="relative w-full overflow-hidden">
-        <div className="absolute left-0 hidden -bottom-24 lg:block 2xl:hidden">
+        <div className="absolute left-0 hidden -bottom-28 lg:block 2xl:hidden">
           <Image
             src="/SunLinesMobile.png"
             width={660}
@@ -217,23 +223,23 @@ export const Services = ({
         </div>
         <article className="relative px-4 mx-auto lg:py-32">
           <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="justify-center w-full gap-12 mx-auto my-10 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
+            <div className="justify-center w-full gap-10 mx-auto my-24 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="w-full lg:w-1/2 2xl:w-1/3">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   {t('services_title_brand')}
                 </h1>
-                <div className="text-base 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
-                  <p className="mb-4 font-normal">
+                <div className="mb-8 text-base 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
+                  <h3 className="mb-4 font-normal">
                     {t('services_subtitle_brand')}
-                  </p>
+                  </h3>
                   <p className="font-light">{t('services_parragraph_brand')}</p>
                 </div>
-                <Link
+                {/* <Link
                   href="/services"
                   className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
                 >
                   {t('more_services')}
-                </Link>
+                </Link> */}
               </div>
               <div className="lg:flex 2xl:w-1/4">
                 <ServiceCard
@@ -246,29 +252,37 @@ export const Services = ({
         </article>
       </section>
 
-      <section className="relative w-full px-4 overflow-hidden bg-ea-verde-400">
-        <div className="absolute w-11/12 transform sm:w-1/2 -bottom-60 sm:bottom-auto sm:-translate-y-1/2 sm:-left-40 sm:top-1/2">
-          <Image
-            src="/circleGreen.png"
-            width={1020}
-            height={1020}
-            alt="Circle Curves"
-            className="object-cover"
-          />
-        </div>
-        <article className="pt-16 pb-44 sm:py-32 sm:flex">
+      <section className="relative w-full px-8 overflow-hidden bg-verde-oscuro-400">
+        <article className="container flex-row-reverse mx-auto pt-14 sm:py-32 sm:flex">
           <ContentBlockImage
             title={content.section1?.title}
-            titleClass="text-ea-verde-500 md:w-1/2 2xl:w-full mr-auto font-medium"
+            titleClass="text-ea-verde-500 sm:w-1/2 md:w-full mr-auto font-medium"
             subtitle={content.section1?.subtitle}
-            subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto text-balance"
+            subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto 2xl:text-balance"
             content={content.section1?.description}
-            contentClass="text-ea-verde-200 text-base font-light lg:text-3xl w-5/6 mr-auto text-balance"
+            contentClass="text-ea-verde-200 text-base font-light lg:text-lg lg:font-normal w-11/12 mr-auto text-pretty"
             btnLabel={t('wanna_know_more')}
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={() => setShowModal(true)}
             rtl={false}
-          />
+          >
+            <Image
+              src="/circleGreen.png"
+              width={1900}
+              height={1900}
+              alt="Circle Curves"
+              className="absolute hidden object-cover w-full h-full overflow-visible sm:block -right-1/2 2xl:relative 2xl:right-auto"
+            />
+          </ContentBlockImage>
+          <div>
+            <Image
+              src="/mobileCircleGreen.png"
+              width={750}
+              height={350}
+              alt="Circle Green"
+              className="object-cover w-full sm:hidden"
+            />
+          </div>
         </article>
       </section>
 
@@ -279,7 +293,7 @@ export const Services = ({
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-4/5 mx-auto lg:w-full md:flex">
+        <div className="w-4/5 mx-auto lg:w-full md:flex text-ea-amarillo-500">
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>

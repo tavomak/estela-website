@@ -1,8 +1,6 @@
 export interface TalkUsTemplateProps {
   clientName: string;
-  organization: string;
   email: string;
-  subject: string;
   message: string;
 }
 

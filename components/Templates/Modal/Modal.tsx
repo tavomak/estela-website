@@ -1,12 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from '@/components/Atoms/Button';
+import CloseIcon from '@/components/Atoms/Svg/CloseIcon';
 import styles from './styles.module.css';
 
 type Props = {
   children: ReactNode;
   onClick: () => void;
   showModal: boolean;
-  size: 'sm' | 'md' | 'lg' | 'xl';
+  size: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
   bgColor?: string;
   noPadding?: boolean;
 };
@@ -44,26 +46,21 @@ const Modal: FC<Props> = ({
           }}
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed z-40 w-full h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 left-2 sm:w-screen top-4 md:pt-12 lg:py-24"
+          className="fixed left-0 z-40 w-full h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 sm:w-screen top-4 md:pt-12 md:p-24"
           onClick={handleBackdropClick}
         >
           <div
-            className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
+            className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${size === 'xxl' ? styles.xxl : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
           >
             <div className="absolute top-4 right-8 md:right-4">
-              <button
-                data-testid="printed-username"
-                className={`p-0 ${styles.close}`}
+              <Button
+                className="relative z-20 rounded-full size-8 bg-ea-verde-500 md:bg-verde-oscuro-400 text-ea-amarillo-500"
                 onClick={handleClose}
-                type="button"
               >
-                <span
-                  aria-hidden="true"
-                  className="p-0 text-3xl font-bold text-gray-400"
-                >
-                  &times;
+                <span className="m-auto">
+                  <CloseIcon />
                 </span>
-              </button>
+              </Button>
             </div>
             <div className={`${noPadding ? 'p-0' : ''}`}>{children}</div>
           </div>

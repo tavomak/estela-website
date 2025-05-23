@@ -7,6 +7,7 @@ import Image from 'next/image';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
+import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 
 const Footer = () => {
   const [showModal, setShowModal] = useState(false);
@@ -63,13 +64,13 @@ const Footer = () => {
           >
             {t('download_credentials')}
           </a>
-          <div className="block w-full pt-8 text-xs text-white border-t md:pt-2 md:w-1/2 lg:text-sm lg:space-x-3 border-ea-verde">
-            <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
-            <p className="inline">{t('footer_terms_conditions')}</p>
+          <div className="flex justify-between w-full pt-8 text-xs text-white border-t md:w-1/2 lg:text-sm border-ea-verde">
             <p className="block lg:inline">
               {t('footer_all_rights_reserved')}
-              <span className="text-ea-verde"> {siteName}</span>
+              <span className="lowercase text-ea-verde"> {siteName}</span>
             </p>
+            <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
+            <p className="inline">{t('footer_terms_conditions')}</p>
           </div>
         </div>
         <div>
@@ -84,18 +85,21 @@ const Footer = () => {
       </div>
       <Modal
         showModal={showModal}
-        size="xl"
+        size="xxl"
         onClick={() => setShowModal(false)}
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-4/5 mx-auto lg:w-full md:flex">
+        <div className="w-full mx-auto overflow-hidden lg:flex">
+          <div className="w-full lg:hidden text-ea-verde-900">
+            <DecorativeBar />
+          </div>
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>
-          <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
+          <div className="w-11/12 py-4 mx-auto space-y-6 md:p-4 md:pt-12 lg:w-3/5">
             <div className="w-full space-y-4">
-              <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
+              <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
                 <BrandLogoHorizontal />
               </div>
               <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">

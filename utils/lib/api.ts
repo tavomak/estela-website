@@ -81,7 +81,8 @@ export const getHomePageInfo = (slug: string, locales: any) =>
           projects {
             title
             description
-            image(locales: es) {
+            url
+            media(locales: es) {
               url
             }
           }

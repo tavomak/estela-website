@@ -1,0 +1,10 @@
+const CloseIcon = () => (
+  <svg width="10" height="14" viewBox="0 0 9 13" fill="currentColor">
+    <path
+      d="M0.40332 12.8014L3.0102 6.86122L0.425793 0.96582H3.03267L4.42601 5.69559H4.62826L6.0216 0.96582H8.65095L6.04407 6.8388L8.6959 12.8014H6.06654L4.62826 7.98201H4.42601L3.03267 12.8014H0.40332Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export default CloseIcon;

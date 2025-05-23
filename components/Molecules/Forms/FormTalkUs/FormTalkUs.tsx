@@ -60,9 +60,7 @@ const FormTalkUs: FC<FormContactProps> = ({
             contact: {
               templateType: 'talkUs',
               clientName: form.current?.clientName?.value,
-              organization: form.current?.organization?.value,
               email: form.current?.email?.value,
-              subject: form.current?.subject?.value,
               message: form.current?.message?.value,
             },
           }),
@@ -111,7 +109,7 @@ const FormTalkUs: FC<FormContactProps> = ({
       </div>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-ea-verde-200">
         <div>
-          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+          <span className="block text-sm font-normal text-ea-verde-900">
             {t('homepage_talkUs_form_client_name')}
           </span>
           <Input
@@ -127,23 +125,7 @@ const FormTalkUs: FC<FormContactProps> = ({
           />
         </div>
         <div>
-          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
-            {t('homepage_talkUs_form_client_organization')}
-          </span>
-          <Input
-            type="text"
-            name="organization"
-            rules={{
-              required: t('homepage_talkUs_form_client_organization_required'),
-            }}
-            errors={errors.organization as FieldError}
-            register={register}
-            labelColor="border-ea-verde-500"
-            bgLabelColor="bg-ea-verde-900"
-          />
-        </div>
-        <div>
-          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+          <span className="block text-sm font-normal text-ea-verde-900">
             {t('homepage_talkUs_form_client_email')}
           </span>
           <Input
@@ -158,30 +140,14 @@ const FormTalkUs: FC<FormContactProps> = ({
             bgLabelColor="bg-ea-verde-900"
           />
         </div>
-        <div>
-          <span className="block mb-1 text-sm font-normal text-ea-verde-900">
-            {t('homepage_talkUs_form_client_subject')}
-          </span>
-          <Input
-            type="text"
-            name="subject"
-            rules={{
-              required: t('homepage_talkUs_form_client_subject_required'),
-            }}
-            errors={errors.subject as FieldError}
-            register={register}
-            labelColor="border-ea-verde-500"
-            bgLabelColor="bg-ea-verde-900"
-          />
-        </div>
       </div>
       <div>
-        <span className="block mb-1 text-sm font-normal text-ea-verde-900">
+        <span className="block text-sm font-normal text-ea-verde-900">
           {t('homepage_talkUs_form_client_message')}
         </span>
         <label
           htmlFor="message"
-          className="relative block px-4 pt-4 my-4 border shadow-sm border-ea-verde-500"
+          className="relative block px-4 pt-4 mb-4 border shadow-sm border-ea-verde-500"
         >
           <textarea
             className="w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40"

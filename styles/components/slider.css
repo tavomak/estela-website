@@ -8,6 +8,10 @@
   @apply mx-auto;
 }
 
+.testimonial-slider .slick-slide.slick-active.slick-center.slick-current {
+  margin-left: -60px;
+}
+
 button.slick-arrow.slick-next::before,
 button.slick-arrow.slick-prev::before {
   display: none;

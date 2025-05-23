@@ -56,7 +56,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 py-3 px-6 md:p-6 ${
+      className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 py-1 px-6 md:p-6 ${
         isVisible ? '' : '-translate-y-full'
       }`}
     >

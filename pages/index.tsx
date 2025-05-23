@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { getHomePageInfo } from '@/utils/lib/api';
-import { projects } from '@/utils/constants/index';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
@@ -27,6 +26,7 @@ export async function getStaticProps(context: any) {
   const { locale } = context;
   const response = await getHomePageInfo('home', [locale]);
   const data = response?.data || [];
+  console.log('data', data.homepage.projects);
   return {
     props: {
       data,
@@ -51,12 +51,15 @@ export const Home = ({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
+    centerMode: true,
+
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: false,
         },
       },
       {
@@ -87,7 +90,7 @@ export const Home = ({
               <div className="relative z-30 items-center p-6 mx-auto 2xl:container 2xl:mx-auto lg:p-0 lg:flex">
                 <div className="relative 2xl:mx-auto lg:w-3/4">
                   <div className="absolute w-1/3 h-full md:w-2/12 bg-ea-amarillo" />
-                  <h1 className="relative w-11/12 pt-20 pb-12 pl-12 text-5xl font-medium md:w-3/5 display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
+                  <h1 className="relative w-full pt-20 pb-12 pl-12 text-5xl font-medium md:w-3/4 xl:w-3/5 text-balance display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
                     {content.sectionHero?.title}
                   </h1>
                   <p className="absolute right-0 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 -bottom-8 lg:text-lg fadeIn">
@@ -128,7 +131,7 @@ export const Home = ({
 
           <section className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-right-top md:bg-left-top">
             <article className="py-16 overflow-hidden lg:py-32 2xl:container 2xl:mx-auto">
-              <div className="w-full mx-auto md:w-11/12 lg:p-0">
+              <div className="w-full mx-auto md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0">
                 <div className="w-5/6 mr-auto lg:w-full 2xl:w-4/5 lg:mx-auto">
                   <div>
                     <h1 className="mb-2 text-5xl font-medium md:mb-6 lg:text-6xl display-font text-ea-verde-900">
@@ -141,9 +144,9 @@ export const Home = ({
                       {t('more_services')}
                     </Link>
                   </div>
-                  <div className="gap-12 my-10 lg:flex">
+                  <div className="gap-12 my-10 xl:flex">
                     {content.services.map((service: any) => (
-                      <div className="w-full mb-8 lg:mb-0" key={service.title}>
+                      <div className="w-full mb-8 xl:mb-0" key={service.title}>
                         <ServicesCard
                           service={service}
                           textColor="#005E49"
@@ -165,7 +168,7 @@ export const Home = ({
               </h1>
 
               <div id="slider1" className="block my-16 lg:hidden">
-                <Slider {...sliderSettings}>
+                <Slider {...sliderSettings} autoplay autoplaySpeed={4000}>
                   {content.trustedClients.map((item: any) => (
                     <div key={item.id}>
                       <Image
@@ -212,8 +215,11 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="relative w-full px-6 mb-12 overflow-hidden">
-            <article className="container py-16 mx-auto">
+          <section className="relative w-full px-6 xl:flex xl:px-0">
+            <div className="hidden xl:block">
+              <Image src="/testWave.png" alt="wave" width={240} height={1100} />
+            </div>
+            <article className="container py-16 mx-auto my-auto overflow-hidden">
               <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-4">
                 {(() => {
                   const words = t('homepage_testimonials_section_title').split(
@@ -232,13 +238,13 @@ export const Home = ({
               </div>
               <div
                 id="slider2"
-                className="mt-8 overflow-hidden md:overflow-visible slider-container"
+                className="mt-8 overflow-hidden md:overflow-visible slider-container testimonial-slider"
               >
                 <Slider {...sliderSettings}>
                   {content.testimonials.map((testimonial: Testimonial) => (
                     <div
                       key={testimonial.projectName}
-                      className="w-11/12 mx-auto 2xl:ml-12 md:w-full"
+                      className="w-11/12 mx-auto md:w-full"
                     >
                       <Testimonials {...testimonial} />
                     </div>
@@ -273,13 +279,19 @@ export const Home = ({
               <h1 className="mb-12 text-4xl font-medium lg:mb-24 lg:text-6xl display-font text-ea-verde-900">
                 {t('homepage_projects_section_title')}
               </h1>
-              {projects.length > 0 && (
+              {content.projects.length > 0 && (
                 <div>
-                  {projects.map((project) => (
-                    <div key={project.title} className="mb-10 md:mb-20">
+                  {content.projects.map((project: any) => (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      key={project.title}
+                      className="cursor-pointer"
+                    >
                       <div className="lg:h-[500px]">
                         <video
-                          src={project.video}
+                          src={project.media.url}
                           className="w-full h-full md:object-cover"
                           autoPlay
                           loop
@@ -289,28 +301,22 @@ export const Home = ({
                         />
                       </div>
 
-                      <div className="block mt-4">
-                        <p className="text-sm md:text-lg font-regular text-verde-oscuro-500">
+                      <div className="flex-row-reverse justify-between mb-10 lg:flex md:mb-20">
+                        <p className="mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-verde-oscuro-500">
                           {project.description}
                         </p>
-                        <h2 className="text-xl font-light lg:text-3xl text-verde-oscuro-500">
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {project.title}
-                          </a>
+                        <h2 className="mt-4 text-xl font-light lg:mt-8 lg:text-3xl text-verde-oscuro-500">
+                          {project.title}
                         </h2>
                       </div>
-                    </div>
+                    </a>
                   ))}
                 </div>
               )}
               <div className="mt-8">
                 <Link
                   className="text-xs font-medium btn btn-secondary lg:text-sm text-ea-verde border-ea-verde me-4"
-                  href="/"
+                  href="/portfolio"
                 >
                   {t('more_projects')}
                 </Link>
@@ -346,18 +352,21 @@ export const Home = ({
 
           <Modal
             showModal={showModal}
-            size="xl"
+            size="xxl"
             onClick={() => setShowModal(false)}
             bgColor="bg-ea-verde-200"
             noPadding
           >
-            <div className="w-4/5 mx-auto lg:w-full md:flex">
+            <div className="w-full mx-auto overflow-hidden lg:flex">
+              <div className="w-full lg:hidden text-ea-verde-900">
+                <DecorativeBar />
+              </div>
               <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
                 <CircleCurves />
               </div>
-              <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
+              <div className="w-11/12 py-4 mx-auto space-y-6 md:p-4 md:pt-12 lg:w-3/5">
                 <div className="w-full space-y-4">
-                  <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
+                  <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
                     <BrandLogoHorizontal />
                   </div>
                   <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">

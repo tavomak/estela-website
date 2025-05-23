@@ -13,7 +13,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
 
   return (
     <nav
-      className="container flex items-center justify-between mx-auto md:px-4"
+      className="flex items-center justify-between mx-auto lg:container md:px-4"
       aria-label="Global"
     >
       <Link className="w-40 text-verde-oscuro-500" href="/">

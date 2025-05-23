@@ -14,6 +14,10 @@ export const contactMasks = {
 };
 
 export const navItems = [
+  {
+    label: 'home',
+    path: '/',
+  },
   // {
   //   label: 'nav_about_title',
   //   path: '/about',
@@ -24,35 +28,11 @@ export const navItems = [
   },
   {
     label: 'nav_cases_title',
-    path: '/cases',
+    path: '/portfolio',
   },
   {
     label: 'nav_contact_title',
     path: '/contact',
-  },
-];
-
-export const projects = [
-  {
-    title: 'Fundación Amparo y Justicia',
-    video: '/FAJ-reel.mp4',
-    url: 'https://amparoyjusticia.cl/',
-    description:
-      'Web de fundación. • Blog de noticias. • Minisitio Campaña No Me Pregunten Más. • Biblioteca de recursos online • Mantención web',
-  },
-  {
-    title: 'CFC Capital',
-    video: '/FAJ-reel.mp4',
-    url: 'https://cfccapital.cl/',
-    description:
-      'Diseño y desarrollo web • Campañas Digitales • Newsletter • Grilla de contenido • Mantención del sitio web • Campañas de Google Ads y Meta Ads',
-  },
-  {
-    title: 'Menos Pausa Life',
-    video: '/FAJ-reel.mp4',
-    url: 'https://menospausa.life/',
-    description:
-      'Identidad de marca. • Merchandising. • Grilla de diseño para redes. • Diseño de sitio web.',
   },
 ];
 

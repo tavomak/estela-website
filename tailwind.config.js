@@ -18,7 +18,7 @@ module.exports = {
         'ea-gris-400': '#AAACAE',
         'ea-verde-900': '#005E49',
         'ea-verde-500': '#00BC92',
-        'ea-verde-400': '#415951',
+        'ea-verde-400': '#33C9A8',
         'ea-verde-300': '#66D7BE',
         'ea-verde-200': '#99E4D3',
         // verde: {
@@ -41,7 +41,7 @@ module.exports = {
           //   700: '#00836a',
           //   600: '#00a480',
           500: '#123026',
-          //   400: '#25e2b1',
+          400: '#415951',
           300: '#71837D',
           200: '#A0ACA8',
           //   100: '#cdfeea',
@@ -50,6 +50,9 @@ module.exports = {
       },
       fontSize: {
         xxs: '10px',
+      },
+      screens: {
+        '3xl': '1600px',
       },
     },
   },

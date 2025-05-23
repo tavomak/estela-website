@@ -4,6 +4,9 @@ import useTranslation from 'next-translate/useTranslation';
 import Hamburger from '@/components/Molecules/Hamburger';
 import EstelaIcon from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
+import Button from '@/components/Atoms/Button';
+import CloseIcon from '@/components/Atoms/Svg/CloseIcon';
+import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import { MobileNavigationProps } from './types';
 
 const MobileNavigation: FC<MobileNavigationProps> = ({
@@ -21,27 +24,48 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
 
   return (
     <nav
-      className="container relative flex items-center justify-between mx-auto md:px-4"
+      className="container relative flex items-center justify-between p-3 mx-auto md:p-4 "
       aria-label="Global"
     >
-      <Link className="z-20 w-36 text-verde-oscuro-500" href="/">
+      <Link
+        className={`relative z-40 w-32 md:w-40 ${
+          menuOpen ? 'text-ea-verde-300' : 'text-ea-verde-900'
+        }`}
+        href="/"
+      >
         <EstelaIcon />
       </Link>
-      <Hamburger open={menuOpen} setOpen={setMenuOpen} />
+      <div>
+        {!menuOpen && <Hamburger open={menuOpen} setOpen={setMenuOpen} />}
+        {menuOpen && (
+          <Button
+            className="relative z-20 rounded-full size-6 md:size-8 bg-verde-oscuro-400 text-ea-verde-200"
+            onClick={handleClose}
+          >
+            <span className="m-auto">
+              <CloseIcon />
+            </span>
+          </Button>
+        )}
+      </div>
       <div
-        className={`fixed inset-0 bg-white transition-all duration-300 ${
+        className={`fixed inset-0 bg-[#639d90] transition-all duration-300 ${
           menuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="flex flex-col h-full">
-          <div className="h-48" />
-          <div className="px-16 overflow-y-auto">
+        <div className="relative flex flex-col h-full">
+          <div className="absolute top-0 left-0 z-10 w-7/12 h-3/4 bg-verde-oscuro-400/80" />
+
+          <div className="h-20 md:h-24" />
+          <div className="z-20 px-16 overflow-hidden ">
             <ul className="mb-8 space-y-6">
-              <LanguageSwitcher />
+              <div className="text-white">
+                <LanguageSwitcher />
+              </div>
               {navItems.map((item) => (
                 <li
-                  className={`w-fit text-base hover:border-b-2 border-ea-verde ${
-                    itemActive(item.path) ? 'text-ea-verde' : 'text-ea-gris'
+                  className={`w-fit text-4xl font-medium display-font uppercase hover:border-b-2 border-ea-verde ${
+                    itemActive(item.path) ? 'text-ea-verde-300' : 'text-white'
                   }`}
                   key={item.label}
                 >
@@ -50,7 +74,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
                   </Link>
                 </li>
               ))}
-              <li>
+              {/* <li>
                 <a
                   href="/credenciales_2024.pdf"
                   className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde"
@@ -59,8 +83,13 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
                 >
                   {t('download_credentials')}
                 </a>
-              </li>
+              </li> */}
             </ul>
+          </div>
+          <div
+            className={`absolute z-40 w-full max-w-md sm:max-w-none rotate-180 -bottom-28 sm:-bottom-1/2 md:-bottom-3/4 text-ea-verde-400 ${menuOpen ? 'block' : 'hidden'}`}
+          >
+            <CircleWhite />
           </div>
         </div>
       </div>
