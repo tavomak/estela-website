@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/tavomak/estela-website/compare/v1.1.0...v1.1.1) (2025-06-20)
+
+
+### Bug Fixes
+
+* **Develop:** Lorena's stuff v2.1 ([7833edd](https://github.com/tavomak/estela-website/commit/7833edd485f450c1d830e0ea6118cdde7d0c14da))
+
 # [1.1.0](https://github.com/tavomak/estela-website/compare/v1.0.0...v1.1.0) (2025-06-20)
 
 
