@@ -90,5 +90,9 @@
 
   "services_title_brand": "Brand identity",
   "services_subtitle_brand": "We give a strategic sense to your company's branding.",
-  "services_parragraph_brand": "We create the image for your company or help you refresh it and give it a consistent use in your communication."
+  "services_parragraph_brand": "We create the image for your company or help you refresh it and give it a consistent use in your communication.",
+
+  "404.title": "Page not found",
+  "404.description": "The page you are looking for does not exist. Please check the URL or return to the home page.",
+  "404.button": "Return to site"
 }

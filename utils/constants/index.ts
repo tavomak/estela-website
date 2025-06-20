@@ -26,14 +26,14 @@ export const navItems = [
     label: 'nav_services_title',
     path: '/services',
   },
-  {
-    label: 'nav_cases_title',
-    path: '/portfolio',
-  },
-  {
-    label: 'nav_contact_title',
-    path: '/contact',
-  },
+  // {
+  //   label: 'nav_cases_title',
+  //   path: '/portfolio',
+  // },
+  // {
+  //   label: 'nav_contact_title',
+  //   path: '/contact',
+  // },
 ];
 
 export const flagIconsMapping: { [key: string]: string } = {
@@ -44,4 +44,33 @@ export const flagIconsMapping: { [key: string]: string } = {
 export const languages = {
   en: 'en',
   es: 'es',
+};
+
+export const sliderSettings = {
+  dots: false,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  centerMode: true,
+
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: false,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: false,
+      },
+    },
+  ],
 };

@@ -25,22 +25,30 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
           <BrandLogoHorizontal />
         </div>
       )}
-      <div className="w-full space-y-4 md:space-y-8">
-        <h1 className={`display-font text-4xl lg:text-6xl ${titleClass}`}>
+      <div className="space-y-4 w-full md:space-y-8">
+        <h1 className={`text-4xl display-font lg:text-6xl ${titleClass}`}>
           {title}
         </h1>
-        {subtitle && <h2 className={` ${subtitleClass}`}>{subtitle}</h2>}
-        <div className={` ${contentClass}`}>{content}</div>
+        {subtitle && <h2 className={`${subtitleClass}`}>{subtitle}</h2>}
+        <div className={`${contentClass}`}>{content}</div>
       </div>
       {btnLabel && (
         <aside className="flex pt-6">
-          <button
+          <a
             className={`text-sm font-medium tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
-            onClick={onClick}
+            onClick={
+              onClick
+                ? (e) => {
+                    e.preventDefault();
+                    onClick(e);
+                  }
+                : undefined
+            }
             type="button"
+            href="!#"
           >
             {btnLabel}
-          </button>
+          </a>
         </aside>
       )}
     </div>

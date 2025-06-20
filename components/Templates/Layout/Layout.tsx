@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
@@ -21,6 +21,10 @@ const Layout: FC<Props> = ({
   schema,
 }) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
+  const [showModal, setShowModal] = useState(false);
+  const handleClick = () => {
+    setShowModal(!showModal);
+  };
   return (
     <>
       <Head>
@@ -110,14 +114,14 @@ const Layout: FC<Props> = ({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      <Navbar />
+      <Navbar handleClick={handleClick} />
       <main
         className={`flex flex-col min-h-[calc(100vh-217px)] ${className || ''}`}
       >
         {children}
       </main>
       <ToastContainer />
-      <Footer />
+      <Footer showModal={showModal} handleClick={handleClick} />
       {schema && (
         // eslint-disable-next-line
         <Script

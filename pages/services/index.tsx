@@ -38,9 +38,9 @@ export const Services = ({
       title={t(content.title)}
       description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
     >
-      <section className="w-full px-4 bg-verde-oscuro-400">
-        <article className="items-center gap-6 pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
-          <div className="block w-1/2 mb-6 mr-auto lg:hidden">
+      <section className="px-4 w-full bg-verde-oscuro-400">
+        <article className="gap-6 items-center pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
+          <div className="block mr-auto mb-6 w-1/2 lg:hidden">
             <Image
               src="/halfCircle.png"
               width={350}
@@ -57,7 +57,7 @@ export const Services = ({
             contentClass="text-ea-verde-300 font-normal text-xs md:text-lg w-11/12 text-pretty"
             rtl={false}
           >
-            <div className="hidden ml-auto mr-16 w-fit lg:block">
+            <div className="hidden mr-16 ml-auto w-fit lg:block">
               <SquaresCircle />
             </div>
           </ContentBlockImage>
@@ -65,61 +65,41 @@ export const Services = ({
       </section>
 
       <section className="w-full bg-gray-100">
-        <article className="relative px-4 lg:py-32 2xl:container 2xl:mx-auto">
-          <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
-              <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
-                <div className="w-full lg:w-3/4">
-                  <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    {t('services_title_design-web')}
-                  </h1>
-                  {/* <Link
-                    href="/services"
-                    className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
-                  >
-                    {t('more_services')}
-                  </Link> */}
-                </div>
-                <div>
-                  <p className="text-base font-light 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-                    {t('services_parragraph_design-web')}
-                  </p>
-                </div>
-                {/* <Link
-                  href="/services"
-                  className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
-                >
-                  {t('more_services')}
-                </Link> */}
-              </div>
-              <div className="justify-center gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
-                {content.services1.map((service: any, index: number) => (
-                  <ServiceCard
-                    key={service.title}
-                    service={service}
-                    containerClass={index === 0 ? 'md:pb-10' : 'md:pb-16'}
-                  />
-                ))}
-              </div>
-            </div>
+        <article className="container flex relative flex-col gap-10 px-4 py-32 mx-auto lg:flex-row lg:items-center">
+          <div className="lg:w-5/12">
+            <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
+              {t('services_title_design-web')}
+            </h1>
+            <p className="text-base font-light 2xl:pe-20 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+              {t('services_parragraph_design-web')}
+            </p>
+          </div>
+          <div className="flex flex-col gap-6 lg:w-7/12 lg:flex-row 2xl:gap-12">
+            {content.services1.map((service: any, index: number) => (
+              <ServiceCard
+                key={service.title}
+                service={service}
+                containerClass={index === 0 ? 'md:pb-10' : 'md:pb-16'}
+              />
+            ))}
           </div>
         </article>
       </section>
 
       <section className="w-full">
         <article className="relative px-4 mx-auto lg:py-32">
-          <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="w-full gap-12 mx-auto my-10 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
+          <div className="mr-auto w-11/12 md:mx-auto">
+            <div className="gap-12 mx-auto my-10 w-full 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="">
                 <Image
                   src="/Square4Col.png"
                   width={590}
                   height={520}
                   alt="Square4Col"
-                  className="hidden ml-auto mr-20 2xl:block"
+                  className="hidden mr-20 ml-auto 2xl:block"
                 />
               </div>
-              <div className="w-full mb-8 lg:mt-8 lg:w-3/4 2xl:w-1/2">
+              <div className="mb-8 w-full lg:mt-8 lg:w-3/4 2xl:w-1/2">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   {t('services_title_strategies')}
                 </h1>
@@ -164,53 +144,30 @@ export const Services = ({
         </article>
       </section>
 
-      <section className="relative w-full bg-gray-100">
-        <article className="relative px-4 lg:py-32 2xl:container 2xl:mx-auto">
-          <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="w-full gap-12 mx-auto my-10 xl:w-3/4 2xl:w-full 2xl:flex">
-              <div className="w-full gap-8 my-auto 2xl:w-1/2 sm:flex 2xl:block">
-                <div className="w-full lg:w-3/4">
-                  <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
-                    {t('services_title_marketing')}
-                  </h1>
-                  {/* <Link
-                    href="/services"
-                    className="hidden mt-4 text-sm font-medium uppercase border-2 w-fit sm:block 2xl:hidden btn btn-secondary text-ea-verde-900 border-ea-verde-900"
-                  >
-                    {t('more_services')}
-                  </Link> */}
-                </div>
-                <div>
-                  <p className="text-base font-light 2xl:mt-4 text-balance md:text-3xl text-ea-verde-900">
-                    {t('services_parragraph_marketing')}
-                  </p>
-                </div>
-                {/* <Link
-                  href="/services"
-                  className="mt-4 text-xs font-medium uppercase border-2 2xl:mt-8 md:text-sm sm:hidden 2xl:block btn btn-secondary text-ea-verde-900 border-ea-verde-900 w-fit"
-                >
-                  {t('more_services')}
-                </Link> */}
-              </div>
-              <div className="gap-12 my-10 space-y-8 lg:space-y-0 lg:flex">
-                {content.serviceCard3?.map((service: any, index: number) => (
-                  <ServiceCard
-                    key={service.title}
-                    service={service}
-                    containerClass={index === 0 ? 'md:pb-20' : 'md:pb-28'}
-                  />
-                ))}
-              </div>
-            </div>
+      <section className="w-full bg-gray-100">
+        <article className="container flex relative flex-col gap-10 px-4 py-32 mx-auto lg:flex-row lg:items-center">
+          <div className="lg:w-5/12">
+            <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
+              {t('services_title_marketing')}
+            </h1>
+            <p className="text-base font-light 2xl:pe-20 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
+              {t('services_parragraph_marketing')}
+            </p>
           </div>
-          <div className="absolute left-0 hidden -top-4 lg:block text-ea-verde-500">
-            <DecorativeBar />
+          <div className="flex flex-col gap-6 lg:w-7/12 lg:flex-row 2xl:gap-12">
+            {content.serviceCard3?.map((service: any, index: number) => (
+              <ServiceCard
+                key={service.title}
+                service={service}
+                containerClass={index === 0 ? 'md:pb-20' : 'md:pb-28'}
+              />
+            ))}
           </div>
         </article>
       </section>
 
-      <section className="relative w-full overflow-hidden">
-        <div className="absolute left-0 hidden -bottom-28 lg:block 2xl:hidden">
+      <section className="overflow-hidden relative w-full">
+        <div className="hidden absolute left-0 -bottom-28 lg:block 2xl:hidden">
           <Image
             src="/SunLinesMobile.png"
             width={660}
@@ -218,12 +175,12 @@ export const Services = ({
             alt="Sun Lines Mobile"
           />
         </div>
-        <div className="absolute bottom-0 left-0 hidden 2xl:block">
+        <div className="hidden absolute bottom-0 left-0 2xl:block">
           <Image src="/SunLines.png" width={792} height={480} alt="Sun Lines" />
         </div>
         <article className="relative px-4 mx-auto lg:py-32">
-          <div className="w-11/12 mr-auto md:mx-auto">
-            <div className="justify-center w-full gap-10 mx-auto my-24 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
+          <div className="mr-auto w-11/12 md:mx-auto">
+            <div className="gap-10 justify-center mx-auto my-24 w-full 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="w-full lg:w-1/2 2xl:w-1/3">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
                   {t('services_title_brand')}
@@ -250,10 +207,13 @@ export const Services = ({
             </div>
           </div>
         </article>
+        <div className="hidden absolute left-0 -top-4 lg:block text-ea-verde-500">
+          <DecorativeBar />
+        </div>
       </section>
 
-      <section className="relative w-full px-8 overflow-hidden bg-verde-oscuro-400">
-        <article className="container flex-row-reverse mx-auto pt-14 sm:py-32 sm:flex">
+      <section className="overflow-hidden relative px-8 w-full bg-verde-oscuro-400">
+        <article className="container flex-row-reverse pt-14 mx-auto sm:py-32 sm:flex">
           <ContentBlockImage
             title={content.section1?.title}
             titleClass="text-ea-verde-500 sm:w-1/2 md:w-full mr-auto font-medium"
@@ -263,7 +223,10 @@ export const Services = ({
             contentClass="text-ea-verde-200 text-base font-light lg:text-lg lg:font-normal w-11/12 mr-auto text-pretty"
             btnLabel={t('wanna_know_more')}
             btnClass="text-ea-amarillo border-ea-amarillo"
-            onClick={() => setShowModal(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              setShowModal(true);
+            }}
             rtl={false}
           >
             <Image
@@ -271,7 +234,7 @@ export const Services = ({
               width={1900}
               height={1900}
               alt="Circle Curves"
-              className="absolute hidden object-cover w-full h-full overflow-visible sm:block -right-1/2 2xl:relative 2xl:right-auto"
+              className="hidden object-cover overflow-visible absolute -right-1/2 w-full h-full sm:block 2xl:relative 2xl:right-auto"
             />
           </ContentBlockImage>
           <div>
@@ -293,12 +256,12 @@ export const Services = ({
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-4/5 mx-auto lg:w-full md:flex text-ea-amarillo-500">
+        <div className="mx-auto w-4/5 lg:w-full md:flex text-ea-amarillo-500">
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>
-          <div className="w-full p-4 space-y-6 md:pt-12 lg:w-3/5">
-            <div className="w-full space-y-4">
+          <div className="p-4 space-y-6 w-full md:pt-12 lg:w-3/5">
+            <div className="space-y-4 w-full">
               <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
                 <BrandLogoHorizontal />
               </div>

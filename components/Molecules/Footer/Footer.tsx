@@ -1,4 +1,4 @@
-import { MouseEvent, useState } from 'react';
+import { FC } from 'react';
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
@@ -9,17 +9,15 @@ import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 
-const Footer = () => {
-  const [showModal, setShowModal] = useState(false);
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setShowModal(!showModal);
-  };
+const Footer: FC<{ showModal: boolean; handleClick: () => void }> = ({
+  showModal,
+  handleClick,
+}) => {
   const { t } = useTranslation('common');
   return (
     <footer className="bg-verde-oscuro-500">
       <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
-        <div className="w-full p-6 pt-24 space-y-10 md:py-24">
+        <div className="p-6 pt-24 space-y-10 w-full md:py-24">
           <div>
             <p className="text-sm text-ea-verde-200 lg:text-lg">
               {t('footer_lasting_bonds')}
@@ -29,7 +27,10 @@ const Footer = () => {
             </h2>
             <a
               href="!#"
-              onClick={(e) => handleClick(e)}
+              onClick={(e) => {
+                e.preventDefault();
+                handleClick();
+              }}
               className="mt-6 text-xs font-medium tracking-widest uppercase md:text-sm btn btn-secondary text-ea-amarillo border-ea-amarillo me-4"
               rel="noreferrer"
             >
@@ -64,7 +65,7 @@ const Footer = () => {
           >
             {t('download_credentials')}
           </a>
-          <div className="flex justify-between w-full pt-8 text-xs text-white border-t md:w-1/2 lg:text-sm border-ea-verde">
+          <div className="flex justify-between pt-8 w-full text-xs text-white border-t md:w-1/2 lg:text-sm border-ea-verde">
             <p className="block lg:inline">
               {t('footer_all_rights_reserved')}
               <span className="lowercase text-ea-verde"> {siteName}</span>
@@ -79,26 +80,26 @@ const Footer = () => {
             alt="footer image"
             width={786}
             height={536}
-            className="block sm:hidden "
+            className="block sm:hidden"
           />
         </div>
       </div>
       <Modal
         showModal={showModal}
         size="xxl"
-        onClick={() => setShowModal(false)}
+        onClick={() => handleClick()}
         bgColor="bg-ea-verde-200"
         noPadding
       >
-        <div className="w-full mx-auto overflow-hidden lg:flex">
+        <div className="overflow-hidden mx-auto w-full lg:flex">
           <div className="w-full lg:hidden text-ea-verde-900">
             <DecorativeBar />
           </div>
           <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
             <CircleCurves />
           </div>
-          <div className="w-11/12 py-4 mx-auto space-y-6 md:p-4 md:pt-12 lg:w-3/5">
-            <div className="w-full space-y-4">
+          <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
+            <div className="space-y-4 w-full">
               <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
                 <BrandLogoHorizontal />
               </div>

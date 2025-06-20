@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { useRouter } from 'next/router';
 import { navItems } from '@/utils';
 import MobileNavigation from '../MobileNavigation';
 import DesktopNavigation from '../DesktopNavigation';
 
-const Navbar = () => {
+const Navbar: FC<{ handleClick: () => void }> = ({ handleClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <header
       className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 py-1 px-6 md:p-6 ${
-        isVisible ? '' : '-translate-y-full'
+        isVisible ? 'lg:translate-y-0' : 'lg:-translate-y-full'
       }`}
     >
       {viewportWidth < 972 ? (
@@ -68,7 +68,11 @@ const Navbar = () => {
           itemActive={itemActive}
         />
       ) : (
-        <DesktopNavigation navItems={navItems} itemActive={itemActive} />
+        <DesktopNavigation
+          navItems={navItems}
+          itemActive={itemActive}
+          handleClick={handleClick}
+        />
       )}
     </header>
   );

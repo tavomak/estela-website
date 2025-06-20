@@ -92,5 +92,9 @@
 
   "services_title_brand": "Identidad de marca",
   "services_subtitle_brand": "Le damos un sentido estratégico al branding de tu empresa. ",
-  "services_parragraph_brand": "Creamos la imagen para tu empresa o te ayudamos a refrescarla y a darle un uso consistente en tu comunicación."
+  "services_parragraph_brand": "Creamos la imagen para tu empresa o te ayudamos a refrescarla y a darle un uso consistente en tu comunicación.",
+
+  "404.title": "Página no encontrada",
+  "404.description": "La página que buscas no existe. Por favor, verifica la URL o regresa a la página de inicio.",
+  "404.button": "Volver al sitio"
 }

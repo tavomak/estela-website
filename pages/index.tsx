@@ -1,9 +1,10 @@
 import Slider from 'react-slick';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
+import { sliderSettings } from '@/utils/constants';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import useTranslation from 'next-translate/useTranslation';
@@ -21,18 +22,26 @@ import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import SliderArrow from '@/components/Atoms/SliderArrow';
+import VideoIframe from '@/components/Templates/VideoIframe';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
-  const response = await getHomePageInfo('home', [locale]);
-  const data = response?.data || [];
-  console.log('data', data.homepage.projects);
-  return {
-    props: {
-      data,
-    },
-    revalidate: 100,
-  };
+  try {
+    const response = await getHomePageInfo('home', [locale]);
+    const data = response?.data?.homepage || [];
+    return {
+      props: {
+        data,
+      },
+      revalidate: 100,
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: undefined,
+      },
+    };
+  }
 }
 
 export const Home = ({
@@ -42,42 +51,18 @@ export const Home = ({
   const router = useRouter();
   const { t } = useTranslation('common');
 
-  const content = data?.homepage || [];
-
-  const sliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    centerMode: true,
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-    ],
+  const handleOpenModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setShowModal(true);
   };
+
+  const content = data;
 
   return (
     <Layout
       description="Diseñamos y desarrollamos servicios que faciliten a personas mostrarse, comunicarse y crecer haciendo uso de la tecnología y los medios digitales especialmente web"
       title="Experiencias de usuario inteligentes"
-      className="items-center justify-center"
+      className="justify-center items-center"
     >
       {router.isFallback ? (
         <div className="flex min-h-[calc(100vh-217px)] text-dark-blue justify-center items-center w-full">
@@ -90,39 +75,39 @@ export const Home = ({
               <div className="relative z-30 items-center p-6 mx-auto 2xl:container 2xl:mx-auto lg:p-0 lg:flex">
                 <div className="relative 2xl:mx-auto lg:w-3/4">
                   <div className="absolute w-1/3 h-full md:w-2/12 bg-ea-amarillo" />
-                  <h1 className="relative w-full pt-20 pb-12 pl-12 text-5xl font-medium md:w-3/4 xl:w-3/5 text-balance display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
-                    {content.sectionHero?.title}
+                  <h1 className="relative pt-20 pb-12 pl-12 w-full text-5xl font-medium md:w-3/4 xl:w-3/5 text-balance display-font lg:text-8xl text-ea-verde-900 fadeInLeft">
+                    {content?.sectionHero?.title}
                   </h1>
-                  <p className="absolute right-0 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 -bottom-8 lg:text-lg fadeIn">
-                    {content.sectionHero?.subtitle}
+                  <p className="absolute right-0 -bottom-8 z-20 w-3/4 text-xs font-medium text-ea-verde-900 lg:-right-48 md:w-1/2 lg:w-1/3 lg:text-lg fadeIn">
+                    {content?.sectionHero?.subtitle}
                   </p>
                 </div>
               </div>
-              <div className="absolute right-0 hidden -bottom-4 lg:block text-verde-oscuro-300">
+              <div className="hidden absolute right-0 -bottom-4 lg:block text-verde-oscuro-300">
                 <DecorativeBar />
               </div>
-              <div className="absolute z-10 w-full mx-auto -bottom-28 md:-bottom-48 lg:hidden text-gray-50">
+              <div className="absolute -bottom-28 z-10 mx-auto w-full text-gray-50 md:-bottom-48 lg:hidden">
                 <CircleWhite />
               </div>
             </article>
           </section>
 
-          <section className="w-full px-6 bg-verde-oscuro-500">
-            <article className="items-center gap-6 py-32 mx-auto 2xl:container lg:flex">
+          <section className="px-6 w-full bg-verde-oscuro-500">
+            <article className="gap-6 items-center py-32 mx-auto 2xl:container lg:flex">
               <ContentBlockImage
                 brandLogoColor="text-ea-verde"
-                title={content.section1?.title}
+                title={content?.section1?.title}
                 titleClass="font-medium text-ea-amarillo display-font w-11/12 text-balance md:text-pretty"
-                subtitle={content.section1?.subtitle}
+                subtitle={content?.section1?.subtitle}
                 subtitleClass="display-font font-medium text-white text-2xl md:text-3xl"
                 btnLabel={t('lets_talk')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
                 rtl={false}
-                onClick={() => setShowModal(true)}
-                content={content.section1?.description}
+                onClick={handleOpenModal}
+                content={content?.section1?.description}
                 contentClass="text-white w-3/4 text-base font-light text-pretty"
               >
-                <div className="hidden w-11/12 ml-auto lg:block">
+                <div className="hidden ml-auto w-11/12 lg:block">
                   <CircleWhite />
                 </div>
               </ContentBlockImage>
@@ -130,9 +115,9 @@ export const Home = ({
           </section>
 
           <section className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-right-top md:bg-left-top">
-            <article className="py-16 overflow-hidden lg:py-32 2xl:container 2xl:mx-auto">
-              <div className="w-full mx-auto md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0">
-                <div className="w-5/6 mr-auto lg:w-full 2xl:w-4/5 lg:mx-auto">
+            <article className="overflow-hidden py-16 lg:py-32 2xl:container 2xl:mx-auto">
+              <div className="mx-auto w-full md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0">
+                <div className="mr-auto w-5/6 lg:w-full 2xl:w-4/5 lg:mx-auto">
                   <div>
                     <h1 className="mb-2 text-5xl font-medium md:mb-6 lg:text-6xl display-font text-ea-verde-900">
                       {t('homepage_services_section_title')}
@@ -145,8 +130,8 @@ export const Home = ({
                     </Link>
                   </div>
                   <div className="gap-12 my-10 xl:flex">
-                    {content.services.map((service: any) => (
-                      <div className="w-full mb-8 xl:mb-0" key={service.title}>
+                    {content?.services?.map((service: any) => (
+                      <div className="mb-8 w-full xl:mb-0" key={service.title}>
                         <ServicesCard
                           service={service}
                           textColor="#005E49"
@@ -161,15 +146,15 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full overflow-hidden py-14 lg:py-20 bg-gray-50">
-            <article className="container max-w-screen-xl px-4 mx-auto">
+          <section className="overflow-hidden py-14 w-full bg-gray-50 lg:py-20">
+            <article className="container px-4 mx-auto max-w-screen-xl">
               <h1 className="text-2xl font-medium text-center lg:mb-10 display-font lg:text-4xl text-ea-verde-900">
                 {t('homepage_trust_section_title')}
               </h1>
 
               <div id="slider1" className="block my-16 lg:hidden">
                 <Slider {...sliderSettings} autoplay autoplaySpeed={4000}>
-                  {content.trustedClients.map((item: any) => (
+                  {content?.trustedClients?.map((item: any) => (
                     <div key={item.id}>
                       <Image
                         src={item.url}
@@ -189,13 +174,13 @@ export const Home = ({
                   ))}
                 </Slider>
               </div>
-              <div className="flex justify-center gap-4 mt-4 lg:hidden">
+              <div className="flex gap-4 justify-center mt-4 lg:hidden">
                 <SliderArrow sliderId="slider1" />
               </div>
 
-              <ul className="flex-wrap items-center justify-center hidden w-full lg:flex">
-                {content.trustedClients.map((item: any) => (
-                  <li className="w-1/2 p-12 lg:w-3/12" key={item.id}>
+              <ul className="hidden flex-wrap justify-center items-center w-full lg:flex">
+                {content?.trustedClients?.map((item: any) => (
+                  <li className="p-12 w-1/2 lg:w-3/12" key={item.id}>
                     <Image
                       src={item.url}
                       alt="Logo client"
@@ -215,11 +200,11 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="relative w-full px-6 xl:flex xl:px-0">
+          <section className="relative px-6 w-full xl:flex xl:px-0">
             <div className="hidden xl:block">
               <Image src="/testWave.png" alt="wave" width={240} height={1100} />
             </div>
-            <article className="container py-16 mx-auto my-auto overflow-hidden">
+            <article className="container overflow-hidden py-16 mx-auto my-auto">
               <h1 className="text-4xl font-medium display-font md:text-6xl text-ea-verde-900 lg:py-4">
                 {(() => {
                   const words = t('homepage_testimonials_section_title').split(
@@ -238,50 +223,50 @@ export const Home = ({
               </div>
               <div
                 id="slider2"
-                className="mt-8 overflow-hidden md:overflow-visible slider-container testimonial-slider"
+                className="overflow-hidden mt-8 md:overflow-visible slider-container testimonial-slider"
               >
                 <Slider {...sliderSettings}>
-                  {content.testimonials.map((testimonial: Testimonial) => (
+                  {content?.testimonials?.map((testimonial: Testimonial) => (
                     <div
                       key={testimonial.projectName}
-                      className="w-11/12 mx-auto md:w-full"
+                      className="mx-auto w-11/12 md:w-full"
                     >
                       <Testimonials {...testimonial} />
                     </div>
                   ))}
                 </Slider>
               </div>
-              <div className="absolute right-0 hidden -top-4 lg:block text-ea-verde-500">
+              <div className="hidden absolute right-0 -top-4 lg:block text-ea-verde-500">
                 <DecorativeBar />
               </div>
             </article>
           </section>
 
-          <section className="w-full px-6 overflow-hidden md:px-0 bg-verde-oscuro-500">
+          <section className="overflow-hidden px-6 w-full md:px-0 bg-verde-oscuro-500">
             <article className="md:bg-[url('/tabletWave.png')] 2xl:bg-[url('/desktopWave.png')] bg-contain bg-no-repeat bg-bottom md:bg-right-top relative items-center py-20 md:py-44 mx-auto 2xl:container md:flex md:pl-12">
               <ContentBlockImage
-                title={content.section2?.title}
+                title={content?.section2?.title}
                 titleClass="text-white font-medium"
-                subtitle={content.section2?.subtitle}
+                subtitle={content?.section2?.subtitle}
                 subtitleClass="text-ea-amarillo font-medium text-2xl md:text-4xl"
-                content={content.section2?.description}
+                content={content?.section2?.description}
                 contentClass="text-white text-base lg:text-3xl font-light"
                 btnLabel={t('wanna_know_more')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
-                onClick={() => setShowModal(true)}
+                onClick={handleOpenModal}
                 rtl
               />
             </article>
           </section>
 
-          <section className="w-full px-6 bg-gray-100">
-            <article className="w-11/12 py-12 mx-auto 2xl:container lg:py-32 2xl:w-3/4">
+          <section className="px-6 w-full bg-gray-100">
+            <article className="py-12 mx-auto w-11/12 2xl:container lg:py-32 2xl:w-3/4">
               <h1 className="mb-12 text-4xl font-medium lg:mb-24 lg:text-6xl display-font text-ea-verde-900">
                 {t('homepage_projects_section_title')}
               </h1>
-              {content.projects.length > 0 && (
+              {content?.projects?.length > 0 && (
                 <div>
-                  {content.projects.map((project: any) => (
+                  {content?.projects?.map((project: any) => (
                     <a
                       href={project.url}
                       target="_blank"
@@ -289,16 +274,10 @@ export const Home = ({
                       key={project.title}
                       className="cursor-pointer"
                     >
-                      <div className="lg:h-[500px]">
-                        <video
-                          src={project.media.url}
-                          className="w-full h-full md:object-cover"
-                          autoPlay
-                          loop
-                          muted
-                          controlsList="nodownload"
-                          disablePictureInPicture
-                        />
+                      <div className="">
+                        {project?.media?.url && (
+                          <VideoIframe videoId={project?.media?.url} muted />
+                        )}
                       </div>
 
                       <div className="flex-row-reverse justify-between mb-10 lg:flex md:mb-20">
@@ -324,21 +303,21 @@ export const Home = ({
             </article>
           </section>
 
-          <section className="w-full px-6 bg-ea-verde-900">
-            <article className="items-center gap-8 py-16 overflow-hidden lg:flex lg:py-32 2xl:container 2xl:mx-auto">
+          <section className="px-6 w-full bg-ea-verde-900">
+            <article className="overflow-hidden gap-8 items-center py-16 lg:flex lg:py-32 2xl:container 2xl:mx-auto">
               <ContentBlockImage
-                title={content.section3?.title}
-                subtitle={content.section3?.subtitle}
+                title={content?.section3?.title}
+                subtitle={content?.section3?.subtitle}
                 subtitleClass="text-ea-amarillo-200 text-2xl md:text-4xl font-regular md:font-medium"
-                content={content.section3?.description}
+                content={content?.section3?.description}
                 titleClass="text-white font-medium"
                 contentClass="text-white text-base md:text-3xl font-light"
                 btnLabel={t('homepage_contact_us')}
                 btnClass="text-ea-amarillo border-ea-amarillo"
-                onClick={() => setShowModal(true)}
+                onClick={handleOpenModal}
                 rtl={false}
               >
-                <div className="w-11/12 mx-auto mt-8 lg:mt-0 lg:ml-auto">
+                <div className="mx-auto mt-8 w-11/12 lg:mt-0 lg:ml-auto">
                   <div className="hidden lg:block">
                     <GeometricShape />
                   </div>
@@ -357,15 +336,15 @@ export const Home = ({
             bgColor="bg-ea-verde-200"
             noPadding
           >
-            <div className="w-full mx-auto overflow-hidden lg:flex">
+            <div className="overflow-hidden mx-auto w-full lg:flex">
               <div className="w-full lg:hidden text-ea-verde-900">
                 <DecorativeBar />
               </div>
               <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
                 <CircleCurves />
               </div>
-              <div className="w-11/12 py-4 mx-auto space-y-6 md:p-4 md:pt-12 lg:w-3/5">
-                <div className="w-full space-y-4">
+              <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
+                <div className="space-y-4 w-full">
                   <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
                     <BrandLogoHorizontal />
                   </div>

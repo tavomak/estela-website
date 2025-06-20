@@ -2,10 +2,6 @@ body {
   font-family: var(--primary-font);
 }
 
-.modal-active {
-  overflow: hidden;
-}
-
 .display-font {
   font-family: var(--display-font);
 }

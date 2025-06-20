@@ -58,21 +58,21 @@ const GeometricShape = () => (
     <path
       d="M483.212 357.866L354.382 286.581L483.212 215.76L612.339 286.581L483.212 357.866Z"
       stroke="#33C9A8"
-      stroke-width="1.89"
-      stroke-miterlimit="10"
+      strokeWidth="1.89"
+      strokeMiterlimit="10"
     />
     <path
       d="M483.212 215.76L354.382 145.36L485.013 73.8799L614.14 144.7L483.212 215.76Z"
       stroke="#33C9A8"
-      stroke-width="1.89"
-      stroke-miterlimit="10"
+      strokeWidth="1.89"
+      strokeMiterlimit="10"
     />
     <path
       d="M354.382 286.58L224.409 216L354.21 145.36L483.509 215.76L354.382 286.58Z"
       stroke="#33C9A8"
-      stroke-width="1.89"
-      stroke-miterlimit="10"
-      stroke-linecap="round"
+      strokeWidth="1.89"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
     />
     <path
       d="M355.009 573.956L355.166 145.06H353.615L353.458 575.276V576.58L614.141 430.065V428.326L355.009 573.956Z"

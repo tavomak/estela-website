@@ -3,17 +3,19 @@ import useTranslation from 'next-translate/useTranslation';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import React, { FC } from 'react';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
+import Button from '@/components/Atoms/Button';
 import { DesktopNavigationProps } from './types';
 
 const DesktopNavigation: FC<DesktopNavigationProps> = ({
   navItems,
   itemActive,
+  handleClick,
 }) => {
   const { t } = useTranslation('common');
 
   return (
     <nav
-      className="flex items-center justify-between mx-auto lg:container md:px-4"
+      className="flex justify-between items-center mx-auto lg:container md:px-4"
       aria-label="Global"
     >
       <Link className="w-40 text-verde-oscuro-500" href="/">
@@ -33,7 +35,15 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
             </li>
           ))}
       </ul>
-      <ul className="flex items-center gap-2 xl:gap-4">
+      <ul className="flex gap-2 items-center xl:gap-4">
+        <li>
+          <Button
+            className="mb-0 text-xs tracking-widest uppercase btn btn-primary"
+            onClick={() => handleClick()}
+          >
+            {t('contact_title')}
+          </Button>
+        </li>
         <li>
           <a
             href="/credenciales_2024.pdf"

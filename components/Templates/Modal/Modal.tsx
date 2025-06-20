@@ -46,7 +46,7 @@ const Modal: FC<Props> = ({
           }}
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="fixed left-0 z-40 w-full h-full p-4 overflow-x-hidden overflow-y-auto bg-black bg-opacity-50 sm:w-screen top-4 md:pt-12 md:p-24"
+          className="overflow-y-auto overflow-x-hidden fixed left-0 top-4 z-40 p-4 w-full h-full bg-black bg-opacity-50 sm:w-screen md:pt-12 md:p-24"
           onClick={handleBackdropClick}
         >
           <div

@@ -9,7 +9,7 @@ export interface HeroContentBlockProps {
   contentClass?: string;
   btnLabel?: string;
   btnClass?: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler;
   children?: React.ReactNode;
   imageUrl?: string;
   rtl?: boolean;
