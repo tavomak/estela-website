@@ -292,8 +292,10 @@ export const Home = ({
                 <div>
                   {content?.projects?.map((project: any) => (
                     <div key={project.title}>
-                      <div className="lg:h-[500px]">
-                        <VideoIframe videoId={project.videoId} muted controls />
+                      <div className="">
+                        {project?.videoId && (
+                          <VideoIframe videoId={project?.videoId} muted />
+                        )}
                       </div>
                       <div className="flex-row-reverse justify-between mb-10 lg:flex md:mb-20">
                         <p className="mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-verde-oscuro-500">
