@@ -55,6 +55,26 @@ export const Home = ({
     e.preventDefault();
     setShowModal(true);
   };
+  const clientsSettings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    centerMode: true,
+    centerPadding: '60px',
+    autoplay: true,
+    autoplaySpeed: 4000,
+    responsive: [
+      {
+        breakpoint: 550,
+        settings: {
+          centerPadding: '150px',
+        },
+      },
+    ],
+  };
 
   const content = data;
 
@@ -152,9 +172,12 @@ export const Home = ({
                 {t('homepage_trust_section_title')}
               </h1>
 
-              <div id="slider1" className="block my-16 lg:hidden">
-                <Slider {...sliderSettings} autoplay autoplaySpeed={4000}>
-                  {content?.trustedClients?.map((item: any) => (
+              <div
+                id="slider1"
+                className="block overflow-visible my-16 lg:hidden"
+              >
+                <Slider className="items-center" {...clientsSettings}>
+                  {content.trustedClients.map((item: any) => (
                     <div key={item.id}>
                       <Image
                         src={item.url}
@@ -163,12 +186,13 @@ export const Home = ({
                         height={120}
                         priority
                         style={{
-                          width: '60%',
+                          width: '75%',
                           height: 'auto',
                           maxHeight: '120px',
+                          maxWidth: '260px',
                           objectFit: 'contain',
-                          margin: 'auto',
                         }}
+                        className="m-auto"
                       />
                     </div>
                   ))}
@@ -267,19 +291,10 @@ export const Home = ({
               {content?.projects?.length > 0 && (
                 <div>
                   {content?.projects?.map((project: any) => (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      key={project.title}
-                      className="cursor-pointer"
-                    >
-                      <div className="">
-                        {project?.videoId && (
-                          <VideoIframe videoId={project?.videoId} muted />
-                        )}
+                    <div key={project.title}>
+                      <div className="lg:h-[500px]">
+                        <VideoIframe videoId={project.videoId} muted controls />
                       </div>
-
                       <div className="flex-row-reverse justify-between mb-10 lg:flex md:mb-20">
                         <p className="mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-verde-oscuro-500">
                           {project.description}
@@ -288,18 +303,10 @@ export const Home = ({
                           {project.title}
                         </h2>
                       </div>
-                    </a>
+                    </div>
                   ))}
                 </div>
               )}
-              <div className="mt-8">
-                <Link
-                  className="text-xs font-medium btn btn-secondary lg:text-sm text-ea-verde border-ea-verde me-4"
-                  href="/portfolio"
-                >
-                  {t('more_projects')}
-                </Link>
-              </div>
             </article>
           </section>
 

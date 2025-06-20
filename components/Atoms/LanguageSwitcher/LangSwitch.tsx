@@ -1,9 +1,6 @@
-import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import i18nConfig from '@/i18n.json';
 import setLanguage from 'next-translate/setLanguage';
-import { flagIconsMapping, languages } from '@/utils';
-import Button from '@/components/Atoms/Button';
 
 const { locales } = i18nConfig;
 
@@ -11,31 +8,37 @@ const LanguageSwitcher = () => {
   const { lang } = useTranslation();
 
   const handleLanguageChange = async (lng: string) => {
-    await setLanguage(lng === languages.es ? languages.en : languages.es);
+    if (lng !== lang) {
+      await setLanguage(lng);
+    }
   };
 
-  return locales.map((lng) =>
-    lng === lang ? (
-      <Button
-        onClick={() => handleLanguageChange(lng)}
-        key={lng}
-        className="z-20"
+  return (
+    <div className="z-20 flex items-center">
+      <button
+        type="button"
+        className={`text-xl uppercase display-font cursor-pointer ${
+          lang === locales[0]
+            ? 'text-verde-oscuro-500'
+            : 'text-verde-oscuro-300'
+        }`}
+        onClick={() => handleLanguageChange(locales[0])}
       >
-        <ul className="flex items-center gap-2">
-          <li>
-            <Image
-              src={`/${flagIconsMapping[lng]}.svg`}
-              alt={`${lng} flag`}
-              width={24}
-              height={24}
-            />
-          </li>
-          <li>
-            <span className="uppercase">{lng}</span>
-          </li>
-        </ul>
-      </Button>
-    ) : null
+        {locales[0]}
+      </button>
+      <span className="mx-1 text-verde-oscuro-300">/</span>
+      <button
+        type="button"
+        className={`text-xl uppercase display-font cursor-pointer ${
+          lang === locales[1]
+            ? 'text-verde-oscuro-500'
+            : 'text-verde-oscuro-300'
+        }`}
+        onClick={() => handleLanguageChange(locales[1])}
+      >
+        {locales[1]}
+      </button>
+    </div>
   );
 };
 

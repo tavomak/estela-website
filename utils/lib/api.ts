@@ -139,6 +139,16 @@ export const getServicePageInfo = (slug: string, locales: any) =>
             subtitle
             description
           }
+          testimonial {
+            testimonialText
+            autorName
+            autorRole
+            projectName
+            image(locales: es) {
+              url
+            }
+          }
+          content
         }
       }
     `,
