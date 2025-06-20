@@ -2,6 +2,7 @@ import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
 import splitTitleInTwoLines from '@/utils/helpers';
+import Link from 'next/link';
 import { ServiceCardProps } from './types';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
@@ -14,7 +15,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (
-    <div className="relative w-full h-full xl:min-w-80 xl:max-w-96">
+    <div className="relative w-full h-full xl:min-w-96">
       <div
         className="absolute w-full h-full translate-x-3 translate-y-3"
         style={{ backgroundColor: accentColor }}
@@ -60,7 +61,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
 
         {buttonText && (
-          <div className="flex items-center gap-2 mt-2 ml-auto md:mt-8">
+          <Link
+            href="/services"
+            className="flex items-center gap-2 mt-2 ml-auto md:mt-8"
+          >
             <span
               className="text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium"
               style={{ color: textColor }}
@@ -74,7 +78,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             >
               <DiagonalArrow />
             </button>
-          </div>
+          </Link>
         )}
       </div>
     </div>

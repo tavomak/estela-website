@@ -217,10 +217,8 @@ export const Services = ({
           <ContentBlockImage
             title={content.section1?.title}
             titleClass="text-ea-verde-500 sm:w-1/2 md:w-full mr-auto font-medium"
-            subtitle={content.section1?.subtitle}
-            subtitleClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto 2xl:text-balance"
-            content={content.section1?.description}
-            contentClass="text-ea-verde-200 text-base font-light lg:text-lg lg:font-normal w-11/12 mr-auto text-pretty"
+            content={content.section1?.subtitle}
+            contentClass="text-white font-normal text-base lg:text-3xl w-5/6 mr-auto 2xl:text-balance"
             btnLabel={t('wanna_know_more')}
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={(e) => {
@@ -229,13 +227,37 @@ export const Services = ({
             }}
             rtl={false}
           >
-            <Image
-              src="/circleGreen.png"
-              width={1900}
-              height={1900}
-              alt="Circle Curves"
-              className="hidden object-cover overflow-visible absolute -right-1/2 w-full h-full sm:block 2xl:relative 2xl:right-auto"
-            />
+            <div>
+              <p className="text-sm font-normal leading-6 md:text-lg text-ea-verde-200">
+                {content.content}
+              </p>
+              <div className="w-full h-[1.5px] my-4 bg-ea-verde-500" />
+              <h3 className="text-2xl font-light md:text-3xl text-ea-amarillo-500">
+                {content.testimonial?.testimonialText}
+              </h3>
+              <div className="items-center mt-4 md:flex">
+                <div className="flex items-center">
+                  <div className="rounded-full size-32">
+                    <Image
+                      src={content.testimonial?.image.url || ''}
+                      width={64}
+                      height={64}
+                      alt="Imagen de autor"
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
+
+                  <div className="px-4 text-verde-oscuro-500">
+                    <h3 className="text-sm font-normal text-gray-100 md:text-lg">
+                      {content.testimonial?.autorName}
+                    </h3>
+                    <p className="text-sm font-normal text-gray-100 md:text-lg">
+                      {content.testimonial?.autorRole}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ContentBlockImage>
           <div>
             <Image
