@@ -1,11 +1,9 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
-
 import { ToastContainer } from 'react-toastify';
-
-// import Navbar from 'components/Molecules/Navbar';
-// import Footer from 'components/Molecules/Footer';
+import Navbar from 'components/Molecules/Navbar';
+import Footer from 'components/Molecules/Footer';
 
 type Props = {
   children: ReactNode;
@@ -23,17 +21,24 @@ const Layout: FC<Props> = ({
   schema,
 }) => {
   const hostname = typeof window !== 'undefined' ? window.location.href : '';
+  const [showModal, setShowModal] = useState(false);
+  const handleClick = () => {
+    setShowModal(!showModal);
+  };
   return (
     <>
       <Head>
-        <title>{`${title} | CFC Capital`}</title>
+        <title>{`${title} | Estela Estudio Digital`}</title>
         <meta charSet="UTF-8" />
-        <meta name="description" content={`${description || ' CFC Capital'}`} />
+        <meta
+          name="description"
+          content={`${description || ' Estela Estudio Digital'}`}
+        />
         <link rel="canonical" href={hostname} />
         <meta property="og:locale" content="es_ES" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="hostname" />
-        <meta property="og:site_name" content="CFC Capital" />
+        <meta property="og:site_name" content="Estela Estudio Digital" />
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="apple-touch-icon"
@@ -109,12 +114,14 @@ const Layout: FC<Props> = ({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      {/* <Navbar /> */}
-      <main className={`min-h-screen flex flex-col ${className || ''}`}>
+      <Navbar handleClick={handleClick} />
+      <main
+        className={`flex flex-col min-h-[calc(100vh-217px)] ${className || ''}`}
+      >
         {children}
       </main>
       <ToastContainer />
-      {/* <Footer /> */}
+      <Footer showModal={showModal} handleClick={handleClick} />
       {schema && (
         // eslint-disable-next-line
         <Script

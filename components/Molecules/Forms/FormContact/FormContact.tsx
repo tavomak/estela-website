@@ -59,6 +59,7 @@ const FormContact: FC<FormContactProps> = ({
           method: 'POST',
           body: JSON.stringify({
             contact: {
+              templateType: 'contact',
               email: form.current?.clientEmail?.value,
               firstName: form.current?.clientName?.value,
               lastName: form.current?.clientLastName?.value,
@@ -177,7 +178,7 @@ const FormContact: FC<FormContactProps> = ({
             {...register('message')}
           />
           <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
-            Mensaje
+            {t('contact_form_client_message')}
           </span>
         </label>
       </div>
@@ -188,7 +189,7 @@ const FormContact: FC<FormContactProps> = ({
           loadingType="dots"
           submit
         >
-          Enviar
+          {t('contact_form_client_send')}
         </Button>
       </div>
     </form>

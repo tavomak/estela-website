@@ -1,0 +1,23 @@
+.obj1 {
+  animation: var(--movedelement) 15s linear infinite;
+}
+
+.obj2 {
+  animation: var(--movedelement3) 18s linear infinite;
+}
+
+.obj3 {
+  animation: var(--movedelement2) 10s linear infinite;
+}
+
+.obj4 {
+  animation: var(--movedelement) 10s linear infinite;
+}
+
+.obj5 {
+  animation: var(--movedelement2) 10s linear infinite;
+}
+
+.obj6 {
+  animation: var(--movedelement3) 10s linear infinite;
+}

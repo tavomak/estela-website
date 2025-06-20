@@ -1,8 +1,69 @@
 {
   "nav_homepage_title": "Inicio",
   "nav_about_title": "Nosotros",
-  "nav_contact_title": "Contacto",
+  "nav_contact_title": "Contáctanos",
+  "nav_services_title": "Servicios",
+  "nav_cases_title": "Portafolio",
+
+  "hero_title": "Mejoramos tus procesos de comunicación digital",
+  "hero_parragraph": "Mediante el desarrollo de sitios web y aplicaciones, la consolidación de la identidad de marca y la planificación de campañas digitales",
+
+  "homepage_content_section_title-1": "Porque sabemos que tienes algo que decir",
+  "homepage_content_section_subtitle-1": "Lleva tu visión al siguiente nivel",
+  "homepage_content_section_parragraph-1": "Nos involucramos con la visión empresarial, el sentido de sus productos y servicios y las oportunidades de negocio",
+
+  "homepage_services_section_title": "Conoce nuestros servicios",
+
+  "homepage_services_title_web": "Desarrollo & diseño web",
+  "homepage_services_parragraph_web": "Llevamos tu sitio web a otro nivel. Nos enfocamos en la experiencia de usuario, un diseño consistente y la estructuración de un contenido claro, conciso y atractivo.",
+
+  "homepage_services_title_marketing": "Marketing digital",
+  "homepage_services_parragraph_marketing": "Planificamos, diseñamos, ejecutamos y analizamos campañas de marketing de contenido desde una perspectiva 360.",
+
+  "homepage_services_title_brand": "Identidad de marca",
+  "homepage_services_parragraph_brand": "Le damos un sentido estratégico al branding de tu empresa. Creamos la imagen para tu empresa o te ayudamos a refrescarla y a darle un uso consistente en tu comunicación.",
+
+  "more_services": "Ver servicios",
+  "learn_more": "Saber más",
+
+  "homepage_trust_section_title": "Han confiado en nosotros",
+
+  "homepage_testimonials_section_title": "Creamos vínculos duraderos",
+
+  "homepage_content_section_title-2": "¿Tu comunicación se encuentra estancada en un pantano digital?",
+  "homepage_content_section_subtitle-2": "La presencia digital requiere de una perspectiva estratégica para crecer.",
+  "homepage_content_section_parragraph-2": "Tenemos la experiencia para ayudarte en la gestión y el desarrollo web.",
+  "wanna_know_more": "Quiero saber más",
+
+  "homepage_projects_section_title": "El trabajo que nos respalda",
+  "more_projects": "Ver más proyectos",
+
+  "homepage_content_section_title-3": "Planes de mantención",
+  "homepage_content_section_subtitle-3": "Nos convertimos en tus aliados estratégicos",
+  "homepage_content_section_parragraph-3": "Mantenemos tu presencia digital siempre activa y optimizada. Participamos proactivamente en los procesos de estructuración y planificación del contenido y generación de elementos gráficos.",
+  "homepage_contact_us": "Contáctanos",
+
+  "homepage_talkUs_form_title": "Conversemos",
+  "homepage_talkUs_form_subtitle": "La presencia digital requiere de perspectiva estratégica para crecer",
+  "homepage_talkUs_form_client_send": "Enviar",
+  "homepage_talkUs_form_client_name": "Nombre",
+  "homepage_talkUs_form_client_name_required": "Nombre requerido",
+  "homepage_talkUs_form_client_organization": "Organización",
+  "homepage_talkUs_form_client_organization_required": "Organización requerido",
+  "homepage_talkUs_form_client_email": "Email",
+  "homepage_talkUs_form_client_email_required": "Email requerido",
+  "homepage_talkUs_form_client_subject": "Asunto",
+  "homepage_talkUs_form_client_subject_required": "Asunto requerido",
+  "homepage_talkUs_form_client_message": "Mensaje",
+
+  "cases_title": "Nuestros clientes",
+
   "download_credentials": "Descargar credenciales",
+  "lets_talk": "¡Conversemos!",
+  "footer_lasting_bonds": "Creamos vinculos duraderos",
+  "footer_privacy": "Privacidad",
+  "footer_terms_conditions": "Términos y condiciones",
+  "footer_all_rights_reserved": "Todos los derechos reservados",
   "contact_title": "Escríbenos",
   "contact_success_message": "Hemos recibido tu mensaje. Un ejecutivo se comunicará contigo brevemente.",
   "contact_error_message": "¡Mensaje no enviado, por favor inténtalo de nuevo!",
@@ -11,11 +72,29 @@
   "contact_form_client_email": "Introduce un email",
   "contact_form_client_phone": "Introduce un teléfono",
   "contact_form_client_message": "Introduce un mensaje",
+  "contact_form_client_send": "Enviar",
   "contact_form_client_name_required": "Nombre requerido",
   "contact_form_client_last_name_required": "Apellido requerido",
   "contact_form_client_email_required": "Email requerido",
   "contact_form_client_phone_required": "Teléfono requerido",
   "contact_form_client_message_required": "Mensaje requerido",
   "contact_form_client_phone_max_length": "Debe tener 9 dígitos",
-  "contact_form_client_phone_min_length": "Debe tener 9 dígitos"
+  "contact_form_client_phone_min_length": "Debe tener 9 dígitos",
+
+  "services_title_design-web": "Desarrollo & Diseño web",
+  "services_parragraph_design-web": "Llevamos tu sitio web a otro nivel. Nos enfocamos en la experiencia de usuario, un diseño consistente y un contenido claro, conciso y atractivo.",
+
+  "services_title_strategies": "Estructuramos y planificamos estrategias",
+  "services_parragraph_strategies": "Desarrollamos una estrategia comunicacional consistente con un plan de contenidos y una guía de diseño integradas para toda la comunicación digital.",
+
+  "services_title_marketing": "Marketing digital",
+  "services_parragraph_marketing": "Planificamos, diseñamos, ejecutamos y analizamos campañas de marketing desde una perspectiva 360.",
+
+  "services_title_brand": "Identidad de marca",
+  "services_subtitle_brand": "Le damos un sentido estratégico al branding de tu empresa. ",
+  "services_parragraph_brand": "Creamos la imagen para tu empresa o te ayudamos a refrescarla y a darle un uso consistente en tu comunicación.",
+
+  "404.title": "Página no encontrada",
+  "404.description": "La página que buscas no existe. Por favor, verifica la URL o regresa a la página de inicio.",
+  "404.button": "Volver al sitio"
 }

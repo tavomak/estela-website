@@ -1,4 +1,10 @@
-export interface EmailTemplateProps {
+export interface TalkUsTemplateProps {
+  clientName: string;
+  email: string;
+  message: string;
+}
+
+export interface ContactTemplateProps {
   firstName: string;
   lastName: string;
   email: string;
@@ -6,3 +12,7 @@ export interface EmailTemplateProps {
   message: string;
   tag: string;
 }
+
+export type EmailTemplateProps =
+  | ({ templateType: 'contact' } & ContactTemplateProps)
+  | ({ templateType: 'talkUs' } & TalkUsTemplateProps);

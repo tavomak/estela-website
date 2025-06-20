@@ -6,7 +6,7 @@ article.main a {
 }
 
 .btn {
-  @apply inline-flex items-center px-4 py-1 font-semibold;
+  @apply inline-flex items-center px-4 py-2 mb-4 font-semibold;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: background-color, color, transform, box-shadow;
@@ -21,7 +21,7 @@ article.main a {
 }
 
 .btn-primary {
-  @apply bg-ea-amarillo text-ea-verde-oscuro hover:bg-ea-verde hover:text-white;
+  @apply bg-ea-amarillo text-verde-oscuro-500 hover:bg-ea-verde hover:text-white;
   --btn-color: var(--white);
   --btn-background-color: var(--medium-blue);
   --btn-border-color: none;
@@ -38,11 +38,12 @@ article.main a {
   --btn-color: var(--white);
   --btn-background-color: transparent;
   --btn-border-color: var(--ea-verde);
+  --default-box-shadow: 0.25rem 0.25rem 0 rgb(241 255 148 / 20%);
 }
 .btn-secondary:hover,
 .btn-secondary.active {
   --btn-color: var(--ea-verde);
-  --btn-background-color: var(--white);
+  --btn-background-color: transparent;
   --btn-border-color: var(--ea-verde);
 }
 
@@ -55,4 +56,8 @@ article.main a {
   background-color: var(--white);
   border-color: var(--white);
   color: var(--dark-blue);
+}
+
+.btnArrow {
+  @apply flex justify-center items-center w-10 h-10 rounded-full bg-ea-verde-900 text-ea-amarillo;
 }

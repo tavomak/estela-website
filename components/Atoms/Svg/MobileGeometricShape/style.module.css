@@ -1,0 +1,70 @@
+.shape1 {
+  animation: moveShape1 15s ease infinite;
+}
+
+.shape2 {
+  animation: moveShape2 12s ease-in-out infinite;
+}
+
+.shape3 {
+  animation: moveShape3 10s ease-in-out infinite;
+}
+
+@keyframes moveShape1 {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(100px, 21px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes moveShape2 {
+  0% {
+    opacity: 1;
+    color: #33c9a8;
+  }
+  25% {
+    opacity: 0;
+    color: #f7ffbf;
+  }
+  50% {
+    opacity: 1;
+    color: #f7ffbf;
+  }
+  100% {
+    opacity: 1;
+    color: #33c9a8;
+  }
+}
+
+@keyframes moveShape3 {
+  0% {
+    transform: translate(0px, 0px);
+    opacity: 0;
+    color: #f7ffbf;
+  }
+  25% {
+    transform: translate(0px, 0px);
+    opacity: 1;
+    color: #f7ffbf;
+  }
+  50% {
+    transform: translate(-130px, 72px);
+    opacity: 1;
+    color: #33c9a8;
+  }
+  75% {
+    transform: translate(-130px, 72px);
+    opacity: 1;
+    color: #33c9a8;
+  }
+  100% {
+    transform: translate(0px, 0px);
+    opacity: 0;
+    color: #33c9a8;
+  }
+}

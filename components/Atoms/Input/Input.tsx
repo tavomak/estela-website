@@ -15,6 +15,8 @@ const Input: FC<InputProps> = ({
   rules,
   phone,
   disabled,
+  bgLabelColor,
+  labelColor,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -22,10 +24,10 @@ const Input: FC<InputProps> = ({
     if (register) {
       return (
         <input
-          className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
+          className="w-full p-1 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
           type={showPassword ? 'text' : type}
           id={name}
-          placeholder={placeholder}
+          placeholder={placeholder ? '' : placeholder}
           {...register(name, { ...rules })}
           disabled={disabled}
         />
@@ -49,7 +51,7 @@ const Input: FC<InputProps> = ({
     <div className={phone ? 'flex items-center justify-stretch' : ''}>
       <label
         htmlFor={name}
-        className={`${phone ? 'w-full rounded-r-md' : 'rounded-md'} ${errors ? 'border-red-500' : ''} relative my-4 block border border-gray-200 shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
+        className={`w-full  ${errors ? 'border-red-500' : ''} relative mb-2 block border ${labelColor || 'border-gray-200'} shadow-sm focus-within:border-dark-blue focus-within:ring-1 focus-within:dark-blue`}
       >
         {phone ? (
           <PhoneInput
@@ -79,7 +81,9 @@ const Input: FC<InputProps> = ({
         )}
 
         {!phone && (
-          <span className="absolute start-2.5 top-0 -translate-y-1/2 peer-focus:bg-white peer-focus:text-dark-blue px-2 text-xs transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs rounded-full">
+          <span
+            className={`absolute  start-2.5 top-0 -translate-y-1/2 peer-focus:${bgLabelColor || 'bg-white'}  peer-focus:text-dark-blue px-2 text-xs transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs rounded-full`}
+          >
             {placeholder}
           </span>
         )}

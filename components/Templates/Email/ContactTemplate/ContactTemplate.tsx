@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { EmailTemplateProps } from './types';
+import { ContactTemplateProps } from '../types';
 
-const EmailTemplate: FC<Readonly<EmailTemplateProps>> = ({
+const ContactTemplate: FC<Readonly<ContactTemplateProps>> = ({
   firstName,
   lastName,
   email,
@@ -21,4 +21,4 @@ const EmailTemplate: FC<Readonly<EmailTemplateProps>> = ({
   </div>
 );
 
-export default EmailTemplate;
+export default ContactTemplate;

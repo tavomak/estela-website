@@ -1,0 +1,32 @@
+.slick-slider .slick-arrow.slick-next,
+.slick-slider .slick-arrow.slick-prev {
+  @apply !hidden;
+}
+
+.slick-slider .slick-arrow.slick-next svg,
+.slick-slider .slick-arrow.slick-prev svg {
+  @apply mx-auto;
+}
+
+.testimonial-slider .slick-slide.slick-active.slick-center.slick-current {
+  margin-left: -60px;
+}
+
+button.slick-arrow.slick-next::before,
+button.slick-arrow.slick-prev::before {
+  display: none;
+}
+
+.slick-slide {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.slick-slide.slick-active {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.slick-list {
+  overflow: visible !important;
+}
