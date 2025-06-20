@@ -275,8 +275,8 @@ export const Home = ({
                       className="cursor-pointer"
                     >
                       <div className="">
-                        {project?.media?.url && (
-                          <VideoIframe videoId={project?.media?.url} muted />
+                        {project?.videoId && (
+                          <VideoIframe videoId={project?.videoId} muted />
                         )}
                       </div>
 
