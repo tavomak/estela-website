@@ -82,9 +82,7 @@ export const getHomePageInfo = (slug: string, locales: any) =>
             title
             description
             url
-            media(locales: es) {
-              url
-            }
+            videoId
           }
           section3 {
             title
