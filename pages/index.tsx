@@ -33,7 +33,7 @@ export async function getStaticProps(context: any) {
       },
       revalidate: 100,
     };
-  } catch (error) {
+  } catch {
     return {
       props: {
         data: undefined,
