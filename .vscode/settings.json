@@ -7,13 +7,9 @@
   },
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "files.eol": "\n",
   "tailwind-fold.foldStyle": "QUOTES",
-  "tailwind-fold.unfoldIfLineSelected": true
+  "tailwind-fold.unfoldIfLineSelected": true,
+  "cSpell.words": ["esnext", "recaptcha"]
 }
