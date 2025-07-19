@@ -92,5 +92,5 @@
       "@semantic-release/github"
     ]
   },
-  "packageManager": "pnpm"
+  "packageManager": "pnpm@9.5.0"
 }
