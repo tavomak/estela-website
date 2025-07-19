@@ -15,13 +15,15 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
 
   return (
     <nav
-      className="flex justify-between items-center mx-auto lg:container md:px-4"
+      className="flex justify-between items-center mx-auto max-w-screen-xl md:px-4"
       aria-label="Global"
     >
-      <Link className="w-40 text-verde-oscuro-500" href="/">
-        <BrandLogoHorizontal />
-      </Link>
-      <ul className="flex gap-4 xl:gap-14">
+      <ul className="flex gap-4 items-center xl:gap-14">
+        <li className="w-40">
+          <Link className="w-40 text-verde-oscuro-500" href="/">
+            <BrandLogoHorizontal />
+          </Link>
+        </li>
         {navItems &&
           navItems.length &&
           navItems.map((item) => (

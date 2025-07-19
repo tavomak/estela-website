@@ -15,7 +15,7 @@ export const contactMasks = {
 
 export const navItems = [
   {
-    label: 'home',
+    label: 'nav_homepage_title',
     path: '/',
   },
   // {

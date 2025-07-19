@@ -1,14 +1,15 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { navItems } from '@/utils';
+import { useModal } from 'hooks/useModal/useModal';
 import MobileNavigation from '../MobileNavigation';
 import DesktopNavigation from '../DesktopNavigation';
 
-const Navbar: FC<{ handleClick: () => void }> = ({ handleClick }) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-
+  const { setShowModal } = useModal();
   const router = useRouter();
 
   const handleMenuOpen = (open: boolean) => {
@@ -71,7 +72,7 @@ const Navbar: FC<{ handleClick: () => void }> = ({ handleClick }) => {
         <DesktopNavigation
           navItems={navItems}
           itemActive={itemActive}
-          handleClick={handleClick}
+          handleClick={() => setShowModal(true)}
         />
       )}
     </header>

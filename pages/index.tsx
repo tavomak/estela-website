@@ -1,28 +1,29 @@
-import Slider from 'react-slick';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import Slider from 'react-slick';
 import { InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
 import { sliderSettings } from '@/utils/constants';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
+import { useModal } from 'hooks/useModal/useModal';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import Layout from '@/components/Templates/Layout';
-import Modal from '@/components/Templates/Modal';
 import Spinner from '@/components/Atoms/Spinner';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Testimonials from '@/components/Molecules/Testimonial';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import ServicesCard from '@/components/Molecules/ServiceCard';
-import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
-import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import SliderArrow from '@/components/Atoms/SliderArrow';
 import VideoIframe from '@/components/Templates/VideoIframe';
+import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
+import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
+import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
+import Modal from '@/components/Templates/Modal';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -44,16 +45,47 @@ export async function getStaticProps(context: any) {
   }
 }
 
+const modalContent = (t: any) => (
+  <div className="overflow-hidden mx-auto w-full lg:flex">
+    <div className="w-full lg:hidden text-ea-verde-900">
+      <DecorativeBar />
+    </div>
+    <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
+      <CircleCurves />
+    </div>
+    <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
+      <div className="space-y-4 w-full">
+        <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
+          <BrandLogoHorizontal />
+        </div>
+        <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
+          {t('homepage_talkUs_form_title')}
+        </h1>
+        <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
+          {t('homepage_content_section_subtitle-2')}
+        </h2>
+      </div>
+
+      <FormTalkUs
+        service="Contacto"
+        title="Escríbenos"
+        image="/images/contact.png"
+        content="Nos pondremos en contacto contigo lo antes posible"
+      />
+    </div>
+  </div>
+);
+
 export const Home = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
   const { t } = useTranslation('common');
+  const { openModal } = useModal();
 
   const handleOpenModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    setShowModal(true);
+    openModal(modalContent(t));
   };
   const clientsSettings = {
     dots: false,
@@ -157,6 +189,7 @@ export const Home = ({
                           textColor="#005E49"
                           containerClass="pb-16 lg:pb-8"
                           buttonText="learn_more"
+                          onClick={() => openModal(modalContent(t))}
                         />
                       </div>
                     ))}
@@ -337,45 +370,9 @@ export const Home = ({
               </ContentBlockImage>
             </article>
           </section>
-
-          <Modal
-            showModal={showModal}
-            size="xxl"
-            onClick={() => setShowModal(false)}
-            bgColor="bg-ea-verde-200"
-            noPadding
-          >
-            <div className="overflow-hidden mx-auto w-full lg:flex">
-              <div className="w-full lg:hidden text-ea-verde-900">
-                <DecorativeBar />
-              </div>
-              <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
-                <CircleCurves />
-              </div>
-              <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
-                <div className="space-y-4 w-full">
-                  <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
-                    <BrandLogoHorizontal />
-                  </div>
-                  <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
-                    {t('homepage_talkUs_form_title')}
-                  </h1>
-                  <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
-                    {t('homepage_content_section_subtitle-2')}
-                  </h2>
-                </div>
-
-                <FormTalkUs
-                  service="Contacto"
-                  title="Escríbenos"
-                  image="/images/contact.png"
-                  content="Nos pondremos en contacto contigo lo antes posible"
-                />
-              </div>
-            </div>
-          </Modal>
         </>
       )}
+      <Modal size="xxl" bgColor="bg-ea-verde-200" noPadding />
     </Layout>
   );
 };

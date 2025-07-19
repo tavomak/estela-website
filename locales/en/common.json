@@ -6,22 +6,22 @@
   "nav_cases_title": "Portfolio",
 
   "hero_title": "We improve your digital communication processes",
-  "hero_parragraph": "Through the development of websites and applications, the consolidation of brand identity and the planning of digital campaigns",
+  "hero_paragraph": "Through the development of websites and applications, the consolidation of brand identity and the planning of digital campaigns",
 
   "homepage_content_section_title-1": "Because we know you have something to say",
   "homepage_content_section_subtitle-1": "Take your vision to the next level",
-  "homepage_content_section_parragraph-1": "We engage with your business vision, the meaning of your products and services and business opportunities",
+  "homepage_content_section_paragraph-1": "We engage with your business vision, the meaning of your products and services and business opportunities",
 
   "homepage_services_section_title": "Learn about our services",
 
   "homepage_services_title_web": "Development & Design Web",
-  "homepage_services_parragraph_web": "We take your website to another level. We focus on user experience, a consistent design and the structuring of a clear, concise and attractive content.",
+  "homepage_services_paragraph_web": "We take your website to another level. We focus on user experience, a consistent design and the structuring of a clear, concise and attractive content.",
 
   "homepage_services_title_marketing": "Digital Marketing",
-  "homepage_services_parragraph_marketing": "We plan, design, execute and analyze content marketing campaigns from a 360º perspective.",
+  "homepage_services_paragraph_marketing": "We plan, design, execute and analyze content marketing campaigns from a 360º perspective.",
 
   "homepage_services_title_brand": "Brand identity",
-  "homepage_services_parragraph_brand": "We give a strategic sense to your company's branding. We create the image for your company or help you refresh it and give it a consistent use in your communication.",
+  "homepage_services_paragraph_brand": "We give a strategic sense to your company's branding. We create the image for your company or help you refresh it and give it a consistent use in your communication.",
 
   "more_services": "View services",
   "learn_more": "Learn more",
@@ -32,7 +32,7 @@
 
   "homepage_content_section_title-2": "Is your communication stuck in a digital quagmire?",
   "homepage_content_section_subtitle-2": "Digital presence requires a strategic perspective to grow",
-  "homepage_content_section_parragraph-2": "We have the experience to help you with web management and development.",
+  "homepage_content_section_paragraph-2": "We have the experience to help you with web management and development.",
   "wanna_know_more": "I want to know more",
 
   "homepage_projects_section_title": "The work that supports us",
@@ -40,7 +40,7 @@
 
   "homepage_content_section_title-3": "Maintenance plans",
   "homepage_content_section_subtitle-3": "We become your strategic allies",
-  "homepage_content_section_parragraph-3": "We keep your digital presence always active and optimized. We proactively participate in the processes of structuring and planning of content and generation of graphic elements.",
+  "homepage_content_section_paragraph-3": "We keep your digital presence always active and optimized. We proactively participate in the processes of structuring and planning of content and generation of graphic elements.",
   "homepage_contact_us": "Contact us",
 
   "homepage_talkUs_form_title": "Let's talk",
@@ -79,18 +79,18 @@
   "contact_form_client_phone_max_length": "Must have 9 digits",
   "contact_form_client_phone_min_length": "Must have 9 digits",
 
-  "services_title_design-web": "Web Development & Design",
-  "services_parragraph_design-web": "We take your website to another level. We focus on user experience, consistent design and clear, concise, engaging content.",
+  "services_title_design-web": "Web Design",
+  "services_paragraph_design-web": "We take your website to another level. We focus on user experience, consistent design and clear, concise, engaging content.",
 
   "services_title_strategies": "We structure and plan strategies",
-  "services_parragraph_strategies": "We develop a consistent communication strategy with an integrated content plan and design guide for all digital communication.",
+  "services_paragraph_strategies": "We develop a consistent communication strategy with an integrated content plan and design guide for all digital communication.",
 
   "services_title_marketing": "Digital marketing",
-  "services_parragraph_marketing": "We plan, design, execute and analyze marketing campaigns from a 360 perspective.",
+  "services_paragraph_marketing": "We plan, design, execute and analyze marketing campaigns from a 360 perspective.",
 
   "services_title_brand": "Brand identity",
   "services_subtitle_brand": "We give a strategic sense to your company's branding.",
-  "services_parragraph_brand": "We create the image for your company or help you refresh it and give it a consistent use in your communication.",
+  "services_paragraph_brand": "We create the image for your company or help you refresh it and give it a consistent use in your communication.",
 
   "404.title": "Page not found",
   "404.description": "The page you are looking for does not exist. Please check the URL or return to the home page.",

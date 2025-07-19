@@ -7,6 +7,7 @@ import 'react-phone-input-2/lib/style.css';
 import '@/styles/main.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { ModalProvider } from 'hooks/useModal/useModal';
 
 const tagManagerArgs = {
   gtmId: process.env.NEXT_PUBLIC_GTM as string,
@@ -26,7 +27,9 @@ export default function App({ Component, pageProps }: AppProps) {
           }
         `}
       </style>
-      <Component {...pageProps} />
+      <ModalProvider>
+        <Component {...pageProps} />
+      </ModalProvider>
     </>
   );
 }

@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
@@ -8,16 +7,51 @@ import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
+import { useModal } from 'hooks/useModal/useModal';
 
-const Footer: FC<{ showModal: boolean; handleClick: () => void }> = ({
-  showModal,
-  handleClick,
-}) => {
+const Footer = () => {
+  const { openModal } = useModal();
   const { t } = useTranslation('common');
+
+  const handleClick = () => {
+    const modalContent = (
+      <div className="overflow-hidden mx-auto w-full lg:flex">
+        <div className="w-full lg:hidden text-ea-verde-900">
+          <DecorativeBar />
+        </div>
+        <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
+          <CircleCurves />
+        </div>
+        <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
+          <div className="space-y-4 w-full">
+            <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
+              <BrandLogoHorizontal />
+            </div>
+            <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
+              {t('homepage_talkUs_form_title')}
+            </h1>
+            <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
+              {t('homepage_content_section_subtitle-2')}
+            </h2>
+          </div>
+
+          <FormTalkUs
+            service="Contacto"
+            title="Escríbenos"
+            image="/images/contact.png"
+            content="Nos pondremos en contacto contigo lo antes posible"
+          />
+        </div>
+      </div>
+    );
+
+    openModal(modalContent);
+  };
+
   return (
     <footer className="bg-verde-oscuro-500">
       <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
-        <div className="p-6 pt-24 space-y-10 w-full md:py-24">
+        <div className="px-4 pt-24 space-y-10 w-full md:py-24">
           <div>
             <p className="text-sm text-ea-verde-200 lg:text-lg">
               {t('footer_lasting_bonds')}
@@ -70,8 +104,8 @@ const Footer: FC<{ showModal: boolean; handleClick: () => void }> = ({
               {t('footer_all_rights_reserved')}
               <span className="lowercase text-ea-verde"> {siteName}</span>
             </p>
-            <p className="inline mr-3 lg:mr-0">{t('footer_privacy')}</p>
-            <p className="inline">{t('footer_terms_conditions')}</p>
+            <p className="hidden mr-3 lg:mr-0">{t('footer_privacy')}</p>
+            <p className="hidden">{t('footer_terms_conditions')}</p>
           </div>
         </div>
         <div>
@@ -84,42 +118,7 @@ const Footer: FC<{ showModal: boolean; handleClick: () => void }> = ({
           />
         </div>
       </div>
-      <Modal
-        showModal={showModal}
-        size="xxl"
-        onClick={() => handleClick()}
-        bgColor="bg-ea-verde-200"
-        noPadding
-      >
-        <div className="overflow-hidden mx-auto w-full lg:flex">
-          <div className="w-full lg:hidden text-ea-verde-900">
-            <DecorativeBar />
-          </div>
-          <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
-            <CircleCurves />
-          </div>
-          <div className="py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5">
-            <div className="space-y-4 w-full">
-              <div className="w-full max-w-40 md:max-w-56 text-ea-verde-500">
-                <BrandLogoHorizontal />
-              </div>
-              <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
-                {t('homepage_talkUs_form_title')}
-              </h1>
-              <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
-                {t('homepage_content_section_subtitle-2')}
-              </h2>
-            </div>
-
-            <FormTalkUs
-              service="Contacto"
-              title="Escríbenos"
-              image="/images/contact.png"
-              content="Nos pondremos en contacto contigo lo antes posible"
-            />
-          </div>
-        </div>
-      </Modal>
+      <Modal size="xxl" bgColor="bg-ea-verde-200" noPadding />
     </footer>
   );
 };

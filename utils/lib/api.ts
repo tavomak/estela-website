@@ -26,7 +26,7 @@ export const getAllPosts = () =>
     `,
   });
 
-export const getHomePageInfo = (slug: string, locales: any) =>
+export const getHomePageInfo = (slug: string, locales: string[]) =>
   client.query({
     query: gql`
       query getHomePageInfo($slug: String!, $locales: [Locale!]!) {
@@ -35,23 +35,23 @@ export const getHomePageInfo = (slug: string, locales: any) =>
           slug
           title
           pageType
-          contentSection1 {
+          contentSection1(locales: $locales) {
             title
             subtitle
             description
             id
           }
-          sectionHero {
+          sectionHero(locales: $locales) {
             title
             subtitle
             description
           }
-          section1 {
+          section1(locales: $locales) {
             title
             subtitle
             description
           }
-          services {
+          services(locales: $locales) {
             title
             content
             bgColor
@@ -73,18 +73,18 @@ export const getHomePageInfo = (slug: string, locales: any) =>
               url
             }
           }
-          section2 {
+          section2(locales: $locales) {
             title
             subtitle
             description
           }
-          projects {
+          projects(locales: $locales) {
             title
             description
             url
             videoId
           }
-          section3 {
+          section3(locales: $locales) {
             title
             subtitle
             description
@@ -97,7 +97,8 @@ export const getHomePageInfo = (slug: string, locales: any) =>
       locales,
     },
   });
-export const getServicePageInfo = (slug: string, locales: any) =>
+
+export const getServicePageInfo = (slug: string, locales: string[]) =>
   client.query({
     query: gql`
       query getServicePageInfo($slug: String!, $locales: [Locale!]!) {
@@ -105,41 +106,41 @@ export const getServicePageInfo = (slug: string, locales: any) =>
           id
           slug
           title
-          heroSection {
+          heroSection(locales: $locales) {
             title
             subtitle
             description
           }
-          services1 {
+          services1(locales: $locales) {
             title
             content
             bgColor
             accentColor
           }
-          serviceCard2 {
+          serviceCard2(locales: $locales) {
             title
             content
             bgColor
             accentColor
           }
-          serviceCard3 {
+          serviceCard3(locales: $locales) {
             title
             content
             bgColor
             accentColor
           }
-          serviceCard4 {
+          serviceCard4(locales: $locales) {
             title
             content
             bgColor
             accentColor
           }
-          section1 {
+          section1(locales: $locales) {
             title
             subtitle
             description
           }
-          testimonial {
+          testimonial(locales: $locales) {
             testimonialText
             autorName
             autorRole

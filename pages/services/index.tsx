@@ -1,17 +1,16 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import Layout from '@/components/Templates/Layout';
-import Modal from '@/components/Templates/Modal';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import { getServicePageInfo } from '@/utils/lib/api';
 import { InferGetStaticPropsType } from 'next';
+import { useModal } from '@/hooks/useModal/useModal';
+import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
+import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
+import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -26,17 +25,45 @@ export async function getStaticProps(context: any) {
   };
 }
 
+const modalContent = (t: any) => (
+  <div className="mx-auto w-4/5 lg:w-full md:flex text-ea-amarillo-500">
+    <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
+      <CircleCurves />
+    </div>
+    <div className="p-4 space-y-6 w-full md:pt-12 lg:w-3/5">
+      <div className="space-y-4 w-full">
+        <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
+          <BrandLogoHorizontal />
+        </div>
+        <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
+          {t('homepage_talkUs_form_title')}
+        </h1>
+        <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
+          {t('homepage_content_section_subtitle-2')}
+        </h2>
+      </div>
+
+      <FormTalkUs
+        service="Contacto"
+        title="Escríbenos"
+        image="/images/contact.png"
+        content="Nos pondremos en contacto contigo lo antes posible"
+      />
+    </div>
+  </div>
+);
+
 export const Services = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const [showModal, setShowModal] = useState(false);
+  const { openModal } = useModal();
 
   const { t } = useTranslation('common');
   const content = data?.service || {};
   return (
     <Layout
-      title={t(content.title)}
-      description="Servicios de desarrollo y diseño web, marketing digital e identidad de marca"
+      title={content.heroSection?.title}
+      description={content.heroSection?.description}
     >
       <section className="px-4 w-full bg-verde-oscuro-400">
         <article className="gap-6 items-center pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex">
@@ -65,30 +92,33 @@ export const Services = ({
       </section>
 
       <section className="w-full bg-gray-100">
-        <article className="container flex relative flex-col gap-10 px-4 py-32 mx-auto lg:flex-row lg:items-center">
-          <div className="lg:w-5/12">
+        <article className="container justify-between items-center px-4 py-24 mx-auto max-w-screen-xl lg:flex">
+          <div className="mb-6 lg:w-5/12">
             <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
               {t('services_title_design-web')}
             </h1>
             <p className="text-base font-light 2xl:pe-20 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-              {t('services_parragraph_design-web')}
+              {t('services_paragraph_design-web')}
             </p>
           </div>
-          <div className="flex flex-col gap-6 lg:w-7/12 lg:flex-row 2xl:gap-12">
-            {content.services1.map((service: any, index: number) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                containerClass={index === 0 ? 'md:pb-10' : 'md:pb-16'}
-              />
-            ))}
+          <div className="lg:w-7/12">
+            <div className="flex flex-col gap-6 w-full lg:flex-row">
+              {content.services1.map((service: any) => (
+                <div className="w-full" key={service.title}>
+                  <ServiceCard
+                    service={service}
+                    onClick={() => openModal(modalContent(t))}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </article>
       </section>
 
       <section className="w-full">
         <article className="relative px-4 mx-auto lg:py-32">
-          <div className="mr-auto w-11/12 md:mx-auto">
+          <div className="lg:w-11/12 md:mx-auto">
             <div className="gap-12 mx-auto my-10 w-full 2xl:justify-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="">
                 <Image
@@ -104,24 +134,22 @@ export const Services = ({
                   {t('services_title_strategies')}
                 </h1>
                 <p className="text-base font-light 2xl:mt-4 text-pretty 2xl:text-balance md:text-3xl text-ea-verde-900">
-                  {t('services_parragraph_strategies')}
+                  {t('services_paragraph_strategies')}
                 </p>
-                {/* <Link
-                  href="/services"
-                  className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
-                >
-                  {t('more_services')}
-                </Link> */}
               </div>
               <div className="lg:flex 2xl:w-1/4">
                 <div className="flex flex-col items-end">
-                  <ServiceCard service={content.serviceCard2[0]} />
+                  <ServiceCard
+                    service={content.serviceCard2[0]}
+                    onClick={() => openModal(modalContent(t))}
+                  />
                   <Image
                     src="/Square2Col.png"
                     width={600}
                     height={210}
                     alt="Square2Col"
                     className="hidden mx-auto mt-8 lg:block 2xl:hidden"
+                    priority
                   />
                 </div>
                 <Image
@@ -130,6 +158,7 @@ export const Services = ({
                   height={209}
                   alt="Square1Col"
                   className="mx-auto mt-8 sm:hidden"
+                  priority
                 />
                 <Image
                   src="/Square2Col.png"
@@ -137,6 +166,7 @@ export const Services = ({
                   height={116}
                   alt="Square2Col"
                   className="hidden mx-auto mt-8 sm:block lg:hidden"
+                  priority
                 />
               </div>
             </div>
@@ -145,23 +175,27 @@ export const Services = ({
       </section>
 
       <section className="w-full bg-gray-100">
-        <article className="container flex relative flex-col gap-10 px-4 py-32 mx-auto lg:flex-row lg:items-center">
-          <div className="lg:w-5/12">
+        <article className="container justify-between items-center px-4 py-24 mx-auto max-w-screen-xl lg:flex">
+          <div className="mb-6 lg:w-5/12">
             <h1 className="text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900">
               {t('services_title_marketing')}
             </h1>
             <p className="text-base font-light 2xl:pe-20 2xl:mt-4 text-pretty md:text-3xl text-ea-verde-900">
-              {t('services_parragraph_marketing')}
+              {t('services_paragraph_marketing')}
             </p>
           </div>
-          <div className="flex flex-col gap-6 lg:w-7/12 lg:flex-row 2xl:gap-12">
-            {content.serviceCard3?.map((service: any, index: number) => (
-              <ServiceCard
-                key={service.title}
-                service={service}
-                containerClass={index === 0 ? 'md:pb-20' : 'md:pb-28'}
-              />
-            ))}
+          <div className="lg:w-7/12">
+            <div className="flex flex-col gap-6 w-full lg:flex-row">
+              {content.serviceCard3?.map((service: any) => (
+                <div className="w-full" key={service.title}>
+                  <ServiceCard
+                    key={service.title}
+                    service={service}
+                    onClick={() => openModal(modalContent(t))}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </article>
       </section>
@@ -173,13 +207,14 @@ export const Services = ({
             width={660}
             height={400}
             alt="Sun Lines Mobile"
+            className="object-cover w-full h-full"
           />
         </div>
         <div className="hidden absolute bottom-0 left-0 2xl:block">
           <Image src="/SunLines.png" width={792} height={480} alt="Sun Lines" />
         </div>
         <article className="relative px-4 mx-auto lg:py-32">
-          <div className="mr-auto w-11/12 md:mx-auto">
+          <div className="lg:w-11/12 md:mx-auto">
             <div className="gap-10 justify-center mx-auto my-24 w-full 2xl:justify-end 2xl:items-center lg:flex xl:w-4/5 2xl:w-full">
               <div className="w-full lg:w-1/2 2xl:w-1/3">
                 <h1 className="mb-2 text-4xl font-medium lg:mb-4 text-balance display-font md:text-6xl text-ea-verde-900">
@@ -189,7 +224,7 @@ export const Services = ({
                   <h3 className="mb-4 font-normal">
                     {t('services_subtitle_brand')}
                   </h3>
-                  <p className="font-light">{t('services_parragraph_brand')}</p>
+                  <p className="font-light">{t('services_paragraph_brand')}</p>
                 </div>
                 {/* <Link
                   href="/services"
@@ -201,7 +236,7 @@ export const Services = ({
               <div className="lg:flex 2xl:w-1/4">
                 <ServiceCard
                   service={content.serviceCard4[0]}
-                  containerClass="md:pb-20"
+                  onClick={() => openModal(modalContent(t))}
                 />
               </div>
             </div>
@@ -212,8 +247,8 @@ export const Services = ({
         </div>
       </section>
 
-      <section className="overflow-hidden relative px-8 w-full bg-verde-oscuro-400">
-        <article className="container flex-row-reverse pt-14 mx-auto sm:py-32 sm:flex">
+      <section className="overflow-hidden relative w-full bg-verde-oscuro-400">
+        <article className="container flex-row-reverse px-4 pt-14 mx-auto sm:py-32 sm:flex">
           <ContentBlockImage
             title={content.section1?.title}
             titleClass="text-ea-verde-500 sm:w-1/2 md:w-full mr-auto font-medium"
@@ -223,7 +258,7 @@ export const Services = ({
             btnClass="text-ea-amarillo border-ea-amarillo"
             onClick={(e) => {
               e.preventDefault();
-              setShowModal(true);
+              openModal(modalContent(t));
             }}
             rtl={false}
           >
@@ -270,40 +305,6 @@ export const Services = ({
           </div>
         </article>
       </section>
-
-      <Modal
-        showModal={showModal}
-        size="xl"
-        onClick={() => setShowModal(false)}
-        bgColor="bg-ea-verde-200"
-        noPadding
-      >
-        <div className="mx-auto w-4/5 lg:w-full md:flex text-ea-amarillo-500">
-          <div className="hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block">
-            <CircleCurves />
-          </div>
-          <div className="p-4 space-y-6 w-full md:pt-12 lg:w-3/5">
-            <div className="space-y-4 w-full">
-              <div className="w-full max-w-32 md:max-w-56 text-ea-verde-900">
-                <BrandLogoHorizontal />
-              </div>
-              <h1 className="text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900">
-                {t('homepage_talkUs_form_title')}
-              </h1>
-              <h2 className="text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900">
-                {t('homepage_content_section_subtitle-2')}
-              </h2>
-            </div>
-
-            <FormTalkUs
-              service="Contacto"
-              title="Escríbenos"
-              image="/images/contact.png"
-              content="Nos pondremos en contacto contigo lo antes posible"
-            />
-          </div>
-        </div>
-      </Modal>
     </Layout>
   );
 };

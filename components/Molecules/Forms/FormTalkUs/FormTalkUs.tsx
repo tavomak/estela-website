@@ -80,6 +80,7 @@ const FormTalkUs: FC<FormContactProps> = ({
         if (process.env.NODE_ENV === environments.production) {
           TagManager.dataLayer(tagManagerArgs);
         }
+        return;
       }
       const error = await response.json();
       throw new Error(error.message);
@@ -107,7 +108,7 @@ const FormTalkUs: FC<FormContactProps> = ({
         <input type="hidden" name="image" value={image} />
         <input type="hidden" name="content" value={content} />
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 text-ea-verde-200">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div>
           <span className="block text-sm font-normal text-ea-verde-900">
             {t('homepage_talkUs_form_client_name')}
@@ -147,7 +148,7 @@ const FormTalkUs: FC<FormContactProps> = ({
         </span>
         <label
           htmlFor="message"
-          className="relative block px-4 pt-4 mb-4 border shadow-sm border-ea-verde-500"
+          className="block relative px-4 pt-4 mb-4 border shadow-sm border-ea-verde-500"
         >
           <textarea
             className="w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40"

@@ -10,4 +10,5 @@ export interface ServiceCardProps {
   buttonText?: string;
   textColor?: string;
   service: services;
+  onClick?: () => void;
 }

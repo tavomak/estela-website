@@ -2,31 +2,30 @@ import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
 import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
 import splitTitleInTwoLines from '@/utils/helpers';
-import Link from 'next/link';
+import Button from '@/components/Atoms/Button';
 import { ServiceCardProps } from './types';
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   textColor = '#005E49',
-  buttonText,
+  buttonText = 'learn_more',
   containerClass,
   service: { title, content, bgColor, accentColor },
+  onClick,
 }) => {
   const { t } = useTranslation('common');
   const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (
-    <div className="relative w-full h-full xl:min-w-96">
+    <div className="w-full h-full">
       <div
-        className="absolute w-full h-full translate-x-3 translate-y-3"
-        style={{ backgroundColor: accentColor }}
-      />
-
-      <div
-        className={`relative flex flex-col w-full h-full p-8 ${containerClass}`}
-        style={{ backgroundColor: bgColor }}
+        className={`flex flex-col p-8 w-full h-full ${containerClass}`}
+        style={{
+          backgroundColor: bgColor,
+          boxShadow: `10px 10px 0 0 ${accentColor}`,
+        }}
       >
         <h2
-          className="w-full mb-2 text-2xl font-medium md:mb-4 md:text-5xl display-font"
+          className="mb-2 w-full text-2xl font-medium md:mb-4 md:text-5xl display-font"
           style={{ color: textColor }}
         >
           <div className="hidden lg:inline">
@@ -44,7 +43,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
         {content.length > 1 ? (
           <ul
-            className="w-5/6 mx-auto text-xs list-disc md:text-lg"
+            className="mx-auto mb-4 w-5/6 text-xs list-disc md:text-lg"
             style={{ color: textColor }}
           >
             {content.map((item) => (
@@ -53,7 +52,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </ul>
         ) : (
           <p
-            className="flex-grow mb-4 text-xs font-normal lg:mb-10 md:text-lg"
+            className="flex-grow mb-14 text-xs font-normal lg:mb-10 md:text-lg"
             style={{ color: textColor }}
           >
             {content}
@@ -61,24 +60,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
 
         {buttonText && (
-          <Link
-            href="/services"
-            className="flex items-center gap-2 mt-2 ml-auto md:mt-8"
-          >
+          <Button onClick={onClick} className="flex gap-2 items-center mt-auto">
             <span
               className="text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium"
               style={{ color: textColor }}
             >
               {t(buttonText)}
             </span>
-            <button
-              type="button"
-              className="flex items-center justify-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo"
+            <span
+              className="flex justify-center items-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo"
               aria-label={t(buttonText)}
             >
               <DiagonalArrow />
-            </button>
-          </Link>
+            </span>
+          </Button>
         )}
       </div>
     </div>

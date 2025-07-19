@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import 'tailwindcss';
 @import './utils/keyframes.css';
 @import './base/variables.css';
 @import './base/globals.css';
