@@ -24,14 +24,14 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
 
   return (
     <nav
-      className="container relative flex items-center justify-between p-3 mx-auto md:p-4 "
-      aria-label="Global"
+      className='container relative flex items-center justify-between p-3 mx-auto md:p-4 '
+      aria-label='Global'
     >
       <Link
         className={`relative z-40 w-32 md:w-40 ${
           menuOpen ? 'text-ea-verde-300' : 'text-ea-verde-900'
         }`}
-        href="/"
+        href='/'
       >
         <EstelaIcon />
       </Link>
@@ -39,10 +39,10 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
         {!menuOpen && <Hamburger open={menuOpen} setOpen={setMenuOpen} />}
         {menuOpen && (
           <Button
-            className="relative z-20 rounded-full size-6 md:size-8 bg-verde-oscuro-400 text-ea-verde-200"
+            className='relative z-20 rounded-full size-6 md:size-8 bg-verde-oscuro-400 text-ea-verde-200'
             onClick={handleClose}
           >
-            <span className="m-auto">
+            <span className='m-auto'>
               <CloseIcon />
             </span>
           </Button>
@@ -53,16 +53,16 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
           menuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className="relative flex flex-col h-full">
-          <div className="absolute top-0 left-0 z-10 w-7/12 h-3/4 bg-verde-oscuro-400/80" />
+        <div className='relative flex flex-col h-full'>
+          <div className='absolute top-0 left-0 z-10 w-7/12 h-3/4 bg-verde-oscuro-400/80' />
 
-          <div className="h-20 md:h-24" />
-          <div className="z-20 px-16 overflow-hidden ">
-            <ul className="mb-8 space-y-6">
-              <div className="text-white">
+          <div className='h-20 md:h-24' />
+          <div className='z-20 px-16 overflow-hidden '>
+            <ul className='mb-8 space-y-6'>
+              <div className='text-white'>
                 <LanguageSwitcher />
               </div>
-              {navItems.map((item) => (
+              {navItems.map(item => (
                 <li
                   className={`w-fit text-4xl font-medium display-font uppercase hover:border-b-2 border-ea-verde ${
                     itemActive(item.path) ? 'text-ea-verde-300' : 'text-white'
@@ -70,7 +70,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
                   key={item.label}
                 >
                   <Link href={item.path} onClick={handleClose}>
-                    <p className="mb-1"> {t(item.label)}</p>
+                    <p className='mb-1'> {t(item.label)}</p>
                   </Link>
                 </li>
               ))}

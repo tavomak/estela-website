@@ -15,12 +15,7 @@ const tagManagerArgs = {
   },
 };
 
-const FormTalkUs: FC<FormContactProps> = ({
-  service,
-  title,
-  image,
-  content,
-}) => {
+const FormTalkUs: FC<FormContactProps> = ({ service, title, image, content }) => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const form = useRef<FormElements | null>(null);
@@ -98,70 +93,70 @@ const FormTalkUs: FC<FormContactProps> = ({
     <form ref={form} onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
         ref={recaptchaRef}
-        size="invisible"
+        size='invisible'
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
         onChange={onReCAPTCHAChange}
       />
-      <div className="hidden">
-        <input type="hidden" name="service" value={service} />
-        <input type="hidden" name="title" value={title} />
-        <input type="hidden" name="image" value={image} />
-        <input type="hidden" name="content" value={content} />
+      <div className='hidden'>
+        <input type='hidden' name='service' value={service} />
+        <input type='hidden' name='title' value={title} />
+        <input type='hidden' name='image' value={image} />
+        <input type='hidden' name='content' value={content} />
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
         <div>
-          <span className="block text-sm font-normal text-ea-verde-900">
+          <span className='block text-sm font-normal text-ea-verde-900'>
             {t('homepage_talkUs_form_client_name')}
           </span>
           <Input
-            type="text"
-            name="clientName"
+            type='text'
+            name='clientName'
             rules={{
               required: t('homepage_talkUs_form_client_name_required'),
             }}
             errors={errors.clientName as FieldError}
             register={register}
-            labelColor="border-ea-verde-500"
-            bgLabelColor="bg-ea-verde-900"
+            labelColor='border-ea-verde-500'
+            bgLabelColor='bg-ea-verde-900'
           />
         </div>
         <div>
-          <span className="block text-sm font-normal text-ea-verde-900">
+          <span className='block text-sm font-normal text-ea-verde-900'>
             {t('homepage_talkUs_form_client_email')}
           </span>
           <Input
-            type="email"
-            name="email"
+            type='email'
+            name='email'
             rules={{
               required: t('homepage_talkUs_form_client_email_required'),
             }}
             errors={errors.email as FieldError}
             register={register}
-            labelColor="border-ea-verde-500"
-            bgLabelColor="bg-ea-verde-900"
+            labelColor='border-ea-verde-500'
+            bgLabelColor='bg-ea-verde-900'
           />
         </div>
       </div>
       <div>
-        <span className="block text-sm font-normal text-ea-verde-900">
+        <span className='block text-sm font-normal text-ea-verde-900'>
           {t('homepage_talkUs_form_client_message')}
         </span>
         <label
-          htmlFor="message"
-          className="block relative px-4 pt-4 mb-4 border shadow-sm border-ea-verde-500"
+          htmlFor='message'
+          className='block relative px-4 pt-4 mb-4 border shadow-sm border-ea-verde-500'
         >
           <textarea
-            className="w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40"
-            id="message"
+            className='w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40'
+            id='message'
             {...register('message')}
           />
         </label>
       </div>
-      <div className="text-center">
+      <div className='text-center'>
         <Button
-          className="text-sm font-medium tracking-widest uppercase btn btn-secondary text-ea-verde-900 border-ea-verde-900 me-4"
+          className='text-sm font-medium tracking-widest uppercase btn btn-secondary text-ea-verde-900 border-ea-verde-900 me-4'
           loading={loading}
-          loadingType="dots"
+          loadingType='dots'
           submit
         >
           {t('homepage_talkUs_form_client_send')}

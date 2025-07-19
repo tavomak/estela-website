@@ -16,10 +16,7 @@ const Spinner: FC<SpinnerProps> = ({ width, height, type, style }) =>
       <span className={styles.skChaseDot} />
     </span>
   ) : (
-    <span
-      className={styles.loader}
-      style={{ width: width || '20px', height: height || '20px' }}
-    />
+    <span className={styles.loader} style={{ width: width || '20px', height: height || '20px' }} />
   );
 
 export default Spinner;

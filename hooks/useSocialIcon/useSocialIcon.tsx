@@ -9,11 +9,7 @@ const useSocialIcon = () => {
       instagram: <FaInstagram />,
       tiktok: <FaTiktok />,
     };
-    return (
-      iconMap[networkName.toLowerCase() as keyof typeof iconMap] || (
-        <FaSpotify />
-      )
-    );
+    return iconMap[networkName.toLowerCase() as keyof typeof iconMap] || <FaSpotify />;
   };
   return [getSocialMediaIconByName];
 };

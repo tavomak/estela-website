@@ -24,7 +24,7 @@ const Input: FC<InputProps> = ({
     if (register) {
       return (
         <input
-          className="w-full p-1 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
+          className='w-full p-1 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0'
           type={showPassword ? 'text' : type}
           id={name}
           placeholder={placeholder ? '' : placeholder}
@@ -35,7 +35,7 @@ const Input: FC<InputProps> = ({
     }
     return (
       <input
-        className="w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0"
+        className='w-full p-2 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0'
         type={showPassword ? 'text' : type}
         id={name}
         name={name}
@@ -55,7 +55,7 @@ const Input: FC<InputProps> = ({
       >
         {phone ? (
           <PhoneInput
-            country="cl"
+            country='cl'
             onChange={onChange}
             value={value}
             onlyCountries={contactCountries}
@@ -72,9 +72,9 @@ const Input: FC<InputProps> = ({
 
         {type === 'password' && (
           <button
-            className="absolute inset-y-0 grid w-10 cursor-pointer end-0 place-content-center"
+            className='absolute inset-y-0 grid w-10 cursor-pointer end-0 place-content-center'
             onClick={() => setShowPassword(!showPassword)}
-            type="button"
+            type='button'
           >
             {showPassword ? <FaEye /> : <FaEyeSlash />}
           </button>
@@ -89,7 +89,7 @@ const Input: FC<InputProps> = ({
         )}
 
         {errors && (
-          <span className="absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all">
+          <span className='absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all'>
             {errors.message}
           </span>
         )}

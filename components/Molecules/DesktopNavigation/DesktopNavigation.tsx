@@ -6,27 +6,23 @@ import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import Button from '@/components/Atoms/Button';
 import { DesktopNavigationProps } from './types';
 
-const DesktopNavigation: FC<DesktopNavigationProps> = ({
-  navItems,
-  itemActive,
-  handleClick,
-}) => {
+const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, handleClick }) => {
   const { t } = useTranslation('common');
 
   return (
     <nav
-      className="flex justify-between items-center mx-auto max-w-screen-xl md:px-4"
-      aria-label="Global"
+      className='flex justify-between items-center mx-auto max-w-screen-xl md:px-4'
+      aria-label='Global'
     >
-      <ul className="flex gap-4 items-center xl:gap-14">
-        <li className="w-40">
-          <Link className="w-40 text-verde-oscuro-500" href="/">
+      <ul className='flex gap-4 items-center xl:gap-14'>
+        <li className='w-40'>
+          <Link className='w-40 text-verde-oscuro-500' href='/'>
             <BrandLogoHorizontal />
           </Link>
         </li>
         {navItems &&
           navItems.length &&
-          navItems.map((item) => (
+          navItems.map(item => (
             <li key={item.label}>
               <Link
                 href={item.path}
@@ -37,10 +33,10 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
             </li>
           ))}
       </ul>
-      <ul className="flex gap-2 items-center xl:gap-4">
+      <ul className='flex gap-2 items-center xl:gap-4'>
         <li>
           <Button
-            className="mb-0 text-xs tracking-widest uppercase btn btn-primary"
+            className='mb-0 text-xs tracking-widest uppercase btn btn-primary'
             onClick={() => handleClick()}
           >
             {t('contact_title')}
@@ -48,10 +44,10 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({
         </li>
         <li>
           <a
-            href="/credenciales_2024.pdf"
-            className="mb-0 text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde"
-            target="_blank"
-            rel="noreferrer"
+            href='/credenciales_2024.pdf'
+            className='mb-0 text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde'
+            target='_blank'
+            rel='noreferrer'
           >
             {t('download_credentials')}
           </a>

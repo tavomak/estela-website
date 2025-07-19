@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (
-    <div className="w-full h-full">
+    <div className='w-full h-full'>
       <div
         className={`flex flex-col p-8 w-full h-full ${containerClass}`}
         style={{
@@ -25,15 +25,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }}
       >
         <h2
-          className="mb-2 w-full text-2xl font-medium md:mb-4 md:text-5xl display-font"
+          className='mb-2 w-full text-2xl font-medium md:mb-4 md:text-5xl display-font'
           style={{ color: textColor }}
         >
-          <div className="hidden lg:inline">
+          <div className='hidden lg:inline'>
             <span> {firstLine}</span>
             <br />
             <span>{secondLine}</span>
           </div>
-          <span className="inline lg:hidden">{title}</span>
+          <span className='inline lg:hidden'>{title}</span>
         </h2>
 
         <div
@@ -43,16 +43,16 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
         {content.length > 1 ? (
           <ul
-            className="mx-auto mb-4 w-5/6 text-xs list-disc md:text-lg"
+            className='mx-auto mb-4 w-5/6 text-xs list-disc md:text-lg'
             style={{ color: textColor }}
           >
-            {content.map((item) => (
+            {content.map(item => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         ) : (
           <p
-            className="flex-grow mb-14 text-xs font-normal lg:mb-10 md:text-lg"
+            className='flex-grow mb-14 text-xs font-normal lg:mb-10 md:text-lg'
             style={{ color: textColor }}
           >
             {content}
@@ -60,15 +60,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         )}
 
         {buttonText && (
-          <Button onClick={onClick} className="flex gap-2 items-center mt-auto">
+          <Button onClick={onClick} className='flex gap-2 items-center mt-auto'>
             <span
-              className="text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium"
+              className='text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium'
               style={{ color: textColor }}
             >
               {t(buttonText)}
             </span>
             <span
-              className="flex justify-center items-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo"
+              className='flex justify-center items-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo'
               aria-label={t(buttonText)}
             >
               <DiagonalArrow />

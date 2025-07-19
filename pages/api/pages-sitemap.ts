@@ -12,9 +12,9 @@ const sitemapBlog = async (req: NextApiRequest, res: NextApiResponse) => {
     'Content-Type': 'application/xml',
   });
 
-  const xmlString = await streamToPromise(
-    Readable.from(staticPages).pipe(stream)
-  ).then((data: any) => data.toString());
+  const xmlString = await streamToPromise(Readable.from(staticPages).pipe(stream)).then(
+    (data: any) => data.toString()
+  );
 
   res.end(xmlString);
 };

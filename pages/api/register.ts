@@ -8,10 +8,7 @@ interface CaptchaValidation {
   'error-codes'?: string[];
 }
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { body, method } = req;
   const { captcha } = body;
 

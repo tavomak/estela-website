@@ -1,13 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import React from 'react';
 import { Resend } from 'resend';
 import Email from '@/components/Templates/Email';
 
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const resendEmail = async (
-  req: NextApiRequest,
-  res: NextApiResponse
-) => {
+export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
   const { body } = req;
 
   const emailData = JSON.parse(body);
@@ -21,7 +20,7 @@ export const resendEmail = async (
       subject: 'Nuevo mensaje de contacto',
       react: Email({
         ...templateData,
-      }),
+      }) as React.ReactElement,
     });
 
     if (error) {

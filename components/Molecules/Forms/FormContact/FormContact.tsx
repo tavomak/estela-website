@@ -15,12 +15,7 @@ const tagManagerArgs = {
   },
 };
 
-const FormContact: FC<FormContactProps> = ({
-  service,
-  title,
-  image,
-  content,
-}) => {
+const FormContact: FC<FormContactProps> = ({ service, title, image, content }) => {
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const form = useRef<FormElements | null>(null);
@@ -97,23 +92,23 @@ const FormContact: FC<FormContactProps> = ({
   };
 
   return (
-    <form ref={form} className="form" onSubmit={handleSubmit(handleClick)}>
+    <form ref={form} className='form' onSubmit={handleSubmit(handleClick)}>
       <ReCAPTCHA
         ref={recaptchaRef}
-        size="invisible"
+        size='invisible'
         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
         onChange={onReCAPTCHAChange}
       />
-      <div className="hidden">
-        <input type="hidden" name="service" value={service} />
-        <input type="hidden" name="title" value={title} />
-        <input type="hidden" name="image" value={image} />
-        <input type="hidden" name="content" value={content} />
+      <div className='hidden'>
+        <input type='hidden' name='service' value={service} />
+        <input type='hidden' name='title' value={title} />
+        <input type='hidden' name='image' value={image} />
+        <input type='hidden' name='content' value={content} />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <Input
-          type="text"
-          name="clientName"
+          type='text'
+          name='clientName'
           placeholder={t('contact_form_client_name')}
           rules={{
             required: t('contact_form_client_name_required'),
@@ -122,10 +117,10 @@ const FormContact: FC<FormContactProps> = ({
           register={register}
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <Input
-          type="text"
-          name="clientLastName"
+          type='text'
+          name='clientLastName'
           placeholder={t('contact_form_client_last_name')}
           rules={{
             required: t('contact_form_client_last_name_required'),
@@ -134,10 +129,10 @@ const FormContact: FC<FormContactProps> = ({
           register={register}
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <Input
-          type="email"
-          name="clientEmail"
+          type='email'
+          name='clientEmail'
           placeholder={t('contact_form_client_email')}
           rules={{
             required: t('contact_form_client_email_required'),
@@ -146,18 +141,18 @@ const FormContact: FC<FormContactProps> = ({
           register={register}
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <Controller
           control={control}
-          name="clientPhone"
+          name='clientPhone'
           rules={{
             required: t('contact_form_client_phone_required'),
           }}
           render={({ field: { onChange, value } }) => (
             <Input
               phone
-              type="text"
-              name="clientPhone"
+              type='text'
+              name='clientPhone'
               placeholder={t('contact_form_client_phone')}
               onChange={onChange}
               value={value}
@@ -166,27 +161,27 @@ const FormContact: FC<FormContactProps> = ({
           )}
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <label
-          htmlFor="message"
-          className="relative block px-4 pt-4 my-4 border border-gray-200 rounded shadow-sm"
+          htmlFor='message'
+          className='relative block px-4 pt-4 my-4 border border-gray-200 rounded shadow-sm'
         >
           <textarea
-            className="w-full text-sm focus:outline-none focus-visible:outline-none"
+            className='w-full text-sm focus:outline-none focus-visible:outline-none'
             rows={8}
-            id="message"
+            id='message'
             {...register('message')}
           />
-          <span className="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs">
+          <span className='pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs'>
             {t('contact_form_client_message')}
           </span>
         </label>
       </div>
-      <div className="text-center form-group">
+      <div className='text-center form-group'>
         <Button
-          className="px-4 py-2 mt-4 btn btn-primary text-uppercase"
+          className='px-4 py-2 mt-4 btn btn-primary text-uppercase'
           loading={loading}
-          loadingType="dots"
+          loadingType='dots'
           submit
         >
           {t('contact_form_client_send')}
