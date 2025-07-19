@@ -42,7 +42,7 @@ const TestimonialCard: React.FC<Testimonial> = ({
           )}
         </div>
 
-        <div className='px-4 text-verde-oscuro-500'>
+        <div className='px-4 text-ea-verde-oscuro-500'>
           <h3 className='text-base font-light md:text-3xl'>{autorName}</h3>
           <p className='font-normal text-gray-700 text-xxs md:text-lg'>{autorRole}</p>
         </div>

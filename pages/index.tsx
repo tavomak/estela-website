@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { sliderSettings } from '@/utils/constants';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
-import { useModal } from 'hooks/useModal/useModal';
+import { useModal } from '@/hooks/useModal';
 import useTranslation from 'next-translate/useTranslation';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import Layout from '@/components/Templates/Layout';
@@ -20,9 +20,6 @@ import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import SliderArrow from '@/components/Atoms/SliderArrow';
 import VideoIframe from '@/components/Templates/VideoIframe';
-import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import Modal from '@/components/Templates/Modal';
 
 export async function getStaticProps(context: any) {
@@ -45,45 +42,14 @@ export async function getStaticProps(context: any) {
   }
 }
 
-const modalContent = (t: any) => (
-  <div className='overflow-hidden mx-auto w-full lg:flex'>
-    <div className='w-full lg:hidden text-ea-verde-900'>
-      <DecorativeBar />
-    </div>
-    <div className='hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block'>
-      <CircleCurves />
-    </div>
-    <div className='py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5'>
-      <div className='space-y-4 w-full'>
-        <div className='w-full max-w-40 md:max-w-56 text-ea-verde-500'>
-          <BrandLogoHorizontal />
-        </div>
-        <h1 className='text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900'>
-          {t('homepage_talkUs_form_title')}
-        </h1>
-        <h2 className='text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900'>
-          {t('homepage_content_section_subtitle-2')}
-        </h2>
-      </div>
-
-      <FormTalkUs
-        service='Contacto'
-        title='Escríbenos'
-        image='/images/contact.png'
-        content='Nos pondremos en contacto contigo lo antes posible'
-      />
-    </div>
-  </div>
-);
-
 export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   const { t } = useTranslation('common');
-  const { openModal } = useModal();
+  const { toggleModal } = useModal();
 
-  const handleOpenModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleToggleModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    openModal(modalContent(t));
+    toggleModal();
   };
   const clientsSettings = {
     dots: false,
@@ -133,7 +99,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                   </p>
                 </div>
               </div>
-              <div className='hidden absolute right-0 -bottom-4 lg:block text-verde-oscuro-300'>
+              <div className='hidden absolute right-0 -bottom-4 lg:block text-ea-verde-oscuro-300'>
                 <DecorativeBar />
               </div>
               <div className='absolute -bottom-28 z-10 mx-auto w-full text-gray-50 md:-bottom-48 lg:hidden'>
@@ -142,7 +108,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
             </article>
           </section>
 
-          <section className='px-6 w-full bg-verde-oscuro-500'>
+          <section className='px-6 w-full bg-ea-verde-oscuro-500'>
             <article className='gap-6 items-center py-32 mx-auto 2xl:container lg:flex'>
               <ContentBlockImage
                 brandLogoColor='text-ea-verde'
@@ -151,9 +117,9 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 subtitle={content?.section1?.subtitle}
                 subtitleClass='display-font font-medium text-white text-2xl md:text-3xl'
                 btnLabel={t('lets_talk')}
-                btnClass='text-ea-amarillo border-ea-amarillo'
+                btnClass='btn btn-primary'
                 rtl={false}
-                onClick={handleOpenModal}
+                onClick={handleToggleModal}
                 content={content?.section1?.description}
                 contentClass='text-white w-3/4 text-base font-light text-pretty'
               >
@@ -172,10 +138,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                     <h1 className='mb-2 text-5xl font-medium md:mb-6 lg:text-6xl display-font text-ea-verde-900'>
                       {t('homepage_services_section_title')}
                     </h1>
-                    <Link
-                      href='/services'
-                      className='text-sm font-medium uppercase border-2 btn btn-secondary text-ea-verde-900 border-ea-verde-900'
-                    >
+                    <Link href='/services' className='btn btn-secondary'>
                       {t('more_services')}
                     </Link>
                   </div>
@@ -184,10 +147,9 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                       <div className='mb-8 w-full xl:mb-0' key={service.title}>
                         <ServicesCard
                           service={service}
-                          textColor='#005E49'
                           containerClass='pb-16 lg:pb-8'
                           buttonText='learn_more'
-                          onClick={() => openModal(modalContent(t))}
+                          onClick={() => toggleModal()}
                         />
                       </div>
                     ))}
@@ -288,7 +250,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
             </article>
           </section>
 
-          <section className='overflow-hidden px-6 w-full md:px-0 bg-verde-oscuro-500'>
+          <section className='overflow-hidden px-6 w-full md:px-0 bg-ea-verde-oscuro-500'>
             <article className="md:bg-[url('/tabletWave.png')] 2xl:bg-[url('/desktopWave.png')] bg-contain bg-no-repeat bg-bottom md:bg-right-top relative items-center py-20 md:py-44 mx-auto 2xl:container md:flex md:pl-12">
               <ContentBlockImage
                 title={content?.section2?.title}
@@ -298,8 +260,8 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 content={content?.section2?.description}
                 contentClass='text-white text-base lg:text-3xl font-light'
                 btnLabel={t('wanna_know_more')}
-                btnClass='text-ea-amarillo border-ea-amarillo'
-                onClick={handleOpenModal}
+                btnClass='btn btn-outline'
+                onClick={handleToggleModal}
                 rtl
               />
             </article>
@@ -318,10 +280,10 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                         {project?.videoId && <VideoIframe videoId={project?.videoId} muted />}
                       </div>
                       <div className='flex-row-reverse justify-between mb-10 lg:flex md:mb-20'>
-                        <p className='mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-verde-oscuro-500'>
+                        <p className='mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-ea-verde-oscuro-500'>
                           {project.description}
                         </p>
-                        <h2 className='mt-4 text-xl font-light lg:mt-8 lg:text-3xl text-verde-oscuro-500'>
+                        <h2 className='mt-4 text-xl font-light lg:mt-8 lg:text-3xl text-ea-verde-oscuro-500'>
                           {project.title}
                         </h2>
                       </div>
@@ -342,8 +304,8 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 titleClass='text-white font-medium'
                 contentClass='text-white text-base md:text-3xl font-light'
                 btnLabel={t('homepage_contact_us')}
-                btnClass='text-ea-amarillo border-ea-amarillo'
-                onClick={handleOpenModal}
+                btnClass='btn btn-outline'
+                onClick={handleToggleModal}
                 rtl={false}
               >
                 <div className='mx-auto mt-8 w-11/12 lg:mt-0 lg:ml-auto'>

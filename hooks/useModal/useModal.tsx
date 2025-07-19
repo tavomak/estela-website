@@ -7,8 +7,8 @@ type Props = {
 interface ModalContextType {
   showModal: boolean;
   modalContent: ReactNode | null;
-  openModal: (content: ReactNode) => void;
-  closeModal: () => void;
+  toggleModal: () => void;
+  setCustomModalContent: (content: ReactNode) => void;
 }
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
@@ -17,22 +17,19 @@ const ModalProvider: FC<Props> = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState<ReactNode | null>(null);
 
-  const openModal = (content: ReactNode) => {
-    setModalContent(content);
-    setShowModal(true);
+  const toggleModal = () => {
+    setShowModal(!showModal);
   };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setModalContent(null);
+  const setCustomModalContent = (content: ReactNode) => {
+    setModalContent(content);
   };
 
   const data = useMemo(
     () => ({
       showModal,
       modalContent,
-      openModal,
-      closeModal,
+      toggleModal,
+      setCustomModalContent,
     }),
     [showModal, modalContent]
   );

@@ -33,7 +33,7 @@ const ContentBlockImage: React.FC<HeroContentBlockProps> = ({
       {btnLabel && (
         <aside className='flex pt-6'>
           <a
-            className={`text-sm font-medium tracking-widest uppercase btn btn-secondary me-4 ${btnClass}`}
+            className={`${btnClass || 'btn btn-primary'}`}
             onClick={
               onClick
                 ? e => {

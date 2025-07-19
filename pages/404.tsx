@@ -18,7 +18,7 @@ const FourOhFour = () => {
               <div className='mb-12 w-full text-ea-verde max-w-56'>
                 <BrandLogoHorizontal />
               </div>
-              <h1 className='max-w-sm text-4xl display-font text-verde-oscuro-500'>
+              <h1 className='max-w-sm text-4xl display-font text-ea-verde-oscuro-500'>
                 {t('404.title')}
               </h1>
               <aside className='pt-12 d-md-flex w-100'>

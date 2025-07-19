@@ -3,53 +3,18 @@ import Modal from '@/components/Templates/Modal';
 import useTranslation from 'next-translate/useTranslation';
 import { siteName } from '@/utils';
 import Image from 'next/image';
-import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
-import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
-import { useModal } from 'hooks/useModal/useModal';
+import { useModal } from '@/hooks/useModal';
 
 const Footer = () => {
-  const { openModal } = useModal();
+  const { toggleModal } = useModal();
   const { t } = useTranslation('common');
 
   const handleClick = () => {
-    const modalContent = (
-      <div className='overflow-hidden mx-auto w-full lg:flex'>
-        <div className='w-full lg:hidden text-ea-verde-900'>
-          <DecorativeBar />
-        </div>
-        <div className='hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block'>
-          <CircleCurves />
-        </div>
-        <div className='py-4 mx-auto space-y-6 w-11/12 md:p-4 md:pt-12 lg:w-3/5'>
-          <div className='space-y-4 w-full'>
-            <div className='w-full max-w-40 md:max-w-56 text-ea-verde-500'>
-              <BrandLogoHorizontal />
-            </div>
-            <h1 className='text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900'>
-              {t('homepage_talkUs_form_title')}
-            </h1>
-            <h2 className='text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900'>
-              {t('homepage_content_section_subtitle-2')}
-            </h2>
-          </div>
-
-          <FormTalkUs
-            service='Contacto'
-            title='Escríbenos'
-            image='/images/contact.png'
-            content='Nos pondremos en contacto contigo lo antes posible'
-          />
-        </div>
-      </div>
-    );
-
-    openModal(modalContent);
+    toggleModal();
   };
 
   return (
-    <footer className='bg-verde-oscuro-500'>
+    <footer className='bg-ea-verde-oscuro-500'>
       <div className="container items-end mx-auto md:flex bg-no-repeat bg-right bg-contain sm:bg-[url('/footer-item.png')]">
         <div className='px-4 pt-24 space-y-10 w-full md:py-24'>
           <div>
@@ -61,7 +26,7 @@ const Footer = () => {
                 e.preventDefault();
                 handleClick();
               }}
-              className='mt-6 text-xs font-medium tracking-widest uppercase md:text-sm btn btn-secondary text-ea-amarillo border-ea-amarillo me-4'
+              className='mt-6 text-xs font-medium tracking-widest uppercase md:text-sm btn btn-outline'
               rel='noreferrer'
             >
               {t('contact_title')}
@@ -89,7 +54,7 @@ const Footer = () => {
           </ul>
           <a
             href='/credenciales_2024.pdf'
-            className='text-xs font-bold tracking-widest uppercase md:font-medium md:text-sm btn btn-secondary text-ea-verde border-ea-verde me-4'
+            className='text-xs font-bold tracking-widest uppercase md:font-medium md:text-sm btn btn-secondary me-4'
             target='_blank'
             rel='noreferrer'
           >

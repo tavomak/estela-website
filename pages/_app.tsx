@@ -7,16 +7,28 @@ import 'react-phone-input-2/lib/style.css';
 import '@/styles/main.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { ModalProvider } from 'hooks/useModal/useModal';
+import { ModalProvider, useModal } from '@/hooks/useModal';
+import { DefaultModalContent } from '@/components/Templates/Modal/DefaultModalContent';
 
 const tagManagerArgs = {
   gtmId: process.env.NEXT_PUBLIC_GTM as string,
 };
 
-export default function App({ Component, pageProps }: AppProps) {
+const AppContent = ({ Component, pageProps }: AppProps) => {
+  const { setCustomModalContent } = useModal();
+
+  useEffect(() => {
+    setCustomModalContent(<DefaultModalContent />);
+  }, []);
+
+  return <Component {...pageProps} />;
+};
+
+export default function App(props: AppProps) {
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
   }, []);
+
   return (
     <>
       <style jsx global>
@@ -28,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         `}
       </style>
       <ModalProvider>
-        <Component {...pageProps} />
+        <AppContent {...props} />
       </ModalProvider>
     </>
   );

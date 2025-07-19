@@ -2,8 +2,7 @@ import React, { FC } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Button from '@/components/Atoms/Button';
 import CloseIcon from '@/components/Atoms/Svg/CloseIcon';
-import { useModal } from 'hooks/useModal/useModal';
-import styles from './styles.module.css';
+import { useModal } from '@/hooks/useModal';
 
 type Props = {
   size: 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
@@ -12,7 +11,7 @@ type Props = {
 };
 
 const Modal: FC<Props> = ({ size, bgColor, noPadding }) => {
-  const { showModal, modalContent, closeModal } = useModal();
+  const { showModal, modalContent, toggleModal } = useModal();
 
   if (showModal) {
     document.body.classList.add('modal-active');
@@ -20,7 +19,7 @@ const Modal: FC<Props> = ({ size, bgColor, noPadding }) => {
 
   const handleClose = () => {
     document.body.classList.remove('modal-active');
-    closeModal();
+    toggleModal();
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -39,15 +38,15 @@ const Modal: FC<Props> = ({ size, bgColor, noPadding }) => {
           }}
           exit={{ opacity: 0, transform: 'scale(1.1)' }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className='overflow-y-auto overflow-x-hidden fixed left-0 top-4 z-40 p-4 w-full h-full bg-black bg-opacity-50 sm:w-screen md:pt-12 md:p-24'
+          className='flex overflow-y-auto overflow-x-hidden fixed left-0 top-4 z-40 justify-center items-center p-4 w-full h-full bg-ea-verde-oscuro-500/50 sm:w-screen md:pt-12 md:p-24'
           onClick={handleBackdropClick}
         >
           <div
-            className={`shadow m-auto border-0 relative overflow-auto  ${size === 'sm' ? styles.sm : styles.md} ${size === 'lg' ? styles.lg : ''} ${size === 'xl' ? styles.xl : ''} ${size === 'xxl' ? styles.xxl : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
+            className={`shadow-(--default-box-shadow) m-auto border-0 relative overflow-auto ${size === 'sm' ? 'max-w-[400px]' : ''} ${size === 'md' ? 'max-w-[500px]' : ''} ${size === 'lg' ? 'max-w-[650px]' : ''} ${size === 'xl' ? 'max-w-[930px]' : ''} ${size === 'xxl' ? 'max-w-[1100px]' : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}
           >
             <div className='absolute top-4 right-8 md:right-4'>
               <Button
-                className='relative z-20 rounded-full size-8 bg-ea-verde-500 md:bg-verde-oscuro-400 text-ea-amarillo-500'
+                className='relative z-20 rounded-full cursor-pointer size-8 bg-ea-verde-500 md:bg-ea-verde-oscuro-400 text-ea-amarillo-500 hover:bg-ea-verde-500 hover:text-ea-verde-900'
                 onClick={handleClose}
               >
                 <span className='m-auto'>

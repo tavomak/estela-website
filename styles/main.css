@@ -1,31 +1,7 @@
 @import 'tailwindcss';
 
-@theme {
-  --color-ea-amarillo: #f1ff94;
-  --color-ea-amarillo-200: #f7ffbf;
-  --color-ea-amarillo-500: #f1ff94;
-  --color-ea-amarillo-900: #b5bf6f;
-  --color-ea-verde: #00bc92;
-  --color-ea-gris: #727374;
-  --color-ea-gris-200: #ecedee;
-  --color-ea-gris-400: #aaacae;
-  --color-ea-verde-900: #005e49;
-  --color-ea-verde-500: #00bc92;
-  --color-ea-verde-400: #33c9a8;
-  --color-ea-verde-300: #66d7be;
-  --color-ea-verde-200: #99e4d3;
-  --color-verde-oscuro-500: #123026;
-  --color-verde-oscuro-400: #415951;
-  --color-verde-oscuro-300: #71837d;
-  --color-verde-oscuro-200: #a0aca8;
-
-  --font-size-xxs: 10px;
-
-  --breakpoint-3xl: 1600px;
-}
-
-@import './utils/keyframes.css';
 @import './base/variables.css';
+@import './utils/keyframes.css';
 @import './base/globals.css';
 @import './components/buttons.css';
 @import './components/inputs.css';

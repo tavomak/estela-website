@@ -24,7 +24,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
 
   return (
     <nav
-      className='container relative flex items-center justify-between p-3 mx-auto md:p-4 '
+      className='container flex relative justify-between items-center p-3 mx-auto md:p-4'
       aria-label='Global'
     >
       <Link
@@ -39,7 +39,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
         {!menuOpen && <Hamburger open={menuOpen} setOpen={setMenuOpen} />}
         {menuOpen && (
           <Button
-            className='relative z-20 rounded-full size-6 md:size-8 bg-verde-oscuro-400 text-ea-verde-200'
+            className='relative z-20 rounded-full size-6 md:size-8 bg-ea-verde-oscuro-400 text-ea-verde-200'
             onClick={handleClose}
           >
             <span className='m-auto'>
@@ -53,11 +53,11 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
           menuOpen ? 'translate-y-0' : '-translate-y-full'
         }`}
       >
-        <div className='relative flex flex-col h-full'>
-          <div className='absolute top-0 left-0 z-10 w-7/12 h-3/4 bg-verde-oscuro-400/80' />
+        <div className='flex relative flex-col h-full'>
+          <div className='absolute top-0 left-0 z-10 w-7/12 h-3/4 bg-ea-verde-oscuro-400/80' />
 
           <div className='h-20 md:h-24' />
-          <div className='z-20 px-16 overflow-hidden '>
+          <div className='overflow-hidden z-20 px-16'>
             <ul className='mb-8 space-y-6'>
               <div className='text-white'>
                 <LanguageSwitcher />
@@ -74,16 +74,6 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
                   </Link>
                 </li>
               ))}
-              {/* <li>
-                <a
-                  href="/credenciales_2024.pdf"
-                  className="text-xs font-normal tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t('download_credentials')}
-                </a>
-              </li> */}
             </ul>
           </div>
           <div

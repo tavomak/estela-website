@@ -16,7 +16,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, h
     >
       <ul className='flex gap-4 items-center xl:gap-14'>
         <li className='w-40'>
-          <Link className='w-40 text-verde-oscuro-500' href='/'>
+          <Link className='w-40 text-ea-verde-oscuro-500' href='/'>
             <BrandLogoHorizontal />
           </Link>
         </li>
@@ -35,17 +35,14 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, h
       </ul>
       <ul className='flex gap-2 items-center xl:gap-4'>
         <li>
-          <Button
-            className='mb-0 text-xs tracking-widest uppercase btn btn-primary'
-            onClick={() => handleClick()}
-          >
+          <Button className='btn btn-primary' onClick={() => handleClick()}>
             {t('contact_title')}
           </Button>
         </li>
         <li>
           <a
             href='/credenciales_2024.pdf'
-            className='mb-0 text-xs tracking-widest uppercase btn btn-secondary text-ea-verde border-ea-verde'
+            className='btn btn-secondary'
             target='_blank'
             rel='noreferrer'
           >

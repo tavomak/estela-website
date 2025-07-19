@@ -21,8 +21,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       />
     </div>
     <div className='py-4'>
-      <h3 className='text-3xl font-semibold text-verde-oscuro-500'>{title}</h3>
-      <p className='w-full mt-1 text-xl leading-relaxed text-verde-oscuro-500 lg:w-3/4'>
+      <h3 className='text-3xl font-semibold text-ea-verde-oscuro-500'>{title}</h3>
+      <p className='w-full mt-1 text-xl leading-relaxed text-ea-verde-oscuro-500 lg:w-3/4'>
         {description}
       </p>
       {children && <div className='mt-3'>{children}</div>}

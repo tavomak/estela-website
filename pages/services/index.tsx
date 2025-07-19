@@ -7,10 +7,7 @@ import SquaresCircle from '@/components/Atoms/Svg/SquaresCircle';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import { getServicePageInfo } from '@/utils/lib/api';
 import { InferGetStaticPropsType } from 'next';
-import { useModal } from '@/hooks/useModal/useModal';
-import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
-import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
+import { useModal } from '@/hooks/useModal';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
@@ -25,42 +22,14 @@ export async function getStaticProps(context: any) {
   };
 }
 
-const modalContent = (t: any) => (
-  <div className='mx-auto w-4/5 lg:w-full md:flex text-ea-amarillo-500'>
-    <div className='hidden lg:w-2/5 bg-ea-verde-900 text-ea-verde-200 lg:block'>
-      <CircleCurves />
-    </div>
-    <div className='p-4 space-y-6 w-full md:pt-12 lg:w-3/5'>
-      <div className='space-y-4 w-full'>
-        <div className='w-full max-w-32 md:max-w-56 text-ea-verde-900'>
-          <BrandLogoHorizontal />
-        </div>
-        <h1 className='text-4xl font-semibold display-font lg:text-5xl text-ea-verde-900'>
-          {t('homepage_talkUs_form_title')}
-        </h1>
-        <h2 className='text-lg font-light md:w-3/4 lg:text-2xl text-ea-verde-900'>
-          {t('homepage_content_section_subtitle-2')}
-        </h2>
-      </div>
-
-      <FormTalkUs
-        service='Contacto'
-        title='Escríbenos'
-        image='/images/contact.png'
-        content='Nos pondremos en contacto contigo lo antes posible'
-      />
-    </div>
-  </div>
-);
-
 export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { openModal } = useModal();
+  const { toggleModal } = useModal();
 
   const { t } = useTranslation('common');
   const content = data?.service || {};
   return (
     <Layout title={content.heroSection?.title} description={content.heroSection?.description}>
-      <section className='px-4 w-full bg-verde-oscuro-400'>
+      <section className='px-4 w-full bg-ea-verde-oscuro-400'>
         <article className='gap-6 items-center pt-8 pb-16 mx-auto text-6xl 2xl:container lg:flex'>
           <div className='block mr-auto mb-6 w-1/2 lg:hidden'>
             <Image src='/halfCircle.png' width={350} height={300} alt='Half Circle' />
@@ -95,7 +64,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
             <div className='flex flex-col gap-6 w-full lg:flex-row'>
               {content.services1.map((service: any) => (
                 <div className='w-full' key={service.title}>
-                  <ServiceCard service={service} onClick={() => openModal(modalContent(t))} />
+                  <ServiceCard service={service} onClick={() => toggleModal()} />
                 </div>
               ))}
             </div>
@@ -126,10 +95,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
               </div>
               <div className='lg:flex 2xl:w-1/4'>
                 <div className='flex flex-col items-end'>
-                  <ServiceCard
-                    service={content.serviceCard2[0]}
-                    onClick={() => openModal(modalContent(t))}
-                  />
+                  <ServiceCard service={content.serviceCard2[0]} onClick={() => toggleModal()} />
                   <Image
                     src='/Square2Col.png'
                     width={600}
@@ -178,7 +144,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
                   <ServiceCard
                     key={service.title}
                     service={service}
-                    onClick={() => openModal(modalContent(t))}
+                    onClick={() => toggleModal()}
                   />
                 </div>
               ))}
@@ -211,18 +177,9 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
                   <h3 className='mb-4 font-normal'>{t('services_subtitle_brand')}</h3>
                   <p className='font-light'>{t('services_paragraph_brand')}</p>
                 </div>
-                {/* <Link
-                  href="/services"
-                  className="mt-4 text-sm font-medium uppercase border-2 w-fit btn btn-secondary text-ea-verde-900 border-ea-verde-900"
-                >
-                  {t('more_services')}
-                </Link> */}
               </div>
               <div className='lg:flex 2xl:w-1/4'>
-                <ServiceCard
-                  service={content.serviceCard4[0]}
-                  onClick={() => openModal(modalContent(t))}
-                />
+                <ServiceCard service={content.serviceCard4[0]} onClick={() => toggleModal()} />
               </div>
             </div>
           </div>
@@ -232,7 +189,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
         </div>
       </section>
 
-      <section className='overflow-hidden relative w-full bg-verde-oscuro-400'>
+      <section className='overflow-hidden relative w-full bg-ea-verde-oscuro-400'>
         <article className='container flex-row-reverse px-4 pt-14 mx-auto sm:py-32 sm:flex'>
           <ContentBlockImage
             title={content.section1?.title}
@@ -240,10 +197,10 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
             content={content.section1?.subtitle}
             contentClass='text-white font-normal text-base lg:text-3xl w-5/6 mr-auto 2xl:text-balance'
             btnLabel={t('wanna_know_more')}
-            btnClass='text-ea-amarillo border-ea-amarillo'
+            btnClass='btn btn-outline'
             onClick={e => {
               e.preventDefault();
-              openModal(modalContent(t));
+              toggleModal();
             }}
             rtl={false}
           >
@@ -267,7 +224,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
                     />
                   </div>
 
-                  <div className='px-4 text-verde-oscuro-500'>
+                  <div className='px-4 text-ea-verde-oscuro-500'>
                     <h3 className='text-sm font-normal text-gray-100 md:text-lg'>
                       {content.testimonial?.autorName}
                     </h3>

@@ -1,3 +1,10 @@
+:root {
+  --btn-color: var(--color-ea-verde-oscuro-500);
+  --btn-background-color: var(--color-ea-amarillo);
+  --btn-border-color: var(--color-ea-verde-oscuro-500);
+  --btn-hover-transform: translateY(-2px);
+}
+
 article.main a {
   @apply font-semibold;
   transition-duration: var(--default-timing-duration);
@@ -6,12 +13,14 @@ article.main a {
 }
 
 .btn {
-  @apply inline-flex items-center px-4 py-2 mb-4 font-semibold;
+  @apply inline-flex items-center px-4 py-2 text-xs font-semibold uppercase cursor-pointer;
   transition-duration: var(--default-timing-duration);
   transition-timing-function: var(--default-timing-function);
   transition-property: background-color, color, transform, box-shadow;
   background: var(--btn-background-color);
   border-color: var(--btn-border-color);
+  border-width: var(--default-border-width);
+  border-style: var(--default-border-style);
   color: var(--btn-color);
 }
 
@@ -21,41 +30,32 @@ article.main a {
 }
 
 .btn-primary {
-  @apply bg-ea-amarillo text-verde-oscuro-500 hover:bg-ea-verde hover:text-white;
-  --btn-color: var(--white);
-  --btn-background-color: var(--medium-blue);
-  --btn-border-color: none;
+  --btn-background-color: var(--color-ea-amarillo);
+  border: none;
 }
 .btn-primary:hover,
 .btn-primary.active {
-  --btn-color: var(--dark-blue);
-  --btn-background-color: var(--light-purple);
-  --btn-border-color: none;
+  --btn-background-color: var(--color-ea-verde-500);
 }
 
 .btn-secondary {
-  @apply border;
-  --btn-color: var(--white);
   --btn-background-color: transparent;
-  --btn-border-color: var(--ea-verde);
-  --default-box-shadow: 0.25rem 0.25rem 0 rgb(241 255 148 / 20%);
 }
 .btn-secondary:hover,
 .btn-secondary.active {
-  --btn-color: var(--ea-verde);
-  --btn-background-color: transparent;
-  --btn-border-color: var(--ea-verde);
+  --default-box-shadow-color: var(--color-ea-verde);
+  --default-box-shadow: 4px 4px 0 0 var(--default-box-shadow-color);
 }
 
 .btn-outline {
-  --btn-border-color: var(--white);
+  --btn-border-color: var(--color-ea-amarillo);
+  --btn-color: var(--color-ea-amarillo);
+  --btn-background-color: transparent;
 }
 .btn-outline:hover,
 .btn-outline.active {
-  transform: var(--btn-hover-transform);
-  background-color: var(--white);
-  border-color: var(--white);
-  color: var(--dark-blue);
+  --default-box-shadow-color: var(--color-ea-amarillo);
+  --default-box-shadow: 4px 4px 0 0 var(--default-box-shadow-color);
 }
 
 .btnArrow {

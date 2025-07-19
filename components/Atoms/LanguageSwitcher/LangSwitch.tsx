@@ -20,15 +20,15 @@ const LanguageSwitcher = () => {
     >
       <span
         className={`text-xl uppercase display-font cursor-pointer ${
-          lang === locales[0] ? 'text-verde-oscuro-500' : 'text-verde-oscuro-300'
+          lang === locales[0] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
         }`}
       >
         {languages.es}
       </span>
-      <span className='mx-1 text-verde-oscuro-300'>/</span>
+      <span className='mx-1 text-ea-verde-oscuro-300'>/</span>
       <span
         className={`text-xl uppercase display-font cursor-pointer ${
-          lang === locales[1] ? 'text-verde-oscuro-500' : 'text-verde-oscuro-300'
+          lang === locales[1] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
         }`}
       >
         {languages.en}
