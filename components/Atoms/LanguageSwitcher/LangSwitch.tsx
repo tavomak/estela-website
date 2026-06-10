@@ -1,26 +1,24 @@
-import useTranslation from 'next-translate/useTranslation';
-import i18nConfig from '@/i18n.json';
-import setLanguage from 'next-translate/setLanguage';
+import { useRouter } from 'next/router';
+import { useLocale } from 'next-intl';
 import { languages } from '@/utils';
 
-const { locales } = i18nConfig;
+const locales = [languages.es, languages.en];
 
 const LanguageSwitcher = () => {
-  const { lang } = useTranslation();
+  const router = useRouter();
+  const activeLocale = useLocale();
 
-  const handleLanguageChange = async (lng: string) => {
-    await setLanguage(lng === languages.es ? languages.en : languages.es);
+  const handleLanguageChange = () => {
+    const next = activeLocale === languages.es ? languages.en : languages.es;
+    const { pathname, query, asPath } = router;
+    router.push({ pathname, query }, asPath, { locale: next });
   };
 
   return (
-    <button
-      type='button'
-      className='flex z-20 items-center'
-      onClick={() => handleLanguageChange(lang)}
-    >
+    <button type='button' className='flex z-20 items-center' onClick={handleLanguageChange}>
       <span
         className={`text-xl uppercase display-font cursor-pointer ${
-          lang === locales[0] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
+          activeLocale === locales[0] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
         }`}
       >
         {languages.es}
@@ -28,7 +26,7 @@ const LanguageSwitcher = () => {
       <span className='mx-1 text-ea-verde-oscuro-300'>/</span>
       <span
         className={`text-xl uppercase display-font cursor-pointer ${
-          lang === locales[1] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
+          activeLocale === locales[1] ? 'text-ea-verde-oscuro-500' : 'text-ea-verde-oscuro-300'
         }`}
       >
         {languages.en}

@@ -1,13 +1,13 @@
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 import Modal from '@/components/Templates/Modal';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import { siteName } from '@/utils';
 import Image from 'next/image';
 import { useModal } from '@/hooks/useModal';
 
 const Footer = () => {
   const { toggleModal } = useModal();
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
 
   const handleClick = () => {
     toggleModal();

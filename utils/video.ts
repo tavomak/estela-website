@@ -8,7 +8,8 @@ export const getVideoId = (url: string): string => {
     }
 
     // Extraer ID de YouTube
-    const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+    const youtubeRegex =
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
     const youtubeMatch = url.match(youtubeRegex);
     if (youtubeMatch && youtubeMatch[1]) {
       return youtubeMatch[1];

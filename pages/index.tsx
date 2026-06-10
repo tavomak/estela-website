@@ -8,7 +8,8 @@ import { sliderSettings } from '@/utils/constants';
 import { getHomePageInfo } from '@/utils/lib/api';
 import { Testimonial } from '@/components/Molecules/Testimonial/types';
 import { useModal } from '@/hooks/useModal';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
+import { loadMessages } from '@/utils/i18n/getMessages';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
 import Layout from '@/components/Templates/Layout';
 import Spinner from '@/components/Atoms/Spinner';
@@ -24,12 +25,14 @@ import Modal from '@/components/Templates/Modal';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
+  const messages = await loadMessages(locale);
   try {
     const response = await getHomePageInfo('home', [locale]);
-    const data = response?.data?.homepage || [];
+    const data: any = (response?.data as any)?.homepage || null;
     return {
       props: {
         data,
+        messages,
       },
       revalidate: 100,
     };
@@ -37,6 +40,7 @@ export async function getStaticProps(context: any) {
     return {
       props: {
         data: undefined,
+        messages,
       },
     };
   }
@@ -44,7 +48,7 @@ export async function getStaticProps(context: any) {
 
 export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
   const { toggleModal } = useModal();
 
   const handleToggleModal = (e: React.MouseEvent<HTMLAnchorElement>) => {
