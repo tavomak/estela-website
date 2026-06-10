@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import Hamburger from '@/components/Molecules/Hamburger';
 import EstelaIcon from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
@@ -15,7 +15,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
   navItems,
   itemActive,
 }) => {
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
 
   const handleClose = () => {
     document.body.classList.remove('modal-active');

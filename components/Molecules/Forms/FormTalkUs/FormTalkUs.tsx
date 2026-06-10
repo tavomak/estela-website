@@ -1,7 +1,7 @@
 import { useState, useRef, FC } from 'react';
 import { FieldError, useForm } from 'react-hook-form';
 import { environments } from '@/utils/constants';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import ReCAPTCHA from 'react-google-recaptcha';
 import useNotify from '@/hooks/useNotify';
 import TagManager from 'react-gtm-module';
@@ -19,7 +19,7 @@ const FormTalkUs: FC<FormContactProps> = ({ service, title, image, content }) =>
   const [loading, setLoading] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA | null>(null);
   const form = useRef<FormElements | null>(null);
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
   const {
     register,
     handleSubmit,

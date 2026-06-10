@@ -1,13 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Readable } from 'stream';
+import { SitemapStream, streamToPromise } from 'sitemap';
 import { getAllPosts } from '@/utils/lib/api';
 
-const { SitemapStream, streamToPromise } = require('sitemap');
-const { Readable } = require('stream');
-
 const sitemapBlog = async (req: NextApiRequest, res: NextApiResponse) => {
-  const {
-    data: { posts: allPosts },
-  } = await getAllPosts();
+  const { data } = await getAllPosts();
+  const allPosts = (data as { posts: { slug: string }[] }).posts;
 
   const baseUrl = process.env.SITE_URL;
 

@@ -2,10 +2,10 @@ import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import FormTalkUs from '@/components/Molecules/Forms/FormTalkUs';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import CircleCurves from '@/components/Atoms/Svg/CircleCurves';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 
 export const DefaultModalContent = () => {
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
 
   return (
     <div className='overflow-hidden mx-auto w-full lg:flex'>

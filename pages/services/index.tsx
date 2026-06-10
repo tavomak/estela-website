@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
+import { loadMessages } from '@/utils/i18n/getMessages';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
 import Layout from '@/components/Templates/Layout';
 import ServiceCard from '@/components/Molecules/ServiceCard';
@@ -11,12 +12,14 @@ import { useModal } from '@/hooks/useModal';
 
 export async function getStaticProps(context: any) {
   const { locale } = context;
+  const messages = await loadMessages(locale);
   const response = await getServicePageInfo('services', [locale]);
-  const data = response?.data || [];
+  const data: any = response?.data || {};
 
   return {
     props: {
       data,
+      messages,
     },
     revalidate: 100,
   };
@@ -25,7 +28,7 @@ export async function getStaticProps(context: any) {
 export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { toggleModal } = useModal();
 
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
   const content = data?.service || {};
   return (
     <Layout title={content.heroSection?.title} description={content.heroSection?.description}>

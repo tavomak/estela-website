@@ -2,8 +2,8 @@ import { FC, ReactNode } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
-import Navbar from 'components/Molecules/Navbar';
-import Footer from 'components/Molecules/Footer';
+import Navbar from '@/components/Molecules/Navbar';
+import Footer from '@/components/Molecules/Footer';
 
 type Props = {
   children: ReactNode;

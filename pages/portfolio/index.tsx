@@ -1,8 +1,16 @@
+import type { GetStaticPropsContext } from 'next';
+import { useTranslations } from 'next-intl';
 import Layout from '@/components/Templates/Layout';
-import useTranslation from 'next-translate/useTranslation';
+import { loadMessages } from '@/utils/i18n/getMessages';
 
-const Services = () => {
-  const { t } = useTranslation('common');
+export const getStaticProps = async ({ locale }: GetStaticPropsContext) => ({
+  props: {
+    messages: await loadMessages(locale),
+  },
+});
+
+const Portfolio = () => {
+  const t = useTranslations('common');
 
   return (
     <Layout
@@ -20,4 +28,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Portfolio;

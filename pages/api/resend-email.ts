@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Resend } from 'resend';
 import Email from '@/components/Templates/Email';
 
@@ -18,9 +18,7 @@ export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => 
       from: 'No-reply <no-reply@mkt.estelaestudio.com>',
       to: ['accounts@estelaestudio.com'],
       subject: 'Nuevo mensaje de contacto',
-      react: Email({
-        ...templateData,
-      }) as React.ReactElement,
+      react: Email({ ...templateData }) as ReactNode,
     });
 
     if (error) {

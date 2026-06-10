@@ -1,5 +1,5 @@
 import React from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import DiagonalArrow from '@/components/Atoms/Svg/DiagonalArrow';
 import splitTitleInTwoLines from '@/utils/helpers';
 import Button from '@/components/Atoms/Button';
@@ -11,7 +11,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   service: { title, content, bgColor, accentColor },
   onClick,
 }) => {
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
   const { firstLine, secondLine } = splitTitleInTwoLines(title);
 
   return (

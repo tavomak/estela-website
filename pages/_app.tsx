@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { NextIntlClientProvider } from 'next-intl';
 import TagManager from 'react-gtm-module';
 import { bricolage, roboto } from '@/utils/fonts';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,12 +27,18 @@ const AppContent = ({ Component, pageProps }: AppProps) => {
 };
 
 export default function App(props: AppProps) {
+  const router = useRouter();
+
   useEffect(() => {
     TagManager.initialize(tagManagerArgs);
   }, []);
 
   return (
-    <>
+    <NextIntlClientProvider
+      locale={router.locale ?? 'es'}
+      timeZone='America/Mexico_City'
+      messages={props.pageProps?.messages ?? {}}
+    >
       <style jsx global>
         {`
           :root {
@@ -42,6 +50,6 @@ export default function App(props: AppProps) {
       <ModalProvider>
         <AppContent {...props} />
       </ModalProvider>
-    </>
+    </NextIntlClientProvider>
   );
 }

@@ -1,17 +1,23 @@
-import nextTranslate from 'next-translate-plugin';
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   reactStrictMode: true,
+  i18n: {
+    locales: ['es', 'en'],
+    defaultLocale: 'es',
+    localeDetection: false,
+  },
   images: {
     deviceSizes: [768, 1440],
     imageSizes: [32, 128],
-    domains: ['us-west-2.graphassets.com'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'media.graphassets.com',
-        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'us-west-2.graphassets.com',
         pathname: '/**',
       },
     ],
@@ -19,15 +25,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    workerThreads: false,
-    cpus: 1,
-  },
 };
 
-const config = {
-  ...nextConfig,
-  ...nextTranslate(),
-};
-
-export default config;
+export default nextConfig;

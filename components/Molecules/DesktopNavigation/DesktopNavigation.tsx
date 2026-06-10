@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
 import React, { FC } from 'react';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
@@ -7,7 +7,7 @@ import Button from '@/components/Atoms/Button';
 import { DesktopNavigationProps } from './types';
 
 const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, handleClick }) => {
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
 
   return (
     <nav
