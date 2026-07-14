@@ -7,6 +7,7 @@ import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import Button from '@/components/Atoms/Button';
 import CloseIcon from '@/components/Atoms/Svg/CloseIcon';
 import CircleWhite from '@/components/Atoms/Svg/CircleWhite';
+import { siteName } from '@/utils';
 import { MobileNavigationProps } from './types';
 
 const MobileNavigation: FC<MobileNavigationProps> = ({
@@ -28,6 +29,7 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
       aria-label='Global'
     >
       <Link
+        aria-label={siteName}
         className={`relative z-40 w-32 md:w-40 ${
           menuOpen ? 'text-ea-verde-300' : 'text-ea-verde-900'
         }`}
@@ -49,8 +51,9 @@ const MobileNavigation: FC<MobileNavigationProps> = ({
         )}
       </div>
       <div
+        aria-hidden={!menuOpen}
         className={`fixed inset-0 bg-[#639d90] transition-all duration-300 ${
-          menuOpen ? 'translate-y-0' : '-translate-y-full'
+          menuOpen ? 'translate-y-0' : '-translate-y-full invisible pointer-events-none'
         }`}
       >
         <div className='flex relative flex-col h-full'>

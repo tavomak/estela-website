@@ -6,12 +6,4 @@ body {
   font-family: var(--display-font);
 }
 
-.fadeInLeft {
-  animation: var(--fadeinleft) 0.8s;
-}
-
-.fadeIn {
-  animation: var(--fadein) 1s;
-  animation-timeline: view();
-  animation-range: entry 0% cover 50%;
-}
+/* fadeIn / fadeInLeft moved to <FadeIn> component (motion useInView) */

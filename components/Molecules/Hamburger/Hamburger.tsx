@@ -6,6 +6,7 @@ const Hamburger: FC<HamburgerProps> = ({ open = false, setOpen }) => (
     type='button'
     className='z-10 flex items-center justify-center size-6'
     aria-label='Menu'
+    aria-expanded={open}
     onClick={() => setOpen(!open)}
   >
     <div className='flex flex-col items-center justify-center w-full h-full gap-1'>

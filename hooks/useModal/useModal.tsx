@@ -8,6 +8,7 @@ interface ModalContextType {
   showModal: boolean;
   modalContent: ReactNode | null;
   toggleModal: () => void;
+  closeModal: () => void;
   setCustomModalContent: (content: ReactNode) => void;
 }
 
@@ -18,7 +19,10 @@ const ModalProvider: FC<Props> = ({ children }) => {
   const [modalContent, setModalContent] = useState<ReactNode | null>(null);
 
   const toggleModal = () => {
-    setShowModal(!showModal);
+    setShowModal(prev => !prev);
+  };
+  const closeModal = () => {
+    setShowModal(false);
   };
   const setCustomModalContent = (content: ReactNode) => {
     setModalContent(content);
@@ -29,6 +33,7 @@ const ModalProvider: FC<Props> = ({ children }) => {
       showModal,
       modalContent,
       toggleModal,
+      closeModal,
       setCustomModalContent,
     }),
     [showModal, modalContent]

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Button from '@/components/Atoms/Button';
 import CloseIcon from '@/components/Atoms/Svg/CloseIcon';
@@ -13,14 +13,23 @@ type Props = {
 const Modal: FC<Props> = ({ size, bgColor, noPadding }) => {
   const { showModal, modalContent, toggleModal } = useModal();
 
-  if (showModal) {
-    document.body.classList.add('modal-active');
-  }
-
   const handleClose = () => {
     document.body.classList.remove('modal-active');
     toggleModal();
   };
+
+  useEffect(() => {
+    if (!showModal) return undefined;
+    document.body.classList.add('modal-active');
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') handleClose();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.classList.remove('modal-active');
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [showModal]);
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -40,6 +49,8 @@ const Modal: FC<Props> = ({ size, bgColor, noPadding }) => {
           transition={{ duration: 0.3, ease: 'easeInOut' }}
           className='flex overflow-y-auto overflow-x-hidden fixed left-0 top-4 z-40 justify-center items-center p-4 w-full h-full bg-ea-verde-oscuro-500/50 sm:w-screen md:pt-12 md:p-24'
           onClick={handleBackdropClick}
+          role='dialog'
+          aria-modal='true'
         >
           <div
             className={`shadow-(--default-box-shadow) m-auto border-0 relative overflow-auto ${size === 'sm' ? 'max-w-[400px]' : ''} ${size === 'md' ? 'max-w-[500px]' : ''} ${size === 'lg' ? 'max-w-[650px]' : ''} ${size === 'xl' ? 'max-w-[930px]' : ''} ${size === 'xxl' ? 'max-w-[1100px]' : ''}  ${bgColor ? `${bgColor}` : 'bg-white'} ${noPadding ? 'p-0' : 'p-4'}`}

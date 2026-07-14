@@ -54,7 +54,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
       </section>
 
       <section className='w-full bg-gray-100'>
-        <article className='container justify-between items-center px-4 py-24 mx-auto max-w-screen-xl lg:flex'>
+        <article className='container justify-between items-center px-4 py-24 mx-auto container lg:flex'>
           <div className='mb-6 lg:w-5/12'>
             <h1 className='text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900'>
               {t('services_title_design-web')}
@@ -131,7 +131,7 @@ export const Services = ({ data }: InferGetStaticPropsType<typeof getStaticProps
       </section>
 
       <section className='w-full bg-gray-100'>
-        <article className='container justify-between items-center px-4 py-24 mx-auto max-w-screen-xl lg:flex'>
+        <article className='container justify-between items-center px-4 py-24 mx-auto container lg:flex'>
           <div className='mb-6 lg:w-5/12'>
             <h1 className='text-4xl font-medium text-balance display-font md:text-6xl text-ea-verde-900'>
               {t('services_title_marketing')}

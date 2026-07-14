@@ -7,7 +7,6 @@ import DesktopNavigation from '../DesktopNavigation';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [viewportWidth, setViewportWidth] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const { toggleModal } = useModal();
   const router = useRouter();
@@ -40,41 +39,34 @@ const Navbar = () => {
       lastScrollTop = currentScrollTop;
     };
 
-    const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-    };
-
-    if (viewportWidth === 0) handleResize();
-
-    window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
     };
-  }, [viewportWidth]);
+  }, []);
 
   return (
     <header
-      className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 py-1 px-6 md:p-6 ${
+      className={`transition-all duration-500 ease-in-out sticky top-0 bg-white z-40 ${
         isVisible ? 'lg:translate-y-0' : 'lg:-translate-y-full'
       }`}
     >
-      {viewportWidth < 972 ? (
+      <div className='lg:hidden'>
         <MobileNavigation
           menuOpen={menuOpen}
           setMenuOpen={handleMenuOpen}
           navItems={navItems}
           itemActive={itemActive}
         />
-      ) : (
+      </div>
+      <div className='hidden lg:block'>
         <DesktopNavigation
           navItems={navItems}
           itemActive={itemActive}
           handleClick={() => toggleModal()}
         />
-      )}
+      </div>
     </header>
   );
 };

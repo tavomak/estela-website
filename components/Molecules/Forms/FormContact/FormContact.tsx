@@ -39,52 +39,43 @@ const FormContact: FC<FormContactProps> = ({ service, title, image, content }) =
 
   const onReCAPTCHAChange = async (token: string | null) => {
     if (!token) {
+      setLoading(false);
+      recaptchaRef.current?.reset();
       return;
     }
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/api/resend-email', {
         method: 'POST',
-        body: JSON.stringify({ captcha: token }),
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          captcha: token,
+          contact: {
+            templateType: 'contact',
+            email: form.current?.clientEmail?.value,
+            firstName: form.current?.clientName?.value,
+            lastName: form.current?.clientLastName?.value,
+            phone: form.current?.clientPhone?.value,
+            message: form.current?.message?.value,
+          },
+        }),
       });
-      if (response.ok) {
-        const options = {
-          method: 'POST',
-          body: JSON.stringify({
-            contact: {
-              templateType: 'contact',
-              email: form.current?.clientEmail?.value,
-              firstName: form.current?.clientName?.value,
-              lastName: form.current?.clientLastName?.value,
-              phone: form.current?.clientPhone?.value,
-              message: form.current?.message?.value,
-            },
-          }),
-        };
 
-        const activeResponse = await fetch('/api/resend-email', options);
-        const data = await activeResponse.json();
-
-        if (data.error) {
-          setLoading(false);
-          notification('error', t('contact_error_message'));
-        }
-
-        setLoading(false);
-        notification('success', t('contact_success_message'));
-        reset();
-        if (process.env.NODE_ENV === environments.production) {
-          TagManager.dataLayer(tagManagerArgs);
-        }
+      if (!response.ok) {
+        throw new Error('Failed to send message');
       }
-      const error = await response.json();
-      throw new Error(error.message);
+
+      notification('success', t('contact_success_message'));
+      reset();
+      if (process.env.NODE_ENV === environments.production) {
+        TagManager.dataLayer(tagManagerArgs);
+      }
     } catch (error) {
       console.warn('error', error);
       notification('error', t('contact_error_message'));
     } finally {
+      setLoading(false);
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
@@ -170,12 +161,17 @@ const FormContact: FC<FormContactProps> = ({ service, title, image, content }) =
             className='w-full text-sm focus:outline-none focus-visible:outline-none'
             rows={8}
             id='message'
-            {...register('message')}
+            {...register('message', { required: t('contact_form_client_message_required') })}
           />
           <span className='pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-xs'>
             {t('contact_form_client_message')}
           </span>
         </label>
+        {errors.message && (
+          <span role='alert' className='mt-1 block text-xs text-red-600'>
+            {(errors.message as FieldError).message}
+          </span>
+        )}
       </div>
       <div className='text-center form-group'>
         <Button

@@ -19,11 +19,9 @@ const TestimonialCard: React.FC<Testimonial> = ({
       />
       <div className='relative z-10 p-8 md:p-20' style={{ backgroundColor: bgColor }}>
         <div className='relative z-20 max-w-4xl text-ea-verde-900'>
-          <p className='mb-6 text-xs font-normal md:font-light md:text-3xl'>{testimonialText}</p>
+          <p className='mb-6 text-2xl'>{testimonialText}</p>
 
-          {highlightedQuote && (
-            <p className='text-xs font-normal md:font-medium md:text-3xl'>{highlightedQuote}</p>
-          )}
+          {highlightedQuote && <p className='text-xl'>{highlightedQuote}</p>}
         </div>
       </div>
     </div>
@@ -43,8 +41,8 @@ const TestimonialCard: React.FC<Testimonial> = ({
         </div>
 
         <div className='px-4 text-ea-verde-oscuro-500'>
-          <h3 className='text-base font-light md:text-3xl'>{autorName}</h3>
-          <p className='font-normal text-gray-700 text-xxs md:text-lg'>{autorRole}</p>
+          <h3 className='text-base md:text-3xl'>{autorName}</h3>
+          <p className='font-normal text-gray-700'>{autorRole}</p>
         </div>
       </div>
     </div>

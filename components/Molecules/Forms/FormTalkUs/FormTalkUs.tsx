@@ -4,6 +4,7 @@ import { environments } from '@/utils/constants';
 import { useTranslations } from 'next-intl';
 import ReCAPTCHA from 'react-google-recaptcha';
 import useNotify from '@/hooks/useNotify';
+import { useModal } from '@/hooks/useModal';
 import TagManager from 'react-gtm-module';
 import Button from '@/components/Atoms/Button';
 import Input from '@/components/Atoms/Input';
@@ -28,6 +29,7 @@ const FormTalkUs: FC<FormContactProps> = ({ service, title, image, content }) =>
   } = useForm();
 
   const [notification] = useNotify();
+  const { closeModal } = useModal();
 
   const handleClick = () => {
     setLoading(true);
@@ -38,51 +40,42 @@ const FormTalkUs: FC<FormContactProps> = ({ service, title, image, content }) =>
 
   const onReCAPTCHAChange = async (token: string | null) => {
     if (!token) {
+      setLoading(false);
+      recaptchaRef.current?.reset();
       return;
     }
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/api/resend-email', {
         method: 'POST',
-        body: JSON.stringify({ captcha: token }),
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          captcha: token,
+          contact: {
+            templateType: 'talkUs',
+            clientName: form.current?.clientName?.value,
+            email: form.current?.email?.value,
+            message: form.current?.message?.value,
+          },
+        }),
       });
-      if (response.ok) {
-        const options = {
-          method: 'POST',
-          body: JSON.stringify({
-            contact: {
-              templateType: 'talkUs',
-              clientName: form.current?.clientName?.value,
-              email: form.current?.email?.value,
-              message: form.current?.message?.value,
-            },
-          }),
-        };
 
-        const activeResponse = await fetch('/api/resend-email', options);
-        const data = await activeResponse.json();
-
-        if (data.error) {
-          setLoading(false);
-          notification('error', t('contact_error_message'));
-        }
-
-        setLoading(false);
-        notification('success', t('contact_success_message'));
-        reset();
-        if (process.env.NODE_ENV === environments.production) {
-          TagManager.dataLayer(tagManagerArgs);
-        }
-        return;
+      if (!response.ok) {
+        throw new Error('Failed to send message');
       }
-      const error = await response.json();
-      throw new Error(error.message);
+
+      notification('success', t('contact_success_message'));
+      reset();
+      closeModal();
+      if (process.env.NODE_ENV === environments.production) {
+        TagManager.dataLayer(tagManagerArgs);
+      }
     } catch (error) {
       console.warn('error', error);
       notification('error', t('contact_error_message'));
     } finally {
+      setLoading(false);
       if (recaptchaRef.current) {
         recaptchaRef.current.reset();
       }
@@ -148,9 +141,14 @@ const FormTalkUs: FC<FormContactProps> = ({ service, title, image, content }) =>
           <textarea
             className='w-full h-20 text-sm resize-none bg-ea-verde-200 focus:outline-none focus-visible:outline-none md:h-40'
             id='message'
-            {...register('message')}
+            {...register('message', { required: t('contact_form_client_message_required') })}
           />
         </label>
+        {errors.message && (
+          <span role='alert' className='block mt-1 text-xs text-red-600'>
+            {(errors.message as FieldError).message}
+          </span>
+        )}
       </div>
       <div className='text-center'>
         <Button

@@ -1,33 +1,85 @@
 import type { ReactNode } from 'react';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { Resend } from 'resend';
 import Email from '@/components/Templates/Email';
-
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { EmailTemplateProps } from '@/components/Templates/Email/types';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { body } = req;
+const MAX_FIELD_LENGTH = 500;
+const MAX_MESSAGE_LENGTH = 5000;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const emailData = JSON.parse(body);
-  const {
-    contact: { ...templateData },
-  } = emailData;
+interface CaptchaValidation {
+  success: boolean;
+  'error-codes'?: string[];
+}
+
+const verifyCaptcha = async (token: string): Promise<boolean> => {
+  const params = new URLSearchParams({
+    secret: process.env.RECAPTCHA_SECRET_KEY as string,
+    response: token,
+  });
+  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params.toString(),
+  });
+  const validation = (await response.json()) as CaptchaValidation;
+  return validation.success;
+};
+
+const isValidString = (value: unknown, maxLength: number): value is string =>
+  typeof value === 'string' && value.trim().length > 0 && value.length <= maxLength;
+
+export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
+  let body: unknown = req.body;
+  if (typeof req.body === 'string') {
+    try {
+      body = JSON.parse(req.body);
+    } catch {
+      return res.status(422).json({ message: 'Invalid JSON body' });
+    }
+  }
+  const { captcha, contact } = (body ?? {}) as { captcha?: unknown; contact?: unknown };
+
+  if (!isValidString(captcha, 5000) || typeof contact !== 'object' || contact === null) {
+    return res.status(422).json({ message: 'Missing required fields' });
+  }
+
+  const { email, message } = contact as { email?: unknown; message?: unknown };
+  if (!isValidString(email, MAX_FIELD_LENGTH) || !EMAIL_REGEX.test(email)) {
+    return res.status(422).json({ message: 'Invalid email' });
+  }
+  if (!isValidString(message, MAX_MESSAGE_LENGTH)) {
+    return res.status(422).json({ message: 'Invalid message' });
+  }
+
   try {
+    const captchaIsValid = await verifyCaptcha(captcha);
+    if (!captchaIsValid) {
+      return res.status(422).json({ message: 'Invalid captcha' });
+    }
+
     const { data, error } = await resend.emails.send({
       from: 'No-reply <no-reply@mkt.estelaestudio.com>',
       to: ['accounts@estelaestudio.com'],
       subject: 'Nuevo mensaje de contacto',
-      react: Email({ ...templateData }) as ReactNode,
+      react: Email({ ...(contact as EmailTemplateProps) }) as ReactNode,
     });
 
     if (error) {
-      res.status(400).json({ error });
+      return res.status(400).json({ error });
     }
 
-    res.status(200).json({ data });
-  } catch (error) {
-    res.status(400).json({ error });
+    return res.status(200).json({ data });
+  } catch {
+    return res.status(500).json({ message: 'Internal server error' });
   }
 };
 
