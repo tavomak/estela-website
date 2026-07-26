@@ -1,9 +1,13 @@
 import { FC, ReactNode } from 'react';
 import Script from 'next/script';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
+import { siteName, siteUrl } from '@/utils/constants';
 import Navbar from '@/components/Molecules/Navbar';
 import Footer from '@/components/Molecules/Footer';
+import Modal from '@/components/Templates/Modal';
+import GoToTopButton from '@/components/Molecules/GoToTopButton';
 
 type Props = {
   children: ReactNode;
@@ -11,21 +15,62 @@ type Props = {
   description: string;
   title: string;
   schema?: any;
+  ogImage?: string;
+  noIndex?: boolean;
 };
 
-const Layout: FC<Props> = ({ children, className, description, title, schema }) => {
-  const hostname = typeof window !== 'undefined' ? window.location.href : '';
+const ogLocales: Record<string, string> = {
+  es: 'es_ES',
+  en: 'en_US',
+};
+
+const Layout: FC<Props> = ({
+  children,
+  className,
+  description,
+  title,
+  schema,
+  ogImage = '/android-icon-192x192.png',
+  noIndex = false,
+}) => {
+  const { asPath, locale, locales, defaultLocale } = useRouter();
+  const path = asPath.split(/[?#]/)[0];
+  const localePrefix = locale && locale !== defaultLocale ? `/${locale}` : '';
+  const canonicalUrl = `${siteUrl}${localePrefix}${path === '/' ? '' : path}`;
+  const pageTitle = `${title} | ${siteName}`;
+
+  const hrefFor = (loc: string) => {
+    const prefix = loc === defaultLocale ? '' : `/${loc}`;
+    return `${siteUrl}${prefix}${path === '/' ? '' : path}`;
+  };
+
+  const structuredData = schema ?? {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteName,
+    url: siteUrl,
+    logo: `${siteUrl}/android-icon-192x192.png`,
+  };
+
   return (
     <>
       <Head>
-        <title>{`${title} | Estela Estudio Digital`}</title>
+        <title>{pageTitle}</title>
         <meta charSet='UTF-8' />
-        <meta name='description' content={`${description || ' Estela Estudio Digital'}`} />
-        <link rel='canonical' href={hostname} />
-        <meta property='og:locale' content='es_ES' />
-        <meta property='og:type' content='article' />
-        <meta property='og:url' content='hostname' />
-        <meta property='og:site_name' content='Estela Estudio Digital' />
+        <meta name='description' content={description || siteName} />
+        {noIndex && <meta name='robots' content='noindex, nofollow' />}
+        <link rel='canonical' href={canonicalUrl} />
+        {(locales ?? []).map(loc => (
+          <link key={loc} rel='alternate' hrefLang={loc} href={hrefFor(loc)} />
+        ))}
+        <link rel='alternate' hrefLang='x-default' href={hrefFor(defaultLocale ?? 'es')} />
+        <meta property='og:locale' content={ogLocales[locale ?? 'es'] ?? 'es_ES'} />
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content={canonicalUrl} />
+        <meta property='og:title' content={pageTitle} />
+        <meta property='og:description' content={description || siteName} />
+        <meta property='og:image' content={`${siteUrl}${ogImage}`} />
+        <meta property='og:site_name' content={siteName} />
         <meta name='twitter:card' content='summary_large_image' />
         <link rel='apple-touch-icon' sizes='57x57' href='/apple-icon-57x57.png' />
         <link rel='apple-touch-icon' sizes='60x60' href='/apple-icon-60x60.png' />
@@ -46,18 +91,18 @@ const Layout: FC<Props> = ({ children, className, description, title, schema }) 
         <meta name='theme-color' content='#ffffff' />
       </Head>
       <Navbar />
-      <main className={`flex flex-col min-h-[calc(100vh-217px)] ${className}`}>{children}</main>
+      <main className={`min-h-[calc(100vh-217px)] ${className || ''}`}>{children}</main>
       <ToastContainer />
       <Footer />
-      {schema && (
-        <Script
-          id='structured-data'
-          key='structured-data'
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-          strategy='beforeInteractive'
-        />
-      )}
+      <GoToTopButton />
+      <Modal size='xxl' bgColor='bg-ea-verde-200' noPadding />
+      <Script
+        id='structured-data'
+        key='structured-data'
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        strategy='beforeInteractive'
+      />
     </>
   );
 };

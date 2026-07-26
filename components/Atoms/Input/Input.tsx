@@ -27,7 +27,9 @@ const Input: FC<InputProps> = ({
           className='w-full p-1 placeholder-transparent bg-transparent border-none peer focus:border-transparent focus:outline-none focus:ring-0'
           type={showPassword ? 'text' : type}
           id={name}
-          placeholder={placeholder ? '' : placeholder}
+          placeholder={placeholder || ' '}
+          aria-invalid={errors ? true : undefined}
+          aria-describedby={errors ? `${name}-error` : undefined}
           {...register(name, { ...rules })}
           disabled={disabled}
         />
@@ -39,7 +41,9 @@ const Input: FC<InputProps> = ({
         type={showPassword ? 'text' : type}
         id={name}
         name={name}
-        placeholder={placeholder}
+        placeholder={placeholder || ' '}
+        aria-invalid={errors ? true : undefined}
+        aria-describedby={errors ? `${name}-error` : undefined}
         value={value?.trim()}
         onChange={onChange}
         disabled={disabled}
@@ -89,7 +93,11 @@ const Input: FC<InputProps> = ({
         )}
 
         {errors && (
-          <span className='absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all'>
+          <span
+            id={`${name}-error`}
+            role='alert'
+            className='absolute bottom-0 end-2.5 -translate-y-1/2 bg-white p-0.5 text-xs text-red-600 transition-all'
+          >
             {errors.message}
           </span>
         )}

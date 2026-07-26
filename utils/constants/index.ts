@@ -1,5 +1,7 @@
 export const siteName = 'Estela Estudio Digital';
 
+export const siteUrl = 'https://estelaestudio.com';
+
 export const environments = {
   production: 'production',
   development: 'development',
@@ -54,7 +56,7 @@ export const sliderSettings = {
   slidesToScroll: 1,
   arrows: true,
   centerMode: true,
-
+  autoplay: true,
   responsive: [
     {
       breakpoint: 1024,

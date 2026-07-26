@@ -1,5 +1,4 @@
 import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import Modal from '@/components/Templates/Modal';
 import { useTranslations } from 'next-intl';
 import { siteName } from '@/utils';
 import Image from 'next/image';
@@ -20,35 +19,35 @@ const Footer = () => {
           <div>
             <p className='text-sm text-ea-verde-200 lg:text-lg'>{t('footer_lasting_bonds')}</p>
             <h2 className='text-2xl font-medium lg:text-4xl text-ea-verde-200'>{t('lets_talk')}</h2>
-            <a
-              href='!#'
-              onClick={e => {
-                e.preventDefault();
-                handleClick();
-              }}
+            <button
+              type='button'
+              onClick={handleClick}
               className='mt-6 text-xs font-medium tracking-widest uppercase md:text-sm btn btn-outline'
-              rel='noreferrer'
             >
               {t('contact_title')}
-            </a>
+            </button>
           </div>
           <ul className='flex space-x-6 text-2xl text-white'>
             <li>
               <a
                 href='https://www.linkedin.com/company/estelaestudio/'
                 target='_blank'
+                rel='noopener noreferrer'
+                aria-label='LinkedIn'
                 className='transition hover:opacity-75'
               >
-                <FaInstagram />
+                <FaLinkedinIn />
               </a>
             </li>
             <li>
               <a
                 href='https://www.instagram.com/estelaestudio/'
                 target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Instagram'
                 className='transition hover:opacity-75'
               >
-                <FaLinkedinIn />
+                <FaInstagram />
               </a>
             </li>
           </ul>
@@ -79,7 +78,6 @@ const Footer = () => {
           />
         </div>
       </div>
-      <Modal size='xxl' bgColor='bg-ea-verde-200' noPadding />
     </footer>
   );
 };

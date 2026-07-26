@@ -1,25 +1,23 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import Button from '@/components/Atoms/Button';
+import { siteName } from '@/utils';
 import { DesktopNavigationProps } from './types';
 
 const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, handleClick }) => {
   const t = useTranslations('common');
 
   return (
-    <nav
-      className='flex justify-between items-center mx-auto max-w-screen-xl md:px-4'
-      aria-label='Global'
-    >
+    <nav className='flex justify-between items-center mx-auto container lg:p-4' aria-label='Global'>
+      <div className='w-40'>
+        <Link aria-label={siteName} className='w-40 text-ea-verde-oscuro-500' href='/'>
+          <BrandLogoHorizontal />
+        </Link>
+      </div>
       <ul className='flex gap-4 items-center xl:gap-14'>
-        <li className='w-40'>
-          <Link className='w-40 text-ea-verde-oscuro-500' href='/'>
-            <BrandLogoHorizontal />
-          </Link>
-        </li>
         {navItems &&
           navItems.length &&
           navItems.map(item => (

@@ -10,6 +10,9 @@ import globals from 'globals';
 
 export default defineConfig([
   {
+    ignores: ['.next/', 'next-env.d.ts'],
+  },
+  {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: typescriptParser,
