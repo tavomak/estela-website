@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import BrandLogoHorizontal from '@/components/Atoms/Svg/BrandLogoHorizontal';
-import React, { FC } from 'react';
+import { FC } from 'react';
 import LanguageSwitcher from '@/components/Atoms/LanguageSwitcher';
 import Button from '@/components/Atoms/Button';
 import { siteName } from '@/utils';

@@ -2,6 +2,8 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView } from 'motion/react';
 import ServiceCard from '@/components/Molecules/ServiceCard';
 import { services as Service } from '@/components/Molecules/ServiceCard/types';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 type Props = {
   services: Service[];
@@ -29,6 +31,7 @@ const ScrollRow: FC<RowProps> = ({ service, index, active, onInView, onClick }) 
       ref={ref}
       type='button'
       onClick={onClick}
+      aria-current={active}
       className={`flex flex-col justify-center py-10 w-full text-left border-b transition-colors md:min-h-[55vh] ${
         active ? 'border-ea-verde-500' : 'border-ea-gris-200'
       }`}
@@ -54,6 +57,7 @@ const ScrollRow: FC<RowProps> = ({ service, index, active, onInView, onClick }) 
 const StickyColumns: FC<Props> = ({ services, onServiceClick }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const handleInView = useCallback((index: number) => setActiveIndex(index), []);
+  const t = useTranslations('common');
 
   if (!services || services.length === 0) return null;
 
@@ -61,8 +65,16 @@ const StickyColumns: FC<Props> = ({ services, onServiceClick }) => {
     <div className='flex gap-6 lg:gap-12'>
       {/* Left: sticky active card (desktop only) */}
       <div className='hidden md:block md:w-1/2'>
-        <div className='sticky top-24'>
+        <div className='flex sticky top-0 flex-col justify-center h-screen'>
           <div className='flex gap-3 items-center mb-6'>
+            <div>
+              <h2 className='mb-2 text-5xl font-medium md:mb-6 lg:text-6xl display-font text-ea-verde-900'>
+                {t('homepage_services_section_title')}
+              </h2>
+              <Link href='/services' className='btn btn-secondary'>
+                {t('more_services')}
+              </Link>
+            </div>
             <AnimatePresence mode='wait'>
               <motion.span
                 key={activeIndex}
@@ -106,10 +118,22 @@ const StickyColumns: FC<Props> = ({ services, onServiceClick }) => {
               onClick={() => setActiveIndex(index)}
             />
           ))}
+          {/* Spacer: without it the sticky panel un-pins before the last row
+              finishes its scroll dwell, since CSS sticky range = parent height − panel height.
+              Matches the panel's own h-screen so the pin range always outlasts the last row. */}
+          <div aria-hidden className='md:h-screen' />
         </div>
 
         {/* Mobile: stacked full cards */}
         <div className='flex flex-col gap-8 md:hidden'>
+          <div>
+            <h2 className='mb-2 text-4xl font-medium display-font text-ea-verde-900'>
+              {t('homepage_services_section_title')}
+            </h2>
+            <Link href='/services' className='btn btn-secondary'>
+              {t('more_services')}
+            </Link>
+          </div>
           {services.map(service => (
             <ServiceCard key={service.title} service={service} onClick={onServiceClick} />
           ))}

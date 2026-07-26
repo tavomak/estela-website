@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Slider from 'react-slick';
 import { InferGetStaticPropsType } from 'next';
 import { sliderSettings } from '@/utils/constants';
@@ -91,7 +90,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 loop
                 muted
                 playsInline
-                poster='/hero-servicios.jpg'
+                poster='/public/Square4Col.png'
                 className='object-contain w-full h-full'
               />
             </FadeIn>
@@ -125,7 +124,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 loop
                 muted
                 playsInline
-                poster='/hero-servicios.jpg'
+                poster='/public/Square4Col.png'
                 className='object-contain w-full h-full'
               />
             </FadeIn>
@@ -137,17 +136,9 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
         id='services'
         className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-top-right md:bg-top-left"
       >
-        <article className='overflow-hidden py-16 lg:py-30 2xl:container 2xl:mx-auto'>
+        <article className='overflow-clip py-16 lg:py-30 2xl:container 2xl:mx-auto'>
           <div className='mx-auto w-full md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0'>
             <div className='mr-auto w-5/6 lg:w-full 2xl:w-4/5 lg:mx-auto'>
-              <div>
-                <h2 className='mb-2 text-5xl font-medium md:mb-6 lg:text-6xl display-font text-ea-verde-900'>
-                  {t('homepage_services_section_title')}
-                </h2>
-                <Link href='/services' className='btn btn-secondary'>
-                  {t('more_services')}
-                </Link>
-              </div>
               <div className='my-10'>
                 <StickyColumns
                   services={content?.services ?? []}
