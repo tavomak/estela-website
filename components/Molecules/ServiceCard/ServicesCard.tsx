@@ -41,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             ))}
           </ul>
         ) : (
-          <p className='flex-grow mb-14 text-xs font-normal lg:mb-10 md:text-lg'>{content}</p>
+          <p className='mb-10'>{content}</p>
         )}
 
         {buttonText && (
@@ -49,9 +49,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             onClick={onClick}
             className='flex gap-2 items-center mt-auto cursor-pointer group'
           >
-            <span className='text-xs font-normal lowercase lg:uppercase lg:text-sm lg:font-medium group-hover:text-ea-verde-500'>
-              {t(buttonText)}
-            </span>
+            <span className='group-hover:text-ea-verde-500'>{t(buttonText)}</span>
             <span
               className='flex justify-center items-center text-xs rounded-full size-7 md:size-9 md:text-sm bg-ea-verde-900 text-ea-amarillo group-hover:bg-ea-verde-500 group-hover:text-ea-verde-900'
               aria-label={t(buttonText)}

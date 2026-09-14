@@ -69,8 +69,8 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
       description={content?.metaDescription || t('homepage.description')}
     >
       <section id='hero' className='relative pt-20 lg:py-30 flex flex-col lg:flex-row items-center'>
-        <article className='px-4 mx-auto container flex flex-col lg:flex-row items-center gap-6'>
-          <div className='lg:w-1/2'>
+        <article className='md:px-4 mx-auto container flex flex-col lg:flex-row items-center gap-6'>
+          <div className='px-4 md:p-0 lg:w-1/2'>
             <FadeIn>
               <h1 className='font-medium text-balance display-font text-5xl md:text-7xl xl:text-8xl text-ea-verde-900 lg:pe-20'>
                 {content?.sectionHero?.title}
@@ -117,7 +117,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
             content={content?.section1?.description}
             contentClass='text-white text-pretty'
           >
-            <FadeIn className='hiddenmd:w-11/12 lg:block mt-4'>
+            <FadeIn className='hidden md:w-11/12 lg:block mt-4'>
               <AdvancedVideo
                 cldVid={cld.video('EE-video-web-7-verde_wfzirm')}
                 autoPlay
@@ -132,21 +132,9 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
         </article>
       </section>
 
-      <section
-        id='services'
-        className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-top-right md:bg-top-left"
-      >
-        <article className='overflow-clip py-16 lg:py-30 2xl:container 2xl:mx-auto'>
-          <div className='mx-auto w-full md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0'>
-            <div className='mr-auto w-5/6 lg:w-full 2xl:w-4/5 lg:mx-auto'>
-              <div className='my-10'>
-                <StickyColumns
-                  services={content?.services ?? []}
-                  onServiceClick={() => toggleModal()}
-                />
-              </div>
-            </div>
-          </div>
+      <section id='services' className="w-full md:bg-[url('/thinWaveBar.png')] bg-repeat-y px-4">
+        <article className='py-30 mx-auto container'>
+          <StickyColumns services={content?.services ?? []} onServiceClick={() => toggleModal()} />
         </article>
       </section>
 

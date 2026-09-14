@@ -62,7 +62,7 @@ const StickyColumns: FC<Props> = ({ services, onServiceClick }) => {
   if (!services || services.length === 0) return null;
 
   return (
-    <div className='flex gap-6 lg:gap-12'>
+    <div className='flex gap-6 lg:gap-24'>
       {/* Left: sticky active card (desktop only) */}
       <div className='hidden md:block md:w-1/2'>
         <div className='flex sticky top-0 flex-col justify-center h-screen'>
