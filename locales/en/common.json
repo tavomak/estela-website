@@ -101,5 +101,29 @@
 
   "404_title": "Page not found",
   "404_description": "The page you are looking for does not exist. Please check the URL or return to the home page.",
-  "404_button": "Return to site"
+  "404_button": "Return to site",
+
+  "tree_title": "Socials",
+  "tree_description": "Estela Estudio and Lari-Dada socials, email promotions and WhatsApp.",
+  "tree_hero_title": "Thanks for coming",
+  "tree_hero_subtitle": "Socials, promotions and contact.",
+  "tree_links_title": "{brand} socials",
+  "tree_website": "Website",
+  "tree_promo_label": "Promotions",
+  "tree_promo_title": "Get our promos by email",
+  "tree_email_label": "Email address",
+  "tree_email_placeholder": "you@email.com",
+  "tree_consent": "I agree to receive promotions from Estela Estudio.",
+  "tree_subscribe": "Subscribe",
+  "tree_sending": "Sending…",
+  "tree_success": "Done! You're subscribed.",
+  "tree_error_email": "Check your email.",
+  "tree_error_consent": "Tick the box to continue.",
+  "tree_error": "Couldn't send. Please try again.",
+  "tree_contact_label": "Contact",
+  "tree_contact_title": "Message me",
+  "tree_open_chat": "Open chat",
+  "tree_email": "Email",
+  "tree_whatsapp_message": "Hi Lorena, I saw you at the presentation.",
+  "tree_qr_alt": "WhatsApp QR code"
 }

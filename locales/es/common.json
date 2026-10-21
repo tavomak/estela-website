@@ -101,5 +101,29 @@
 
   "404_title": "Página no encontrada",
   "404_description": "La página que buscas no existe. Por favor, verifica la URL o regresa a la página de inicio.",
-  "404_button": "Volver al sitio"
+  "404_button": "Volver al sitio",
+
+  "tree_title": "Redes",
+  "tree_description": "Redes de Estela Estudio y Lari-Dada, promociones por correo y WhatsApp.",
+  "tree_hero_title": "Gracias por venir",
+  "tree_hero_subtitle": "Redes, promociones y contacto.",
+  "tree_links_title": "Redes de {brand}",
+  "tree_website": "Sitio web",
+  "tree_promo_label": "Promociones",
+  "tree_promo_title": "Recibe nuestras promos por correo",
+  "tree_email_label": "Correo electrónico",
+  "tree_email_placeholder": "tu@correo.com",
+  "tree_consent": "Acepto recibir promociones de Estela Estudio.",
+  "tree_subscribe": "Suscribirme",
+  "tree_sending": "Enviando…",
+  "tree_success": "¡Listo! Ya estás suscrito.",
+  "tree_error_email": "Revisa tu correo.",
+  "tree_error_consent": "Marca la casilla para continuar.",
+  "tree_error": "No se pudo enviar. Intenta de nuevo.",
+  "tree_contact_label": "Contacto",
+  "tree_contact_title": "Escríbeme",
+  "tree_open_chat": "Abrir chat",
+  "tree_email": "Correo",
+  "tree_whatsapp_message": "Hola Lorena, te vi en la presentación.",
+  "tree_qr_alt": "Código QR de WhatsApp"
 }
