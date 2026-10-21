@@ -52,11 +52,20 @@ export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => 
     return res.status(422).json({ message: 'Missing required fields' });
   }
 
-  const { email, message } = contact as { email?: unknown; message?: unknown };
+  const { email, message, templateType, consent } = contact as {
+    email?: unknown;
+    message?: unknown;
+    templateType?: unknown;
+    consent?: unknown;
+  };
+  const isSubscribe = templateType === 'subscribe';
   if (!isValidString(email, MAX_FIELD_LENGTH) || !EMAIL_REGEX.test(email)) {
     return res.status(422).json({ message: 'Invalid email' });
   }
-  if (!isValidString(message, MAX_MESSAGE_LENGTH)) {
+  if (isSubscribe && consent !== true) {
+    return res.status(422).json({ message: 'Consent required' });
+  }
+  if (!isSubscribe && !isValidString(message, MAX_MESSAGE_LENGTH)) {
     return res.status(422).json({ message: 'Invalid message' });
   }
 
@@ -64,6 +73,31 @@ export const resendEmail = async (req: NextApiRequest, res: NextApiResponse) => 
     const captchaIsValid = await verifyCaptcha(captcha);
     if (!captchaIsValid) {
       return res.status(422).json({ message: 'Invalid captcha' });
+    }
+
+    if (isSubscribe) {
+      const segmentId = process.env.RESEND_SEGMENT_ID as string;
+      const created = await resend.contacts.create({ email, segments: [{ id: segmentId }] });
+      // Existing contact → create fails; add it to the segment instead
+      const subscribed = created.error
+        ? await resend.contacts.segments.add({ email, segmentId })
+        : created;
+      if (subscribed.error) {
+        return res.status(400).json({ error: subscribed.error });
+      }
+
+      // Notification is best-effort: the segment is the source of truth
+      const notify = await resend.emails.send({
+        from: 'No-reply <no-reply@mkt.estelaestudio.com>',
+        to: ['contacto@estelaestudio.com'],
+        subject: 'Nueva suscripción a promociones',
+        react: Email({ templateType: 'subscribe', email }) as ReactNode,
+      });
+      if (notify.error) {
+        console.warn('subscribe notification failed', notify.error);
+      }
+
+      return res.status(200).json({ data: subscribed.data });
     }
 
     const { data, error } = await resend.emails.send({

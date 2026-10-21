@@ -13,6 +13,11 @@ export interface ContactTemplateProps {
   tag: string;
 }
 
+export interface SubscribeTemplateProps {
+  email: string;
+}
+
 export type EmailTemplateProps =
   | ({ templateType: 'contact' } & ContactTemplateProps)
-  | ({ templateType: 'talkUs' } & TalkUsTemplateProps);
+  | ({ templateType: 'talkUs' } & TalkUsTemplateProps)
+  | ({ templateType: 'subscribe' } & SubscribeTemplateProps);
