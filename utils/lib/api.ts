@@ -78,12 +78,6 @@ export const getHomePageInfo = (slug: string, locales: string[]) =>
             subtitle
             description
           }
-          projects(locales: $locales) {
-            title
-            description
-            url
-            videoId
-          }
           section3(locales: $locales) {
             title
             subtitle

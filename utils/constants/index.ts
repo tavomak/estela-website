@@ -38,6 +38,34 @@ export const navItems = [
   // },
 ];
 
+// Translatable copy lives in locales under `homepage_cases.<id>`
+// `images` order must match `homepage_cases.<id>.images_alt`
+export const caseStudies = [
+  {
+    id: 'cfc',
+    name: 'CFC Capital',
+    url: 'https://cfccapital.cl/',
+    author: 'Ema Jara',
+    theme: 'mint',
+    images: [
+      '/cases/cfc-home.webp',
+      '/cases/cfc-minefact-web.webp',
+      '/cases/post-proyecto.webp',
+      '/cases/cfc-newsletter.webp',
+    ],
+  },
+  {
+    id: 'fayj',
+    name: 'Fundación Amparo y Justicia',
+    url: 'https://amparoyjusticia.cl/',
+    author: 'Paola Carmona Zubillaga',
+    theme: 'dark',
+    images: ['/cases/fayj-home.webp', '/cases/fayj-campana.webp', '/cases/fayj-nna.webp'],
+  },
+] as const;
+
+export type CaseStudy = (typeof caseStudies)[number];
+
 export const flagIconsMapping: { [key: string]: string } = {
   en: 'us',
   es: 'spa',

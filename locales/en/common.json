@@ -101,5 +101,58 @@
 
   "404_title": "Page not found",
   "404_description": "The page you are looking for does not exist. Please check the URL or return to the home page.",
-  "404_button": "Return to site"
+  "404_button": "Return to site",
+
+  "homepage_cases_visit": "Visit site",
+  "homepage_cases": {
+    "cfc": {
+      "sub": "Factoring and leasing. We've worked together since 2021 on their website, brand and campaigns.",
+      "stats": [
+        {
+          "value": "+818%",
+          "label": "active users on the site during the Meta campaign we managed"
+        },
+        {
+          "value": "+100%",
+          "label": "deals closed through the site, 2026 vs. 2025"
+        }
+      ],
+      "quote": "I'd highlight their closeness, responsiveness and professionalism.",
+      "role": "Deputy Commercial Manager, CFC Capital",
+      "images_alt": [
+        "cfccapital.cl home page",
+        "MineFact section, factoring for mining, on cfccapital.cl",
+        "Instagram reel: Won a big project? Finance the operation with factoring",
+        "CFC Capital's monthly newsletter for clients and press"
+      ]
+    },
+    "fayj": {
+      "sub": "Works for children and adolescents who are victims of sexual offenses and homicide. We've run their digital platform for over 3 years.",
+      "stats": [
+        {
+          "value": "+101.9%",
+          "label": "site visits vs. the same half of 2025"
+        },
+        {
+          "value": "99.75%",
+          "label": "uptime, while filtering over 65,000 attack attempts"
+        },
+        {
+          "value": "+28.3%",
+          "label": "active users in the same period"
+        },
+        {
+          "value": "63 h",
+          "label": "of maintenance Jan–Jul 2026, 2.5× the contracted hours"
+        }
+      ],
+      "quote": "What I value most about working with Estela is the excellent communication. They are willing to solve our needs as clients and to explain every improvement to the website in a friendly, concise way.",
+      "role": "Digital lead, Fundación Amparo y Justicia",
+      "images_alt": [
+        "amparoyjusticia.cl home page",
+        "Cover of the 'Do you know how to act?' campaign, with an entry point for each type of user",
+        "Microsite page for children and adolescents, with its own palette and character"
+      ]
+    }
+  }
 }
