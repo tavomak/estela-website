@@ -38,6 +38,48 @@ export const navItems = [
   // },
 ];
 
+export type TreeLink = {
+  network: string;
+  name: string;
+  handle: string;
+  url: string;
+};
+
+export const treeLinks: Record<'estela' | 'lari', TreeLink[]> = {
+  estela: [
+    {
+      network: 'instagram',
+      name: 'Instagram',
+      handle: '@estela_estudio_',
+      url: 'https://www.instagram.com/estela_estudio_/',
+    },
+    { network: 'web', name: 'tree_website', handle: 'estelaestudio.com', url: '/' },
+  ],
+  lari: [
+    {
+      network: 'instagram',
+      name: 'Instagram',
+      handle: '@lari_dada',
+      url: 'https://www.instagram.com/lari_dada/',
+    },
+    {
+      network: 'tiktok',
+      name: 'TikTok',
+      handle: '@lari_dada',
+      url: 'https://www.tiktok.com/@lari_dada',
+    },
+  ],
+};
+
+// ponytail: QR in public/qr-whatsapp-tree.svg is static — regenerate if number/message changes (see .agents/specs/tree-landing.md)
+export const treeContact = {
+  whatsapp: '56931024175',
+  phoneLabel: '+56 9 3102 4175',
+  email: 'lorena@estelaestudio.com',
+  linkedin: 'https://www.linkedin.com/in/lorena-m%C3%A1rquez-14b132151/',
+  linkedinName: 'Lorena Márquez',
+};
+
 export const flagIconsMapping: { [key: string]: string } = {
   en: 'us',
   es: 'spa',
