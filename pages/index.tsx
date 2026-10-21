@@ -13,7 +13,6 @@ import { AdvancedVideo } from '@cloudinary/react';
 import Layout from '@/components/Templates/Layout';
 import FadeIn from '@/components/Atoms/FadeIn';
 import Marquee from '@/components/Molecules/Marquee';
-import ScrollTriggered from '@/components/Atoms/ScrollTriggered';
 import GeometricShape from '@/components/Atoms/Svg/GeometricShape';
 import Testimonials from '@/components/Molecules/Testimonial';
 import ContentBlockImage from '@/components/Molecules/ContentBlockImage';
@@ -21,7 +20,7 @@ import StickyColumns from '@/components/Templates/StickyColumn';
 import MobileGeometricShape from '@/components/Atoms/Svg/MobileGeometricShape';
 import DecorativeBar from '@/components/Atoms/Svg/DecorativeBar';
 import SliderArrow from '@/components/Atoms/SliderArrow';
-import VideoIframe from '@/components/Templates/VideoIframe';
+import CaseDeck from '@/components/Templates/CaseDeck';
 
 const cld = new Cloudinary({
   cloud: {
@@ -90,7 +89,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 loop
                 muted
                 playsInline
-                poster='/public/Square4Col.png'
+                poster='/Square4Col.png'
                 className='object-contain w-full h-full'
               />
             </FadeIn>
@@ -124,8 +123,8 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
                 loop
                 muted
                 playsInline
-                poster='/public/Square4Col.png'
-                className='object-contain w-full h-full'
+                poster='/Square4Col.png'
+                className='object-contain w-full h-full mask-x-from-80% mask-y-from-75%'
               />
             </FadeIn>
           </ContentBlockImage>
@@ -134,7 +133,7 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
 
       <section
         id='services'
-        className="w-full px-6 bg-[url('/thinWaveBar.png')] 2xl:bg-[url('/waveBar.png')] bg-contain bg-no-repeat bg-top-right md:bg-top-left"
+        className="w-full px-6 2xl:bg-[url('/waveBar-tile.webp')] bg-size-[224px_auto] bg-repeat-y bg-left-top"
       >
         <article className='overflow-clip py-16 lg:py-30 2xl:container 2xl:mx-auto'>
           <div className='mx-auto w-full md:w-11/12 lg:p-0 lg:pl-6 3xl:pl-0'>
@@ -246,32 +245,16 @@ export const Home = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) =
         </article>
       </FadeIn>
 
-      <FadeIn id='projects' className='px-6 w-full bg-gray-100'>
+      <section id='projects' className='px-6 w-full bg-gray-100'>
         <article className='py-12 mx-auto w-11/12 2xl:container lg:py-30 2xl:w-3/4'>
-          <h2 className='mb-12 text-4xl font-medium lg:mb-24 lg:text-6xl display-font text-ea-verde-900'>
-            {t('homepage_projects_section_title')}
-          </h2>
-          {content?.projects?.length > 0 && (
-            <div>
-              {content?.projects?.map((project: any, i: number) => (
-                <div key={project.title}>
-                  <ScrollTriggered index={i + 1} className='overflow-hidden'>
-                    {project?.videoId && <VideoIframe videoId={project?.videoId} muted />}
-                  </ScrollTriggered>
-                  <div className='flex-row-reverse justify-between mb-10 lg:flex md:mb-20'>
-                    <p className='mt-4 text-xs text-right md:w-5/12 text-balance lg:text-lg font-regular text-ea-verde-oscuro-500'>
-                      {project.description}
-                    </p>
-                    <h2 className='mt-4 text-lg font-light lg:mt-8 lg:text-3xl text-ea-verde-oscuro-500'>
-                      {project.title}
-                    </h2>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          <FadeIn as='div'>
+            <h2 className='mb-12 text-4xl font-medium lg:mb-16 lg:text-6xl display-font text-ea-verde-900'>
+              {t('homepage_projects_section_title')}
+            </h2>
+          </FadeIn>
+          <CaseDeck />
         </article>
-      </FadeIn>
+      </section>
 
       <FadeIn id='promo' className='px-6 w-full bg-ea-verde-900'>
         <article className='overflow-hidden gap-8 items-center py-16 lg:flex lg:py-30 2xl:container 2xl:mx-auto'>

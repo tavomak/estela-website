@@ -103,6 +103,59 @@
   "404_description": "La página que buscas no existe. Por favor, verifica la URL o regresa a la página de inicio.",
   "404_button": "Volver al sitio",
 
+  "homepage_cases_visit": "Ver sitio",
+  "homepage_cases": {
+    "cfc": {
+      "sub": "Factoring y leasing. Trabajamos juntos desde 2021 en su sitio, su marca y sus campañas.",
+      "stats": [
+        {
+          "value": "+818%",
+          "label": "usuarios activos en el sitio durante la campaña que administramos en Meta"
+        },
+        {
+          "value": "+100%",
+          "label": "negocios cursados a través del sitio, 2026 vs. 2025"
+        }
+      ],
+      "quote": "Destacaría la cercanía, la capacidad de reacción y el profesionalismo en sus servicios.",
+      "role": "Sub Gerente Comercial, CFC Capital",
+      "images_alt": [
+        "Página de inicio de cfccapital.cl",
+        "Sección MineFact, el factoring para la minería, en cfccapital.cl",
+        "Reel de Instagram: ¿Ganaste un proyecto grande? Financia la operación con factoring",
+        "Newsletter mensual de CFC Capital para clientes y prensa"
+      ]
+    },
+    "fayj": {
+      "sub": "Trabaja por niñas, niños y adolescentes víctimas de delitos sexuales y homicidios. Llevamos más de 3 años a cargo de su plataforma digital.",
+      "stats": [
+        {
+          "value": "+101,9%",
+          "label": "visitas al sitio vs. el mismo semestre de 2025"
+        },
+        {
+          "value": "99,75%",
+          "label": "de disponibilidad, filtrando más de 65.000 intentos de ataque"
+        },
+        {
+          "value": "+28,3%",
+          "label": "usuarios activos en el mismo período"
+        },
+        {
+          "value": "63 h",
+          "label": "de mantención ene–jul 2026, 2,5 veces lo contratado"
+        }
+      ],
+      "quote": "Del trabajo con Estela destaco la excelente comunicación. Están dispuestos a solucionar nuestras necesidades como clientes y a explicar cada una de las mejoras en el sitio web de manera amena y concisa.",
+      "role": "Encargada digital, Fundación Amparo y Justicia",
+      "images_alt": [
+        "Página de inicio de amparoyjusticia.cl",
+        "Portada de la campaña ¿Sabes cómo actuar?, con una entrada para cada tipo de usuario",
+        "Página del minisitio para niñas, niños y adolescentes, con su propia paleta y personaje"
+      ]
+    }
+  },
+
   "tree_title": "Redes",
   "tree_description": "Redes de Estela Estudio y Lari-Dada, promociones por correo y WhatsApp.",
   "tree_hero_title": "Gracias por venir",
