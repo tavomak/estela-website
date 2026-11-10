@@ -39,7 +39,7 @@ const DesktopNavigation: FC<DesktopNavigationProps> = ({ navItems, itemActive, h
         </li>
         <li>
           <a
-            href='/credenciales_2024.pdf'
+            href='/credenciales.pdf'
             className='btn btn-secondary'
             target='_blank'
             rel='noreferrer'

@@ -52,7 +52,7 @@ const Footer = () => {
             </li>
           </ul>
           <a
-            href='/credenciales_2024.pdf'
+            href='/credenciales.pdf'
             className='text-xs font-bold tracking-widest uppercase md:font-medium md:text-sm btn btn-secondary me-4'
             target='_blank'
             rel='noreferrer'
